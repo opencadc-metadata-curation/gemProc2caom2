@@ -1,0 +1,643 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:CompositeObservation" caom2:id="6e23205f-63e0-40fd-a192-10c71e12e67c">
+  <caom2:collection>GEMINI</caom2:collection>
+  <caom2:observationID>GN-2014A-Q-85-16-003-RGN-FLAT</caom2:observationID>
+  <caom2:metaRelease>2020-06-18T16:55:31.000</caom2:metaRelease>
+  <caom2:algorithm>
+    <caom2:name>composite</caom2:name>
+  </caom2:algorithm>
+  <caom2:type>FLAT</caom2:type>
+  <caom2:intent>calibration</caom2:intent>
+  <caom2:target>
+    <caom2:name>GCALflat</caom2:name>
+  </caom2:target>
+  <caom2:telescope>
+    <caom2:name>Gemini-North</caom2:name>
+  </caom2:telescope>
+  <caom2:instrument>
+    <caom2:name>NIFS</caom2:name>
+  </caom2:instrument>
+  <caom2:planes>
+    <caom2:plane caom2:id="dadd78de-8a87-44d2-80a0-139b0f85798b">
+      <caom2:productID>rgnN20140428S0171_flat</caom2:productID>
+      <caom2:metaRelease>2014-04-28T00:00:00.000</caom2:metaRelease>
+      <caom2:dataRelease>2014-04-28T00:00:00.000</caom2:dataRelease>
+      <caom2:dataProductType>image</caom2:dataProductType>
+      <caom2:calibrationLevel>2</caom2:calibrationLevel>
+      <caom2:provenance>
+        <caom2:name>NOAO-IRAF FITS Image Kernel July 2003</caom2:name>
+        <caom2:producer>CADC</caom2:producer>
+        <caom2:inputs>
+          <caom2:planeURI>caom:GEMINI/GN-2014A-Q-85-16-003/N20140428S0171.fits</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2014A-Q-85-16-002/N20140428S0170.fits</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2014A-Q-85-16-005/N20140428S0173.fits</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2014A-Q-85-16-001/N20140428S0169.fits</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2014A-Q-85-16-004/N20140428S0172.fits</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2014A-Q-85-16-008/N20140428S0176.fits</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2014A-Q-85-16-006/N20140428S0174.fits</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2014A-Q-85-16-009/N20140428S0177.fits</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2014A-Q-85-16-007/N20140428S0175.fits</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2014A-Q-85-16-010/N20140428S0178.fits</caom2:planeURI>
+        </caom2:inputs>
+      </caom2:provenance>
+      <caom2:artifacts>
+        <caom2:artifact caom2:id="9a835928-2ac5-433e-8685-ed323c11f334">
+          <caom2:uri>ad:GEM/rgnN20140428S0171_flat.fits</caom2:uri>
+          <caom2:productType>calibration</caom2:productType>
+          <caom2:releaseType>data</caom2:releaseType>
+          <caom2:contentType>application/fits</caom2:contentType>
+          <caom2:parts>
+            <caom2:part caom2:id="9450f1df-bf85-4c60-871b-b515babcf4e3">
+              <caom2:name>0</caom2:name>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="a32868c6-9f80-4032-97f5-2d789c099aa6">
+              <caom2:name>1</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="29b59aa2-55cd-4bf2-8c27-3c3b6a64764c"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="37746f3d-c642-4256-b504-5689b16fb940">
+              <caom2:name>2</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="4cb5ab86-1177-4f7b-944b-b0fdcef150c9"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="f626afcc-1214-495b-985e-a13b0df0d253">
+              <caom2:name>3</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="8ea9b87d-fcbe-4875-91cb-5582fba76726"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="ea60b38b-0156-4d76-a190-96d8b1ed0959">
+              <caom2:name>4</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="b781bec8-8ed1-4cad-8808-2e6daafcd4d8"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="1760c4a6-6d84-42e2-a522-407715e31b9d">
+              <caom2:name>5</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="0673283a-5c97-4b24-b23b-7aeb3b04ca17"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="07460a14-3399-4a0c-99f7-b9dbd8c1be0d">
+              <caom2:name>6</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="c8ba5795-b9f7-4927-95bd-d942ac0340f3"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="2030d49f-bbfc-4799-a8e6-a992aa580efd">
+              <caom2:name>7</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="026c434d-9cca-4f40-a670-04300d67d70d"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="8611a106-d6fb-4f8a-ab00-943ff3482ae3">
+              <caom2:name>8</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="aed74cfe-b734-45e3-8f7d-59050ccd2b14"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="30d6dcfc-5396-4a86-9132-f98aedc182af">
+              <caom2:name>9</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="f9f7ce17-bbda-4074-b877-9ac7cca02c02"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="f611a4e8-e7d4-4f3b-ae20-ab2d481dfcd0">
+              <caom2:name>10</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="52724643-4379-4114-8833-744c6965f4d8"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="0edae20b-7a32-4492-92a9-9f60965ae3a7">
+              <caom2:name>11</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="6d7ca7d1-2ea9-4d1c-b46b-f613fdb48f23"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="c820a11c-4230-49e1-8c6e-eb5c26114472">
+              <caom2:name>12</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="f5c5c2c7-787f-4638-b108-6038ea9267dc"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="0aac371b-f47e-4cf6-b6f4-0eec93a73eb6">
+              <caom2:name>13</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="0ea9b1c1-8c69-45b5-b0de-16a35315e504"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="76f71f03-b487-4d03-8604-8649aa0b045a">
+              <caom2:name>14</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="9596cfe7-a156-4b22-9b09-96f949239073"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="eb6f1e7c-bf45-4ae7-ac90-acd115b17bbe">
+              <caom2:name>15</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="9358b894-f69f-497e-8cda-4bcd9889bf5f"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="e0090044-811a-48f5-b7b8-3cce8af6a726">
+              <caom2:name>16</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="48ed2da0-fffb-4b5b-ac86-c55500bad8a0"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="4b2095c4-2674-49ea-a9ee-969cc004ef6a">
+              <caom2:name>17</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="696ac4b2-1266-49fd-8454-b6a196575297"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="6b12f3bc-d73b-4130-bf0b-e0d96a908f7f">
+              <caom2:name>18</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="94b08140-4c3b-450a-b50b-561a8e3fd1bd"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="4e03ea61-99d0-44e1-b9ff-3cd92e7ed8aa">
+              <caom2:name>19</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="714bc0d6-84dd-467a-9245-0b1f7ded34d6"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="b43d60c3-7352-4687-b3a3-7b42c52aafdc">
+              <caom2:name>20</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="a39fd78d-a694-43a4-94f1-73dd57fd9f19"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="e9dcafa5-df10-4821-9787-2a465a8f4eac">
+              <caom2:name>21</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="f68ca26b-26a9-40e7-a47c-3e25040d73d5"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="282afcdc-cc58-4f13-9d8e-151911e3ff5b">
+              <caom2:name>22</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="618694ed-6f3e-4e7b-bdb6-968592107633"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="698107ed-5d8e-48e7-9eb6-8bc5fcb918c4">
+              <caom2:name>23</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="7c25e3c1-823b-400c-b441-64762c3b38e2"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="eaefd8db-507a-46fd-945a-270cf931235b">
+              <caom2:name>24</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="17ae162a-a61b-44d7-b05c-e741401da150"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="7d1e6f3a-63b2-4253-b459-104d0dc46311">
+              <caom2:name>25</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="620665a5-f3ce-4017-839c-b0c59e6852fe"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="0e03e0de-da7c-4180-92b4-ecc22dae3434">
+              <caom2:name>26</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="0397665d-6cb2-4f16-acfc-c6fe837fcb4c"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="e4491df7-a5a8-435b-8bd5-aae495ddae82">
+              <caom2:name>27</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="8ae8216c-690b-4570-be81-6b9c9ac2c2be"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="e8d30625-3e70-49e9-9591-5cb86c9c6899">
+              <caom2:name>28</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="68dae34a-1661-4363-a2e8-c42f382e08ec"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="4c61e9fb-893f-49be-9c33-200d7f59dd3b">
+              <caom2:name>29</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="35121df6-b606-4b4f-abed-2aa4cac6b4e3"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="7822552f-2d51-4341-9b73-b2611cdf7fd3">
+              <caom2:name>30</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="0f784d11-1a5a-4f13-a6b5-91347a5e0157"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="7061f2ec-32a6-424f-b62d-96326b210e8f">
+              <caom2:name>31</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="ecd69a84-4685-44ee-83d1-3cd8ce5a50c2"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="fa1c7ee6-d5eb-4a26-978c-b63e6ed87c2a">
+              <caom2:name>32</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="87daa3e7-d2b3-4be4-bdcf-9c5ec2e22caa"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="e1b4ecda-442b-4349-9a8d-abfc856e46de">
+              <caom2:name>33</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="a971c8c0-6bc8-4985-ad0c-8e963ecb1ffd"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="d7023754-cfdc-4361-ab1e-8be5f544eb6a">
+              <caom2:name>34</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="101a4b42-3688-49b7-89ef-eb73c7a4abb9"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="0146171d-fe0d-4f5b-b155-4c65b121b450">
+              <caom2:name>35</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="703d92b0-1397-4a25-b764-eab39255b933"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="e079b83f-42ee-4479-b362-e963eda5f9a1">
+              <caom2:name>36</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="aaa58d0b-7a7d-4070-81fb-3ae92d7c5208"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="0958879e-f18c-40c8-b082-e873204e4477">
+              <caom2:name>37</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="74742e2f-8752-417c-8598-eb9f5a8e2552"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="7eed9820-6b05-49bf-b354-63e2e8e11ca7">
+              <caom2:name>38</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="33fa9fe4-a9da-444f-9132-69dec971edb4"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="ee3cc66b-0cbf-4827-9350-d91011946032">
+              <caom2:name>39</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="b1fe7fa5-e19a-4e72-b2ad-f4cb42218605"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="0178ca45-7765-4379-9b7f-ba17701dc493">
+              <caom2:name>40</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="c852a511-fd3d-4c3a-aa5d-cbfdc0d0e796"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="5d290ebe-fe2d-4612-b5dd-30ccde979f83">
+              <caom2:name>41</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="cddb9053-1abe-4a6d-9483-5d49f3a4dff8"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="04eb076c-ff53-44f7-aa95-0350877845a0">
+              <caom2:name>42</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="c8474621-99b0-4a8a-b5a4-b26167988b52"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="58aee5d3-1fdf-4d64-9af0-fb7b6ff15611">
+              <caom2:name>43</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="f2e4a7c1-1632-45f1-b348-c8744c7bbf29"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="b23dde4c-b386-4638-af2a-3427fe635e77">
+              <caom2:name>44</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="4fa7c7f5-9479-4643-916b-47f72397750f"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="bb766acf-c0f2-4a11-b4c3-3566d9114331">
+              <caom2:name>45</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="1cad6583-d9da-45a4-9c88-ee76b8e87a6d"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="9c7ecd2b-38f4-47f8-81a2-10270d034c2a">
+              <caom2:name>46</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="d20b9c81-0928-4015-84aa-d796f6019c22"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="84381902-36e9-43f2-9163-918e3c04a6a0">
+              <caom2:name>47</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="9da0f626-8ba2-426d-a085-0e9cde17aa63"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="2ce74269-dafc-40e1-a45d-48dadba22630">
+              <caom2:name>48</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="19d5ad69-08a9-4d34-8c59-a917b139e36e"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="0b569409-c438-4534-86bb-3136f97aa701">
+              <caom2:name>49</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="e6bae7fb-cacd-4003-8a8c-37b0a74a11c9"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="c4bd6155-6553-462c-a164-9891f3854717">
+              <caom2:name>50</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="04b0188c-edc9-40ff-afcf-8455cabe55f3"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="fe756006-06ed-4644-9c6e-24caa31a023d">
+              <caom2:name>51</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="f219d603-abda-42b6-bf63-b16aa5874892"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="40c56f7f-dae8-4c01-a7de-380aaa0967fc">
+              <caom2:name>52</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="00435896-1979-4b6e-a422-87095efdb835"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="200f9992-e5cd-45e6-b257-6dcdd115093b">
+              <caom2:name>53</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="29770052-4305-4f8a-88ae-8c6968a2d97c"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="1b2d2791-1f3a-4a9b-9398-0e30002eb2a1">
+              <caom2:name>54</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="a39f8308-5bd6-4fc7-8192-687b80eccb9d"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="035b2820-e170-4450-9635-a0b669b6dcbc">
+              <caom2:name>55</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="a1feaa94-4375-4c9e-a297-e28a5fdb745d"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="92266079-e468-4b42-bc44-3b6032c68055">
+              <caom2:name>56</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="7bbea2e8-1736-4d3f-869a-56b1801ac701"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="fb26b4f9-1031-4532-a5bc-a13e0b7bad0c">
+              <caom2:name>57</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="4f0c0e65-f9f0-4b15-a01e-246ac7b47c0f"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="907ff972-c696-4f10-87e4-108e3c43e1ea">
+              <caom2:name>58</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="44edea4f-208b-4643-a5b9-710ce741eb2a"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="5ea7014b-7c7e-4f9b-8412-41524fb5c6fb">
+              <caom2:name>59</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="0486e624-96a9-4097-8f1a-f86a4e1b1210"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="46d0096b-d13a-4711-b5a5-c1d8291c16de">
+              <caom2:name>60</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="0ec81b20-31df-49a2-8bcb-39f6c18354e0"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="2bb6ad19-98ae-4c43-8aa3-477e25c6b493">
+              <caom2:name>61</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="08f8408b-538d-4428-ace1-f0a6ce71cf08"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="6df7f536-1e62-4ded-9225-047c62140993">
+              <caom2:name>62</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="a0ed7dbd-ccdb-4153-bdc1-7e5baca1ccc3"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="707471e9-1946-4025-9a2c-5658b82b3183">
+              <caom2:name>63</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="436c7bbf-9380-4ff7-9155-53d179199492"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="59101762-37c7-428d-962e-6e33c0c90140">
+              <caom2:name>64</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="8f0ae2f1-1880-4fdc-8fdd-f6f5fa106b74"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="688ad99d-62db-480f-a451-3cc8fc7aec30">
+              <caom2:name>65</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="60c4f1ee-0ab9-44ec-9769-bd317e74e936"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="de2b302a-cf0d-4464-83bd-c87aeb852674">
+              <caom2:name>66</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="70937981-0981-4a8f-89b0-0280565b17ac"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="5ab46e91-63c5-438e-93d7-55cccb4fccbb">
+              <caom2:name>67</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="eda0a58e-33e5-4047-a63c-72a567fd92a3"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="18488b59-cd69-4d20-b198-a569410d5e00">
+              <caom2:name>68</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="413735fc-53f7-4965-8790-ad3abf9de284"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="2d8cbdce-642d-4a61-a62b-41bc62ef900f">
+              <caom2:name>69</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="2943c145-83f3-4d85-b914-9fbf03f1de98"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="fcaa71d6-d808-4c1c-84a0-de93e9fdd112">
+              <caom2:name>70</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="df543f2a-88e1-4463-acd9-1fccd4868896"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="2df147ad-aa7d-4877-a4dc-ce3d87a48709">
+              <caom2:name>71</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="50fb6003-ec77-4604-b89f-3f12d90f42d4"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="5be8ed68-6ca3-4bf6-93f5-6b5299264a49">
+              <caom2:name>72</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="c2a12e76-e568-432c-abbd-59695f9eaa63"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="b202a4c1-9067-4470-b263-571e4d8897fa">
+              <caom2:name>73</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="cc8223e2-ede9-4cdc-97c7-4aa74cd7cba9"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="5e1da8a5-1f81-4019-8b14-b6966d07fdd0">
+              <caom2:name>74</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="309e6955-2aa5-4f99-a0d5-f231190b81c1"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="bec9219a-ddc7-45c3-8acb-f2ce4686fc96">
+              <caom2:name>75</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="21744008-38be-41a5-9820-b65005a62325"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="ebafe3dd-f7bf-45b9-8f2b-2e87f5a90bf4">
+              <caom2:name>76</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="c452e1f9-b622-4090-8563-b98a1048abfa"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="66942f66-56ca-418d-90f4-db6f8c2e8479">
+              <caom2:name>77</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="620a4c03-52b2-4fb7-a2e3-dc7d2d9e94a5"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="4bbfb4a3-ddb3-4090-bf46-0bdb68d26366">
+              <caom2:name>78</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="637e5b3c-ae29-439b-9a73-7498faa0afe1"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="eea1c9ad-fa23-47c2-98d5-cb8e0a9df0ff">
+              <caom2:name>79</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="e25e5f16-56e8-4d68-93e5-11f257dec3d3"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="d70e04a8-4363-41e3-aff9-a8725bc31ff6">
+              <caom2:name>80</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="c6952110-6136-450e-b7ff-d447f3469d06"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="343c541d-b598-4b46-8bbd-f3b457ec00da">
+              <caom2:name>81</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="8acbad5d-b652-4f3d-8eab-1176fc977f66"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="6818c826-c57f-4a9e-9049-140fe691e496">
+              <caom2:name>82</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="6cf5353c-364e-418c-8a31-3c1ff36540ee"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="dd3e6e93-6041-44ee-aa52-42242304cf64">
+              <caom2:name>83</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="76e74976-0264-416c-8619-048d9fa8bfa6"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="5d49c254-1c8d-46cf-9f9e-d07126d51cbd">
+              <caom2:name>84</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="3d83c6a5-fba2-430d-838f-d7a77989a404"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="82052930-4d8a-4167-a836-47c2cc3af061">
+              <caom2:name>85</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="8261a455-12e5-4ecd-983d-0d4ca8b0cd9f"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="057de316-acb3-452c-8bf9-3380e6efde60">
+              <caom2:name>86</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="498363f4-8e02-4a6b-a3f0-49bd3ac1b796"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="86d68c96-5eff-49f9-ad09-b3e1fa438d56">
+              <caom2:name>87</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="97ddf065-9045-4bec-b000-e1a33872be77"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="a13bac1d-b6a0-4017-b4d2-1f403880e2c8">
+              <caom2:name>88</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="ffde5d29-0f23-4d4b-85dd-5216261081ab"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="c6ffd36e-4943-4552-94a7-3dab35bb7420">
+              <caom2:name>89</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="23ed5fa8-7c1a-4ccc-a292-77bb9b5f9aad">
+                  <caom2:naxis>2</caom2:naxis>
+                  <caom2:positionAxis1>1</caom2:positionAxis1>
+                  <caom2:positionAxis2>2</caom2:positionAxis2>
+                  <caom2:position>
+                    <caom2:axis>
+                      <caom2:axis1>
+                        <caom2:ctype>RA---TAN</caom2:ctype>
+                        <caom2:cunit>deg</caom2:cunit>
+                      </caom2:axis1>
+                      <caom2:axis2>
+                        <caom2:ctype>DEC--TAN</caom2:ctype>
+                        <caom2:cunit>deg</caom2:cunit>
+                      </caom2:axis2>
+                      <caom2:function>
+                        <caom2:dimension>
+                          <caom2:naxis1>2040</caom2:naxis1>
+                          <caom2:naxis2>2080</caom2:naxis2>
+                        </caom2:dimension>
+                        <caom2:refCoord>
+                          <caom2:coord1>
+                            <caom2:pix>15.000027</caom2:pix>
+                            <caom2:val>316.872214</caom2:val>
+                          </caom2:coord1>
+                          <caom2:coord2>
+                            <caom2:pix>33.999888</caom2:pix>
+                            <caom2:val>19.794123</caom2:val>
+                          </caom2:coord2>
+                        </caom2:refCoord>
+                        <caom2:cd11>-4.2e-05</caom2:cd11>
+                        <caom2:cd12>-9e-06</caom2:cd12>
+                        <caom2:cd21>2.2e-05</caom2:cd21>
+                        <caom2:cd22>-1.7e-05</caom2:cd22>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:coordsys>FK5</caom2:coordsys>
+                    <caom2:equinox>2000.0</caom2:equinox>
+                  </caom2:position>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+          </caom2:parts>
+        </caom2:artifact>
+      </caom2:artifacts>
+    </caom2:plane>
+  </caom2:planes>
+  <caom2:members>
+    <caom2:observationURI>caom:GEMINI/GN-2014A-Q-85-16-003</caom2:observationURI>
+    <caom2:observationURI>caom:GEMINI/GN-2014A-Q-85-16-002</caom2:observationURI>
+    <caom2:observationURI>caom:GEMINI/GN-2014A-Q-85-16-001</caom2:observationURI>
+    <caom2:observationURI>caom:GEMINI/GN-2014A-Q-85-16-004</caom2:observationURI>
+    <caom2:observationURI>caom:GEMINI/GN-2014A-Q-85-16-005</caom2:observationURI>
+    <caom2:observationURI>caom:GEMINI/GN-2014A-Q-85-16-006</caom2:observationURI>
+    <caom2:observationURI>caom:GEMINI/GN-2014A-Q-85-16-007</caom2:observationURI>
+    <caom2:observationURI>caom:GEMINI/GN-2014A-Q-85-16-008</caom2:observationURI>
+    <caom2:observationURI>caom:GEMINI/GN-2014A-Q-85-16-009</caom2:observationURI>
+    <caom2:observationURI>caom:GEMINI/GN-2014A-Q-85-16-010</caom2:observationURI>
+  </caom2:members>
+</caom2:Observation>
