@@ -70,42 +70,6 @@
 """
 This module implements the ObsBlueprint mapping, as well as the workflow 
 entry point that executes the workflow.
-
-DB 21-07-20
-CTFBRSN files:
-
-The first extension is the processed NIFS data cube. Axes 1 and 2 are
-spatial axes.  Axis 3 is spectral.
-
-The second extension is a binary table.  No WCS information.
-
-3rd extension is a bad pixel map. WCS info should be ignored for this.
-
-processed pipeline, so even though some might think they're all Derived:
-DB/NC 06-07-20
-
-How to know if a NIFS arc file is a unique observation:
-If it’s a co-add of more than one individual observation then it is a
-new composite (maybe ‘derived’ is the new term) observation. If instead
-the processed arc is produced from just a single unprocessed observation
-then it is NOT a new observation but just a processed version of the
-original unprocessed dataset, or a new plane.
-
-The G in WRGN means the file passed through the Co-adding task. It's
-just that sometimes only one file is passed to and it's not really
-co-adding anything. It would make more sense to only add the G prefix
-if there was actually Co-adding happening.
-
-Modify the Nifty code to only add that G for co-added exposures. Then
-the datalabel for a co-added processed arc would look like
-GN-2014A-Q-85-12-001-WRGN-ARC and a non-co-added processed arc would
-look like GN-2014A-Q-85-12-001-WRN-ARC
-
-DB 06-08-20
-If only one ‘member’ is present then it’s a new CAL=2 plane for the
-    original observation given by the member name.  If there is > 1 ‘member’
-then it’s a new derived observation.
-
 """
 
 import importlib
