@@ -66,8 +66,81 @@
 #
 # ***********************************************************************
 #
-from blank2caom2 import BlankName
+
+from mock import patch
+
+from astropy.table import Table
+from caom2.obs_reader_writer import CAOM24_NAMESPACE
+from gem2caom2 import ARCHIVE, APPLICATION, COLLECTION, GemName
+from gemProc2caom2 import main_app
+from caom2pipe import manage_composable as mc
+
+import glob
+import os
+import sys
+
+THIS_DIR = os.path.dirname(os.path.realpath(__file__))
+TEST_DATA_DIR = os.path.join(THIS_DIR, 'data')
+PLUGIN = os.path.join(os.path.dirname(THIS_DIR), 'main_app.py')
 
 
-def test_is_valid():
-    assert BlankName('anything').is_valid()
+def pytest_generate_tests(metafunc):
+    obs_id_list = glob.glob(f'{TEST_DATA_DIR}/*.fits.header')
+    metafunc.parametrize('test_name', obs_id_list)
+
+
+@patch('caom2pipe.manage_composable.query_tap_client')
+@patch('caom2utils.fits2caom2.CadcDataClient')
+def test_main_app(data_client_mock, tap_mock, test_name):
+    tap_mock.side_effect = _tap_mock
+    basename = os.path.basename(test_name)
+    file_name = basename.replace('.header', '')
+    gem_name = GemName(file_name=file_name)
+    obs_path = f'{TEST_DATA_DIR}/{gem_name.obs_id}.expected.xml'
+    output_file = f'{TEST_DATA_DIR}/{basename}.actual.xml'
+
+    if os.path.exists(output_file):
+        os.unlink(output_file)
+
+    local = _get_local(basename)
+
+    data_client_mock.return_value.get_file_info.side_effect = _get_file_info
+
+    sys.argv = \
+        (f'{APPLICATION} --no_validate '
+         f'--local {local} --observation {COLLECTION} {gem_name.obs_id} -o '
+         f'{output_file} --plugin {PLUGIN} --module {PLUGIN} --lineage '
+         f'{_get_lineage(gem_name)}'
+         ).split()
+    print(sys.argv)
+    try:
+        main_app.to_caom2()
+    except Exception as e:
+        import logging
+        import traceback
+        logging.error(traceback.format_exc())
+
+    compare_result = mc.compare_observations(output_file, obs_path)
+    if compare_result is not None:
+        raise AssertionError(compare_result)
+    # assert False  # cause I want to see logging messages
+
+
+def _get_file_info(archive, file_id):
+    return {'type': 'application/fits'}
+
+
+def _get_lineage(blank_name):
+    result = mc.get_lineage(ARCHIVE, blank_name.product_id,
+                            f'{blank_name.file_name}')
+    return result
+
+
+def _get_local(obs_id):
+    return f'{TEST_DATA_DIR}/{obs_id}'
+
+
+def _tap_mock(query_string, mock_tap_client):
+    return Table.read(f'observationID,lastModified\n'
+                      f'GN-2014A-Q-85-16-003-RGN-FLAT,'
+                      f'2020-02-25T20:36:31.230\n'.split('\n'), format='csv')

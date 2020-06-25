@@ -78,35 +78,35 @@ import os
 import sys
 import traceback
 
-from caom2 import Observation
+from caom2 import Observation, CalibrationLevel
 from caom2utils import ObsBlueprint, get_gen_proc_arg_parser, gen_proc
+from caom2pipe import caom_composable as cc
 from caom2pipe import manage_composable as mc
+from gem2caom2 import GemName, ARCHIVE, COLLECTION, SCHEME
+from gem2caom2 import external_metadata as em
 
 
-__all__ = ['blank_main_app', 'update', 'BlankName', 'COLLECTION',
-           'APPLICATION', 'ARCHIVE']
+__all__ = ['gem_proc_main_app', 'update', 'APPLICATION', 'GemProcName']
 
 
-APPLICATION = 'blank2caom2'
-COLLECTION = 'blank'
-ARCHIVE = 'blank'
+APPLICATION = 'gemProc2caom2'
 
 
-class BlankName(mc.StorageName):
-    """Naming rules:
-    - support mixed-case file name storage, and mixed-case obs id values
-    - support uncompressed files in storage
-    """
+class GemProcName(GemName):
+    """A class to over-ride the gemini schema for the fits files."""
 
-    BLANK_NAME_PATTERN = '*'
+    def __init__(self, file_name):
+        super(GemProcName, self).__init__(file_name=file_name)
+        self.scheme = 'ad'
+        self._logger = logging.getLogger(__name__)
+        self._logger.debug(self)
 
-    def __init__(self, obs_id=None, fname_on_disk=None, file_name=None):
-        self.fname_in_ad = file_name
-        super(BlankName, self).__init__(
-            obs_id, COLLECTION, BlankName.BLANK_NAME_PATTERN, fname_on_disk)
-
-    def is_valid(self):
-        return True
+    @property
+    def lineage(self):
+        if self._lineage is None:
+            self._get_args()
+        self._lineage = self._lineage.replace(SCHEME, self.scheme)
+        return self._lineage
 
 
 def accumulate_bp(bp, uri):
@@ -118,6 +118,15 @@ def accumulate_bp(bp, uri):
     bp.configure_energy_axis(4)
     bp.configure_polarization_axis(5)
     bp.configure_observable_axis(6)
+
+    # processed pipeline, so they're all Derived
+    bp.set('CompositeObservation.members', {})
+    bp.set('Plane.calibrationLevel', CalibrationLevel.CALIBRATED)
+
+    bp.clear('Plane.provenance.name')
+    bp.add_fits_attribute('Plane.provenance.name', 'ORIGIN')
+    bp.set('Plane.provenance.producer', 'CADC')
+
     logging.debug('Done accumulate_bp.')
 
 
@@ -134,16 +143,27 @@ def update(observation, **kwargs):
     headers = kwargs.get('headers')
     fqn = kwargs.get('fqn')
     uri = kwargs.get('uri')
-    blank_name = None
+    gem_name = None
     if uri is not None:
-        blank_name = BlankName(artifact_uri=uri)
+        gem_name = GemProcName(file_name=mc.CaomName(uri).file_name)
     if fqn is not None:
-        blank_name = BlankName(file_name=os.path.basename(fqn))
-    if blank_name is None:
+        gem_name = GemProcName(file_name=os.path.basename(fqn))
+    if gem_name is None:
         raise mc.CadcException(f'Need one of fqn or uri defined for '
                                f'{observation.observation_id}')
 
+    for plane in observation.planes.values():
+        cc.update_plane_provenance(
+            plane, headers, 'FCMB', COLLECTION, _repair_provenance_value,
+            observation.observation_id)
 
+        for artifact in plane.artifacts.values():
+            for part in artifact.parts.values():
+                for chunk in part.chunks:
+                    if chunk.position is None and chunk.naxis is not None:
+                        chunk.naxis = None
+
+    cc.update_observation_members(observation)
     logging.debug('Done update.')
     return observation
 
@@ -174,7 +194,7 @@ def _get_uris(args):
         for ii in args.local:
             file_id = mc.StorageName.remove_extensions(os.path.basename(ii))
             file_name = f'{file_id}.fits'
-            result.append(BlankName(file_name=file_name).file_uri)
+            result.append(GemProcName(file_name=file_name).file_uri)
     elif args.lineage:
         for ii in args.lineage:
             result.append(ii.split('/', 1)[1])
@@ -182,6 +202,14 @@ def _get_uris(args):
         raise mc.CadcException(
             f'Could not define uri from these args {args}')
     return result
+
+
+def _repair_provenance_value(imcmb_value, obs_id):
+    prov_file_id = imcmb_value
+    prov_obs_id = em.get_gofr().get_obs_id(prov_file_id)
+    logging.debug(f'End _repair_provenance_value. {prov_obs_id} '
+                  f'{prov_file_id}')
+    return prov_obs_id, prov_file_id
 
 
 def to_caom2():
@@ -195,7 +223,7 @@ def to_caom2():
     return result
            
 
-def blank_main_app():
+def gem_proc_main_app():
     args = get_gen_proc_arg_parser().parse_args()
     try:
         result = to_caom2()

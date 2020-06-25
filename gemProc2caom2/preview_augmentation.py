@@ -3,7 +3,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2019.                            (c) 2019.
+#  (c) 2020.                            (c) 2020.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -67,70 +67,85 @@
 # ***********************************************************************
 #
 
-"""
-Implements the default entry point functions for the workflow 
-application.
-
-'run' executes based on either provided lists of work, or files on disk.
-'run_by_state' executes incrementally, usually based on time-boxed 
-intervals.
-"""
-
 import logging
-import sys
-import traceback
+import os
+import re
 
-from caom2pipe import run_composable as rc
-from blank2caom2 import APPLICATION, BlankName
+import matplotlib.image as image
+import matplotlib.pyplot as plt
+import numpy as np
+from astropy.io import fits
+from astropy.visualization import ZScaleInterval
 
-
-META_VISITORS = []
-DATA_VISITORS = []
-
-
-def _run():
-    """
-    Uses a todo file to identify the work to be done.
-
-    :return 0 if successful, -1 if there's any sort of failure. Return status
-        is used by airflow for task instance management and reporting.
-    """
-    return rc.run_by_todo(config=None, name_builder=None, 
-                          command_name=APPLICATION,
-                          meta_visitors=META_VISITORS, 
-                          data_visitors=DATA_VISITORS, chooser=None)
+from caom2 import ProductType, ReleaseType
+from caom2pipe import manage_composable as mc
+from gem2caom2 import ARCHIVE, GemName
 
 
-def run():
-    """Wraps _run in exception handling, with sys.exit calls."""
-    try:
-        result = _run()
-        sys.exit(result)
-    except Exception as e:
-        logging.error(e)
-        tb = traceback.format_exc()
-        logging.debug(tb)
-        sys.exit(-1)
+class GemProcPreview(mc.PreviewVisitor):
+
+    def __init__(self, **kwargs):
+        super(GemProcPreview, self).__init__(
+            ARCHIVE, ReleaseType.DATA, **kwargs)
+        self._storage_name = GemName(file_name=self._science_file)
+        self._science_fqn = os.path.join(self._working_dir,
+                                         self._storage_name.file_name)
+        self._preview_fqn = os.path.join(
+            self._working_dir,  self._storage_name.prev)
+        self._thumb_fqn = os.path.join(
+            self._working_dir, self._storage_name.thumb)
+        self._logger = logging.getLogger(__name__)
+
+    def generate_plots(self, obs_id):
+        self._logger.error(f'Begin generate_plots for {obs_id}')
+        count = 0
+        hdus = fits.open(self._science_fqn)
+        data_label = hdus[0].header.get('DATALAB').upper()
+        interval = ZScaleInterval()
+        if 'CTFBRSN' in data_label:
+            white_light_data = np.flipud(np.median(hdus['SCI'].data, axis=0))
+        elif ('FLAT' in data_label or 'ARC' in data_label or
+              'RONCHI' in data_label):
+            # Stitch together the 29 'SCI' extensions into one array and save.
+            hdul = [x for x in hdus if x.name == 'SCI']
+            hdul.sort(key=lambda x: int(re.split(r"[\[\]\:\,']+",
+                                                 x.header['NSCUTSEC'])[3]))
+            temp = np.concatenate([x.data for x in hdul])
+            white_light_data = interval(temp)
+        elif 'SHIFT' in data_label:
+            temp = np.flipud(hdus['SCI'].data)
+            white_light_data = interval(temp)
+        else:
+            return count
+
+        plt.imsave(self._preview_fqn, white_light_data, cmap='inferno')
+        count += 1
+        self.add_preview(self._storage_name.prev_uri, self._storage_name.prev,
+                         ProductType.PREVIEW)
+        self.add_to_delete(self._preview_fqn)
+        count += self._gen_thumbnail()
+        self._logger.error('End generate_plots.')
+        return count
+
+    def _gen_thumbnail(self):
+        self._logger.debug(f'Generating thumbnail for file '
+                           f'{self._science_fqn}.')
+        count = 0
+        if os.path.exists(self._preview_fqn):
+            thumb = image.thumbnail(self._preview_fqn, self._thumb_fqn,
+                                    scale=0.25)
+            if thumb is not None:
+                self.add_preview(self._storage_name.thumb_uri,
+                                 self._storage_name.thumb,
+                                 ProductType.THUMBNAIL)
+                self.add_to_delete(self._thumb_fqn)
+                count = 1
+        else:
+            self._logger.warning(f'Could not find {self._preview_fqn} for '
+                                 f'thumbnail generation.')
+        return count
 
 
-def _run_state():
-    """Uses a state file with a timestamp to control which entries will be
-    processed.
-    """
-    return rc.run_by_state(config=None, name_builder=None,
-                           command_name=APPLICATION, 
-                           bookmark_name=None, meta_visitors=META_VISITORS,
-                           data_visitors=DATA_VISITORS, end_time=None,
-                           source=None, chooser=None)
-
-
-def run_state():
-    """Wraps _run_state in exception handling."""
-    try:
-        _run_state()
-        sys.exit(0)
-    except Exception as e:
-        logging.error(e)
-        tb = traceback.format_exc()
-        logging.debug(tb)
-        sys.exit(-1)
+def visit(observation, **kwargs):
+    previewer = GemProcPreview(**kwargs)
+    return previewer.visit(observation, previewer._storage_name)

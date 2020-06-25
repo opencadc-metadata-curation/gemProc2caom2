@@ -1,4 +1,4 @@
-FROM opencadc/astropy:3.8-slim
+FROM opencadc/matplotlib:3.8-slim
 
 RUN apt-get update
 RUN apt-get install -y \
@@ -11,7 +11,7 @@ RUN pip install cadcdata \
     caom2repo \
     caom2utils \
     deprecated \
-    ftputils \
+    ftputil \
     importlib-metadata \
     pytz \
     PyYAML \
@@ -20,14 +20,19 @@ RUN pip install cadcdata \
 
 WORKDIR /usr/src/app
 
+RUN pip install bs4
+
 ARG OMC_REPO=opencadc-metadata-curation
 
 RUN git clone https://github.com/${OMC_REPO}/caom2pipe.git && \
   pip install ./caom2pipe
   
-RUN git clone https://github.com/${OMC_REPO}/blank2caom2.git && \
-  cp ./blank2caom2/scripts/config.yml / && \
-  cp ./blank2caom2/scripts/docker-entrypoint.sh / && \
-  pip install ./blank2caom2
+RUN git clone https://github.com/${OMC_REPO}/gem2caom2.git && \
+  pip install ./gem2caom2
+
+RUN git clone https://github.com/${OMC_REPO}/gemProc2caom2.git && \
+  cp ./gemProc2caom2/scripts/config.yml / && \
+  cp ./gemProc2caom2/scripts/docker-entrypoint.sh / && \
+  pip install ./gemProc2caom2
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
