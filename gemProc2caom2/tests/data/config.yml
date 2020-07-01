@@ -1,6 +1,6 @@
 proxy_file_name: /usr/src/app/gemProc2caom2/gemProc2caom2/tests/data/test_proxy.pem
 task_types:
- - visit
+ - scrape
 features:
   supports_composite: False
   supports_latest_caom: False

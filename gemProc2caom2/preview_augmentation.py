@@ -79,7 +79,8 @@ from astropy.visualization import ZScaleInterval
 
 from caom2 import ProductType, ReleaseType
 from caom2pipe import manage_composable as mc
-from gem2caom2 import ARCHIVE, GemName
+from gem2caom2 import ARCHIVE
+from gemProc2caom2 import GemProcName
 
 
 class GemProcPreview(mc.PreviewVisitor):
@@ -87,7 +88,7 @@ class GemProcPreview(mc.PreviewVisitor):
     def __init__(self, **kwargs):
         super(GemProcPreview, self).__init__(
             ARCHIVE, ReleaseType.DATA, **kwargs)
-        self._storage_name = GemName(file_name=self._science_file)
+        self._storage_name = GemProcName(file_name=self._science_file)
         self._science_fqn = os.path.join(self._working_dir,
                                          self._storage_name.file_name)
         self._preview_fqn = os.path.join(
@@ -118,7 +119,11 @@ class GemProcPreview(mc.PreviewVisitor):
         else:
             return count
 
-        plt.imsave(self._preview_fqn, white_light_data, cmap='inferno')
+        plt.figure(figsize=(10.24, 10.24), dpi=100)
+        plt.grid(False)
+        plt.axis('off')
+        plt.imshow(white_light_data, cmap='inferno')
+        plt.savefig(self._preview_fqn, format='jpg')
         count += 1
         self.add_preview(self._storage_name.prev_uri, self._storage_name.prev,
                          ProductType.PREVIEW)

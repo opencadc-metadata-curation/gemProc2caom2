@@ -1,33 +1,15 @@
-FROM opencadc/matplotlib:3.8-slim
+FROM bucket.canfar.net/gem2caom2
 
-RUN apt-get update
-RUN apt-get install -y \
-    build-essential \
-    git
-    
-RUN pip install cadcdata \
-    cadctap \
-    caom2 \
-    caom2repo \
-    caom2utils \
-    deprecated \
-    ftputil \
-    importlib-metadata \
-    pytz \
-    PyYAML \
-    spherical-geometry \
-    vos
-
-WORKDIR /usr/src/app
-
-RUN pip install bs4
+RUN pip install matplotlib
 
 ARG OMC_REPO=opencadc-metadata-curation
 
-RUN git clone https://github.com/${OMC_REPO}/caom2pipe.git && \
+RUN cd /tmp && \
+  git clone https://github.com/${OMC_REPO}/caom2pipe.git && \
   pip install ./caom2pipe
-  
-RUN git clone https://github.com/${OMC_REPO}/gem2caom2.git && \
+
+RUN cd /tmp && \
+  git clone https://github.com/${OMC_REPO}/gem2caom2.git && \
   pip install ./gem2caom2
 
 RUN git clone https://github.com/${OMC_REPO}/gemProc2caom2.git && \
