@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:CompositeObservation" caom2:id="38306d2e-7383-4ef5-9395-b29373b567d6">
+  <caom2:collection>GEMINI</caom2:collection>
+  <caom2:observationID>GN-2019B-FT-101-31-002-CTFBRSN</caom2:observationID>
+  <caom2:metaRelease>2020-06-30T18:31:16.000</caom2:metaRelease>
+  <caom2:algorithm>
+    <caom2:name>composite</caom2:name>
+  </caom2:algorithm>
+  <caom2:type>OBJECT</caom2:type>
+  <caom2:intent>science</caom2:intent>
+  <caom2:target>
+    <caom2:name>Mrk955</caom2:name>
+  </caom2:target>
+  <caom2:telescope>
+    <caom2:name>Gemini-North</caom2:name>
+  </caom2:telescope>
+  <caom2:instrument>
+    <caom2:name>NIFS</caom2:name>
+  </caom2:instrument>
+  <caom2:planes>
+    <caom2:plane caom2:id="e7e1440f-191e-4adb-954a-88c6db2191b5">
+      <caom2:productID>ctfbrsnN20191027S0084</caom2:productID>
+      <caom2:metaRelease>2020-04-27T00:00:00.000</caom2:metaRelease>
+      <caom2:dataRelease>2020-04-27T00:00:00.000</caom2:dataRelease>
+      <caom2:dataProductType>image</caom2:dataProductType>
+      <caom2:calibrationLevel>2</caom2:calibrationLevel>
+      <caom2:provenance>
+        <caom2:name>Nifty4Gemini</caom2:name>
+        <caom2:producer>CADC</caom2:producer>
+        <caom2:reference>https://doi.org/10.5281/zenodo.897014</caom2:reference>
+        <caom2:lastExecuted>2020-06-30T18:31:16.000</caom2:lastExecuted>
+      </caom2:provenance>
+      <caom2:artifacts>
+        <caom2:artifact caom2:id="48b52086-47be-4ea6-b7fa-16ac873c61b0">
+          <caom2:uri>ad:GEM/ctfbrsnN20191027S0084.fits</caom2:uri>
+          <caom2:productType>science</caom2:productType>
+          <caom2:releaseType>data</caom2:releaseType>
+          <caom2:contentType>application/fits</caom2:contentType>
+          <caom2:contentLength>30504960</caom2:contentLength>
+          <caom2:contentChecksum>md5:a54c1b3c60dc57b0ebed89ba183b598d</caom2:contentChecksum>
+          <caom2:parts>
+            <caom2:part caom2:id="89435167-7149-449f-8890-71b10e4f420e">
+              <caom2:name>0</caom2:name>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="fe3e355c-d9b8-4187-b522-66056f19e1dd">
+              <caom2:name>1</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="6c229493-7953-4d01-9ec7-c7352216d7f8">
+                  <caom2:naxis>1</caom2:naxis>
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>60</caom2:naxis>
+                        <caom2:delta>0.05</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>57.0</caom2:pix>
+                          <caom2:val>2.987</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="d7b0b80a-a520-4fab-975f-d43fe32b9cad">
+              <caom2:name>2</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="77c31bec-c512-4bac-987b-a8fe52e5e58b"/>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="ad7d3a83-0aeb-44d4-8a47-395659ecb84d">
+              <caom2:name>3</caom2:name>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="f1cf510c-14f9-4208-a833-57f46b1f2e65">
+                  <caom2:naxis>2</caom2:naxis>
+                  <caom2:positionAxis1>1</caom2:positionAxis1>
+                  <caom2:positionAxis2>2</caom2:positionAxis2>
+                  <caom2:position>
+                    <caom2:axis>
+                      <caom2:axis1>
+                        <caom2:ctype>RA---TAN</caom2:ctype>
+                        <caom2:cunit>deg</caom2:cunit>
+                      </caom2:axis1>
+                      <caom2:axis2>
+                        <caom2:ctype>DEC--TAN</caom2:ctype>
+                        <caom2:cunit>deg</caom2:cunit>
+                      </caom2:axis2>
+                      <caom2:function>
+                        <caom2:dimension>
+                          <caom2:naxis1>2040</caom2:naxis1>
+                          <caom2:naxis2>2080</caom2:naxis2>
+                        </caom2:dimension>
+                        <caom2:refCoord>
+                          <caom2:coord1>
+                            <caom2:pix>15.000042</caom2:pix>
+                            <caom2:val>130.769145</caom2:val>
+                          </caom2:coord1>
+                          <caom2:coord2>
+                            <caom2:pix>34.000093</caom2:pix>
+                            <caom2:val>19.9037</caom2:val>
+                          </caom2:coord2>
+                        </caom2:refCoord>
+                        <caom2:cd11>1.6e-05</caom2:cd11>
+                        <caom2:cd12>-1.8e-05</caom2:cd12>
+                        <caom2:cd21>4.4e-05</caom2:cd21>
+                        <caom2:cd22>6e-06</caom2:cd22>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:coordsys>FK5</caom2:coordsys>
+                    <caom2:equinox>2000.0</caom2:equinox>
+                  </caom2:position>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+          </caom2:parts>
+        </caom2:artifact>
+      </caom2:artifacts>
+    </caom2:plane>
+  </caom2:planes>
+</caom2:Observation>
