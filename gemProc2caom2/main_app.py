@@ -78,7 +78,8 @@ import os
 import sys
 import traceback
 
-from caom2 import Observation, CalibrationLevel
+from caom2 import Observation, CalibrationLevel, ProductType
+from caom2 import Axis, CoordAxis1D, SpectralWCS, CoordFunction1D, RefCoord
 from caom2utils import ObsBlueprint, get_gen_proc_arg_parser, gen_proc
 from caom2pipe import caom_composable as cc
 from caom2pipe import manage_composable as mc
@@ -86,7 +87,8 @@ from gem2caom2 import GemName, ARCHIVE, COLLECTION, SCHEME
 from gem2caom2 import external_metadata as em
 
 
-__all__ = ['gem_proc_main_app', 'update', 'APPLICATION', 'GemProcName']
+__all__ = ['gem_proc_main_app', 'update', 'APPLICATION', 'GemProcName',
+           'to_caom2']
 
 
 APPLICATION = 'gemProc2caom2'
@@ -101,19 +103,12 @@ class GemProcName(GemName):
         self._logger = logging.getLogger(__name__)
         self._logger.debug(self)
 
-    @property
-    def lineage(self):
-        if self._lineage is None:
-            self._get_args()
-        self._lineage = self._lineage.replace(SCHEME, self.scheme)
-        return self._lineage
-
 
 def accumulate_bp(bp, uri):
     """Configure the telescope-specific ObsBlueprint at the CAOM model 
     Observation level."""
     logging.debug('Begin accumulate_bp.')
-    bp.configure_position_axes((1,2))
+    bp.configure_position_axes((1, 2))
     bp.configure_time_axis(3)
     bp.configure_energy_axis(4)
     bp.configure_polarization_axis(5)
@@ -123,9 +118,12 @@ def accumulate_bp(bp, uri):
     bp.set('CompositeObservation.members', {})
     bp.set('Plane.calibrationLevel', CalibrationLevel.CALIBRATED)
 
-    bp.clear('Plane.provenance.name')
-    bp.add_fits_attribute('Plane.provenance.name', 'ORIGIN')
+    bp.clear('Plane.provenance.lastExecuted')
+    bp.add_fits_attribute('Plane.provenance.lastExecuted', 'DATE')
+    bp.set('Plane.provenance.name', 'Nifty4Gemini')
     bp.set('Plane.provenance.producer', 'CADC')
+    bp.set('Plane.provenance.reference',
+           'https://doi.org/10.5281/zenodo.897014')
 
     logging.debug('Done accumulate_bp.')
 
@@ -143,29 +141,91 @@ def update(observation, **kwargs):
     headers = kwargs.get('headers')
     fqn = kwargs.get('fqn')
     uri = kwargs.get('uri')
-    gem_name = None
+    gem_proc_name = None
     if uri is not None:
-        gem_name = GemProcName(file_name=mc.CaomName(uri).file_name)
+        gem_proc_name = GemProcName(file_name=mc.CaomName(uri).file_name)
     if fqn is not None:
-        gem_name = GemProcName(file_name=os.path.basename(fqn))
-    if gem_name is None:
+        gem_proc_name = GemProcName(file_name=os.path.basename(fqn))
+    if gem_proc_name is None:
         raise mc.CadcException(f'Need one of fqn or uri defined for '
                                f'{observation.observation_id}')
 
     for plane in observation.planes.values():
-        cc.update_plane_provenance(
-            plane, headers, 'FCMB', COLLECTION, _repair_provenance_value,
-            observation.observation_id)
+        if plane.product_id != gem_proc_name.product_id:
+            continue
+
+        cc.update_plane_provenance_list(
+            plane, headers, ['FCMB', 'DCMB', 'SHFILE'], COLLECTION,
+            _repair_provenance_value, observation.observation_id)
 
         for artifact in plane.artifacts.values():
             for part in artifact.parts.values():
+                idx = mc.to_int(part.name)
+                header = headers[idx]
+
                 for chunk in part.chunks:
                     if chunk.position is None and chunk.naxis is not None:
                         chunk.naxis = None
+                    extname = header.get('EXTNAME')
+                    if extname == 'SCI':
+                        part.product_type = ProductType.SCIENCE
+                        _update_flat_energy(
+                            chunk, header, observation.observation_id)
+                    elif extname == 'DQ':
+                        part.product_type = ProductType.AUXILIARY
+                    elif extname == 'VAR':
+                        part.product_type = ProductType.NOISE
 
-    cc.update_observation_members(observation)
+        # update observation members
+        # DB 24-06-20
+        # At least for the processed flats only the FCOMBINE x FCMB# datasets
+        # should be members.  These are the original individual flats that were
+        # combined for the processed product.
+        provenance_headers = extract_keywords(headers, ['FCMB'])
+
+        def member_filter(plane_uri):
+            result = False
+            for entry in provenance_headers.values():
+                if entry in plane_uri.uri:
+                    result = True
+            return result
+        cc.update_observation_members_filtered(observation, member_filter)
+
     logging.debug('Done update.')
     return observation
+
+
+def _update_flat_energy(chunk, header, obs_id):
+    logging.debug(f'Begin _update_flat_energy for {obs_id}.')
+    axis = Axis(ctype='WAVE', cunit='Angstrom')
+    coord_axis_1d = CoordAxis1D(axis)
+    ref_coord = RefCoord(pix=header.get('CRPIX1'),
+                         val=header.get('CRVAL1'))
+    fn = CoordFunction1D(naxis=header.get('NAXIS1'),
+                         delta=header.get('CD1_1'),
+                         ref_coord=ref_coord)
+    coord_axis_1d.function = fn
+    energy = SpectralWCS(axis=coord_axis_1d,
+                         specsys='TOPOCENT')
+    chunk.energy = energy
+    chunk.energy_axis = 1
+    chunk.naxis = 1
+    logging.debug('End _update_flat_energy.')
+
+
+def extract_keywords(headers, keyword_list):
+    """
+    :param headers: astropy FITS headers list
+    :param keyword_list: list of keyword prefixes to extract.
+    :return:
+    """
+    result = {}
+    for entry in keyword_list:
+        for header in headers:
+            for keyword in header:
+                if keyword.startswith(entry):
+                    result[keyword] = header.get(keyword)
+    return result
 
 
 def _build_blueprints(uris):
@@ -204,9 +264,10 @@ def _get_uris(args):
     return result
 
 
-def _repair_provenance_value(imcmb_value, obs_id):
-    prov_file_id = imcmb_value
+def _repair_provenance_value(value, obs_id):
+    prov_file_id = GemName.remove_extensions(value)
     prov_obs_id = em.get_gofr().get_obs_id(prov_file_id)
+    prov_obs_id = 'None' if prov_obs_id is None else prov_obs_id
     logging.debug(f'End _repair_provenance_value. {prov_obs_id} '
                   f'{prov_file_id}')
     return prov_obs_id, prov_file_id
