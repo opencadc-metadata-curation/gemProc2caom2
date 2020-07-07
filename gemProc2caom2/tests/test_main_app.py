@@ -70,14 +70,14 @@
 from mock import patch, Mock
 
 from astropy.table import Table
-from gemProc2caom2 import main_app, GemProcName, APPLICATION, COLLECTION
+from gem2caom2 import ARCHIVE, APPLICATION, COLLECTION
+from gem2caom2 import external_metadata as em
+from gemProc2caom2 import main_app, GemProcName
 from caom2pipe import manage_composable as mc
 
 import glob
-import logging
 import os
 import sys
-import traceback
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 TEST_DATA_DIR = os.path.join(THIS_DIR, 'data')
@@ -117,30 +117,30 @@ OID_LOOKUP = {
 
 
 def pytest_generate_tests(metafunc):
-    obs_id_list = glob.glob(f'{TEST_DATA_DIR}/*.fits.header')
+    # obs_id_list = glob.glob(f'{TEST_DATA_DIR}/*.fits.header')
+    obs_id_list = glob.glob(f'{TEST_DATA_DIR}/*.fits')
     metafunc.parametrize('test_name', obs_id_list)
 
 
-@patch('gem2caom2.external_metadata.get_pi_metadata')
 @patch('caom2pipe.manage_composable.query_tap_client')
 @patch('caom2utils.fits2caom2.CadcDataClient')
-@patch('gem2caom2.external_metadata.get_obs_id_from_cadc')
-def test_main_app(obs_id_mock, data_client_mock, tap_mock, get_pi_mock,
-                  test_name):
+@patch('gem2caom2.external_metadata.CachingObsFileRelationship.get_obs_id')
+def test_main_app(obs_id_mock, data_client_mock, tap_mock, test_name):
     obs_id_mock.side_effect = _obs_id_mock
     getcwd_orig = os.getcwd
     os.getcwd = Mock(return_value=TEST_DATA_DIR)
     tap_mock.side_effect = _tap_mock
-    get_pi_mock.side_effect = _get_pi_mock
     try:
         test_config = mc.Config()
         test_config.task_types = [mc.TaskType.SCRAPE]
         test_config.use_local_files = True
+        em.set_ofr(None)
+        em.init_global(False, test_config)
+
         basename = os.path.basename(test_name)
         file_name = basename.replace('.header', '')
-        gem_name = GemProcName(file_name=file_name, entry=file_name)
+        gem_name = GemProcName(file_name=file_name)
         obs_path = f'{TEST_DATA_DIR}/{gem_name.file_id}.expected.xml'
-        input_file = f'{TEST_DATA_DIR}/{gem_name.file_id}.in.xml'
         output_file = f'{TEST_DATA_DIR}/{basename}.actual.xml'
 
         if os.path.exists(output_file):
@@ -152,7 +152,7 @@ def test_main_app(obs_id_mock, data_client_mock, tap_mock, get_pi_mock,
 
         sys.argv = \
             (f'{APPLICATION} --no_validate '
-             f'--local {local} -i {input_file} -o '
+             f'--local {local} --observation {COLLECTION} {gem_name.obs_id} -o '
              f'{output_file} --plugin {PLUGIN} --module {PLUGIN} --lineage '
              f'{_get_lineage(gem_name)}'
              ).split()
@@ -160,8 +160,9 @@ def test_main_app(obs_id_mock, data_client_mock, tap_mock, get_pi_mock,
         try:
             main_app.to_caom2()
         except Exception as e:
+            import logging
+            import traceback
             logging.error(traceback.format_exc())
-            raise e
 
         compare_result = mc.compare_observations(output_file, obs_path)
         if compare_result is not None:
@@ -176,7 +177,7 @@ def _get_file_info(archive, file_id):
 
 
 def _get_lineage(blank_name):
-    result = mc.get_lineage('GEMINI', blank_name.product_id,
+    result = mc.get_lineage(ARCHIVE, blank_name.product_id,
                             f'{blank_name.file_name}')
     return result
 
@@ -186,25 +187,14 @@ def _get_local(obs_id):
 
 
 def _tap_mock(query_string, mock_tap_client):
-    if 'observationID' in query_string:
-        return Table.read(f'observationID,lastModified\n'
-                          f'GN-2014A-Q-85-16-003-RGN-FLAT,'
-                          f'2020-02-25T20:36:31.230\n'.split('\n'),
-                          format='csv')
-    else:
-        return Table.read(
-            'val,delta,cunit,naxis\n'
-            '57389.66314699074,0.000115798611111111,d,1\n'.split('\n'),
-            format='csv')
+    return Table.read(f'observationID,lastModified\n'
+                      f'GN-2014A-Q-85-16-003-RGN-FLAT,'
+                      f'2020-02-25T20:36:31.230\n'.split('\n'), format='csv')
 
 
-def _obs_id_mock(for_file_name, tap_client_mock):
-    result = None
+def _obs_id_mock(for_file_name):
     if for_file_name in OID_LOOKUP:
         result = OID_LOOKUP.get(for_file_name)
+    else:
+        result = em.get_gofr()._get_obs_id_from_headers(for_file_name)
     return result
-
-
-def _get_pi_mock(ignore):
-    return {'pi_name': 'Principle Investigator',
-            'title': 'The Title For A NIFS Science Program'}
