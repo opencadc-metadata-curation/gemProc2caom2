@@ -83,28 +83,64 @@ THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 TEST_DATA_DIR = os.path.join(THIS_DIR, 'data')
 PLUGIN = os.path.join(os.path.dirname(THIS_DIR), 'main_app.py')
 
+OID_LOOKUP = {
+    'N20140428S0179': 'GN-2014A-Q-85-16-011',
+    'N20140428S0180': 'GN-2014A-Q-85-16-012',
+    'N20140428S0085': 'GN-2014A-Q-85-12-001',
+    'N20130530S0250': 'GN-2013A-Q-62-54-001',
+    'N20130530S0258': 'GN-2013A-Q-62-55-005',
+    'N20130530S0367': 'GN-2013A-Q-62-59-011',
+    'N20130530S0368': 'GN-2013A-Q-62-59-012',
+    'N20130530S0265': 'GN-2013A-Q-62-62-002',
+    'N20191027S0342': 'GN-2019B-FT-101-34-012',
+    'N20191027S0341': 'GN-2019B-FT-101-34-011',
+    'N20191027S0083': 'GN-2019B-FT-101-31-001',
+    'rgnN20140428S0177': 'GN-2014A-Q-85-16-009',
+    'rgnN20140428S0171': 'GN-2014A-Q-85-16-003',
+    'rgnN20191027S0336': 'GN-2019B-FT-101-34-006',
+    'rgnN20191027S0331': 'GN-2019B-FT-101-34-001',
+    'N20130530S0363': 'GN-2013A-Q-62-59-007',
+    'N20130530S0364': 'GN-2013A-Q-62-59-008',
+    'N20130530S0365': 'GN-2013A-Q-62-59-009',
+    'N20130530S0366': 'GN-2013A-Q-62-59-010',
+    'N20130530S0362': 'GN-2013A-Q-62-59-006',
+    'N20130530S0369': 'GN-2013A-Q-62-59-013',
+    'N20130530S0370': 'GN-2013A-Q-62-59-014',
+    'N20140428S0174': 'GN-2014A-Q-85-16-006',
+    'N20140428S0177': 'GN-2014A-Q-85-16-009',
+    'N20140428S0181': 'GN-2014A-Q-85-16-013',
+    'N20140428S0178': 'GN-2014A-Q-85-16-010',
+    'N20140428S0182': 'GN-2014A-Q-85-16-014',
+    'N20140428S0175': 'GN-2014A-Q-85-16-007',
+    'N20140428S0176': 'GN-2014A-Q-85-16-008'
+}
+
 
 def pytest_generate_tests(metafunc):
-    obs_id_list = glob.glob(f'{TEST_DATA_DIR}/*.fits.header')
+    # obs_id_list = glob.glob(f'{TEST_DATA_DIR}/*.fits.header')
+    obs_id_list = glob.glob(f'{TEST_DATA_DIR}/*.fits')
     metafunc.parametrize('test_name', obs_id_list)
 
 
 @patch('caom2pipe.manage_composable.query_tap_client')
 @patch('caom2utils.fits2caom2.CadcDataClient')
-def test_main_app(data_client_mock, tap_mock, test_name):
+@patch('gem2caom2.external_metadata.CachingObsFileRelationship.get_obs_id')
+def test_main_app(obs_id_mock, data_client_mock, tap_mock, test_name):
+    obs_id_mock.side_effect = _obs_id_mock
     getcwd_orig = os.getcwd
     os.getcwd = Mock(return_value=TEST_DATA_DIR)
     tap_mock.side_effect = _tap_mock
     try:
         test_config = mc.Config()
         test_config.task_types = [mc.TaskType.SCRAPE]
+        test_config.use_local_files = True
         em.set_ofr(None)
         em.init_global(False, test_config)
 
         basename = os.path.basename(test_name)
         file_name = basename.replace('.header', '')
         gem_name = GemProcName(file_name=file_name)
-        obs_path = f'{TEST_DATA_DIR}/{gem_name.obs_id}.expected.xml'
+        obs_path = f'{TEST_DATA_DIR}/{gem_name.file_id}.expected.xml'
         output_file = f'{TEST_DATA_DIR}/{basename}.actual.xml'
 
         if os.path.exists(output_file):
@@ -154,3 +190,11 @@ def _tap_mock(query_string, mock_tap_client):
     return Table.read(f'observationID,lastModified\n'
                       f'GN-2014A-Q-85-16-003-RGN-FLAT,'
                       f'2020-02-25T20:36:31.230\n'.split('\n'), format='csv')
+
+
+def _obs_id_mock(for_file_name):
+    if for_file_name in OID_LOOKUP:
+        result = OID_LOOKUP.get(for_file_name)
+    else:
+        result = em.get_gofr()._get_obs_id_from_headers(for_file_name)
+    return result
