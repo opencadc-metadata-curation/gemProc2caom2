@@ -86,10 +86,11 @@ def test_preview_augmentation(data_client_mock, tap_mock):
     data_client_mock.return_value.get_file_info.side_effect = \
         test_main_app._get_file_info
 
-    test_f_name = 'rgnN20140428S0171_flat.fits'
+    test_f_id = 'rgnN20140428S0171_flat'
+    test_f_name = f'{test_f_id}.fits'
     test_obs = mc.read_obs_from_file(
         f'{test_main_app.TEST_DATA_DIR}/'
-        f'GN-2014A-Q-85-16-003-RGN-FLAT.expected.xml')
+        f'{test_f_id}.expected.xml')
 
     test_rejected = mc.Rejected(REJECTED_FILE)
     test_config = mc.Config()

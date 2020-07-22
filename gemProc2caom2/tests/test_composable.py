@@ -85,11 +85,11 @@ def test_run_by_state():
 def test_run(tap_mock, run_mock):
     tap_mock.side_effect = _run_tap_mock
 
-    test_obs_id = 'test_data_label'
+    test_obs_id = 'GN-2014A-Q-85-16-003-rgn-flat-FILE-ID'
     test_f_id = 'test_file_id'
     test_f_name = f'{test_f_id}.fits'
     getcwd_orig = os.getcwd
-    os.getcwd = Mock(return_value=test_main_app.TEST_DATA_DIR)
+    os.getcwd = Mock(return_value=f'{test_main_app.TEST_DATA_DIR}/run_test')
     try:
         # execution
         composable._run()

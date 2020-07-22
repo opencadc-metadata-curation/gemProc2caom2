@@ -48,7 +48,6 @@
               <caom2:productType>science</caom2:productType>
               <caom2:chunks>
                 <caom2:chunk caom2:id="9b8fc660-2a3f-43eb-a450-301237d180bf">
-                  <caom2:naxis>1</caom2:naxis>
                   <caom2:energyAxis>1</caom2:energyAxis>
                   <caom2:energy>
                     <caom2:axis>
@@ -67,58 +66,39 @@
                     </caom2:axis>
                     <caom2:specsys>TOPOCENT</caom2:specsys>
                   </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>300.0</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.483954</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>300.0</caom2:exposure>
+                    <caom2:resolution>0.003472222222222222</caom2:resolution>
+                  </caom2:time>
                 </caom2:chunk>
               </caom2:chunks>
             </caom2:part>
             <caom2:part caom2:id="da942d2a-510a-4629-babe-c0b975e4aaa1">
               <caom2:name>2</caom2:name>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="3005598a-d102-442b-8a4a-7490110b4566"/>
-              </caom2:chunks>
+              <caom2:chunks/>
             </caom2:part>
             <caom2:part caom2:id="2f02c06f-0af4-4849-8e76-15cc432fa96c">
               <caom2:name>3</caom2:name>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="9e49101c-9a72-453f-8b45-c06a1c0a3a89">
-                  <caom2:naxis>2</caom2:naxis>
-                  <caom2:positionAxis1>1</caom2:positionAxis1>
-                  <caom2:positionAxis2>2</caom2:positionAxis2>
-                  <caom2:position>
-                    <caom2:axis>
-                      <caom2:axis1>
-                        <caom2:ctype>RA---TAN</caom2:ctype>
-                        <caom2:cunit>deg</caom2:cunit>
-                      </caom2:axis1>
-                      <caom2:axis2>
-                        <caom2:ctype>DEC--TAN</caom2:ctype>
-                        <caom2:cunit>deg</caom2:cunit>
-                      </caom2:axis2>
-                      <caom2:function>
-                        <caom2:dimension>
-                          <caom2:naxis1>2040</caom2:naxis1>
-                          <caom2:naxis2>2080</caom2:naxis2>
-                        </caom2:dimension>
-                        <caom2:refCoord>
-                          <caom2:coord1>
-                            <caom2:pix>15.000027</caom2:pix>
-                            <caom2:val>316.872214</caom2:val>
-                          </caom2:coord1>
-                          <caom2:coord2>
-                            <caom2:pix>33.999888</caom2:pix>
-                            <caom2:val>19.794123</caom2:val>
-                          </caom2:coord2>
-                        </caom2:refCoord>
-                        <caom2:cd11>-4.2e-05</caom2:cd11>
-                        <caom2:cd12>-9e-06</caom2:cd12>
-                        <caom2:cd21>2.2e-05</caom2:cd21>
-                        <caom2:cd22>-1.7e-05</caom2:cd22>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:coordsys>FK5</caom2:coordsys>
-                    <caom2:equinox>2000.0</caom2:equinox>
-                  </caom2:position>
-                </caom2:chunk>
-              </caom2:chunks>
+              <caom2:chunks/>
             </caom2:part>
           </caom2:parts>
         </caom2:artifact>
