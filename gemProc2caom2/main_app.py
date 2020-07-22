@@ -70,6 +70,16 @@
 """
 This module implements the ObsBlueprint mapping, as well as the workflow 
 entry point that executes the workflow.
+
+DB 21-07-20
+CTFBRSN files:
+
+The first extension is the processed NIFS data cube. Axes 1 and 2 are
+spatial axes.  Axis 3 is spectral.
+
+The second extension is a binary table.  No WCS information.
+
+3rd extension is a bad pixel map. WCS info should be ignored for this.
 """
 
 import importlib
@@ -78,8 +88,9 @@ import os
 import sys
 import traceback
 
-from caom2 import Observation, CalibrationLevel, ProductType
+from caom2 import Observation, CalibrationLevel, ProductType, TemporalWCS
 from caom2 import Axis, CoordAxis1D, SpectralWCS, CoordFunction1D, RefCoord
+from caom2 import CoordError
 from caom2utils import ObsBlueprint, get_gen_proc_arg_parser, gen_proc
 from caom2pipe import caom_composable as cc
 from caom2pipe import manage_composable as mc
@@ -95,7 +106,7 @@ APPLICATION = 'gemProc2caom2'
 
 
 class GemProcName(GemName):
-    """A class to over-ride the gemini schema for the fits files."""
+    """A class to over-ride the 'gemini' schema for the fits files."""
 
     def __init__(self, file_name):
         super(GemProcName, self).__init__(file_name=file_name)
@@ -109,8 +120,7 @@ def accumulate_bp(bp, uri):
     Observation level."""
     logging.debug('Begin accumulate_bp.')
     bp.configure_position_axes((1, 2))
-    bp.configure_time_axis(3)
-    bp.configure_energy_axis(4)
+    bp.configure_energy_axis(3)
     bp.configure_polarization_axis(5)
     bp.configure_observable_axis(6)
 
@@ -125,29 +135,7 @@ def accumulate_bp(bp, uri):
     bp.set('Plane.provenance.reference',
            'https://doi.org/10.5281/zenodo.897014')
 
-    bp.set('Chunk.time.axis.axis.ctype', 'TIME')
-    bp.set('Chunk.time.axis.axis.cunit', 'd')
-    bp.set('Chunk.time.axis.error.syser', '1e-07')
-    bp.set('Chunk.time.axis.error.rnder', '1e-07')
-    bp.set('Chunk.time.axis.function.naxis', '1')
-    bp.clear('Chunk.time.axis.function.delta')
-    bp.add_fits_attribute('Chunk.time.axis.function.delta', 'EXPTIME')
-    bp.set('Chunk.time.axis.function.refCoord.pix', '0.5')
-    bp.clear('Chunk.time.axis.function.refCoord.val')
-    bp.add_fits_attribute('Chunk.time.axis.function.refCoord.val', 'MJD_OBS')
-    # bp.set('Chunk.time.exposure', 'get_exposure(header)')
-    bp.clear('Chunk.time.exposure')
-    bp.add_fits_attribute('Chunk.time.exposure', 'EXPTIME')
-    bp.set('Chunk.time.resolution', 'get_exposure(header)')
-
     logging.debug('Done accumulate_bp.')
-
-
-def get_exposure(header):
-    result = header.get('EXPTIME')
-    if result is not None:
-        result = result / (24.0 * 3600.0)
-    return result
 
 
 def is_derived(uri):
@@ -215,23 +203,36 @@ def update(observation, **kwargs):
             for part in artifact.parts.values():
                 idx = mc.to_int(part.name)
                 header = headers[idx]
+                extname = header.get('EXTNAME')
+                if extname == 'SCI':
+                    part.product_type = ProductType.SCIENCE
+                elif extname == 'DQ':
+                    part.product_type = ProductType.AUXILIARY
+                elif extname == 'VAR':
+                    part.product_type = ProductType.NOISE
 
-                for chunk in part.chunks:
-                    # time metadata comes from MJD_OBS and EXPTIME, it's not
-                    # an axis requiring cutout support
-                    chunk.time_axis = None
-                    if chunk.position is None and chunk.naxis is not None:
-                        chunk.naxis = None
-
-                    extname = header.get('EXTNAME')
-                    if extname == 'SCI':
-                        part.product_type = ProductType.SCIENCE
+                if part.product_type == ProductType.SCIENCE:
+                    for chunk in part.chunks:
+                        _update_time(
+                            part, chunk, headers, observation.observation_id)
                         _update_flat_energy(
                             chunk, header, observation.observation_id)
-                    elif extname == 'DQ':
-                        part.product_type = ProductType.AUXILIARY
-                    elif extname == 'VAR':
-                        part.product_type = ProductType.NOISE
+
+                        if chunk.position is None and chunk.naxis is not None:
+                            chunk.naxis = None
+
+                        if (chunk.time is not None and
+                                chunk.time.axis is not None and
+                                chunk.time.axis.function is not None and
+                                chunk.time.axis.function.delta == 1.0):
+                            # these are the default values, and they make
+                            # the time range start in 1858
+                            chunk.time = None
+                else:
+                    # DB 21-07-20
+                    # ignore WCS information unless product type == SCIENCE
+                    while len(part.chunks) > 0:
+                        del part.chunks[-1]
 
         # update observation members
         # DB 24-06-20
@@ -282,6 +283,38 @@ def _update_flat_energy(chunk, header, obs_id):
     chunk.energy_axis = 1
     chunk.naxis = 1
     logging.debug('End _update_flat_energy.')
+
+
+def _update_time(part, chunk, headers, obs_id):
+    logging.debug(f'Begin _update_time for {obs_id} part {part.name}.')
+
+    # DB 02-07-20
+    # time metadata comes from MJD_OBS and EXPTIME, it's not
+    # an axis requiring cutout support
+
+    idx = mc.to_int(part.name)
+    if idx == 1:
+        # because historical reasons I don't recall right now
+        idx = 0
+    header = headers[idx]
+    exp_time = header.get('EXPTIME')
+    mjd_obs = header.get('MJD_OBS')
+    if exp_time is None or mjd_obs is None:
+        chunk.time = None
+    else:
+        if chunk.time is None:
+            coord_error = CoordError(syser=1e-07, rnder=1e-07)
+            time_axis = CoordAxis1D(axis=Axis('TIME', 'd'), error=coord_error)
+            chunk.time = TemporalWCS(axis=time_axis,
+                                     timesys='UTC')
+        ref_coord = RefCoord(pix=0.5, val=mjd_obs)
+        chunk.time.axis.function = CoordFunction1D(naxis=1,
+                                                   delta=exp_time,
+                                                   ref_coord=ref_coord)
+        chunk.time.exposure = exp_time
+        chunk.time.resolution = mc.convert_to_days(exp_time)
+
+    logging.debug(f'End _update_time.')
 
 
 def extract_keywords(headers, keyword_list):
