@@ -70,6 +70,16 @@
 """
 This module implements the ObsBlueprint mapping, as well as the workflow 
 entry point that executes the workflow.
+
+DB 21-07-20
+CTFBRSN files:
+
+The first extension is the processed NIFS data cube. Axes 1 and 2 are
+spatial axes.  Axis 3 is spectral.
+
+The second extension is a binary table.  No WCS information.
+
+3rd extension is a bad pixel map. WCS info should be ignored for this.
 """
 
 import importlib
@@ -154,29 +164,7 @@ def accumulate_bp(bp, uri):
     bp.set('Artifact.metaProducer', meta_producer)
     bp.set('Chunk.metaProducer', meta_producer)
 
-    bp.set('Chunk.time.axis.axis.ctype', 'TIME')
-    bp.set('Chunk.time.axis.axis.cunit', 'd')
-    bp.set('Chunk.time.axis.error.syser', '1e-07')
-    bp.set('Chunk.time.axis.error.rnder', '1e-07')
-    bp.set('Chunk.time.axis.function.naxis', '1')
-    bp.clear('Chunk.time.axis.function.delta')
-    bp.add_fits_attribute('Chunk.time.axis.function.delta', 'EXPTIME')
-    bp.set('Chunk.time.axis.function.refCoord.pix', '0.5')
-    bp.clear('Chunk.time.axis.function.refCoord.val')
-    bp.add_fits_attribute('Chunk.time.axis.function.refCoord.val', 'MJD_OBS')
-    # bp.set('Chunk.time.exposure', 'get_exposure(header)')
-    bp.clear('Chunk.time.exposure')
-    bp.add_fits_attribute('Chunk.time.exposure', 'EXPTIME')
-    bp.set('Chunk.time.resolution', 'get_exposure(header)')
-
     logging.debug('Done accumulate_bp.')
-
-
-def get_exposure(header):
-    result = header.get('EXPTIME')
-    if result is not None:
-        result = result / (24.0 * 3600.0)
-    return result
 
 
 def is_derived(uri):
