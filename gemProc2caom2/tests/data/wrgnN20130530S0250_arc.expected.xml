@@ -52,6 +52,7 @@
             </caom2:part>
             <caom2:part caom2:id="99d5bb88-a05d-4e1b-9721-1085d9d80481">
               <caom2:name>1</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
               <caom2:chunks/>
             </caom2:part>
             <caom2:part caom2:id="bed7b528-be82-4e02-b287-a69cc2827474">
@@ -813,6 +814,24 @@
               <caom2:chunks/>
             </caom2:part>
           </caom2:parts>
+        </caom2:artifact>
+        <caom2:artifact caom2:id="6aaf0008-282c-41c4-af9e-c12deb70827a" caom2:lastModified="2020-07-02T23:34:22.088" caom2:maxLastModified="2020-07-02T23:34:22.088" caom2:metaChecksum="md5:b58adc779c1d8ebf46a7d6d1c5407450" caom2:accMetaChecksum="md5:6ef4372ad2ebc7b86ed09bbe90944ab7">
+          <caom2:uri>ad:GEM/wrgnN20130530S0250_arc.jpg</caom2:uri>
+          <caom2:productType>preview</caom2:productType>
+          <caom2:releaseType>data</caom2:releaseType>
+          <caom2:contentType>image/jpeg</caom2:contentType>
+          <caom2:contentLength>326980</caom2:contentLength>
+          <caom2:contentChecksum>md5:6f6032cbf5a02747602f87aca0a5fdf8</caom2:contentChecksum>
+          <caom2:parts/>
+        </caom2:artifact>
+        <caom2:artifact caom2:id="e43f1694-4355-4a1b-a516-09045d31a9c6" caom2:lastModified="2020-07-02T23:34:22.088" caom2:maxLastModified="2020-07-02T23:34:22.088" caom2:metaChecksum="md5:928b43ba42e36173f0171c822f79811e" caom2:accMetaChecksum="md5:9f87b2f2e237e2125de182cf1fac033b">
+          <caom2:uri>ad:GEM/wrgnN20130530S0250_arc_th.jpg</caom2:uri>
+          <caom2:productType>thumbnail</caom2:productType>
+          <caom2:releaseType>data</caom2:releaseType>
+          <caom2:contentType>image/jpeg</caom2:contentType>
+          <caom2:contentLength>17641</caom2:contentLength>
+          <caom2:contentChecksum>md5:36eb49286a4057a86a8504eeee6545ec</caom2:contentChecksum>
+          <caom2:parts/>
         </caom2:artifact>
       </caom2:artifacts>
     </caom2:plane>

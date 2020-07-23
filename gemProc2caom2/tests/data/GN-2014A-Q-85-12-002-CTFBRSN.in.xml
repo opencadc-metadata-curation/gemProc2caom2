@@ -1,15 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:CompositeObservation" caom2:id="38306d2e-7383-4ef5-9395-b29373b567d6">
+<caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:DerivedObservation" caom2:id="75008692-7831-410a-967c-332746b8b230" caom2:lastModified="2020-07-21T20:30:43.892" caom2:maxLastModified="2020-07-22T23:47:56.658" caom2:metaChecksum="md5:97e5ac23cabe364cd2e572d8e6119455" caom2:accMetaChecksum="md5:e8ec6ccf8820639403d23616bee275e5">
   <caom2:collection>GEMINI</caom2:collection>
-  <caom2:observationID>GN-2019B-FT-101-31-002-CTFBRSN</caom2:observationID>
-  <caom2:metaRelease>2020-06-30T18:31:16.000</caom2:metaRelease>
+  <caom2:observationID>GN-2014A-Q-85-12-002-CTFBRSN</caom2:observationID>
+  <caom2:metaRelease>2020-06-29T18:11:17.000</caom2:metaRelease>
   <caom2:algorithm>
     <caom2:name>composite</caom2:name>
   </caom2:algorithm>
   <caom2:type>OBJECT</caom2:type>
   <caom2:intent>science</caom2:intent>
   <caom2:target>
-    <caom2:name>Mrk955</caom2:name>
+    <caom2:name>Titan</caom2:name>
   </caom2:target>
   <caom2:telescope>
     <caom2:name>Gemini-North</caom2:name>
@@ -18,36 +17,36 @@
     <caom2:name>NIFS</caom2:name>
   </caom2:instrument>
   <caom2:planes>
-    <caom2:plane caom2:id="e7e1440f-191e-4adb-954a-88c6db2191b5">
-      <caom2:productID>ctfbrsnN20191027S0084</caom2:productID>
-      <caom2:metaRelease>2020-04-27T00:00:00.000</caom2:metaRelease>
-      <caom2:dataRelease>2020-04-27T00:00:00.000</caom2:dataRelease>
+    <caom2:plane caom2:id="d098c41d-bb83-45c8-aff8-2b5f524c877f" caom2:lastModified="2020-07-22T23:47:56.658" caom2:maxLastModified="2020-07-22T23:47:56.658" caom2:metaChecksum="md5:adc95d6b0eb516b8feb394ef41e57fd5" caom2:accMetaChecksum="md5:b9153dec763613f137780559e930e9fd">
+      <caom2:productID>ctfbrsnN20140428S0086</caom2:productID>
+      <caom2:metaRelease>2015-10-28T00:00:00.000</caom2:metaRelease>
+      <caom2:dataRelease>2015-10-28T00:00:00.000</caom2:dataRelease>
       <caom2:dataProductType>image</caom2:dataProductType>
       <caom2:calibrationLevel>2</caom2:calibrationLevel>
       <caom2:provenance>
         <caom2:name>Nifty4Gemini</caom2:name>
         <caom2:producer>CADC</caom2:producer>
         <caom2:reference>https://doi.org/10.5281/zenodo.897014</caom2:reference>
-        <caom2:lastExecuted>2020-06-30T18:31:16.000</caom2:lastExecuted>
+        <caom2:lastExecuted>2020-06-29T18:11:17.000</caom2:lastExecuted>
       </caom2:provenance>
       <caom2:artifacts>
-        <caom2:artifact caom2:id="48b52086-47be-4ea6-b7fa-16ac873c61b0">
-          <caom2:uri>ad:GEM/ctfbrsnN20191027S0084.fits</caom2:uri>
+        <caom2:artifact caom2:id="c041f3b0-8573-4beb-9069-d66f1a9b773a" caom2:lastModified="2020-07-21T20:30:43.892" caom2:maxLastModified="2020-07-22T23:47:56.658" caom2:metaChecksum="md5:f1a35a0cb2f6349a753b2138a8c40717" caom2:accMetaChecksum="md5:229a0f97a523a0106665c70537b2b7f5">
+          <caom2:uri>ad:GEM/ctfbrsnN20140428S0086.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>application/fits</caom2:contentType>
           <caom2:contentLength>30504960</caom2:contentLength>
-          <caom2:contentChecksum>md5:a54c1b3c60dc57b0ebed89ba183b598d</caom2:contentChecksum>
+          <caom2:contentChecksum>md5:79001ad7af4823eab685b23ec775b430</caom2:contentChecksum>
           <caom2:parts>
-            <caom2:part caom2:id="3c4afd1a-bb46-42db-954e-ebcc4fd2dac4">
+            <caom2:part caom2:id="395522e6-6c60-4da1-b096-0cc8ff35869e" caom2:lastModified="2020-07-22T23:47:56.658" caom2:maxLastModified="2020-07-22T23:47:56.658" caom2:metaChecksum="md5:3f8f6d4fb9c8efd60520479ed05d6909" caom2:accMetaChecksum="md5:99734b33c414bcbd167e7c8f889f94b6">
               <caom2:name>0</caom2:name>
               <caom2:chunks/>
             </caom2:part>
-            <caom2:part caom2:id="afbbcd05-656f-4c50-954e-942169bcccf6">
+            <caom2:part caom2:id="34d8e85c-89c3-415c-ac61-8471dd1f160f" caom2:lastModified="2020-07-21T20:30:43.892" caom2:maxLastModified="2020-07-22T23:47:56.658" caom2:metaChecksum="md5:272c28bb526816458ec3d937b05534c7" caom2:accMetaChecksum="md5:2ec930a9c3e4f3811154ee4ba447e41d">
               <caom2:name>1</caom2:name>
               <caom2:productType>science</caom2:productType>
               <caom2:chunks>
-                <caom2:chunk caom2:id="42ca137c-5299-46fe-b3dd-d182d57c5df2">
+                <caom2:chunk caom2:id="6bdad3fc-663f-4364-a12d-4bf8c5a30088" caom2:lastModified="2020-07-22T23:47:56.658" caom2:maxLastModified="2020-07-22T23:47:56.658" caom2:metaChecksum="md5:55242c02eaea3fa72b3daa43570ef737" caom2:accMetaChecksum="md5:8627ce51981ce8cfc1a84b524df4c34e">
                   <caom2:naxis>3</caom2:naxis>
                   <caom2:positionAxis1>1</caom2:positionAxis1>
                   <caom2:positionAxis2>2</caom2:positionAxis2>
@@ -70,11 +69,11 @@
                         <caom2:refCoord>
                           <caom2:coord1>
                             <caom2:pix>30.0</caom2:pix>
-                            <caom2:val>9.399283</caom2:val>
+                            <caom2:val>228.916545</caom2:val>
                           </caom2:coord1>
                           <caom2:coord2>
                             <caom2:pix>31.0</caom2:pix>
-                            <caom2:val>0.280058</caom2:val>
+                            <caom2:val>-15.527563</caom2:val>
                           </caom2:coord2>
                         </caom2:refCoord>
                         <caom2:cd11>1.38888888888888e-05</caom2:cd11>
@@ -84,7 +83,7 @@
                       </caom2:function>
                     </caom2:axis>
                     <caom2:coordsys>FK5</caom2:coordsys>
-                    <caom2:equinox>2000.0</caom2:equinox>
+                    <caom2:equinox>2014.32156286926</caom2:equinox>
                   </caom2:position>
                   <caom2:energy>
                     <caom2:axis>
@@ -94,10 +93,10 @@
                       </caom2:axis>
                       <caom2:function>
                         <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>2.13262867927551</caom2:delta>
+                        <caom2:delta>2.13261890411377</caom2:delta>
                         <caom2:refCoord>
                           <caom2:pix>1.0</caom2:pix>
-                          <caom2:val>19972.859375</caom2:val>
+                          <caom2:val>19970.859375</caom2:val>
                         </caom2:refCoord>
                       </caom2:function>
                     </caom2:axis>
@@ -115,47 +114,47 @@
                       </caom2:error>
                       <caom2:function>
                         <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>600.0</caom2:delta>
+                        <caom2:delta>300.0</caom2:delta>
                         <caom2:refCoord>
                           <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>58783.390867</caom2:val>
+                          <caom2:val>56775.483954</caom2:val>
                         </caom2:refCoord>
                       </caom2:function>
                     </caom2:axis>
                     <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>600.0</caom2:exposure>
-                    <caom2:resolution>0.006944444444444444</caom2:resolution>
+                    <caom2:exposure>300.0</caom2:exposure>
+                    <caom2:resolution>0.003472222222222222</caom2:resolution>
                   </caom2:time>
                 </caom2:chunk>
               </caom2:chunks>
             </caom2:part>
-            <caom2:part caom2:id="e732d039-7d3b-456d-848e-42691fff37f4">
+            <caom2:part caom2:id="ac96e5bb-4b84-4ffd-b52a-5a2a320c1d56" caom2:lastModified="2020-07-22T23:47:56.658" caom2:maxLastModified="2020-07-22T23:47:56.658" caom2:metaChecksum="md5:0d94aceb54432dbe20644b30798f8a6c" caom2:accMetaChecksum="md5:ddf342e861dcf42672b2e7168c17a815">
               <caom2:name>2</caom2:name>
               <caom2:productType>info</caom2:productType>
               <caom2:chunks/>
             </caom2:part>
-            <caom2:part caom2:id="6cdd1456-f9a8-4398-8965-ad1839f52689">
+            <caom2:part caom2:id="c0da3181-19f5-4496-91db-bbcb9f366f4f" caom2:lastModified="2020-07-21T20:30:43.892" caom2:maxLastModified="2020-07-22T01:05:22.503" caom2:metaChecksum="md5:fe3df526b3ea9334b4baec13319b14cd" caom2:accMetaChecksum="md5:fefcbdc7f98974b27a65e308ab7065e0">
               <caom2:name>3</caom2:name>
               <caom2:chunks/>
             </caom2:part>
           </caom2:parts>
         </caom2:artifact>
-        <caom2:artifact caom2:id="1d6226de-0aca-401f-9cd1-e1f66708c902" caom2:lastModified="2020-07-22T22:23:08.996" caom2:maxLastModified="2020-07-22T22:23:08.996" caom2:metaChecksum="md5:af112430b8100f49b7c5a045234299bb" caom2:accMetaChecksum="md5:03440356e25b2a1c0de9621805e08485">
-          <caom2:uri>ad:GEM/ctfbrsnN20191027S0084.jpg</caom2:uri>
+        <caom2:artifact caom2:id="79560443-1709-4ea2-9225-8747b4b923fa" caom2:lastModified="2020-07-22T01:18:41.181" caom2:maxLastModified="2020-07-22T01:18:41.181" caom2:metaChecksum="md5:c327677a5d57d02c3c780e6468b6cfed" caom2:accMetaChecksum="md5:0422079330d3a31cb017042adf5c30a7">
+          <caom2:uri>ad:GEM/ctfbrsnN20140428S0086.jpg</caom2:uri>
           <caom2:productType>preview</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>
-          <caom2:contentLength>80991</caom2:contentLength>
-          <caom2:contentChecksum>md5:39060fbd34e16f9e7a3ec7d1319c2317</caom2:contentChecksum>
+          <caom2:contentLength>63594</caom2:contentLength>
+          <caom2:contentChecksum>md5:5e05fd28bed96cf6a1d4f72e74ab3bd4</caom2:contentChecksum>
           <caom2:parts/>
         </caom2:artifact>
-        <caom2:artifact caom2:id="f24e2280-9790-45fa-a4a8-244d8acdc3f4" caom2:lastModified="2020-07-22T22:23:08.996" caom2:maxLastModified="2020-07-22T22:23:08.996" caom2:metaChecksum="md5:3fee8e5eb2d8f8a7a2c4027e9de74fb4" caom2:accMetaChecksum="md5:d79cb5757979114319d621962be53c42">
-          <caom2:uri>ad:GEM/ctfbrsnN20191027S0084_th.jpg</caom2:uri>
+        <caom2:artifact caom2:id="3d8d8b13-4200-4483-af0f-0d6b0b4503db" caom2:lastModified="2020-07-22T01:18:41.181" caom2:maxLastModified="2020-07-22T01:18:41.181" caom2:metaChecksum="md5:da26e1833e19187e773cd26a99159ff2" caom2:accMetaChecksum="md5:136abf748826b5c9998112a2649af4b9">
+          <caom2:uri>ad:GEM/ctfbrsnN20140428S0086_th.jpg</caom2:uri>
           <caom2:productType>thumbnail</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>
-          <caom2:contentLength>10783</caom2:contentLength>
-          <caom2:contentChecksum>md5:e4ad6c39fb3460170df576998881dc43</caom2:contentChecksum>
+          <caom2:contentLength>8896</caom2:contentLength>
+          <caom2:contentChecksum>md5:3df709e5a5ab4b8010112ccfee726c35</caom2:contentChecksum>
           <caom2:parts/>
         </caom2:artifact>
       </caom2:artifacts>

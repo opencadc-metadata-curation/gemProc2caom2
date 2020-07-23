@@ -54,6 +54,7 @@
             </caom2:part>
             <caom2:part caom2:id="8fde9d52-9543-4506-956a-98dd2a72af83">
               <caom2:name>1</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
               <caom2:chunks/>
             </caom2:part>
             <caom2:part caom2:id="74515784-269a-4a4f-9e94-2e498862abc3">
@@ -815,6 +816,24 @@
               <caom2:chunks/>
             </caom2:part>
           </caom2:parts>
+        </caom2:artifact>
+        <caom2:artifact caom2:id="e862d3db-8885-4f06-a2b4-83d4dd454303" caom2:lastModified="2020-07-22T01:17:48.504" caom2:maxLastModified="2020-07-22T01:17:48.504" caom2:metaChecksum="md5:720a46db968f84887b7814d0f7f4e92c" caom2:accMetaChecksum="md5:d48e96a11df996656811783c7cd24ebe">
+          <caom2:uri>ad:GEM/rgnN20130530S0369_ronchi.jpg</caom2:uri>
+          <caom2:productType>preview</caom2:productType>
+          <caom2:releaseType>data</caom2:releaseType>
+          <caom2:contentType>image/jpeg</caom2:contentType>
+          <caom2:contentLength>336837</caom2:contentLength>
+          <caom2:contentChecksum>md5:5739b764aa16f854f79f48838672d475</caom2:contentChecksum>
+          <caom2:parts/>
+        </caom2:artifact>
+        <caom2:artifact caom2:id="49ef818f-8cb3-4e89-9f7a-b8442eded59d" caom2:lastModified="2020-07-22T01:17:48.504" caom2:maxLastModified="2020-07-22T01:17:48.504" caom2:metaChecksum="md5:8ed4326c5c6f91581c1706bc5598ab5f" caom2:accMetaChecksum="md5:c55b16e1fbf251eff63e03edfb9f3fdc">
+          <caom2:uri>ad:GEM/rgnN20130530S0369_ronchi_th.jpg</caom2:uri>
+          <caom2:productType>thumbnail</caom2:productType>
+          <caom2:releaseType>data</caom2:releaseType>
+          <caom2:contentType>image/jpeg</caom2:contentType>
+          <caom2:contentLength>12742</caom2:contentLength>
+          <caom2:contentChecksum>md5:7a216003c01bb79c7c71defcb0c0eeaa</caom2:contentChecksum>
+          <caom2:parts/>
         </caom2:artifact>
       </caom2:artifacts>
     </caom2:plane>
