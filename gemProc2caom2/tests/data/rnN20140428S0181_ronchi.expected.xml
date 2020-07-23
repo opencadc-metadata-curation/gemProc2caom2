@@ -45,6 +45,7 @@
             </caom2:part>
             <caom2:part caom2:id="635434ce-036d-46d2-a7eb-03eee6b6d15d">
               <caom2:name>1</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
               <caom2:chunks/>
             </caom2:part>
             <caom2:part caom2:id="9204ac4e-ec08-442f-82f2-eecc9ccb191d">
