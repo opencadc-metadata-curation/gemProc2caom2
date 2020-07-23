@@ -90,8 +90,9 @@ import traceback
 
 from caom2 import Observation, CalibrationLevel, ProductType, TemporalWCS
 from caom2 import Axis, CoordAxis1D, SpectralWCS, CoordFunction1D, RefCoord
-from caom2 import CoordError
+from caom2 import CoordError, Chunk
 from caom2utils import ObsBlueprint, get_gen_proc_arg_parser, gen_proc
+from caom2utils import WcsParser
 from caom2pipe import caom_composable as cc
 from caom2pipe import manage_composable as mc
 from gem2caom2 import GemName, ARCHIVE, COLLECTION, SCHEME
@@ -125,7 +126,7 @@ def accumulate_bp(bp, uri):
     bp.configure_observable_axis(6)
 
     if is_derived(uri):
-        bp.set('CompositeObservation.members', {})
+        bp.set('DerivedObservation.members', {})
         bp.set('Plane.calibrationLevel', CalibrationLevel.CALIBRATED)
 
     bp.clear('Plane.provenance.lastExecuted')
@@ -204,20 +205,30 @@ def update(observation, **kwargs):
                 idx = mc.to_int(part.name)
                 header = headers[idx]
                 extname = header.get('EXTNAME')
+                # DB 22-07-20
+                # There are a few other EXTNAME values to look at for
+                # part.ProductType.   MDF values would be ‘AUXILIARY’.  The
+                # ones currently called “CAL” are likely best set to ‘INFO’
+                # since it contains info about datasets used to produce the
+                # product.
                 if extname == 'SCI':
                     part.product_type = ProductType.SCIENCE
-                elif extname == 'DQ':
+                elif extname in ['DQ', 'MDF']:
                     part.product_type = ProductType.AUXILIARY
                 elif extname == 'VAR':
                     part.product_type = ProductType.NOISE
+                elif extname == 'CAL':
+                    part.product_type = ProductType.INFO
 
                 if part.product_type == ProductType.SCIENCE:
                     for chunk in part.chunks:
+                        _update_energy(
+                            chunk, headers[idx], observation.observation_id)
                         _update_time(
                             part, chunk, headers, observation.observation_id)
-                        _update_flat_energy(
-                            chunk, header, observation.observation_id)
-
+                        _update_spatial_wcs(part, chunk, headers,
+                                            observation.observation_id)
+                        chunk.naxis = header.get('NAXIS')
                         if chunk.position is None and chunk.naxis is not None:
                             chunk.naxis = None
 
@@ -267,22 +278,58 @@ def update(observation, **kwargs):
     return observation
 
 
-def _update_flat_energy(chunk, header, obs_id):
-    logging.debug(f'Begin _update_flat_energy for {obs_id}.')
-    axis = Axis(ctype='WAVE', cunit='Angstrom')
-    coord_axis_1d = CoordAxis1D(axis)
-    ref_coord = RefCoord(pix=header.get('CRPIX1'),
-                         val=header.get('CRVAL1'))
-    fn = CoordFunction1D(naxis=header.get('NAXIS1'),
-                         delta=header.get('CD1_1'),
-                         ref_coord=ref_coord)
-    coord_axis_1d.function = fn
-    energy = SpectralWCS(axis=coord_axis_1d,
-                         specsys='TOPOCENT')
-    chunk.energy = energy
-    chunk.energy_axis = 1
-    chunk.naxis = 1
-    logging.debug('End _update_flat_energy.')
+def _update_energy(chunk, header, obs_id):
+    logging.debug(f'Begin _update_energy for {obs_id}.')
+    # because the type for the axes are 'LINEAR', which isn't an energy type,
+    # so can't use the WcsParser from caom2utils.
+    disp_axis = header.get('DISPAXIS')
+    naxis = header.get('NAXIS')
+    if disp_axis <= naxis:
+        axis = Axis(ctype='WAVE', cunit='Angstrom')
+        coord_axis_1d = CoordAxis1D(axis)
+        ref_coord = RefCoord(pix=header.get(f'CRPIX{disp_axis}'),
+                             val=header.get(f'CRVAL{disp_axis}'))
+        fn = CoordFunction1D(naxis=header.get(f'NAXIS{disp_axis}'),
+                             delta=header.get(f'CD{disp_axis}_{disp_axis}'),
+                             ref_coord=ref_coord)
+        coord_axis_1d.function = fn
+        energy = SpectralWCS(axis=coord_axis_1d,
+                             specsys='TOPOCENT')
+        chunk.energy = energy
+        chunk.energy_axis = disp_axis
+    logging.debug('End _update_energy.')
+
+
+def _update_spatial_wcs(part, chunk, headers, obs_id):
+    logging.debug(f'Begin _update_spatial_wcs for {obs_id}')
+    if part.name == '1':
+        # DB/NC 22-07-20
+        #
+        # Use the NAXIS* values from the 'SCI' extension.
+        #
+        # CD*:  That should give approximately correct pixel scales along the
+        # axes in degrees/pixel.
+        #
+        # The hard coded values for CRPIX assume the RA/DEC values are at the
+        # centre of the 60/62 array of pixels in the final product.  The
+        # primary header CRPIX values would have referred to the original
+        # ~2000 x ~2000 pixel detector array I’m guessing.
+
+        header = headers[0]
+        idx = mc.to_int(part.name)
+        header['NAXIS1'] = headers[idx].get('NAXIS1')
+        header['NAXIS2'] = headers[idx].get('NAXIS2')
+        header['CD1_1'] = 3.0 / (header.get('NAXIS1') * 3600.0)
+        header['CD2_2'] = 3.0 / (header.get('NAXIS2') * 3600.0)
+        header['CD1_2'] = 0.0
+        header['CD2_1'] = 0.0
+        header['CRPIX1'] = header.get('NAXIS1') / 2.0
+        header['CRPIX2'] = header.get('NAXIS2') / 2.0
+        wcs_parser = WcsParser(header, obs_id, 0)
+        wcs_parser.augment_position(chunk)
+        chunk.position_axis_1 = 1
+        chunk.position_axis_2 = 2
+    logging.debug(f'End _update_spatial_wcs')
 
 
 def _update_time(part, chunk, headers, obs_id):

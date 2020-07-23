@@ -1,5 +1,5 @@
 <caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:DerivedObservation" caom2:id="34aa68cd-ab0d-4c32-a762-5e285dfef304" caom2:lastModified="2020-07-22T01:14:36.040" caom2:maxLastModified="2020-07-22T01:17:48.504" caom2:metaChecksum="md5:1962a4649d00b3a9bb117478a1d55f5f" caom2:accMetaChecksum="md5:5b492108194313f66cef29259ba036c2">
-  <caom2:collection>GEMINIPROC</caom2:collection>
+  <caom2:collection>GEMINI</caom2:collection>
   <caom2:observationID>GN-2013A-Q-62-59-013-RGN-RONCHI</caom2:observationID>
   <caom2:metaRelease>2020-07-02T15:07:15.000</caom2:metaRelease>
   <caom2:algorithm>
@@ -40,7 +40,7 @@
       </caom2:provenance>
       <caom2:artifacts>
         <caom2:artifact caom2:id="aed49968-47df-44b8-94b3-7904155d2caf" caom2:lastModified="2020-07-22T01:14:36.040" caom2:maxLastModified="2020-07-22T01:14:36.040" caom2:metaChecksum="md5:a51174609a93f10fddbba57fe7b479c6" caom2:accMetaChecksum="md5:87349b82af740970212236e85f493a0d">
-          <caom2:uri>ad:GEMINI/rgnN20130530S0369_ronchi.fits</caom2:uri>
+          <caom2:uri>ad:GEM/rgnN20130530S0369_ronchi.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>application/fits</caom2:contentType>
@@ -816,7 +816,7 @@
           </caom2:parts>
         </caom2:artifact>
         <caom2:artifact caom2:id="e862d3db-8885-4f06-a2b4-83d4dd454303" caom2:lastModified="2020-07-22T01:17:48.504" caom2:maxLastModified="2020-07-22T01:17:48.504" caom2:metaChecksum="md5:720a46db968f84887b7814d0f7f4e92c" caom2:accMetaChecksum="md5:d48e96a11df996656811783c7cd24ebe">
-          <caom2:uri>ad:GEMINI/rgnN20130530S0369_ronchi.jpg</caom2:uri>
+          <caom2:uri>ad:GEM/rgnN20130530S0369_ronchi.jpg</caom2:uri>
           <caom2:productType>preview</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>
@@ -825,7 +825,7 @@
           <caom2:parts/>
         </caom2:artifact>
         <caom2:artifact caom2:id="49ef818f-8cb3-4e89-9f7a-b8442eded59d" caom2:lastModified="2020-07-22T01:17:48.504" caom2:maxLastModified="2020-07-22T01:17:48.504" caom2:metaChecksum="md5:8ed4326c5c6f91581c1706bc5598ab5f" caom2:accMetaChecksum="md5:c55b16e1fbf251eff63e03edfb9f3fdc">
-          <caom2:uri>ad:GEMINI/rgnN20130530S0369_ronchi_th.jpg</caom2:uri>
+          <caom2:uri>ad:GEM/rgnN20130530S0369_ronchi_th.jpg</caom2:uri>
           <caom2:productType>thumbnail</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>

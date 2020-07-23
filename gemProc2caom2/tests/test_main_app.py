@@ -141,6 +141,7 @@ def test_main_app(obs_id_mock, data_client_mock, tap_mock, test_name):
         file_name = basename.replace('.header', '')
         gem_name = GemProcName(file_name=file_name)
         obs_path = f'{TEST_DATA_DIR}/{gem_name.file_id}.expected.xml'
+        input_file = f'{TEST_DATA_DIR}/{gem_name.file_id}.in.xml'
         output_file = f'{TEST_DATA_DIR}/{basename}.actual.xml'
 
         if os.path.exists(output_file):
@@ -152,7 +153,7 @@ def test_main_app(obs_id_mock, data_client_mock, tap_mock, test_name):
 
         sys.argv = \
             (f'{APPLICATION} --no_validate '
-             f'--local {local} --observation {COLLECTION} {gem_name.obs_id} -o '
+             f'--local {local} -i {input_file} -o '
              f'{output_file} --plugin {PLUGIN} --module {PLUGIN} --lineage '
              f'{_get_lineage(gem_name)}'
              ).split()

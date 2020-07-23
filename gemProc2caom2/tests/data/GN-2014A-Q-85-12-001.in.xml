@@ -1,5 +1,5 @@
 <caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:DerivedObservation" caom2:id="abefb464-0ea2-40eb-a20b-2bbf07010b57" caom2:lastModified="2020-07-22T01:15:40.389" caom2:maxLastModified="2020-07-22T01:18:57.369" caom2:metaChecksum="md5:1dad08c3e78f4840e737b30a9bfa678b" caom2:accMetaChecksum="md5:b46835685199ea833f86d05129706ea0">
-  <caom2:collection>GEMINIPROC</caom2:collection>
+  <caom2:collection>GEMINI</caom2:collection>
   <caom2:observationID>GN-2014A-Q-85-12-001</caom2:observationID>
   <caom2:metaRelease>2020-06-29T15:58:08.000</caom2:metaRelease>
   <caom2:algorithm>
@@ -36,7 +36,7 @@
       </caom2:provenance>
       <caom2:artifacts>
         <caom2:artifact caom2:id="5ff41698-e752-4c21-b630-e0847482e935" caom2:lastModified="2020-07-02T23:31:38.144" caom2:maxLastModified="2020-07-02T23:31:38.144" caom2:metaChecksum="md5:a5f3dce83cefd523c1207afba846a130" caom2:accMetaChecksum="md5:a92c26c3453df2456afcaff01a0d6d6c">
-          <caom2:uri>ad:GEMINI/wrgnN20140428S0085_arc.fits</caom2:uri>
+          <caom2:uri>ad:GEM/wrgnN20140428S0085_arc.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>application/fits</caom2:contentType>
@@ -1598,7 +1598,7 @@
           </caom2:parts>
         </caom2:artifact>
         <caom2:artifact caom2:id="f9fb6acd-29dd-4440-a9a3-3819abeebdfb" caom2:lastModified="2020-07-02T23:34:29.622" caom2:maxLastModified="2020-07-02T23:34:29.622" caom2:metaChecksum="md5:96e2d4d5b71a9f4e770899d8d349ae82" caom2:accMetaChecksum="md5:7deefd31c1ab03225394735910dde7c8">
-          <caom2:uri>ad:GEMINI/wrgnN20140428S0085_arc.jpg</caom2:uri>
+          <caom2:uri>ad:GEM/wrgnN20140428S0085_arc.jpg</caom2:uri>
           <caom2:productType>preview</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>
@@ -1607,7 +1607,7 @@
           <caom2:parts/>
         </caom2:artifact>
         <caom2:artifact caom2:id="f444fec0-693d-430d-a973-d62e41ea67bb" caom2:lastModified="2020-07-02T23:34:29.622" caom2:maxLastModified="2020-07-02T23:34:29.622" caom2:metaChecksum="md5:8ed057526510d9c0c21ac7ff6976e1a3" caom2:accMetaChecksum="md5:c0e3523bc51553ed70b2816b000cb3a9">
-          <caom2:uri>ad:GEMINI/wrgnN20140428S0085_arc_th.jpg</caom2:uri>
+          <caom2:uri>ad:GEM/wrgnN20140428S0085_arc_th.jpg</caom2:uri>
           <caom2:productType>thumbnail</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>
@@ -1655,7 +1655,7 @@
       <caom2:polarization/>
       <caom2:artifacts>
         <caom2:artifact caom2:id="3142be36-4b40-4fc0-b3d7-1bb80d37829e" caom2:lastModified="2020-07-22T01:15:40.389" caom2:maxLastModified="2020-07-22T01:15:40.389" caom2:metaChecksum="md5:370df48efdae41ec0dc1a3eb70878776" caom2:accMetaChecksum="md5:a440191ca501c43edefb46397a2111b9">
-          <caom2:uri>ad:GEMINI/wrnN20140428S0085_arc.fits</caom2:uri>
+          <caom2:uri>ad:GEM/wrnN20140428S0085_arc.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>application/fits</caom2:contentType>
@@ -2431,7 +2431,7 @@
           </caom2:parts>
         </caom2:artifact>
         <caom2:artifact caom2:id="9c8c58fc-f0cb-4bf2-a1c6-31c5ac0ffe41" caom2:lastModified="2020-07-22T01:18:57.369" caom2:maxLastModified="2020-07-22T01:18:57.369" caom2:metaChecksum="md5:52c9053b68360181a0aeab7bb7f37f05" caom2:accMetaChecksum="md5:48b59c52f60541468d3833dd1bb3d3bb">
-          <caom2:uri>ad:GEMINI/wrnN20140428S0085_arc.jpg</caom2:uri>
+          <caom2:uri>ad:GEM/wrnN20140428S0085_arc.jpg</caom2:uri>
           <caom2:productType>preview</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>
@@ -2440,7 +2440,7 @@
           <caom2:parts/>
         </caom2:artifact>
         <caom2:artifact caom2:id="61b4108e-8ce1-4b44-8c0c-ed7e0d76bdec" caom2:lastModified="2020-07-22T01:18:57.369" caom2:maxLastModified="2020-07-22T01:18:57.369" caom2:metaChecksum="md5:8ecda63078c6a1bf43bed469530dd59e" caom2:accMetaChecksum="md5:c2d120243c73c6dad2ad2c05cb2e4622">
-          <caom2:uri>ad:GEMINI/wrnN20140428S0085_arc_th.jpg</caom2:uri>
+          <caom2:uri>ad:GEM/wrnN20140428S0085_arc_th.jpg</caom2:uri>
           <caom2:productType>thumbnail</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>

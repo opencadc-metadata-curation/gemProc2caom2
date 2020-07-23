@@ -1,5 +1,5 @@
 <caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:DerivedObservation" caom2:id="bb7bf9cb-8806-4a71-a1d3-172b86b60571" caom2:lastModified="2020-07-22T01:07:02.470" caom2:maxLastModified="2020-07-22T01:07:02.470" caom2:metaChecksum="md5:119447271b613e0b16c30f98d31a4198" caom2:accMetaChecksum="md5:6ed1356f54baf741e2fc65685d41cdaf">
-  <caom2:collection>GEMINIPROC</caom2:collection>
+  <caom2:collection>GEMINI</caom2:collection>
   <caom2:observationID>GN-2019B-FT-101-34-001-RGN-FLAT</caom2:observationID>
   <caom2:metaRelease>2020-06-30T18:11:17.000</caom2:metaRelease>
   <caom2:algorithm>
@@ -43,7 +43,7 @@
       </caom2:provenance>
       <caom2:artifacts>
         <caom2:artifact caom2:id="bded1758-a7d1-4d20-8f74-c8a98e0ae3ca" caom2:lastModified="2020-07-22T01:07:02.470" caom2:maxLastModified="2020-07-22T01:07:02.470" caom2:metaChecksum="md5:16634ce87ce27e405ad1d4cbd750590c" caom2:accMetaChecksum="md5:9b92e01acde69cde7f5f1579ec57d219">
-          <caom2:uri>ad:GEMINI/rgnN20191027S0331_flat.fits</caom2:uri>
+          <caom2:uri>ad:GEM/rgnN20191027S0331_flat.fits</caom2:uri>
           <caom2:productType>calibration</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>application/fits</caom2:contentType>
@@ -1109,7 +1109,7 @@
           </caom2:parts>
         </caom2:artifact>
         <caom2:artifact caom2:id="a3af0f4f-f756-421f-a7c2-a5f132867a6b" caom2:lastModified="2020-07-01T23:03:11.944" caom2:maxLastModified="2020-07-01T23:03:11.944" caom2:metaChecksum="md5:f9b83744e5d22f3f0f8abe3f6b74a2a1" caom2:accMetaChecksum="md5:9f6da353b5232390e4988271ae84b24e">
-          <caom2:uri>ad:GEMINI/rgnN20191027S0331_flat.jpg</caom2:uri>
+          <caom2:uri>ad:GEM/rgnN20191027S0331_flat.jpg</caom2:uri>
           <caom2:productType>preview</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>
@@ -1118,7 +1118,7 @@
           <caom2:parts/>
         </caom2:artifact>
         <caom2:artifact caom2:id="b8190d51-cc8c-478c-b96f-7d1df948487a" caom2:lastModified="2020-07-01T23:03:11.944" caom2:maxLastModified="2020-07-01T23:03:11.944" caom2:metaChecksum="md5:818d43fd783e5aaf15df97d39163c464" caom2:accMetaChecksum="md5:5b717aa71e9a9d23ede80d672625268a">
-          <caom2:uri>ad:GEMINI/rgnN20191027S0331_flat_th.jpg</caom2:uri>
+          <caom2:uri>ad:GEM/rgnN20191027S0331_flat_th.jpg</caom2:uri>
           <caom2:productType>thumbnail</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>
