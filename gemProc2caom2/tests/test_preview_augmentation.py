@@ -67,9 +67,12 @@
 # ***********************************************************************
 #
 
+import logging
 import os
+import traceback
 
-from mock import patch
+from datetime import datetime
+from mock import Mock, patch
 
 from caom2pipe import manage_composable as mc
 from gemProc2caom2 import preview_augmentation
@@ -82,6 +85,8 @@ TEST_FILES_DIR = '/test_files'
 @patch('caom2pipe.manage_composable.query_tap_client')
 @patch('caom2utils.fits2caom2.CadcDataClient')
 def test_preview_augmentation(data_client_mock, tap_mock):
+    getcwd_orig = os.getcwd
+    os.getcwd = Mock(return_value=test_main_app.TEST_DATA_DIR)
     tap_mock.side_effect = test_main_app._tap_mock
     data_client_mock.return_value.get_file_info.side_effect = \
         test_main_app._get_file_info
@@ -102,18 +107,16 @@ def test_preview_augmentation(data_client_mock, tap_mock):
               'science_file': test_f_name}
 
     try:
-        from datetime import datetime
-        import logging
         start_ts = datetime.utcnow().timestamp()
         test_result = preview_augmentation.visit(test_obs, **kwargs)
         end_ts = datetime.utcnow().timestamp()
         logging.error(f'{test_f_name} execution time {end_ts - start_ts}')
     except Exception as e:
-        import logging
         logging.error(e)
-        import traceback
         logging.error(traceback.format_exc())
         assert False
+    finally:
+        os.getcwd = getcwd_orig
 
     assert test_result is not None, 'expect a result'
     assert test_result.get('artifacts') == 2, 'wrong result'

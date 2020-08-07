@@ -3,7 +3,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2019.                            (c) 2019.
+#  (c) 2020.                            (c) 2020.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -62,84 +62,44 @@
 #  <http://www.gnu.org/licenses/>.      pas le cas, consultez :
 #                                       <http://www.gnu.org/licenses/>.
 #
-#  $Revision: 4 $
+#  : 4 $
 #
 # ***********************************************************************
 #
 
-"""
-Implements the default entry point functions for the workflow 
-application.
-
-'run' executes based on either provided lists of work, or files on disk.
-'run_by_state' executes incrementally, usually based on time-boxed 
-intervals.
-"""
-
-import logging
-import sys
-import traceback
+import os
+from mock import Mock, patch
 
 from caom2pipe import manage_composable as mc
-from caom2pipe import name_builder_composable as nbc
-from caom2pipe import run_composable as rc
-from gemProc2caom2 import APPLICATION, GemProcName, preview_augmentation
 from gemProc2caom2 import provenance_augmentation
+import test_main_app
 
 
-META_VISITORS = []
-DATA_VISITORS = [preview_augmentation, provenance_augmentation]
+def pytest_generate_tests(metafunc):
+    fqn_list = [f'{test_main_app.TEST_DATA_DIR}/'
+                f'rnN20140428S0181_ronchi.expected.xml']
+    metafunc.parametrize('test_fqn', fqn_list)
 
 
-def _run():
-    """
-    Uses a todo file to identify the work to be done.
+@patch('gem2caom2.external_metadata.get_obs_id_from_cadc')
+def test_provenance_augmentation(obs_id_mock, test_fqn):
+    obs_id_mock.side_effect = _get_obs_id_mock
+    getcwd_orig = os.getcwd
+    os.getcwd = Mock(return_value=test_main_app.TEST_DATA_DIR)
 
-    :return 0 if successful, -1 if there's any sort of failure. Return status
-        is used by airflow for task instance management and reporting.
-    """
-    config = mc.Config()
-    config.get_executors()
-    name_builder = nbc.FileNameBuilder(GemProcName)
-    return rc.run_by_todo(config=None, name_builder=name_builder,
-                          command_name=APPLICATION,
-                          meta_visitors=META_VISITORS, 
-                          data_visitors=DATA_VISITORS, chooser=None)
-
-
-def run():
-    """Wraps _run in exception handling, with sys.exit calls."""
     try:
-        result = _run()
-        sys.exit(result)
-    except Exception as e:
-        logging.error(e)
-        tb = traceback.format_exc()
-        logging.debug(tb)
-        sys.exit(-1)
+        test_obs = mc.read_obs_from_file(test_fqn)
+        kwargs = {'science_file': os.path.basename(test_fqn).replace(
+                                    '.expected.xml', '.fits'),
+                  'working_directory': test_main_app.TEST_DATA_DIR}
+        test_result = provenance_augmentation.visit(test_obs, **kwargs)
+        assert test_result is not None, 'expect a result'
+        assert test_result.get('provenance') == 2, 'wrong result'
+        assert len(test_obs.members) == 1, 'wrong membership'
+    finally:
+        os.getcwd = getcwd_orig
 
 
-def _run_state():
-    """Uses a state file with a timestamp to control which entries will be
-    processed.
-    """
-    config = mc.Config()
-    config.get_executors()
-    name_builder = nbc.FileNameBuilder(GemProcName)
-    return rc.run_by_state(config=None, name_builder=name_builder,
-                           command_name=APPLICATION, 
-                           bookmark_name=None, meta_visitors=META_VISITORS,
-                           data_visitors=DATA_VISITORS, end_time=None,
-                           source=None, chooser=None)
-
-
-def run_state():
-    """Wraps _run_state in exception handling."""
-    try:
-        _run_state()
-        sys.exit(0)
-    except Exception as e:
-        logging.error(e)
-        tb = traceback.format_exc()
-        logging.debug(tb)
-        sys.exit(-1)
+def _get_obs_id_mock(f_id, ignore):
+    lookup = {'N20140428S0181': 'GN-2014A-Q-85-16-013'}
+    return lookup.get(f_id)

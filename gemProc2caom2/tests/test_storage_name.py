@@ -67,21 +67,28 @@
 # ***********************************************************************
 #
 
-from mock import patch
+import os
+from mock import patch, Mock
 
 from gemProc2caom2 import GemProcName
-from gem2caom2 import external_metadata as em
+
+import test_main_app
 
 
-@patch('gem2caom2.external_metadata.CachingObsFileRelationship.get_obs_id')
+@patch('gem2caom2.external_metadata.get_obs_id_from_cadc')
 def test_storage_name(obs_id_mock):
-    em.set_ofr(None)
+    os_getcwd_orig = os.getcwd
+    os.getcwd = Mock(return_value=test_main_app.TEST_DATA_DIR)
     test_obs_id = 'test_obs_id'
     obs_id_mock.return_value = test_obs_id
-    test_sn = GemProcName(file_name='N20131203S0006i.fits.bz2')
-    assert test_sn.file_uri == 'ad:GEM/N20131203S0006i.fits'
-    assert test_sn.lineage == 'N20131203S0006i/ad:GEM/N20131203S0006i.fits'
-    assert test_sn.prev == 'N20131203S0006i.jpg'
-    assert test_sn.thumb == 'N20131203S0006i_th.jpg'
-    assert test_sn.prev_uri == 'ad:GEM/N20131203S0006i.jpg'
-    assert test_sn.thumb_uri == 'ad:GEM/N20131203S0006i_th.jpg'
+    try:
+        test_sn = GemProcName(file_name='ctfbrsnN20140428S0086.fits')
+        assert test_sn.file_uri == 'ad:GEM/ctfbrsnN20140428S0086.fits'
+        assert test_sn.lineage == 'ctfbrsnN20140428S0086/ad:GEM/' \
+                                  'ctfbrsnN20140428S0086.fits'
+        assert test_sn.prev == 'ctfbrsnN20140428S0086.jpg'
+        assert test_sn.thumb == 'ctfbrsnN20140428S0086_th.jpg'
+        assert test_sn.prev_uri == 'ad:GEM/ctfbrsnN20140428S0086.jpg'
+        assert test_sn.thumb_uri == 'ad:GEM/ctfbrsnN20140428S0086_th.jpg'
+    finally:
+        os.getcwd = os_getcwd_orig

@@ -98,22 +98,22 @@ class GemProcPreview(mc.PreviewVisitor):
         self._logger = logging.getLogger(__name__)
 
     def generate_plots(self, obs_id):
-        self._logger.error(f'Begin generate_plots for {obs_id}')
+        self._logger.debug(f'Begin generate_plots for {obs_id}')
         count = 0
         hdus = fits.open(self._science_fqn)
-        data_label = hdus[0].header.get('DATALAB').upper()
+        obs_type = hdus[0].header.get('OBSTYPE').upper()
         interval = ZScaleInterval()
-        if 'CTFBRSN' in data_label:
+        if 'OBJECT' in obs_type:
             white_light_data = np.flipud(np.median(hdus['SCI'].data, axis=0))
-        elif ('FLAT' in data_label or 'ARC' in data_label or
-              'RONCHI' in data_label):
+        elif ('FLAT' in obs_type or 'ARC' in obs_type or
+              'RONCHI' in obs_type):
             # Stitch together the 29 'SCI' extensions into one array and save.
             hdul = [x for x in hdus if x.name == 'SCI']
             hdul.sort(key=lambda x: int(re.split(r"[\[\]\:\,']+",
                                                  x.header['NSCUTSEC'])[3]))
             temp = np.concatenate([x.data for x in hdul])
             white_light_data = interval(temp)
-        elif 'SHIFT' in data_label:
+        elif 'SHIFT' in obs_type:
             temp = np.flipud(hdus['SCI'].data)
             white_light_data = interval(temp)
         else:
@@ -129,7 +129,7 @@ class GemProcPreview(mc.PreviewVisitor):
                          ProductType.PREVIEW)
         self.add_to_delete(self._preview_fqn)
         count += self._gen_thumbnail()
-        self._logger.error('End generate_plots.')
+        self._logger.info(f'End generate_plots for {obs_id}.')
         return count
 
     def _gen_thumbnail(self):

@@ -1,3 +1,4 @@
+working_directory: /usr/src/app/gemProc2caom2/gemProc2caom2/tests/data
 proxy_file_name: /usr/src/app/gemProc2caom2/gemProc2caom2/tests/data/test_proxy.pem
 use_local_files: True
 task_types:

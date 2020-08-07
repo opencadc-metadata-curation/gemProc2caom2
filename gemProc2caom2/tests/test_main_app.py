@@ -124,7 +124,7 @@ def pytest_generate_tests(metafunc):
 
 @patch('caom2pipe.manage_composable.query_tap_client')
 @patch('caom2utils.fits2caom2.CadcDataClient')
-@patch('gem2caom2.external_metadata.CachingObsFileRelationship.get_obs_id')
+@patch('gem2caom2.external_metadata.get_obs_id_from_cadc')
 def test_main_app(obs_id_mock, data_client_mock, tap_mock, test_name):
     obs_id_mock.side_effect = _obs_id_mock
     getcwd_orig = os.getcwd
@@ -134,9 +134,6 @@ def test_main_app(obs_id_mock, data_client_mock, tap_mock, test_name):
         test_config = mc.Config()
         test_config.task_types = [mc.TaskType.SCRAPE]
         test_config.use_local_files = True
-        em.set_ofr(None)
-        em.init_global(False, test_config)
-
         basename = os.path.basename(test_name)
         file_name = basename.replace('.header', '')
         gem_name = GemProcName(file_name=file_name)
@@ -194,8 +191,7 @@ def _tap_mock(query_string, mock_tap_client):
 
 
 def _obs_id_mock(for_file_name):
+    result = None
     if for_file_name in OID_LOOKUP:
         result = OID_LOOKUP.get(for_file_name)
-    else:
-        result = em.get_gofr()._get_obs_id_from_headers(for_file_name)
     return result
