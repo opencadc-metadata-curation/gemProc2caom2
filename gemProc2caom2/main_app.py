@@ -80,6 +80,32 @@ spatial axes.  Axis 3 is spectral.
 The second extension is a binary table.  No WCS information.
 
 3rd extension is a bad pixel map. WCS info should be ignored for this.
+
+processed pipeline, so even though some might think they're all Derived:
+DB/NC 06-07-20
+
+How to know if a NIFS arc file is a unique observation:
+If it’s a co-add of more than one individual observation then it is a
+new composite (maybe ‘derived’ is the new term) observation. If instead
+the processed arc is produced from just a single unprocessed observation
+then it is NOT a new observation but just a processed version of the
+original unprocessed dataset, or a new plane.
+
+The G in WRGN means the file passed through the Co-adding task. It's
+just that sometimes only one file is passed to and it's not really
+co-adding anything. It would make more sense to only add the G prefix
+if there was actually Co-adding happening.
+
+Modify the Nifty code to only add that G for co-added exposures. Then
+the datalabel for a co-added processed arc would look like
+GN-2014A-Q-85-12-001-WRGN-ARC and a non-co-added processed arc would
+look like GN-2014A-Q-85-12-001-WRN-ARC
+
+DB 06-08-20
+If only one ‘member’ is present then it’s a new CAL=2 plane for the
+    original observation given by the member name.  If there is > 1 ‘member’
+then it’s a new derived observation.
+
 """
 
 import importlib
@@ -88,15 +114,15 @@ import os
 import sys
 import traceback
 
+from cadctap import CadcTapClient
 from caom2 import Observation, CalibrationLevel, ProductType, TemporalWCS
 from caom2 import Axis, CoordAxis1D, SpectralWCS, CoordFunction1D, RefCoord
-from caom2 import CoordError, Chunk
+from caom2 import CoordError
 from caom2utils import ObsBlueprint, get_gen_proc_arg_parser, gen_proc
 from caom2utils import WcsParser
-from caom2pipe import caom_composable as cc
 from caom2pipe import manage_composable as mc
-from gem2caom2 import GemName, ARCHIVE, COLLECTION, SCHEME
-from gem2caom2 import external_metadata as em
+from gem2caom2 import ARCHIVE, COLLECTION, external_metadata
+from gem2caom2 import gem_name
 
 
 __all__ = ['gem_proc_main_app', 'update', 'APPLICATION', 'GemProcName',
@@ -106,14 +132,49 @@ __all__ = ['gem_proc_main_app', 'update', 'APPLICATION', 'GemProcName',
 APPLICATION = 'gemProc2caom2'
 
 
-class GemProcName(GemName):
-    """A class to over-ride the 'gemini' schema for the fits files."""
+class GemProcName(mc.StorageName):
 
     def __init__(self, file_name):
-        super(GemProcName, self).__init__(file_name=file_name)
-        self.scheme = 'ad'
+        super(GemProcName, self).__init__(fname_on_disk=file_name,
+                                          archive=ARCHIVE,
+                                          compression='')
+        self._file_name = file_name
+        self._file_id = gem_name.GemName.remove_extensions(file_name)
+        self._obs_id = self.get_obs_id()
         self._logger = logging.getLogger(__name__)
         self._logger.debug(self)
+
+    def get_obs_id(self):
+        obs_id = external_metadata.get_obs_id_from_headers(self._file_id)
+        if obs_id is None:
+            config = mc.Config()
+            config.get_executors()
+            subject = mc.define_subject(config)
+            tap_client = CadcTapClient(subject=subject,
+                                       resource_id=config.tap_id)
+            obs_id = external_metadata.get_obs_id_from_cadc(
+                self._file_id, tap_client)
+        return obs_id
+
+    @property
+    def file_id(self):
+        return self._file_id
+
+    @property
+    def file_name(self):
+        return self._file_name
+
+    @property
+    def prev(self):
+        return '{}.jpg'.format(self._file_id)
+
+    @property
+    def product_id(self):
+        return self._file_id
+
+    @property
+    def thumb(self):
+        return '{}_th.jpg'.format(self._file_id)
 
 
 def accumulate_bp(bp, uri):
@@ -125,49 +186,24 @@ def accumulate_bp(bp, uri):
     bp.configure_polarization_axis(5)
     bp.configure_observable_axis(6)
 
-    if is_derived(uri):
-        bp.set('DerivedObservation.members', {})
-        bp.set('Plane.calibrationLevel', CalibrationLevel.CALIBRATED)
+    # assume all observations are Derived, set to Simple if required
+    bp.set('DerivedObservation.members', {})
 
+    bp.set_default('Observation.algorithm.name', 'SOFTWARE')
+    bp.set('Observation.observationID', '_get_obs_id(header)')
+
+    bp.set('Plane.calibrationLevel', CalibrationLevel.CALIBRATED)
     bp.clear('Plane.provenance.lastExecuted')
     bp.add_fits_attribute('Plane.provenance.lastExecuted', 'DATE')
-    bp.set('Plane.provenance.name', 'Nifty4Gemini')
+    bp.clear('Plane.provenance.name')
+    bp.add_fits_attribute('Plane.provenance.name', 'SOFTWARE')
     bp.set('Plane.provenance.producer', 'CADC')
-    bp.set('Plane.provenance.reference',
-           'https://doi.org/10.5281/zenodo.897014')
+    bp.clear('Plane.provenance.reference')
+    bp.add_fits_attribute('Plane.provenance.reference', 'SOFT_DOI')
+    bp.clear('Plane.provenance.version')
+    bp.add_fits_attribute('Plane.provenance.version', 'SOFT_VER')
 
     logging.debug('Done accumulate_bp.')
-
-
-def is_derived(uri):
-    """
-    # processed pipeline, so even though some might think they're all Derived:
-    # DB/NC 06-07-20
-    #
-    # How to know if a NIFS arc file is a unique observation:
-    # If it’s a co-add of more than one individual observation then it is a
-    # new composite (maybe ‘derived’ is the new term) observation. If instead
-    # the processed arc is produced from just a single unprocessed observation
-    # then it is NOT a new observation but just a processed version of the
-    # original unprocessed dataset, or a new plane.
-    #
-    # The G in WRGN means the file passed through the Co-adding task. It's
-    # just that sometimes only one file is passed to and it's not really
-    # co-adding anything. It would make more sense to only add the G prefix
-    # if there was actually Co-adding happening.
-    #
-    # Modify the Nifty code to only add that G for co-added exposures. Then
-    # the datalabel for a co-added processed arc would look like
-    # GN-2014A-Q-85-12-001-WRGN-ARC and a non-co-added processed arc would
-    # look like GN-2014A-Q-85-12-001-WRN-ARC
-    :param uri:
-    :return:
-    """
-    result = True
-    if 'arc' in uri and 'wrn' in uri:
-        logging.error(f'yes, yes I am!!!!!!!')
-        result = False
-    return result
 
 
 def update(observation, **kwargs):
@@ -196,10 +232,6 @@ def update(observation, **kwargs):
         if plane.product_id != gem_proc_name.product_id:
             continue
 
-        cc.update_plane_provenance_list(
-            plane, headers, ['FCMB', 'DCMB', 'ACMB'],
-            COLLECTION, _repair_provenance_value, observation.observation_id)
-
         for artifact in plane.artifacts.values():
             for part in artifact.parts.values():
                 idx = mc.to_int(part.name)
@@ -220,17 +252,22 @@ def update(observation, **kwargs):
                 elif extname == 'CAL':
                     part.product_type = ProductType.INFO
 
-                if part.product_type == ProductType.SCIENCE:
+                if (part.product_type in
+                        [ProductType.SCIENCE, ProductType.INFO]):
                     for chunk in part.chunks:
+                        filter_name = headers[0].get('FILTER').split('_')[0]
                         _update_energy(
-                            chunk, headers[idx], observation.observation_id)
-                        _update_time(
-                            part, chunk, headers, observation.observation_id)
-                        _update_spatial_wcs(part, chunk, headers,
-                                            observation.observation_id)
-                        chunk.naxis = header.get('NAXIS')
-                        if chunk.position is None and chunk.naxis is not None:
-                            chunk.naxis = None
+                            chunk, headers[idx], filter_name,
+                            observation.observation_id)
+                        _update_time(part, chunk, headers[0],
+                                     observation.observation_id)
+                        if part.product_type == ProductType.SCIENCE:
+                            _update_spatial_wcs(part, chunk, headers,
+                                                observation.observation_id)
+                            chunk.naxis = header.get('NAXIS')
+                            if (chunk.position is None and
+                                    chunk.naxis is not None):
+                                chunk.naxis = None
 
                         if (chunk.time is not None and
                                 chunk.time.axis is not None and
@@ -245,40 +282,15 @@ def update(observation, **kwargs):
                     while len(part.chunks) > 0:
                         del part.chunks[-1]
 
-        # update observation members
-        # DB 24-06-20
-        # At least for the processed flats only the FCOMBINE x FCMB# datasets
-        # should be members.  These are the original individual flats that were
-        # combined for the processed product.
-        #
-        # DB 02-07-20
-        # Do more than one unprocessed arcs go into the production of the
-        # wrgn*_arc.fits files sometimes?   If not then the ACMD* and ACOMBINE
-        # keywords are not needed and the unprocessed version of the file is
-        # one of the inputs and there are no ‘members’ since it’s not a
-        # co-added observation.
-        # i.e. the wrgn*_arc.fits files would just be another plane of that
-        # observation.
-        def member_filter(plane_uri):
-            result = False
-            for entry in provenance_headers.values():
-                if entry in plane_uri.uri:
-                    result = True
-            return result
-        if observation.type == 'FLAT':
-            provenance_headers = extract_keywords(headers, ['FCMB'])
-            cc.update_observation_members_filtered(observation, member_filter)
-        elif observation.type == 'ARC':
-            provenance_headers = extract_keywords(headers, ['ACMB'])
-            cc.update_observation_members_filtered(observation, member_filter)
-        else:
-            cc.update_observation_members(observation)
-
     logging.debug('Done update.')
     return observation
 
 
-def _update_energy(chunk, header, obs_id):
+def _get_obs_id(header):
+    return header.get('DATALAB')
+
+
+def _update_energy(chunk, header, filter_name, obs_id):
     logging.debug(f'Begin _update_energy for {obs_id}.')
     # because the type for the axes are 'LINEAR', which isn't an energy type,
     # so can't use the WcsParser from caom2utils.
@@ -295,6 +307,13 @@ def _update_energy(chunk, header, obs_id):
         coord_axis_1d.function = fn
         energy = SpectralWCS(axis=coord_axis_1d,
                              specsys='TOPOCENT')
+        energy.bandpass_name = filter_name
+        # DB 07-08-20
+        # I think the best we can do is assume that a resolution element is 2
+        # pixels wide. So resolving power is the absolute value of
+        # approximately CRVAL3/(2 * CD3_3)
+        energy.resolving_power = abs(header.get(f'CRVAL{disp_axis}') / (
+                    2 * header.get(f'CD{disp_axis}_{disp_axis}')))
         chunk.energy = energy
         chunk.energy_axis = disp_axis
     logging.debug('End _update_energy.')
@@ -332,18 +351,12 @@ def _update_spatial_wcs(part, chunk, headers, obs_id):
     logging.debug(f'End _update_spatial_wcs')
 
 
-def _update_time(part, chunk, headers, obs_id):
+def _update_time(part, chunk, header, obs_id):
     logging.debug(f'Begin _update_time for {obs_id} part {part.name}.')
 
     # DB 02-07-20
     # time metadata comes from MJD_OBS and EXPTIME, it's not
     # an axis requiring cutout support
-
-    idx = mc.to_int(part.name)
-    if idx == 1:
-        # because historical reasons I don't recall right now
-        idx = 0
-    header = headers[idx]
     exp_time = header.get('EXPTIME')
     mjd_obs = header.get('MJD_OBS')
     if exp_time is None or mjd_obs is None:
@@ -355,28 +368,13 @@ def _update_time(part, chunk, headers, obs_id):
             chunk.time = TemporalWCS(axis=time_axis,
                                      timesys='UTC')
         ref_coord = RefCoord(pix=0.5, val=mjd_obs)
-        chunk.time.axis.function = CoordFunction1D(naxis=1,
-                                                   delta=exp_time,
-                                                   ref_coord=ref_coord)
+        chunk.time.axis.function = CoordFunction1D(
+            naxis=1,
+            delta=mc.convert_to_days(exp_time),
+            ref_coord=ref_coord)
         chunk.time.exposure = exp_time
         chunk.time.resolution = mc.convert_to_days(exp_time)
-
     logging.debug(f'End _update_time.')
-
-
-def extract_keywords(headers, keyword_list):
-    """
-    :param headers: astropy FITS headers list
-    :param keyword_list: list of keyword prefixes to extract.
-    :return:
-    """
-    result = {}
-    for entry in keyword_list:
-        for header in headers:
-            for keyword in header:
-                if keyword.startswith(entry):
-                    result[keyword] = header.get(keyword)
-    return result
 
 
 def _build_blueprints(uris):
@@ -413,15 +411,6 @@ def _get_uris(args):
         raise mc.CadcException(
             f'Could not define uri from these args {args}')
     return result
-
-
-def _repair_provenance_value(value, obs_id):
-    prov_file_id = GemName.remove_extensions(value)
-    prov_obs_id = em.get_gofr().get_obs_id(prov_file_id)
-    prov_obs_id = 'None' if prov_obs_id is None else prov_obs_id
-    logging.debug(f'End _repair_provenance_value. {prov_obs_id} '
-                  f'{prov_file_id}')
-    return prov_obs_id, prov_file_id
 
 
 def to_caom2():
