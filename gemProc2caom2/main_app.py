@@ -117,12 +117,12 @@ import traceback
 from cadctap import CadcTapClient
 from caom2 import Observation, CalibrationLevel, ProductType, TemporalWCS
 from caom2 import Axis, CoordAxis1D, SpectralWCS, CoordFunction1D, RefCoord
-from caom2 import CoordError
+from caom2 import CoordError, ObservationIntentType
 from caom2utils import ObsBlueprint, get_gen_proc_arg_parser, gen_proc
 from caom2utils import WcsParser
 from caom2pipe import manage_composable as mc
 from gem2caom2 import ARCHIVE, COLLECTION, external_metadata
-from gem2caom2 import gem_name
+from gem2caom2 import gem_name, obs_file_relationship
 
 
 __all__ = ['gem_proc_main_app', 'update', 'APPLICATION', 'GemProcName',
@@ -189,8 +189,18 @@ def accumulate_bp(bp, uri):
     # assume all observations are Derived, set to Simple if required
     bp.set('DerivedObservation.members', {})
 
-    bp.set_default('Observation.algorithm.name', 'SOFTWARE')
     bp.set('Observation.observationID', '_get_obs_id(header)')
+    bp.set('Observation.intent', '_get_obs_intent(uri)')
+
+    # TODO - this is not correct, as it will over-write the value in the
+    # existing gem2caom2 version
+    bp.clear('Observation.algorithm.name')
+    bp.add_fits_attribute('Observation.algorithm.name', 'SOFTWARE')
+
+    # DB 07-08-20
+    # target.type for all NIFS science products, at least, could be set to
+    # ‘object’.   (i.e. NIFS is never used for wider ‘field’ observations)
+    bp.set('Observation.target.type', 'object')
 
     bp.set('Plane.calibrationLevel', CalibrationLevel.CALIBRATED)
     bp.clear('Plane.provenance.lastExecuted')
@@ -243,14 +253,17 @@ def update(observation, **kwargs):
                 # ones currently called “CAL” are likely best set to ‘INFO’
                 # since it contains info about datasets used to produce the
                 # product.
+                #
+                # DB 07-08-20
+                # EXTNAME  in (‘DQ’, ‘VAR’) should both have
+                # ProductType.NOISE.   ‘CAL’ should no longer exist - it’s now
+                # BPM. Default type is 'AUXILIARY', 'SCI' is type 'SCIENCE'
                 if extname == 'SCI':
                     part.product_type = ProductType.SCIENCE
-                elif extname in ['DQ', 'MDF']:
-                    part.product_type = ProductType.AUXILIARY
-                elif extname == 'VAR':
+                elif extname in ['DQ', 'VAR']:
                     part.product_type = ProductType.NOISE
-                elif extname == 'CAL':
-                    part.product_type = ProductType.INFO
+                else:
+                    part.product_type = ProductType.AUXILIARY
 
                 if (part.product_type in
                         [ProductType.SCIENCE, ProductType.INFO]):
@@ -288,6 +301,18 @@ def update(observation, **kwargs):
 
 def _get_obs_id(header):
     return header.get('DATALAB')
+
+
+def _get_obs_intent(uri):
+    # DB 07-08-20
+    # The co-added products (the ones with ‘g’ in the file name?) the Intent
+    # should be set to calibration.
+    ignore_scheme, ignore_path, file_name = mc.decompose_uri(uri)
+    prefix = obs_file_relationship.get_prefix(file_name)
+    result = ObservationIntentType.SCIENCE
+    if 'g' in prefix:
+        result = ObservationIntentType.CALIBRATION
+    return result
 
 
 def _update_energy(chunk, header, filter_name, obs_id):

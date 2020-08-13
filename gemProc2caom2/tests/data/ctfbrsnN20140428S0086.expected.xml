@@ -10,6 +10,7 @@
   <caom2:intent>science</caom2:intent>
   <caom2:target>
     <caom2:name>Titan</caom2:name>
+    <caom2:type>field</caom2:type>
   </caom2:target>
   <caom2:telescope>
     <caom2:name>Gemini-North</caom2:name>
