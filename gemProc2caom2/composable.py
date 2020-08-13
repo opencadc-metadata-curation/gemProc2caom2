@@ -88,7 +88,9 @@ from gemProc2caom2 import provenance_augmentation
 
 
 META_VISITORS = []
-DATA_VISITORS = [preview_augmentation, provenance_augmentation]
+# preview augmentation relies on metadata set in provenance_augmentation, so
+# order is important here
+DATA_VISITORS = [provenance_augmentation, preview_augmentation]
 
 
 def _run():

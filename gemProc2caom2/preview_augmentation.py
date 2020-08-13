@@ -75,7 +75,7 @@ import matplotlib.image as image
 import matplotlib.pyplot as plt
 import numpy as np
 from astropy.io import fits
-from astropy.visualization import ZScaleInterval
+from astropy.visualization import MinMaxInterval, ZScaleInterval
 
 from caom2 import ProductType, ReleaseType
 from caom2pipe import manage_composable as mc
@@ -85,9 +85,10 @@ from gemProc2caom2 import GemProcName
 
 class GemProcPreview(mc.PreviewVisitor):
 
-    def __init__(self, **kwargs):
+    def __init__(self, observation, **kwargs):
         super(GemProcPreview, self).__init__(
             ARCHIVE, ReleaseType.DATA, **kwargs)
+        self._observation = observation
         self._storage_name = GemProcName(file_name=self._science_file)
         self._science_fqn = os.path.join(self._working_dir,
                                          self._storage_name.file_name)
@@ -100,11 +101,17 @@ class GemProcPreview(mc.PreviewVisitor):
     def generate_plots(self, obs_id):
         self._logger.debug(f'Begin generate_plots for {obs_id}')
         count = 0
+        # NC - algorithm
+        # NC - review - 07-08-20
         hdus = fits.open(self._science_fqn)
         obs_type = hdus[0].header.get('OBSTYPE').upper()
         interval = ZScaleInterval()
+        if (self._observation.target is not None and
+                self._observation.target.moving):
+            interval = MinMaxInterval()
         if 'OBJECT' in obs_type:
-            white_light_data = np.flipud(np.median(hdus['SCI'].data, axis=0))
+            white_light_data = interval(
+                np.flipud(np.median(hdus['SCI'].data, axis=0)))
         elif ('FLAT' in obs_type or 'ARC' in obs_type or
               'RONCHI' in obs_type):
             # Stitch together the 29 'SCI' extensions into one array and save.
@@ -152,5 +159,5 @@ class GemProcPreview(mc.PreviewVisitor):
 
 
 def visit(observation, **kwargs):
-    previewer = GemProcPreview(**kwargs)
+    previewer = GemProcPreview(observation, **kwargs)
     return previewer.visit(observation, previewer._storage_name)

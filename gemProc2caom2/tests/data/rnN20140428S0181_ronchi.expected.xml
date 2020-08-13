@@ -815,4 +815,7 @@
       </caom2:artifacts>
     </caom2:plane>
   </caom2:planes>
+  <caom2:members>
+    <caom2:observationURI>caom:GEMINI/GN-2014A-Q-85-16-013</caom2:observationURI>
+  </caom2:members>
 </caom2:Observation>

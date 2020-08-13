@@ -87,7 +87,6 @@ def visit(observation, **kwargs):
         raise mc.CadcException(
             f'Must have a science_file parameter for provenance_augmentation '
             f'for {observation.observation_id}')
-
     config = mc.Config()
     config.get_executors()
     subject = mc.define_subject(config)
@@ -110,6 +109,16 @@ def visit(observation, **kwargs):
 
     if isinstance(observation, DerivedObservation):
         observation.members.update(obs_members)
+        if len(observation.members) > 0:
+            observable = kwargs.get('observable')
+            caom_repo_client = kwargs.get('caom_repo_client')
+            if caom_repo_client is None:
+                logging.warning(f'Warning: Must have a caom_repo_client for '
+                                f'members metadata for '
+                                f'{observation.observation_id}.')
+            _do_members_metadata(
+                observation, caom_repo_client, observation.members,
+                observable.metrics)
 
     logging.info(
         f'Done provenance_augmentation for {observation.observation_id}')
@@ -165,3 +174,39 @@ def _do_provenance(working_directory, science_file, observation,
                     count += 1
     hdus.close()
     return count
+
+
+def _do_members_metadata(observation, caom_repo_client, members, metrics):
+    """
+    Look up the metadata for the provenance member, and use that Proposal
+    and Moving Target information for the co-added products as well.
+
+    DB - 07-08-20
+
+    * Proposal information for the co-added products (the ones with ‘g’).
+    Perhaps the DATALAB isn’t being parsed properly for the original proposal
+    ID?
+
+    * ‘Moving target’ could in principal be determined by looking for
+    NON_SIDEREAL in the ‘types’ returned by jsonsummary for the unprocessed
+    dataset as in gem2caom2.  e.g.
+    https://archive.gemini.edu/jsonsummary/GN-2014A-Q-85-12-002.  e.g The
+    Titan observation should be shown as being a moving target whereas the
+    other object exposure is not.
+    """
+    logging.debug(f'Begin _do_members_metadata for '
+                  f'{observation.observation_id}.')
+    prov_obs_uri = None
+    for entry in members:
+        # use the first one for querying
+        prov_obs_uri = entry
+        break
+    if caom_repo_client is not None:
+        prov_obs = mc.repo_get(caom_repo_client, prov_obs_uri.collection,
+                               prov_obs_uri.observation_id, metrics)
+        if prov_obs is not None:
+            observation.proposal = prov_obs.proposal
+            if prov_obs.target is not None:
+                observation.target.moving = prov_obs.target.moving
+
+    logging.debug(f'Done _do_members_metadata.')
