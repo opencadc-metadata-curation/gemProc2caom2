@@ -152,24 +152,6 @@
             </caom2:part>
           </caom2:parts>
         </caom2:artifact>
-        <caom2:artifact caom2:id="79560443-1709-4ea2-9225-8747b4b923fa" caom2:lastModified="2020-07-22T01:18:41.181" caom2:maxLastModified="2020-07-22T01:18:41.181" caom2:metaChecksum="md5:c327677a5d57d02c3c780e6468b6cfed" caom2:accMetaChecksum="md5:0422079330d3a31cb017042adf5c30a7">
-          <caom2:uri>ad:GEM/ctfbrsnN20140428S0086.jpg</caom2:uri>
-          <caom2:productType>preview</caom2:productType>
-          <caom2:releaseType>data</caom2:releaseType>
-          <caom2:contentType>image/jpeg</caom2:contentType>
-          <caom2:contentLength>63594</caom2:contentLength>
-          <caom2:contentChecksum>md5:5e05fd28bed96cf6a1d4f72e74ab3bd4</caom2:contentChecksum>
-          <caom2:parts/>
-        </caom2:artifact>
-        <caom2:artifact caom2:id="3d8d8b13-4200-4483-af0f-0d6b0b4503db" caom2:lastModified="2020-07-22T01:18:41.181" caom2:maxLastModified="2020-07-22T01:18:41.181" caom2:metaChecksum="md5:da26e1833e19187e773cd26a99159ff2" caom2:accMetaChecksum="md5:136abf748826b5c9998112a2649af4b9">
-          <caom2:uri>ad:GEM/ctfbrsnN20140428S0086_th.jpg</caom2:uri>
-          <caom2:productType>thumbnail</caom2:productType>
-          <caom2:releaseType>data</caom2:releaseType>
-          <caom2:contentType>image/jpeg</caom2:contentType>
-          <caom2:contentLength>8896</caom2:contentLength>
-          <caom2:contentChecksum>md5:3df709e5a5ab4b8010112ccfee726c35</caom2:contentChecksum>
-          <caom2:parts/>
-        </caom2:artifact>
       </caom2:artifacts>
     </caom2:plane>
   </caom2:planes>
