@@ -70,9 +70,8 @@
 from mock import patch, Mock
 
 from astropy.table import Table
-from gem2caom2 import ARCHIVE, APPLICATION, COLLECTION
-from gem2caom2 import external_metadata as em
-from gemProc2caom2 import main_app, GemProcName
+from gem2caom2 import ARCHIVE, COLLECTION
+from gemProc2caom2 import main_app, GemProcName, APPLICATION
 from caom2pipe import manage_composable as mc
 
 import glob
@@ -117,8 +116,7 @@ OID_LOOKUP = {
 
 
 def pytest_generate_tests(metafunc):
-    # obs_id_list = glob.glob(f'{TEST_DATA_DIR}/*.fits.header')
-    obs_id_list = glob.glob(f'{TEST_DATA_DIR}/*.fits')
+    obs_id_list = glob.glob(f'{TEST_DATA_DIR}/*.fits.header')
     metafunc.parametrize('test_name', obs_id_list)
 
 
