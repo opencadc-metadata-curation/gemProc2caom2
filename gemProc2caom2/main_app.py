@@ -117,7 +117,8 @@ import traceback
 from cadctap import CadcTapClient
 from caom2 import Observation, CalibrationLevel, ProductType, TemporalWCS
 from caom2 import Axis, CoordAxis1D, SpectralWCS, CoordFunction1D, RefCoord
-from caom2 import CoordError, ObservationIntentType
+from caom2 import CoordError, ObservationIntentType, SimpleObservation
+from caom2 import Algorithm, DataProductType
 from caom2utils import ObsBlueprint, get_gen_proc_arg_parser, gen_proc
 from caom2utils import WcsParser
 from caom2pipe import manage_composable as mc
@@ -203,6 +204,7 @@ def accumulate_bp(bp, uri):
     bp.set('Observation.target.type', 'object')
 
     bp.set('Plane.calibrationLevel', CalibrationLevel.CALIBRATED)
+    bp.set('Plane.dataProductType', '_get_plane_data_product_type(header)')
     bp.clear('Plane.provenance.lastExecuted')
     bp.add_fits_attribute('Plane.provenance.lastExecuted', 'DATE')
     bp.clear('Plane.provenance.name')
@@ -295,6 +297,10 @@ def update(observation, **kwargs):
                     while len(part.chunks) > 0:
                         del part.chunks[-1]
 
+    if isinstance(observation, SimpleObservation):
+        # undo the observation-level metadata modifications for updated
+        # Gemini records
+        observation.algorithm = Algorithm(name='exposure')
     logging.debug('Done update.')
     return observation
 
@@ -313,6 +319,10 @@ def _get_obs_intent(uri):
     if 'g' in prefix:
         result = ObservationIntentType.CALIBRATION
     return result
+
+
+def _get_plane_data_product_type(header):
+    return DataProductType.IMAGE
 
 
 def _update_energy(chunk, header, filter_name, obs_id):
@@ -415,7 +425,7 @@ def _build_blueprints(uris):
     module = importlib.import_module(__name__)
     blueprints = {}
     for uri in uris:
-        blueprint = ObsBlueprint(module=module)
+        blueprint = ObsBlueprint(module=module, update=True)
         if not mc.StorageName.is_preview(uri):
             accumulate_bp(blueprint, uri)
         blueprints[uri] = blueprint
