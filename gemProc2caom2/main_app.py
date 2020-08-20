@@ -121,6 +121,7 @@ from caom2 import CoordError, ObservationIntentType, SimpleObservation
 from caom2 import Algorithm, DataProductType
 from caom2utils import ObsBlueprint, get_gen_proc_arg_parser, gen_proc
 from caom2utils import WcsParser
+from caom2pipe import astro_composable as ac
 from caom2pipe import manage_composable as mc
 from gem2caom2 import ARCHIVE, COLLECTION, external_metadata
 from gem2caom2 import gem_name, obs_file_relationship
@@ -202,6 +203,9 @@ def accumulate_bp(bp, uri):
     # target.type for all NIFS science products, at least, could be set to
     # ‘object’.   (i.e. NIFS is never used for wider ‘field’ observations)
     bp.set('Observation.target.type', 'object')
+    bp.set('Observation.telescope.geoLocationX', '_get_telescope_x(uri)')
+    bp.set('Observation.telescope.geoLocationY', '_get_telescope_y(uri)')
+    bp.set('Observation.telescope.geoLocationZ', '_get_telescope_z(uri)')
 
     bp.set('Plane.calibrationLevel', CalibrationLevel.CALIBRATED)
     bp.set('Plane.dataProductType', '_get_plane_data_product_type(header)')
@@ -322,7 +326,39 @@ def _get_obs_intent(uri):
 
 
 def _get_plane_data_product_type(header):
-    return DataProductType.IMAGE
+    # DB 19-08-20
+    # Any with OBSTYPE of OBJECT should be set to ‘cube’ now. Products with
+    # OBSTYPE’s of ARC/RONCHI/FLAT/DARK (i.e. all non-OBJECT) should be set to
+    # ‘spectrum’,  since one axis is the wavelengths axis, and more consistent
+    # with the final use of the data (and this is what data product type is set
+    # to for the raw data).
+    result = DataProductType.SPECTRUM
+    obs_type = header.get('OBSTYPE')
+    if obs_type == 'OBJECT':
+        result = DataProductType.CUBE
+    return result
+
+
+def _get_telescope_x(uri):
+    x, ignore_y, ignore_z = _get_telescope()
+    return x
+
+
+def _get_telescope_y(uri):
+    ignore_x, y, ignore_z = _get_telescope()
+    return y
+
+
+def _get_telescope_z(uri):
+    ignore_x, ignore_y, z = _get_telescope()
+    return z
+
+
+def _get_telescope():
+    # DB 19-08-20
+    # NIFS only ever on Gemini North
+    x, y, z = ac.get_location(19.823806, -155.46906, 4213.0)
+    return x, y, z
 
 
 def _update_energy(chunk, header, filter_name, obs_id):

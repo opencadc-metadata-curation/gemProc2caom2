@@ -107,13 +107,13 @@ class GemProcPreview(mc.PreviewVisitor):
         obs_type = hdus[0].header.get('OBSTYPE').upper()
         interval = ZScaleInterval()
         if (self._observation.target is not None and
-                self._observation.target.moving):
+                self._observation.target.moving) and obs_type != 'DARK':
             interval = MinMaxInterval()
         if 'OBJECT' in obs_type:
             white_light_data = interval(
                 np.flipud(np.median(hdus['SCI'].data, axis=0)))
         elif ('FLAT' in obs_type or 'ARC' in obs_type or
-              'RONCHI' in obs_type):
+              'RONCHI' in obs_type or 'DARK' in obs_type):
             # Stitch together the 29 'SCI' extensions into one array and save.
             hdul = [x for x in hdus if x.name == 'SCI']
             hdul.sort(key=lambda x: int(re.split(r"[\[\]\:\,']+",
