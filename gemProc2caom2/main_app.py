@@ -136,10 +136,11 @@ APPLICATION = 'gemProc2caom2'
 
 class GemProcName(mc.StorageName):
 
-    def __init__(self, file_name):
+    def __init__(self, file_name, entry):
         super(GemProcName, self).__init__(fname_on_disk=file_name,
                                           archive=ARCHIVE,
-                                          compression='')
+                                          compression='',
+                                          entry=entry)
         self._file_name = file_name
         self._file_id = gem_name.GemName.remove_extensions(file_name)
         self._obs_id = self.get_obs_id()
