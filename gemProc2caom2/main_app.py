@@ -144,6 +144,8 @@ class GemProcName(mc.StorageName):
         self._file_name = file_name
         self._file_id = gem_name.GemName.remove_extensions(file_name)
         self._obs_id = self.get_obs_id()
+        self.scheme = 'cadc'
+        self.archive = 'GEMINI'
         self._logger = logging.getLogger(__name__)
         self._logger.debug(self)
 
@@ -238,9 +240,11 @@ def update(observation, **kwargs):
     uri = kwargs.get('uri')
     gem_proc_name = None
     if uri is not None:
-        gem_proc_name = GemProcName(file_name=mc.CaomName(uri).file_name)
+        temp = mc.CaomName(uri).file_name
+        gem_proc_name = GemProcName(file_name=temp, entry=temp)
     if fqn is not None:
-        gem_proc_name = GemProcName(file_name=os.path.basename(fqn))
+        temp = os.path.basename(fqn)
+        gem_proc_name = GemProcName(file_name=temp, entry=temp)
     if gem_proc_name is None:
         raise mc.CadcException(f'Need one of fqn or uri defined for '
                                f'{observation.observation_id}')
@@ -368,7 +372,7 @@ def _update_energy(chunk, header, filter_name, obs_id):
     # so can't use the WcsParser from caom2utils.
     disp_axis = header.get('DISPAXIS')
     naxis = header.get('NAXIS')
-    if disp_axis <= naxis:
+    if disp_axis is not None and naxis is not None and disp_axis <= naxis:
         axis = Axis(ctype='WAVE', cunit='Angstrom')
         coord_axis_1d = CoordAxis1D(axis)
         ref_coord = RefCoord(pix=header.get(f'CRPIX{disp_axis}'),
@@ -475,7 +479,8 @@ def _get_uris(args):
         for ii in args.local:
             file_id = mc.StorageName.remove_extensions(os.path.basename(ii))
             file_name = f'{file_id}.fits'
-            result.append(GemProcName(file_name=file_name).file_uri)
+            result.append(GemProcName(file_name=file_name,
+                                      entry=file_name).file_uri)
     elif args.lineage:
         for ii in args.lineage:
             result.append(ii.split('/', 1)[1])
