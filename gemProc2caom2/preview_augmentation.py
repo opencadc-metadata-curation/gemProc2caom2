@@ -89,7 +89,8 @@ class GemProcPreview(mc.PreviewVisitor):
         super(GemProcPreview, self).__init__(
             ARCHIVE, ReleaseType.DATA, **kwargs)
         self._observation = observation
-        self._storage_name = GemProcName(file_name=self._science_file)
+        self._storage_name = GemProcName(file_name=self._science_file,
+                                         entry=self._science_file)
         self._science_fqn = os.path.join(self._working_dir,
                                          self._storage_name.file_name)
         self._preview_fqn = os.path.join(

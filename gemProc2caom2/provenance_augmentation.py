@@ -93,7 +93,7 @@ def visit(observation, **kwargs):
     tap_client = CadcTapClient(subject, config.tap_id)
 
     count = 0
-    storage_name = GemProcName(science_file)
+    storage_name = GemProcName(science_file, entry=science_file)
     obs_members = TypedSet(ObservationURI, )
 
     for plane in observation.planes.values():
