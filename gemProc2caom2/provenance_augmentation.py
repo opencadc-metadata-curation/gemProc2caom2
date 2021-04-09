@@ -147,6 +147,9 @@ def _do_provenance(working_directory, science_file, observation,
     count = 0
     fqn = os.path.join(working_directory, science_file)
     hdus = fits.open(fqn)
+    if 'PROVENANCE' not in hdus:
+        return count
+
     data = hdus['PROVENANCE'].data
     temp = None
     for entry in data.columns:
