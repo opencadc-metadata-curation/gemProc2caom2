@@ -115,13 +115,15 @@ import sys
 import traceback
 
 from cadctap import CadcTapClient
+from cadcutils import net
 from caom2 import Observation, CalibrationLevel, ProductType, TemporalWCS
 from caom2 import Axis, CoordAxis1D, SpectralWCS, CoordFunction1D, RefCoord
 from caom2 import CoordError, ObservationIntentType, SimpleObservation
-from caom2 import Algorithm, DataProductType
+from caom2 import Algorithm, DataProductType, DerivedObservation, Provenance
 from caom2utils import ObsBlueprint, get_gen_proc_arg_parser, gen_proc
 from caom2utils import WcsParser
 from caom2pipe import astro_composable as ac
+from caom2pipe import caom_composable as cc
 from caom2pipe import manage_composable as mc
 from gem2caom2 import ARCHIVE, COLLECTION, external_metadata
 from gem2caom2 import gem_name, obs_file_relationship
@@ -306,10 +308,37 @@ def update(observation, **kwargs):
                     while len(part.chunks) > 0:
                         del part.chunks[-1]
 
+        if isinstance(observation, DerivedObservation):
+            if plane.provenance is None:
+                plane.provenance = Provenance(name='TBD')
+            subject = net.Subject(certificate='/usr/src/app/cadcproxy.pem')
+            tap_client = CadcTapClient(
+                    subject, resource_id='ivo://cadc.nrc.ca/ams/gemini')
+
+            def _repair_provenance_value(imcmb_value, obs_id):
+                logging.debug(f'Being _repair_provenance_value for {obs_id}.')
+                prov_file_id = gem_name.GemName.remove_extensions(imcmb_value)
+                prov_obs_id = external_metadata.get_obs_id_from_cadc(
+                    prov_file_id, tap_client)
+                logging.debug(f'End _repair_provenance_value {prov_obs_id} '
+                              f'{prov_file_id}')
+                return prov_obs_id, prov_file_id
+
+            cc.update_plane_provenance_list(
+                    plane, headers, 
+                    ['IMCMB', 'SKY', 'FLATIM', 'DARKIM', 'BPMIMG'], 
+                    COLLECTION, _repair_provenance_value, 
+                    observation.observation_id)
+            cc.build_temporal_wcs_bounds(tap_client, headers[0],
+                    ['IMCMB', 'SKY', 'FLATIM', 'DARKIM', 'BPMIMG'],
+                    COLLECTION)
+
     if isinstance(observation, SimpleObservation):
         # undo the observation-level metadata modifications for updated
         # Gemini records
         observation.algorithm = Algorithm(name='exposure')
+    else:
+        cc.update_observation_members(observation)
     logging.debug('Done update.')
     return observation
 
@@ -340,7 +369,11 @@ def _get_plane_data_product_type(header):
     result = DataProductType.SPECTRUM
     obs_type = header.get('OBSTYPE')
     if obs_type == 'OBJECT':
-        result = DataProductType.CUBE
+        instrument = header.get('INSTRUME')
+        if instrument == 'NIRI':
+            result = DataProductType.IMAGE
+        else:
+            result = DataProductType.CUBE
     return result
 
 
