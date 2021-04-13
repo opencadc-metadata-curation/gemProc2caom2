@@ -230,6 +230,12 @@ def accumulate_bp(bp, uri):
     bp.clear('Plane.provenance.version')
     bp.add_fits_attribute('Plane.provenance.version', 'SOFT_VER')
 
+    meta_producer = mc.get_version(APPLICATION)
+    bp.set('Observation.metaProducer', meta_producer)
+    bp.set('Plane.metaProducer', meta_producer)
+    bp.set('Artifact.metaProducer', meta_producer)
+    bp.set('Chunk.metaProducer', meta_producer)
+
     logging.debug('Done accumulate_bp.')
 
 
@@ -324,8 +330,12 @@ def update(observation, **kwargs):
             def _repair_provenance_value(imcmb_value, obs_id):
                 logging.debug(f'Being _repair_provenance_value for {obs_id}.')
                 prov_file_id = gem_name.GemName.remove_extensions(imcmb_value)
-                prov_obs_id = external_metadata.get_obs_id_from_cadc(
-                    prov_file_id, tap_client)
+                if '[SCI' in prov_file_id:
+                    prov_file_id = None
+                    prov_obs_id = None
+                else:
+                    prov_obs_id = external_metadata.get_obs_id_from_cadc(
+                        prov_file_id, tap_client)
                 logging.debug(f'End _repair_provenance_value {prov_obs_id} '
                               f'{prov_file_id}')
                 return prov_obs_id, prov_file_id

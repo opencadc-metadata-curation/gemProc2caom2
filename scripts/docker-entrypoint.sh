@@ -13,7 +13,7 @@ if [[ ! -e ${PWD}/state.yml ]]; then
       last_record: $yesterday
 " > ${PWD}/state.yml
   else
-    cp /state.yml ${PWD}
+    cp /usr/local/lib/state.yml ${PWD}
   fi
 fi
 
