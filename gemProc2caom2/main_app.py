@@ -149,11 +149,12 @@ class GemProcName(mc.StorageName):
             self._vos_uri = file_name
             self._file_name = os.path.basename(urlparse(self._vos_uri).path)
             self.get_obs_id_from_vos()
+            self._file_id = gem_name.GemName.remove_extensions(self._file_name)
         else:
             self._file_name = file_name
             self._obs_id = self.get_obs_id()
+            self._file_id = gem_name.GemName.remove_extensions(file_name)
 
-        self._file_id = gem_name.GemName.remove_extensions(file_name)
         self.scheme = 'cadc'
         self.archive = 'GEMINI'
         self.fname_on_disk = self._file_name
