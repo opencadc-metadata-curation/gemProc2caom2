@@ -199,6 +199,10 @@ class GemProcName(mc.StorageName):
     def thumb(self):
         return '{}_th.jpg'.format(self._file_id)
 
+    def is_valid(self):
+        # over-ride self._obs_id dependency
+        return True
+
 
 def accumulate_bp(bp, uri):
     """Configure the telescope-specific ObsBlueprint at the CAOM model 
