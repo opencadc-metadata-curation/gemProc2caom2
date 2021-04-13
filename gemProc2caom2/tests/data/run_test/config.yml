@@ -1,0 +1,10 @@
+proxy_file_name: /usr/src/app/gemProc2caom2/gemProc2caom2/tests/data/test_proxy.pem
+use_local_files: True
+task_types:
+ - scrape
+features:
+  supports_composite: False
+  supports_latest_caom: False
+  supports_multiple_files: False
+  use_file_names: True
+  use_urls: False

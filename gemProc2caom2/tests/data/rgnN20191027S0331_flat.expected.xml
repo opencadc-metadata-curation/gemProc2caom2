@@ -1,0 +1,1123 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:CompositeObservation" caom2:id="bb7bf9cb-8806-4a71-a1d3-172b86b60571">
+  <caom2:collection>GEMINI</caom2:collection>
+  <caom2:observationID>GN-2019B-FT-101-34-001-RGN-FLAT</caom2:observationID>
+  <caom2:metaRelease>2020-06-30T18:11:17.000</caom2:metaRelease>
+  <caom2:algorithm>
+    <caom2:name>composite</caom2:name>
+  </caom2:algorithm>
+  <caom2:type>FLAT</caom2:type>
+  <caom2:intent>calibration</caom2:intent>
+  <caom2:target>
+    <caom2:name>GCALflat</caom2:name>
+  </caom2:target>
+  <caom2:telescope>
+    <caom2:name>Gemini-North</caom2:name>
+  </caom2:telescope>
+  <caom2:instrument>
+    <caom2:name>NIFS</caom2:name>
+  </caom2:instrument>
+  <caom2:planes>
+    <caom2:plane caom2:id="96712085-9b50-4c22-a489-f039b62138f1">
+      <caom2:productID>rgnN20191027S0331_flat</caom2:productID>
+      <caom2:metaRelease>2019-10-27T00:00:00.000</caom2:metaRelease>
+      <caom2:dataRelease>2019-10-27T00:00:00.000</caom2:dataRelease>
+      <caom2:dataProductType>image</caom2:dataProductType>
+      <caom2:calibrationLevel>2</caom2:calibrationLevel>
+      <caom2:provenance>
+        <caom2:name>Nifty4Gemini</caom2:name>
+        <caom2:producer>CADC</caom2:producer>
+        <caom2:reference>https://doi.org/10.5281/zenodo.897014</caom2:reference>
+        <caom2:lastExecuted>2020-06-30T18:11:17.000</caom2:lastExecuted>
+        <caom2:inputs>
+          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-34-001/N20191027S0331</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-34-008/N20191027S0338</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-34-002/N20191027S0332</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-34-003/N20191027S0333</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-34-005/N20191027S0335</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-34-007/N20191027S0337</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-34-006/N20191027S0336</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-34-010/N20191027S0340</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-34-001-SHIFT/sN20191027S0331_shift</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-34-009/N20191027S0339</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-34-004/N20191027S0334</caom2:planeURI>
+        </caom2:inputs>
+      </caom2:provenance>
+      <caom2:artifacts>
+        <caom2:artifact caom2:id="bded1758-a7d1-4d20-8f74-c8a98e0ae3ca">
+          <caom2:uri>ad:GEM/rgnN20191027S0331_flat.fits</caom2:uri>
+          <caom2:productType>calibration</caom2:productType>
+          <caom2:releaseType>data</caom2:releaseType>
+          <caom2:contentType>application/fits</caom2:contentType>
+          <caom2:contentLength>41486400</caom2:contentLength>
+          <caom2:contentChecksum>md5:8aa65e750c6f72c2d7ff39ab6443ca40</caom2:contentChecksum>
+          <caom2:parts>
+            <caom2:part caom2:id="f8a32fd8-5698-4b40-82fa-a99a5b61e595">
+              <caom2:name>0</caom2:name>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="9e40f054-d9f7-444f-9647-30aa5d143647">
+              <caom2:name>1</caom2:name>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="c66b4cbd-3acb-4a46-9e11-bc79440d9bf2">
+              <caom2:name>2</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="83df98b5-af25-4e37-9f23-d28ba8d1e292">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="8bb40ee2-8d12-498c-9933-1d485bcb0978">
+              <caom2:name>3</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="fe30614a-2e60-4a95-9445-3cb099ce4dd4">
+              <caom2:name>4</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="c03888e7-8f99-46ad-afbc-5510946bcd31">
+              <caom2:name>5</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="5e7ea842-ab58-412d-861d-5160472ccabf">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="ff931f04-9b40-42a3-aa4e-5791790a94f9">
+              <caom2:name>6</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="1fe05896-1993-473e-8bc7-570510a74479">
+              <caom2:name>7</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="4a5f4b67-60a1-4c8f-a78f-f1536dae37ee">
+              <caom2:name>8</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="ec2d28f8-0583-4ed3-b58d-d9e85104a262">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="82bf5f4b-f12c-4883-a97e-b8adfb95bc15">
+              <caom2:name>9</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="f6b2d176-a065-4b6c-88c9-9623d333a066">
+              <caom2:name>10</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="f193eba1-00c2-4dd3-be77-7566f253849f">
+              <caom2:name>11</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="80ceaa44-5129-4666-9b14-c370e6d5983b">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="ede793bb-683b-4a6f-a348-d3b22a21219c">
+              <caom2:name>12</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="5ac5d7ca-4a70-431f-addb-b02c6b3cb184">
+              <caom2:name>13</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="1ddd7e82-eabe-4080-a7d8-1ede56bf1457">
+              <caom2:name>14</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="63b75a2c-0930-4249-a755-79b42d91eca2">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="30ddb4fb-40a5-485b-927d-1273b7c20f05">
+              <caom2:name>15</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="95fcb6c4-7f64-4b10-a7dd-53919e76ef57">
+              <caom2:name>16</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="b2c44477-9eb7-4d0c-bb4e-46e93f25ea60">
+              <caom2:name>17</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="468d6410-b701-41c2-b46e-357384dd73cd">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="6f38e4db-84c8-49b4-8cbe-67e9163e1297">
+              <caom2:name>18</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="e63612ea-f4ff-4dc7-84b5-79fabb1e8a6a">
+              <caom2:name>19</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="b096207e-2828-48ba-ac19-64d8b29ba6fe">
+              <caom2:name>20</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="242667ec-1714-4d2f-8c7c-cdf6d7897d6d">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="3f84248a-d675-41c5-b418-3e444ce65b18">
+              <caom2:name>21</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="f0b64bc4-57fb-4034-96ef-d133b1267e41">
+              <caom2:name>22</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="51e421c4-25e1-45c3-95f6-0817326da396">
+              <caom2:name>23</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="5f35465b-61c0-417c-8627-f85a461bffd1">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="4f05a7ae-1917-454e-b271-bb4e1e02a4de">
+              <caom2:name>24</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="cb8e8376-44fc-4e83-8ca9-839971d34cfe">
+              <caom2:name>25</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="4335bf07-e6dd-4e89-a457-7bc826430b38">
+              <caom2:name>26</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="ea00379f-4b22-4aa7-875c-63ace84d06b7">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="01f97ae8-7762-4e71-a682-bf8f93398f01">
+              <caom2:name>27</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="9fbe7240-2973-4c5d-a9ca-c5bc67323771">
+              <caom2:name>28</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="958c10d3-96e8-4344-9c69-e508bf2899dc">
+              <caom2:name>29</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="5130389f-11f3-43ec-a1c5-c5b52a85dc11">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="8898a6e1-7232-40d8-bfa5-01b52a21cdd8">
+              <caom2:name>30</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="42d3e6eb-f6b8-41ea-9355-745899ff2385">
+              <caom2:name>31</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="17aafc8a-8418-4d7d-9291-f8428a11cdea">
+              <caom2:name>32</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="01c963df-8860-4710-9a69-1f2468757dd6">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="dbf7b6a2-d22a-4b3f-b80e-05fb4af31d09">
+              <caom2:name>33</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="8cbdfa5f-a910-4563-b0ea-38bd25b738ad">
+              <caom2:name>34</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="7673b271-dc4c-4ee1-a4b9-9a77cadb9a18">
+              <caom2:name>35</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="99f1c329-4c4d-4223-84f3-def54ba5f833">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="a3f0290d-b8f4-411e-b340-1b83ae8580ea">
+              <caom2:name>36</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="a38978f3-48b8-488d-9429-6e710d038659">
+              <caom2:name>37</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="bf9bbbc7-aad7-4b91-9a91-1aade7234589">
+              <caom2:name>38</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="7e9017a4-9b92-433e-b12b-bc256cadc5f0">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="ac521652-6c15-4c0a-a2cc-2bff6cb33840">
+              <caom2:name>39</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="db43be1f-12e7-466e-9e12-dbbd8b3cffd1">
+              <caom2:name>40</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="93412eb7-8cf9-44e4-8327-d5bb97e9445c">
+              <caom2:name>41</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="5380383d-1d6b-4ffb-972e-9f83fad9a2bf">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="e4cfddcc-12a5-425e-b3d6-33e75c59aba8">
+              <caom2:name>42</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="f8d87272-02b6-4397-bec1-507ce1a7cb07">
+              <caom2:name>43</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="6ae92956-443b-4491-8c43-7c7d79fd4885">
+              <caom2:name>44</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="5ef4f267-104c-4991-a69c-1e75c31122e0">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="b1e6a556-11ba-45b1-a555-171bbf6dffb3">
+              <caom2:name>45</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="d9095256-06cc-408a-9032-f6de1263626c">
+              <caom2:name>46</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="b2c809d8-852c-4eb5-90b8-8fe752109860">
+              <caom2:name>47</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="02fd98a4-6930-478f-9958-302308c4bc62">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="8d187eb1-cf0f-4a9e-82ed-fab027b1f4bd">
+              <caom2:name>48</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="9a6d210b-3691-4ad9-8bba-58498767312c">
+              <caom2:name>49</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="b1a1d77e-6a11-469e-ae25-f9cf7fc17bff">
+              <caom2:name>50</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="1a9c5768-8e03-4d03-9f3e-bf7a5d7771de">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="06126fdb-43f8-4238-aafe-5a1276ddbbcb">
+              <caom2:name>51</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="ef6d73b2-79e9-4be8-81b1-dcec5f9d95b6">
+              <caom2:name>52</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="8c8d01cc-7347-47a7-ad69-17f616a7c9ec">
+              <caom2:name>53</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="a5623bac-a2b4-4ec3-a6e2-45d2a6eb37dd">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="daa4ddfc-e967-47d8-a982-038a2cb0a905">
+              <caom2:name>54</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="e6ffb5c1-e4b8-4a79-9875-697c8ee74572">
+              <caom2:name>55</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="4481633f-067b-436a-aaf9-6a14df2a3df3">
+              <caom2:name>56</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="b063e169-6274-4efd-aa31-f4333c6e7357">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="bc92a65a-d436-4faa-8bb8-baef263cff19">
+              <caom2:name>57</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="b74f8c30-33d8-4d4b-9009-7ab109fe896f">
+              <caom2:name>58</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="cbe3eb41-46ad-4c6c-9890-7e173f05af0e">
+              <caom2:name>59</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="0cb3354e-2a61-43f6-a8b7-44e4b320451c">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="39aca4a4-6056-4ec4-a364-b6e4327c9b98">
+              <caom2:name>60</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="dbbee0cd-5a0f-4b4b-a27f-7b89663b34a7">
+              <caom2:name>61</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="d86f962e-e6f9-4315-83e2-80628d15675e">
+              <caom2:name>62</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="be576d34-4d05-4df1-994d-df19dacbd1b2">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="c995689a-eb96-4286-bbbc-94e50f658763">
+              <caom2:name>63</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="d88f8bf0-752b-4d2d-b604-44d2bd7f9e66">
+              <caom2:name>64</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="6417c5cc-2eca-4189-b462-c1c226551172">
+              <caom2:name>65</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="8fcfa29b-338c-4b83-9793-6ca80ff46b1c">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="2c83c91e-87b2-4987-a790-def0909c055d">
+              <caom2:name>66</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="da5963c2-8187-44f8-bac3-4ac8863c6081">
+              <caom2:name>67</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="6b007be6-6ec1-4f8d-8d8b-e412c6eb1caa">
+              <caom2:name>68</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="1f7e57c1-7116-467c-a177-5b9317f77974">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="28dc30cd-ac85-400d-8de9-aeb304ae30cd">
+              <caom2:name>69</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="231b38be-70c7-4d29-9404-ca6f8be612ae">
+              <caom2:name>70</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="4873270a-8f53-4140-b8a2-2ccba05aa082">
+              <caom2:name>71</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="9554869f-bb7c-4c57-a2a0-a83712f3be8c">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="4b690889-206a-474f-93dd-2b966cd09c5e">
+              <caom2:name>72</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="86ab3295-94e5-4070-a996-260dcb6f9f23">
+              <caom2:name>73</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="17855cc3-3aea-4c7d-b0a9-c1e1000e116f">
+              <caom2:name>74</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="10292e68-f8ad-4a98-b603-198efc6d6bc2">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="ef8a2c82-5b83-4915-b216-93b9a0ef4e2e">
+              <caom2:name>75</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="19c272c7-a43e-438f-bd4a-ec4177e81b5f">
+              <caom2:name>76</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="cb0da07c-6060-4816-9353-b8d3fdbd3757">
+              <caom2:name>77</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="4f227485-bb10-4f40-977e-13eaff2e793a">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="c0ddf7f5-2ff0-4c26-b103-ec27a0ad5b27">
+              <caom2:name>78</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="bf667214-d7cb-4ddd-93b0-992e8a1ab052">
+              <caom2:name>79</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="727aa02a-c5c6-41ef-bd08-7c695b09ad31">
+              <caom2:name>80</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="b1c8e5dc-56b3-4f87-b61a-d91d29faf6cd">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="0cb687ec-d3b1-44c3-a80c-92ab6a4beed5">
+              <caom2:name>81</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="5d73d85a-9aa5-487d-ad96-2473669496f9">
+              <caom2:name>82</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="342ea5f8-b42b-43ab-9529-b450371e77eb">
+              <caom2:name>83</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="5f4f8ef1-f10d-491b-9d24-0f13bf9fdfbe">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="ec88707b-7705-463f-93c6-4a6ba1047e55">
+              <caom2:name>84</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="9d25d1e6-c993-4e49-93b2-6722813248a7">
+              <caom2:name>85</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="f4e960dd-0148-46fa-8226-d3c2bd068102">
+              <caom2:name>86</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="600b40b3-29fe-433c-b93a-4d5f66d61871">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                  </caom2:energy>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="63ab15b4-8a1f-4dc9-bba5-61e4a387d91b">
+              <caom2:name>87</caom2:name>
+              <caom2:productType>noise</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="424b2ef5-df37-45a2-9026-9144948331cc">
+              <caom2:name>88</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
+            </caom2:part>
+            <caom2:part caom2:id="a56d07c5-a6b3-4aac-89c8-7b05b6d9f1f9">
+              <caom2:name>89</caom2:name>
+              <caom2:chunks/>
+            </caom2:part>
+          </caom2:parts>
+        </caom2:artifact>
+      </caom2:artifacts>
+    </caom2:plane>
+  </caom2:planes>
+  <caom2:members>
+    <caom2:observationURI>caom:GEMINI/GN-2019B-FT-101-34-001</caom2:observationURI>
+    <caom2:observationURI>caom:GEMINI/GN-2019B-FT-101-34-002</caom2:observationURI>
+    <caom2:observationURI>caom:GEMINI/GN-2019B-FT-101-34-003</caom2:observationURI>
+    <caom2:observationURI>caom:GEMINI/GN-2019B-FT-101-34-004</caom2:observationURI>
+    <caom2:observationURI>caom:GEMINI/GN-2019B-FT-101-34-005</caom2:observationURI>
+  </caom2:members>
+</caom2:Observation>

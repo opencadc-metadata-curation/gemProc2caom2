@@ -1,0 +1,544 @@
+# HDU 0 in ../../int_test/test_files/ctfbrsnN20191027S0084.fits:
+SIMPLE  =                    T / Fits standard                                  
+BITPIX  =                   16 / Bits per pixel                                 
+NAXIS   =                    0 / Number of axes                                 
+EXTEND  =                    T / File may contain extensions                    
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+DATE    = '2020-08-06T17:34:56' / Date FITS file was generated                  
+IRAF-TLM= '2020-08-06T17:37:23' / Time of last modification                     
+COMMENT   FITS (Flexible Image Transport System) format is defined in 'Astronomy
+COMMENT   and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H 
+INSTRUME= 'NIFS    '           / Instrument used to acquire data.               
+OBJECT  = 'Mrk955  '           / Object Name                                    
+OBSTYPE = 'OBJECT  '           / Observation type                               
+OBSCLASS= 'science '           / Observe class                                  
+GEMPRGID= 'GN-2019B-FT-101'    / Gemini Science Program ID                      
+OBSID   = 'GN-2019B-FT-101-31' / Observation ID / Data label                    
+DATALAB = 'GN-2019B-FT-101-31-002' / Datalabel                                  
+OBSERVER= 'J. Ferrara'         / Observer                                       
+OBSERVAT= 'Gemini-North'       / Observatory                                    
+TELESCOP= 'Gemini-North'       / Telescope                                      
+PARALLAX=                   0. / Parallax of Target                             
+RADVEL  =               10280. / Heliocentric Radial Velocity                   
+EPOCH   =                2000. / Epoch for Target coordinates                   
+EQUINOX =                2000. / Equinox for Target coordinates                 
+TRKEQUIN=                2000. / Tracking equinox                               
+SSA     = 'C. Cunningham'      / SSA                                            
+RA      =           9.39915417 / RA of Target                                   
+DEC     =           0.28068611 / Declination of Target                          
+ELEVATIO=     67.8730902777778 / Current Elevation                              
+AZIMUTH =     209.812072222222 / Current Azimuth                                
+CRPA    =    -117.823632720021 / Current Cass Rotator Position Angle            
+HA      = '+00:43:03.95'       / Telescope hour angle                           
+LT      = '23:21:45.7'         / Local time at start of observation             
+TRKFRAME= 'FK5     '           / Tracking co-ordinate                           
+DECTRACK=                   0. / Differential tracking rate Dec                 
+TRKEPOCH=         58783.355625 / Differential tracking reference epoch          
+RATRACK =                   0. / Differential tracking rate RA                  
+FRAME   = 'FK5     '           / Target coordinate system                       
+PMDEC   =                   0. / Proper Motion in Declination                   
+PMRA    =                   0. / Proper Motion in RA                            
+WAVELENG=               22000. / Effective Target Wavelength                    
+RAWIQ   = '20-percentile'      / Raw Image Quality                              
+RAWCC   = '50-percentile'      / Raw Cloud Cover                                
+RAWWV   = '80-percentile'      / Raw Water Vapour/Transparency                  
+RAWBG   = '20-percentile'      / Raw Background                                 
+RAWPIREQ= 'YES     '           / PI Requirements Met                            
+RAWGEMQA= 'USABLE  '           / Gemini Quality Assessment                      
+CGUIDMOD= 'Basic   '           / Driving mode for carousel                      
+UT      = '09:21:46.2'         / Beginning of Observation (UT)                  
+M2BAFFLE= 'NEAR IR '           / Position of M2 baffle                          
+M2CENBAF= 'OPEN    '           / Position of M2 central hole baffle             
+ST      = '01:21:41.2'         / Sidereal time at the start of the exposure     
+XOFFSET =    0.487057815360772 / Telescope offset in x in arcsec                
+YOFFSET =   -0.316137526561684 / Telescope offset in y in arcsec                
+POFFSET =    0.316137526562393 / Telescope offset in p in arcsec                
+QOFFSET =    0.487057815360312 / Telescope offset in q in arcsec                
+RAOFFSET=    0.316137526562393 / Telescope offset in RA in arcsec               
+DECOFFSE=    0.487057815360312 / Telescope offset in DEC in arcsec              
+RATRGOFF=                   0. / Target offset in RA in arcsec                  
+DECTRGOF=                   0. / Target offset in DEC in arcsec                 
+PA      =                   0. / Sky Position Angle at start of exposure        
+IAA     =                 270. / Instrument Alignment Angle                     
+SFRT2   =              -91.089 / Science fold rotation angle (degrees)          
+SFTILT  =               -45.16 / Science fold tilt angle (degrees)              
+SFLINEAR=                -1.25 / Science fold linear position (mm)              
+AOFOLD  = 'IN      '           / AO Pick-Off Mirror Position                    
+PWFS1_ST= 'parked  '           / PWFS1 probe state (frozen,guiding,parked)      
+PWFS2_ST= 'parked  '           / PWFS2 probe state (frozen,guiding,parked)      
+OIWFS_ST= 'parked  '           / OIWFS probe state (frozen,guiding,parked)      
+AOWFS_ST= 'guiding '           / AOWFS probe state (frozen,guiding,parked)      
+SCIBAND =                    1 / Science Ranking Band                           
+REQIQ   = '70-percentile'      / Requested Image Quality                        
+REQCC   = '50-percentile'      / Requested Cloud Cover                          
+REQBG   = 'Any     '           / Requested Background                           
+REQWV   = 'Any     '           / Requested Water Vapour                         
+NUMREQTW=                    1 / Number of Requested Timing Window REQTW entries
+REQTWS01= '2019-08-20T18:48:11' / Requested Timing Window 01 Start (UTC)        
+REQTWD01=             6307200. / Requested Timing Window 01 Duration [seconds]  
+REQTWN01=                    0 / Requested Timing Window 01 Number of Repeats   
+REQTWP01=                   0. / Requested Timing Window 01 Repeat Period [secon
+AOARA   =            9.3992375 / RA of AOWFS guide star                         
+AOARV   =                   0. / AOWFS Heliocentric Radial Velocity             
+AOAWAVEL=                7000. / AOWFS Effective Target Wavelength              
+AOADEC  =             0.280725 / Declination of AOWFS guide star                
+AOAEPOCH=                2000. / Epoch for AOWFS guide star coordinates         
+AOAEQUIN=                2000. / Equinox for AOWFS guide star coordinates       
+AOAFRAME= 'FK5     '           / AOWFS Target coordinate system                 
+AOAOBJEC= '452-000816'         / Object Name for AOWFS guide star               
+AOAPMDEC=               0.0058 / AOWFS Proper Motion in Declination             
+AOAPMRA =              7.0E-05 / AOWFS Proper Motion in RA                      
+AOAPARAL=                   0. / AOWFS Parallax of Target                       
+AOFOCUS =               -0.028 / AOWFS Focus Offset (mm)                        
+HUMIDITY=                  37. / The relative humidity (fraction, 0..101).      
+TAMBIENT=                  1.3 / The ambient temp (C).                          
+TAMBIEN2=                34.34 / The ambient temp (F).                          
+PRESSURE=            463.67304 / The atmospheric pressure (mm Hg).              
+PRESSUR2=               61800. / The atmospheric pressure (Pa).                 
+DEWPOINT=                -11.9 / The dew point (C).                             
+DEWPOIN2=                10.58 / The dew point (F).                             
+WINDSPEE=                  3.1 / The wind speed (m/s).                          
+WINDSPE2=               6.9347 / The wind speed (mph).                          
+WINDDIRE=                 288. / The wind direction (degrees).                  
+WINDCOVR= 'Opened  '           / Window cover position name (open|closed)       
+FILTER  = 'HK_G0603'           / Filter name                                    
+APOFFSET=                   0. / Fopl offseti (arcseconds)                      
+GRATING = 'K_G5605 '           / Grating name                                   
+GRATWAVE=                  2.2 / Grating cetntral wavelength                    
+APERTURE= '3.0_Mask_G5610'     / Focal plane mask                               
+FLIP    = 'Out     '           / Imaging (flip) mirror                          
+EXPRQ   =                 600. / Requested Exposure time                        
+DCNAME  = 'NIFS DC '           / Nifs dc name                                   
+PERIOD  =                 600. / Period                                         
+NPERIODS=                    1 / Number of periods                              
+EXPMODE = 'NONDESTRUCTIVE'     / Exposure mode                                  
+RDTIME  =                   5. / Read time                                      
+COADDS  =                    1 / Number of coadds summed                        
+BIASPWR =                   3. / Source voltage of bias P-FET                   
+OBSMODE = 'IFU     '           / Observing mode configuration                   
+LNRS    =                   16 / Number of non-destructive read pairs           
+DATE-OBS= '2019-10-27'         / Observation date (UT)                          
+INPORT  =                    1 / Number of ISS port where NIFS was located      
+CTYPE1  = 'RA---TAN'           / R.A. in tangent plane projection               
+CRPIX1  =            14.999922 / Ref pix of axis 1                              
+CRVAL1  =             9.399283 / RA at Ref pix in decimal degrees               
+CTYPE2  = 'DEC--TAN'           / DEC. in tangent plane projection               
+CRPIX2  =            34.000248 / Ref pix of axis 2                              
+CRVAL2  =             0.280058 / DEC at Ref pix in decimal degrees              
+CD1_1   =                  -0. / WCS matrix element 1 1                         
+CD1_2   =              1.9E-05 / WCS matrix element 1 2                         
+CD2_1   =             -4.7E-05 / WCS matrix element 2 1                         
+CD2_2   =                  -0. / WCS matrix element 2 2                         
+RADECSYS= 'FK5     '           / R.A./DEC. coordinate system reference          
+MJD_OBS =         58783.390867 / Mean Julian day of observation                 
+DETSIZE = '[1:2048,1:2048]'    / Dimensions of detector                         
+DETECTOR= 'NIFS    '           / Name of detector                               
+NCCDS   =                    1 / Number of detector CCDS                        
+NAMPS   =                    4 / Number of CCD amps                             
+CCDNAME = 'NIFS    '           / CCD/ARRAY name                                 
+CCDSIZE = '[1:2048,1:2048]'    / Dimensions of CCD                              
+CCDSUM  = '1 1     '           / CCD binning                                    
+CCDSEC  = '[1:512,1:2048]'     / CCD section                                    
+AMPNAME = '1       '           / Amplifier name                                 
+AMPSEC  = '[1:512,1:2048]'     / Amplifier section                              
+DETSEC  = '[1:2048,1:2048]'    / Full detector size                             
+AMPNAME2= '2       '           / Amplifier 2 name                               
+AMPSEC2 = '[1024:513,1:2048]'  / Amplifier 2 section                            
+AMPNAME3= '3       '           / Amplifier 3 name                               
+AMPSEC3 = '[1025:1536,1:2048]' / Amplifier 3 section                            
+AMPNAME4= '4       '           / Amplifier 4 name                               
+AMPSEC4 = '[2048:1537,1:2048]' / Amplifier 4 section                            
+EXPTIME =                 600. / Exposure time (s)                              
+AOFREQ  =                1000. / Altair sampling frequency during exposure (Hz) 
+AOCOUNTS=              376.654 / Altair GS counts at end of exposure (ADU/subape
+AOSEEING=             0.598346 / Altair measured seeing at end of exposure (arcs
+AOWFSX  =         -0.000144684 / Altair WFS X position [mm] (0.621mm/arcsec)    
+AOWFSY  =         -3.49165E-05 / Altair WFS Y position [mm] (0.621mm/arcsec)    
+AOWFSZ  =         -3.98322E-06 / Altair WFS Z position [mm]                     
+AOGAIN  =              1.47408 / Altair centroid gain estimate                  
+AONCPAF = '/aoBase/rel/input/aoNcpaNIFSp1Lgs.dat' / Altair Non-Common Path Aberr
+CRFOLLOW= 'yes     '           / Cass Rotator follow mode (yes|no)              
+AONDFILT= 'OUT     '           / Altair ND filter (in|out)                      
+AOFLENS = 'IN      '           / Altair Fields Lens (in|out)                    
+AOFLEXF = '/aoBase/rel/data/aoFlexNIFSp1Lgs.dat' / Altair flexure file          
+LGUSTAGE= 'IN      '           / LGS U stage position                           
+AOBS    = '0.85-2.5um'         / Altair Beamsplitter                            
+LGDFOCUS=                  32. / LGS defocus offset set point                   
+LGTTCNTS=                 76.7 / Tip tilt sensor counts (ADU)                   
+LGTTEXP =                   5. / Tip tilt sensor exposure time (ms)             
+LGSFCNTS=             14827.25 / Slow focus sensor counts (ADU)                 
+LGSFEXP =                  50. / Slow focus sensor exposure time (s)            
+FSMTIP  =              0.05488 / Field steering mirror tip (mm)                 
+FSMTILT =             0.204619 / Field steering mirror tilt (mm)                
+LGZMPOS =              41.0569 / LGS zoom roof position (mm)                    
+NAALT   =     89.8713355486683 / Sodium layer altitude (km)                     
+NATHICK =              6.65074 / Sodium layer thickness (km)                    
+LGNDFILT= 'OUT     '           / LGS tip tilt sensor neutral density filter     
+LGTTIRIS= 'close   '           / LGS tip tilt sensor iris                       
+AIRMASS =                1.085 / Mean airmass for the observation               
+AMSTART =                1.079 / Airmass at start of exposure                   
+AMEND   =                1.091 / Airmass at end of exposure                     
+PROP_MD =                    F / Proprietary Metadata                           
+RELEASE = '2020-04-27'         / End of proprietary period YYY-MM-DD            
+MDF_YSHF=                  3.2 / MDF Y shift (subtracted from y_ccd)            
+MDF_FILE= 'nifs$data/nifs-mdf[1]' / MDF source                                  
+NEXTEND =                    1 / number of extensions in file                   
+MODE    = 'IFU               ' / Reduction mode                                 
+BIASVOLT=                3.000 / Array bias voltage (V)                         
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+NSCIEXT =                   29 / Number of science extensions                   
+DISPAXIS=                    1 / Dispersion axis (along columns)                
+PREPARE = '2020-08-06T18:33:05' / UT Time stamp for NFPREPARE                   
+GEM-TLM = '2020-08-06T18:37:15' / UT Last modification with GEMINI              
+BPMFILE = 'calibrations/rgnN20191027S0331_sflat_bpm' / Input bad pixel mask file
+GEMARITH= '2020-08-06T17:33:16' / UT Time Stamp for GEMARITH                    
+ORIGXSIZ=                 2040 / Original size in X                             
+ORIGYSIZ=                 2080 / Original size in Y                             
+NSCUT   = '2020-08-06T18:33:17' / UT Time stamp for NSCUT                       
+NSAPPWAV= '2020-08-06T18:33:26' / UT Time stamp for NSAPPWAVE                   
+NSREDUCE= '2020-08-06T18:34:10' / UT Time stamp for NSREDUCE                    
+FLATIMAG= 'calibrations/rgnN20191027S0331_flat' / Flat field image used         
+NFFIXBAD= '2020-08-06T18:34:22' / UT Time stamp for NFFIXBAD                    
+NSFITCOO= '2020-08-06T18:34:55' / UT Time stamp for NSFITCOORDS                 
+NSTRANSF= '2020-08-06T18:35:56' / UT Time stamp for NSTRANSFORM                 
+NIFCUBE = '2020-08-06T18:37:15' / UT Time stamp for NIFCUBE                     
+SOFTWARE= 'Nifty4Gemini'       / Data reduction software name                   
+SOFT_VER= '2.0.0   '           / Data reduction software version                
+SOFT_DOI= '10.5281/zenodo.1000413' / Data reduction software DOI                
+END                                                                             
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+# HDU 1 in ../../int_test/test_files/ctfbrsnN20191027S0084.fits:
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    3 / Number of axes                                 
+NAXIS1  =                   60 / Axis length                                    
+NAXIS2  =                   62 / Axis length                                    
+NAXIS3  =                 2040 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                    1 / Extension version                              
+INHERIT =                    F / Inherits global header                         
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+OBJECT  = 'Mrk955  '           / Name of the object observed                    
+DATE    = '2020-08-06T17:37:15' / Date FITS file was generated                  
+IRAF-TLM= '2020-08-06T17:36:35' / Time of last modification                     
+NFPAD   = '2020-08-06T18:33:00' / UT Time stamp for NFPAD                       
+GEM-TLM = '2020-08-06T18:33:00' / UT Last modification with GEMINI              
+DISPAXIS=                    3 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+NSCUTSEC= '[1:2040,1996:2064]' / Region extracted by NSCUT                      
+NSCUTSPC=                    1 / Spectral order                                 
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+DC-FLAG =                    0 /                                                
+FIXPIX  = 'Aug  6 11:34 Bad pixel file is tmpdq45619_4697'                      
+CD1_1   =                 0.05 /                                                
+CD2_2   =                 0.05 /                                                
+DCLOG1  = 'Transform'                                                           
+WCSDIM  =                    3 /                                                
+CRVAL1  =                2.987                                                  
+CRPIX1  =                  57.                                                  
+CRPIX2  =                   1.                                                  
+WAT1_001= 'wtype=linear axtype=xi' /                                            
+WAT2_001= 'wtype=linear axtype=eta' /                                           
+CTYPE3  = 'LINEAR  '           /                                                
+WAT3_001= 'wtype=linear axtype=wave' /                                          
+CRVAL3  =         19972.859375 /                                                
+CD3_3   =     2.13262867927551 /                                                
+CRPIX3  =                   1.                                                  
+LTM1_1  =                   1.                                                  
+LTM2_2  =                   1.                                                  
+LTM3_3  =                   1.                                                  
+WAT0_001= 'system=world'                                                        
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+END                                                                             
+
+# HDU 2 in ../../int_test/test_files/ctfbrsnN20191027S0084.fits:
+XTENSION= 'BINTABLE'           / binary table extension                         
+BITPIX  =                    8 / array data type                                
+NAXIS   =                    2 / number of array dimensions                     
+NAXIS1  =                  192 / length of dimension 1                          
+NAXIS2  =                    5 / length of dimension 2                          
+PCOUNT  =                    0 / number of group parameters                     
+GCOUNT  =                    1 / number of groups                               
+TFIELDS =                    3 / number of table fields                         
+TTYPE1  = 'Filename'                                                            
+TFORM1  = '64A     '                                                            
+TTYPE2  = 'Description'                                                         
+TFORM2  = '64A     '                                                            
+TTYPE3  = 'Type    '                                                            
+TFORM3  = '64A     '                                                            
+EXTNAME = 'PROVENANCE'         / extension name                                 
+END                                                                             
+
+# HDU 3 in ../../int_test/test_files/ctfbrsnN20191027S0084.fits:
+XTENSION= 'IMAGE   '           / Mask extension                                 
+BITPIX  =                   32 / BITPIX for uncompressed image                  
+NAXIS   =                    2 / NAXIS for uncompressed image                   
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                 2080 / Axis length                                    
+PCOUNT  =                    0 / Heap size in bytes                             
+GCOUNT  =                    1 / Only one group                                 
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+EXTNAME = 'BPM     '           / Extension name                                 
+EXTVER  =                    1 / Extension version                              
+INHERIT =                    F / Inherits global header                         
+DATE    = '2020-08-06T17:37:50' / Date FITS file was generated                  
+IRAF-TLM= '2020-08-06T17:37:50' / Time of last modification                     
+OBJECT  = 'BAD PIXEL MASK from gemini.gnirs.nsflat' / Name of the object observe
+INSTRUME= 'NIFS    '           / Instrument used to acquire data.               
+OBSTYPE = 'FLAT    '           / Observation type                               
+OBSCLASS= 'dayCal  '           / Observe class                                  
+GEMPRGID= 'GN-2019B-FT-101'    / Gemini Science Program ID                      
+OBSID   = 'GN-2019B-FT-101-34' / Observation ID / Data label                    
+OBSERVER= 'J. Ferrara'         / Observer                                       
+OBSERVAT= 'Gemini-North'       / Observatory                                    
+TELESCOP= 'Gemini-North'       / Telescope                                      
+PARALLAX=                   0. / Parallax of Target                             
+RADVEL  =                   0. / Heliocentric Radial Velocity                   
+EPOCH   =                2000. / Epoch for Target coordinates                   
+EQUINOX =                   0. / Equinox for Target coordinates                 
+TRKEQUIN=                2000. / Tracking equinox                               
+SSA     = 'C. Cunningham'      / SSA                                            
+RA      =                  75. / RA of Target                                   
+DEC     =                89.97 / Declination of Target                          
+ELEVATIO=     89.9995222222222 / Current Elevation                              
+AZIMUTH =     75.0001666666667 / Current Azimuth                                
+CRPA    =     180.000038526178 / Current Cass Rotator Position Angle            
+HA      = '-00:00:07.29'       / Telescope hour angle                           
+LT      = '06:42:55.7'         / Local time at start of observation             
+TRKFRAME= 'FK5     '           / Tracking co-ordinate                           
+DECTRACK=       0.024199739937 / Differential tracking rate Dec                 
+TRKEPOCH=         58783.671538 / Differential tracking reference epoch          
+RATRACK =        1.00319816104 / Differential tracking rate RA                  
+FRAME   = 'AZEL_TOPO'          / Target coordinate system                       
+PMDEC   =                  -0. / Proper Motion in Declination                   
+PMRA    =                   0. / Proper Motion in RA                            
+WAVELENG=               22000. / Effective Target Wavelength                    
+RAWIQ   = 'UNKNOWN '           / Raw Image Quality                              
+RAWCC   = 'UNKNOWN '           / Raw Cloud Cover                                
+RAWWV   = 'UNKNOWN '           / Raw Water Vapour/Transparency                  
+RAWBG   = 'UNKNOWN '           / Raw Background                                 
+RAWPIREQ= 'UNKNOWN '           / PI Requirements Met                            
+RAWGEMQA= 'UNKNOWN '           / Gemini Quality Assessment                      
+CGUIDMOD= 'Basic   '           / Driving mode for carousel                      
+UT      = '16:42:56.2'         / Beginning of Observation (UT)                  
+M2BAFFLE= 'VISIBLE '           / Position of M2 baffle                          
+M2CENBAF= 'CLOSED  '           / Position of M2 central hole baffle             
+ST      = '08:44:03.7'         / Sidereal time at the start of the exposure     
+XOFFSET =                   0. / Telescope offset in x in arcsec                
+YOFFSET =                   0. / Telescope offset in y in arcsec                
+POFFSET =                   0. / Telescope offset in p in arcsec                
+QOFFSET =                   0. / Telescope offset in q in arcsec                
+RAOFFSET=                   0. / Telescope offset in RA in arcsec               
+DECOFFSE=                   0. / Telescope offset in DEC in arcsec              
+RATRGOFF=                   0. / Target offset in RA in arcsec                  
+DECTRGOF=                   0. / Target offset in DEC in arcsec                 
+PA      =                   0. / Sky Position Angle at start of exposure        
+IAA     =                 270. / Instrument Alignment Angle                     
+SFRT2   =               88.582 / Science fold rotation angle (degrees)          
+SFTILT  =               -44.89 / Science fold tilt angle (degrees)              
+SFLINEAR=                   8. / Science fold linear position (mm)              
+AOFOLD  = 'park-pos.'          / AO Pick-Off Mirror Position                    
+PWFS1_ST= 'parked  '           / PWFS1 probe state (frozen,guiding,parked)      
+PWFS2_ST= 'parked  '           / PWFS2 probe state (frozen,guiding,parked)      
+OIWFS_ST= 'parked  '           / OIWFS probe state (frozen,guiding,parked)      
+AOWFS_ST= 'parked  '           / AOWFS probe state (frozen,guiding,parked)      
+SCIBAND =                    1 / Science Ranking Band                           
+REQIQ   = 'Any     '           / Requested Image Quality                        
+REQCC   = 'Any     '           / Requested Cloud Cover                          
+REQBG   = 'Any     '           / Requested Background                           
+REQWV   = 'Any     '           / Requested Water Vapour                         
+NUMREQTW=                    0 / Number of Requested Timing Window REQTW entries
+GCALLAMP= 'IRhigh  '           / GCAL Lamp name                                 
+GCALFILT= 'CLEAR   '           / GCAL Filter name                               
+GCALDIFF= 'IR      '           / GCAL Diffuser name                             
+GCALSHUT= 'OPEN    '           / GCAL Shutter (OPEN or CLOSED)                  
+HUMIDITY=                   9. / The relative humidity (fraction, 0..101).      
+TAMBIENT=                  2.1 / The ambient temp (C).                          
+TAMBIEN2=                35.78 / The ambient temp (F).                          
+PRESSURE=            462.17248 / The atmospheric pressure (mm Hg).              
+PRESSUR2=               61600. / The atmospheric pressure (Pa).                 
+DEWPOINT=                -27.6 / The dew point (C).                             
+DEWPOIN2=               -17.68 / The dew point (F).                             
+WINDSPEE=                   4. / The wind speed (m/s).                          
+WINDSPE2=                8.948 / The wind speed (mph).                          
+WINDDIRE=                 195. / The wind direction (degrees).                  
+WINDCOVR= 'Opened  '           / Window cover position name (open|closed)       
+FILTER  = 'HK_G0603'           / Filter name                                    
+APOFFSET=                   0. / Fopl offseti (arcseconds)                      
+GRATING = 'K_G5605 '           / Grating name                                   
+GRATWAVE=                  2.2 / Grating cetntral wavelength                    
+APERTURE= '3.0_Mask_G5610'     / Focal plane mask                               
+FLIP    = 'Out     '           / Imaging (flip) mirror                          
+EXPRQ   =                   5. / Requested Exposure time                        
+DCNAME  = 'NIFS DC '           / Nifs dc name                                   
+PERIOD  =                   5. / Period                                         
+NPERIODS=                    1 / Number of periods                              
+EXPMODE = 'NONDESTRUCTIVE'     / Exposure mode                                  
+RDTIME  =                   5. / Read time                                      
+COADDS  =                    1 / Number of coadds summed                        
+BIASPWR =                   3. / Source voltage of bias P-FET                   
+OBSMODE = 'IFU     '           / Observing mode configuration                   
+LNRS    =                    1 / Number of non-destructive read pairs           
+DATE-OBS= '2019-10-27'         / Observation date (UT)                          
+INPORT  =                    1 / Number of ISS port where NIFS was located      
+CTYPE1  = 'RA---TAN'           / R.A. in tangent plane projection               
+CRPIX1  =            15.000042 / Ref pix of axis 1                              
+CRVAL1  =           130.769145 / RA at Ref pix in decimal degrees               
+CTYPE2  = 'DEC--TAN'           / DEC. in tangent plane projection               
+CRPIX2  =            34.000093 / Ref pix of axis 2                              
+CRVAL2  =              19.9037 / DEC at Ref pix in decimal degrees              
+CD1_1   =              1.6E-05 / WCS matrix element 1 1                         
+CD1_2   =             -1.8E-05 / WCS matrix element 1 2                         
+CD2_1   =              4.4E-05 / WCS matrix element 2 1                         
+CD2_2   =              6.0E-06 / WCS matrix element 2 2                         
+RADECSYS= 'FK5     '           / R.A./DEC. coordinate system reference          
+MJD_OBS =         58783.697233 / Mean Julian day of observation                 
+DETSIZE = '[1:2048,1:2048]'    / Dimensions of detector                         
+DETECTOR= 'NIFS    '           / Name of detector                               
+NCCDS   =                    1 / Number of detector CCDS                        
+NAMPS   =                    4 / Number of CCD amps                             
+CCDNAME = 'NIFS    '           / CCD/ARRAY name                                 
+CCDSIZE = '[1:2048,1:2048]'    / Dimensions of CCD                              
+CCDSUM  = '1 1     '           / CCD binning                                    
+CCDSEC  = '[1:512,1:2048]'     / CCD section                                    
+AMPNAME = '1       '           / Amplifier name                                 
+AMPSEC  = '[1:512,1:2048]'     / Amplifier section                              
+DETSEC  = '[1:2048,1:2048]'    / Full detector size                             
+AMPNAME2= '2       '           / Amplifier 2 name                               
+AMPSEC2 = '[1024:513,1:2048]'  / Amplifier 2 section                            
+AMPNAME3= '3       '           / Amplifier 3 name                               
+AMPSEC3 = '[1025:1536,1:2048]' / Amplifier 3 section                            
+AMPNAME4= '4       '           / Amplifier 4 name                               
+AMPSEC4 = '[2048:1537,1:2048]' / Amplifier 4 section                            
+EXPTIME =                   5. / Exposure time (s)                              
+AIRMASS =                   1. / Mean airmass for the observation               
+AMSTART =                   1. / Airmass at start of exposure                   
+AMEND   =                   1. / Airmass at end of exposure                     
+PROP_MD =                    F / Proprietary Metadata                           
+RELEASE = '2019-10-27'         / End of proprietary period YYY-MM-DD            
+MDF_YSHF=                  3.2 / MDF Y shift (subtracted from y_ccd)            
+MDF_FILE= 'nifs$data/nifs-mdf[1]' / MDF source                                  
+NEXTEND =                    1 / number of extensions in file                   
+MODE    = 'IFU               ' / Reduction mode                                 
+BIASVOLT=                3.000 / Array bias voltage (V)                         
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+NSCIEXT =                   29 / Number of science extensions                   
+DISPAXIS=                    1 / Dispersion axis (along columns)                
+PREPARE = '2020-08-06T18:10:51' / UT Time stamp for NFPREPARE                   
+GEM-TLM = '2020-08-06T18:13:39' / UT Last modification with GEMINI              
+BPMFILE = 'none              ' / Input bad pixel mask file                      
+WMEF    = '2020-08-06T18:12:10' / UT Time stamp for WMEF                        
+GAINORIG=                  2.4 / Input gain                                     
+RONORIG =                  6.3 / Input read-noise                               
+GEMCOMB = '2020-08-06T18:12:10' / UT Time stamp for GEMCOMBINE                  
+ORIGXSIZ=                 2040 / Original size in X                             
+ORIGYSIZ=                 2080 / Original size in Y                             
+NSCUT   = '2020-08-06T18:12:17' / UT Time stamp for NSCUT                       
+NSAPPWAV= '2020-08-06T18:12:22' / UT Time stamp for NSAPPWAVE                   
+NSREDUCE= '2020-08-06T18:12:56' / UT Time stamp for NSREDUCE                    
+NSFLAT  = '2020-08-06T18:13:39' / UT Time stamp for NSFLAT                      
+NSFLTNRM=              1.04832 / Normalization constant for NSFLAT              
+NSFLTNST= 'midpt             ' / Normalization statistic for NSFLAT             
+NSFLTFUN= 'spline3           ' / Function fit to illumination by NSFLAT         
+NSFLTORD= '20                ' / Order of function fit by NSFLAT                
+NSFLTFLO=              0.05255 / Lower limit for good pixels (fraction)         
+NSFLTFUP=              1.62904 / Upper limit for good pixels (fraction)         
+NSFLTSTA= '                  ' / Statistics section used by NSFLAT              
+NSFLTFIT= '                  ' / Fit area                                       
+NSFLTDLO=            -20.00000 / Lower limit for good pixels in dark (ADU)      
+NSFLTDUP=            100.00000 / Upper limit for good pixels in dark (ADU)      
+NSFLTFIX=              1.00000 / Bad pixels replaced with this value            
+NSFLTCOM= 'default           ' / Combine method used by NSFLAT                  
+NSFLTREJ= 'ccdclip           ' / Rejection algorithm used by NSFLAT             
+NSFLTLTH= 'INDEF             ' / Lower threshold before combining               
+NSFLTHTH= 'INDEF             ' / Upper threshold before combining               
+NSFLTGRW=              0.00000 / Radius for additional pixel rejection          
+NSFLTLSI=              3.00000 / Lower sigma for rejection                      
+NSFLTHSI=              3.00000 / Upper sigma for rejection                      
+NSFLTNKE=                    0 / Min(max) number of pixels to keep(reject)      
+NSFLTMCL= 'YES               ' / Use median in clipping algorithms              
+NSFLTSSC=              0.10000 / Tolerance for sigma clip scaling correction    
+NSFLTSNO= '0.0               ' / Sensitivity noise (e) used by ccdclip          
+BSCALE  =           1.000000E0 / REAL = TAPE*BSCALE + BZERO                     
+BZERO   =           3.276800E4 /                                                
+PIXTYPE =                   11                                                  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+END                                                                             

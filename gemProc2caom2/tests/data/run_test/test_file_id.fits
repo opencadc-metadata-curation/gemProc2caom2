@@ -1,0 +1,253 @@
+# HDU 0 in rgnN20140428S0171_flat.fits:
+SIMPLE  =                    T / Fits standard                                  
+BITPIX  =                   16 / Bits per pixel                                 
+NAXIS   =                    0 / Number of axes                                 
+EXTEND  =                    T / File may contain extensions                    
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+DATE    = '2020-06-18T16:55:31' / Date FITS file was generated                  
+IRAF-TLM= '2020-06-18T16:55:39' / Time of last modification                     
+COMMENT   FITS (Flexible Image Transport System) format is defined in 'Astronomy
+COMMENT   and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H 
+INSTRUME= 'NIFS    '           / Instrument used to acquire data.               
+OBJECT  = 'GCALflat'           / Object Name                                    
+OBSTYPE = 'FLAT    '           / Observation type                               
+OBSCLASS= 'dayCal  '           / Observe class                                  
+GEMPRGID= 'GN-2014A-Q-85'      / Gemini Science Program ID                      
+OBSID   = 'GN-2014A-Q-85-16'   / Observation ID / Data label                    
+DATALAB = 'GN-2014A-Q-85-16-003-rgn-flat' / Datalabel                           
+OBSERVER= 'Roth    '           / Observer                                       
+OBSERVAT= 'Gemini-North'       / Observatory                                    
+TELESCOP= 'Gemini-North'       / Telescope                                      
+PARALLAX=                   0. / Parallax of Target                             
+RADVEL  =                   0. / Heliocentric Radial Velocity                   
+EPOCH   =                2000. / Epoch for Target coordinates                   
+EQUINOX =                   0. / Equinox for Target coordinates                 
+TRKEQUIN=                2000. / Tracking equinox                               
+SSA     = 'Pakzad  '           / SSA                                            
+RA      =                  22. / RA of Target                                   
+DEC     =                89.97 / Declination of Target                          
+ELEVATIO=     89.9997930555556 / Current Elevation                              
+AZIMUTH =     74.9999861111111 / Current Azimuth                                
+CRPA    =     167.396143372775 / Current Cass Rotator Position Angle            
+HA      = '-00:00:02.92'       / Telescope hour angle                           
+LT      = '07:03:36.1'         / Local time at start of observation             
+TRKFRAME= 'FK5     '           / Tracking co-ordinate                           
+DECTRACK=      -0.016323190459 / Differential tracking rate Dec                 
+TRKEPOCH=         56775.686174 / Differential tracking reference epoch          
+RATRACK =        1.00251469067 / Differential tracking rate RA                  
+FRAME   = 'AZEL_TOPO'          / Target coordinate system                       
+PMDEC   =                   0. / Proper Motion in Declination                   
+PMRA    =                   0. / Proper Motion in RA                            
+WAVELENG=               22000. / Effective Target Wavelength                    
+RAWIQ   = 'Any     '           / Raw Image Quality                              
+RAWCC   = 'Any     '           / Raw Cloud Cover                                
+RAWWV   = 'UNKNOWN '           / Raw Water Vapour/Transparency                  
+RAWBG   = 'Any     '           / Raw Background                                 
+RAWPIREQ= 'UNKNOWN '           / PI Requirements Met                            
+RAWGEMQA= 'UNKNOWN '           / Gemini Quality Assessment                      
+CGUIDMOD= 'Basic   '           / Driving mode for carousel                      
+UT      = '17:03:36.6'         / Beginning of Observation (UT)                  
+M2BAFFLE= 'VISIBLE '           / Position of M2 baffle                          
+M2CENBAF= 'CLOSED  '           / Position of M2 central hole baffle             
+ST      = '21:08:05.8'         / Sidereal time at the start of the exposure     
+XOFFSET =                   0. / Telescope offset in x in arcsec                
+YOFFSET =                   0. / Telescope offset in y in arcsec                
+POFFSET =                   0. / Telescope offset in p in arcsec                
+QOFFSET =                   0. / Telescope offset in q in arcsec                
+RAOFFSET=                   0. / Telescope offset in RA in arcsec               
+DECOFFSE=                   0. / Telescope offset in DEC in arcsec              
+RATRGOFF=                   0. / Target offset in RA in arcsec                  
+DECTRGOF=                  -0. / Target offset in DEC in arcsec                 
+PA      =                   0. / Sky Position Angle at start of exposure        
+IAA     =                 270. / Instrument Alignment Angle                     
+SFRT2   =               88.583 / Science fold rotation angle (degrees)          
+SFTILT  =               -44.89 / Science fold tilt angle (degrees)              
+SFLINEAR=                   8. / Science fold linear position (mm)              
+AOFOLD  = 'park-pos.'          / AO Pick-Off Mirror Position                    
+PWFS1_ST= 'parked  '           / PWFS1 probe state (frozen,guiding,parked)      
+PWFS2_ST= 'parked  '           / PWFS2 probe state (frozen,guiding,parked)      
+OIWFS_ST= 'parked  '           / OIWFS probe state (frozen,guiding,parked)      
+AOWFS_ST= 'parked  '           / AOWFS probe state (frozen,guiding,parked)      
+SCIBAND =                    3 / Science Ranking Band                           
+REQIQ   = 'Any     '           / Requested Image Quality                        
+REQCC   = 'Any     '           / Requested Cloud Cover                          
+REQBG   = 'Any     '           / Requested Background                           
+REQWV   = 'Any     '           / Requested Water Vapour                         
+GCALLAMP= 'IRhigh  '           / GCAL Lamp name                                 
+GCALFILT= 'CLEAR   '           / GCAL Filter name                               
+GCALDIFF= 'IR      '           / GCAL Diffuser name                             
+GCALSHUT= 'OPEN    '           / GCAL Shutter (OPEN or CLOSED)                  
+HUMIDITY=                  12. / The relative humidity (fraction, 0..101).      
+TAMBIENT=                  2.2 / The ambient temp (C).                          
+TAMBIEN2=                35.96 / The ambient temp (F).                          
+PRESSURE=            462.17248 / The atmospheric pressure (mm Hg).              
+PRESSUR2=               61600. / The atmospheric pressure (Pa).                 
+DEWPOINT=                -24.6 / The dew point (C).                             
+DEWPOIN2=               -12.28 / The dew point (F).                             
+WINDSPEE=                   0. / The wind speed (m/s).                          
+WINDSPE2=                   0. / The wind speed (mph).                          
+WINDDIRE=                 267. / The wind direction (degrees).                  
+WINDCOVR= 'Opened  '           / Window cover position name (open|closed)       
+FILTER  = 'HK_G0603'           / Filter name                                    
+APOFFSET=                   0. / Fopl offseti (arcseconds)                      
+GRATING = 'K_G5605 '           / Grating name                                   
+GRATWAVE=                  2.2 / Grating cetntral wavelength                    
+APERTURE= '3.0_Mask_G5610'     / Focal plane mask                               
+FLIP    = 'Out     '           / Imaging (flip) mirror                          
+EXPRQ   =                   5. / Requested Exposure time                        
+DCNAME  = 'NIFS DC '           / Nifs dc name                                   
+PERIOD  =                   5. / Period                                         
+NPERIODS=                    1 / Number of periods                              
+EXPMODE = 'NONDESTRUCTIVE'     / Exposure mode                                  
+RDTIME  =                   5. / Read time                                      
+COADDS  =                    1 / Number of coadds summed                        
+BIASPWR =                   3. / Source voltage of bias P-FET                   
+OBSMODE = 'IFU     '           / Observing mode configuration                   
+LNRS    =                    1 / Number of non-destructive read pairs           
+DATE-OBS= '2014-04-28'         / Observation date (UT)                          
+INPORT  =                    1 / Number of ISS port where NIFS was located      
+CTYPE1  = 'RA---TAN'           / R.A. in tangent plane projection               
+CRPIX1  =            15.000027 / Ref pix of axis 1                              
+CRVAL1  =           316.872214 / RA at Ref pix in decimal degrees               
+CTYPE2  = 'DEC--TAN'           / DEC. in tangent plane projection               
+CRPIX2  =            33.999888 / Ref pix of axis 2                              
+CRVAL2  =            19.794123 / DEC at Ref pix in decimal degrees              
+CD1_1   =             -4.2E-05 / WCS matrix element 1 1                         
+CD1_2   =             -9.0E-06 / WCS matrix element 1 2                         
+CD2_1   =              2.2E-05 / WCS matrix element 2 1                         
+CD2_2   =             -1.7E-05 / WCS matrix element 2 2                         
+RADECSYS= 'FK5     '           / R.A./DEC. coordinate system reference          
+MJD_OBS =         56775.711588 / Mean Julian day of observation                 
+DETSIZE = '[1:2048,1:2048]'    / Dimensions of detector                         
+DETECTOR= 'NIFS    '           / Name of detector                               
+NCCDS   =                    1 / Number of detector CCDS                        
+NAMPS   =                    4 / Number of CCD amps                             
+CCDNAME = 'NIFS    '           / CCD/ARRAY name                                 
+CCDSIZE = '[1:2048,1:2048]'    / Dimensions of CCD                              
+CCDSUM  = '1 1     '           / CCD binning                                    
+CCDSEC  = '[1:512,1:2048]'     / CCD section                                    
+AMPNAME = '1       '           / Amplifier name                                 
+AMPSEC  = '[1:512,1:2048]'     / Amplifier section                              
+DETSEC  = '[1:2048,1:2048]'    / Full detector size                             
+AMPNAME2= '2       '           / Amplifier 2 name                               
+AMPSEC2 = '[1024:513,1:2048]'  / Amplifier 2 section                            
+AMPNAME3= '3       '           / Amplifier 3 name                               
+AMPSEC3 = '[1025:1536,1:2048]' / Amplifier 3 section                            
+AMPNAME4= '4       '           / Amplifier 4 name                               
+AMPSEC4 = '[2048:1537,1:2048]' / Amplifier 4 section                            
+EXPTIME =                   5. / Exposure time (s)                              
+AIRMASS =                   1. / Mean airmass for the observation               
+AMSTART =                   1. / Airmass at start of exposure                   
+AMEND   =                   1. / Airmass at end of exposure                     
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+RELEASE = '2014-04-28'         / End of proprietary period YYYY-MM-DD           
+MDF_YSHF=                  4.1 / MDF Y shift (subtracted from y_ccd)            
+MDF_FILE= 'nifs$data/nifs-mdf[1]' / MDF source                                  
+NEXTEND =                    1 / number of extensions in file                   
+MODE    = 'IFU               ' / Reduction mode                                 
+BIASVOLT=                3.000 / Array bias voltage (V)                         
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+NSCIEXT =                   29 / Number of science extensions                   
+DISPAXIS=                    1 / Dispersion axis (along columns)                
+PREPARE = '2020-06-18T17:52:28' / UT Time stamp for NFPREPARE                   
+GEM-TLM = '2020-06-18T17:55:36' / UT Last modification with GEMINI              
+BPMFILE = 'none              ' / Input bad pixel mask file                      
+WMEF    = '2020-06-18T17:53:46' / UT Time stamp for WMEF                        
+GAINORIG=                  2.4 / Input gain                                     
+RONORIG =                  6.3 / Input read-noise                               
+GEMCOMB = '2020-06-18T17:53:47' / UT Time stamp for GEMCOMBINE                  
+ORIGXSIZ=                 2040 / Original size in X                             
+ORIGYSIZ=                 2080 / Original size in Y                             
+NSCUT   = '2020-06-18T17:53:52' / UT Time stamp for NSCUT                       
+NSAPPWAV= '2020-06-18T17:53:58' / UT Time stamp for NSAPPWAVE                   
+NSREDUCE= '2020-06-18T17:54:29' / UT Time stamp for NSREDUCE                    
+NSFLAT  = '2020-06-18T17:55:09' / UT Time stamp for NSFLAT                      
+NSFLTNRM=              1.02082 / Normalization constant for NSFLAT              
+NSFLTNST= 'midpt             ' / Normalization statistic for NSFLAT             
+NSFLTFUN= 'spline3           ' / Function fit to illumination by NSFLAT         
+NSFLTORD= '20                ' / Order of function fit by NSFLAT                
+NSFLTFLO=              0.05135 / Lower limit for good pixels (fraction)         
+NSFLTFUP=              1.59200 / Upper limit for good pixels (fraction)         
+NSFLTSTA= '                  ' / Statistics section used by NSFLAT              
+NSFLTFIT= '                  ' / Fit area                                       
+NSFLTDLO=            -20.00000 / Lower limit for good pixels in dark (ADU)      
+NSFLTDUP=            100.00000 / Upper limit for good pixels in dark (ADU)      
+NSFLTFIX=              1.00000 / Bad pixels replaced with this value            
+NSFLTCOM= 'default           ' / Combine method used by NSFLAT                  
+NSFLTREJ= 'ccdclip           ' / Rejection algorithm used by NSFLAT             
+NSFLTLTH= 'INDEF             ' / Lower threshold before combining               
+NSFLTHTH= 'INDEF             ' / Upper threshold before combining               
+NSFLTGRW=              0.00000 / Radius for additional pixel rejection          
+NSFLTLSI=              3.00000 / Lower sigma for rejection                      
+NSFLTHSI=              3.00000 / Upper sigma for rejection                      
+NSFLTNKE=                    0 / Min(max) number of pixels to keep(reject)      
+NSFLTMCL= 'YES               ' / Use median in clipping algorithms              
+NSFLTSSC=              0.10000 / Tolerance for sigma clip scaling correction    
+NSFLTSNO= '0.0               ' / Sensitivity noise (e) used by ccdclip          
+NSFLON1 = 'rgnN20140428S0171 ' / Input flat image                               
+NSFLOF1 = 'rgnN20140428S0177 ' / Input dark                                     
+NSSLIT  = '2020-06-18T17:55:36' / UT Time stamp for NSSLITFUNCITON              
+FCMB1   = 'N20140428S0171.fits'                                                 
+FCMB2   = 'N20140428S0170.fits'                                                 
+FCMB3   = 'N20140428S0173.fits'                                                 
+FCMB4   = 'N20140428S0169.fits'                                                 
+FCMB5   = 'N20140428S0172.fits'                                                 
+FCOMBINE=                    5                                                  
+DCMB1   = 'N20140428S0177.fits'                                                 
+DCMB2   = 'N20140428S0176.fits'                                                 
+DCMB3   = 'N20140428S0175.fits'                                                 
+DCMB4   = 'N20140428S0174.fits'                                                 
+DCMB5   = 'N20140428S0178.fits'                                                 
+DCOMBINE=                    5                                                  
+SHFILE  = 'sN20140428S0171_shift.fits'                                          
+END
+
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+

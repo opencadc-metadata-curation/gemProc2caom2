@@ -3,7 +3,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2019.                            (c) 2019.
+#  (c) 2020.                            (c) 2020.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -67,70 +67,49 @@
 # ***********************************************************************
 #
 
-"""
-Implements the default entry point functions for the workflow 
-application.
+import os
+import test_main_app
 
-'run' executes based on either provided lists of work, or files on disk.
-'run_by_state' executes incrementally, usually based on time-boxed 
-intervals.
-"""
+from mock import Mock, patch
 
-import logging
-import sys
-import traceback
-
-from caom2pipe import run_composable as rc
-from blank2caom2 import APPLICATION, BlankName
+from astropy.table import Table
+from gemProc2caom2 import composable, GemProcName
 
 
-META_VISITORS = []
-DATA_VISITORS = []
+def test_run_by_state():
+    pass
 
 
-def _run():
-    """
-    Uses a todo file to identify the work to be done.
+@patch('caom2pipe.execute_composable.OrganizeExecutesWithDoOne.do_one')
+@patch('caom2pipe.manage_composable.query_tap_client')
+def test_run(tap_mock, run_mock):
+    tap_mock.side_effect = _run_tap_mock
 
-    :return 0 if successful, -1 if there's any sort of failure. Return status
-        is used by airflow for task instance management and reporting.
-    """
-    return rc.run_by_todo(config=None, name_builder=None, 
-                          command_name=APPLICATION,
-                          meta_visitors=META_VISITORS, 
-                          data_visitors=DATA_VISITORS, chooser=None)
-
-
-def run():
-    """Wraps _run in exception handling, with sys.exit calls."""
+    test_obs_id = 'GN-2014A-Q-85-16-003-rgn-flat-FILE-ID'
+    test_f_id = 'test_file_id'
+    test_f_name = f'{test_f_id}.fits'
+    getcwd_orig = os.getcwd
+    os.getcwd = Mock(return_value=f'{test_main_app.TEST_DATA_DIR}/run_test')
     try:
-        result = _run()
-        sys.exit(result)
-    except Exception as e:
-        logging.error(e)
-        tb = traceback.format_exc()
-        logging.debug(tb)
-        sys.exit(-1)
+        # execution
+        composable._run()
+        assert run_mock.called, 'should have been called'
+        args, kwargs = run_mock.call_args
+        test_storage = args[0]
+        assert isinstance(
+            test_storage, GemProcName), type(test_storage)
+        assert test_storage.obs_id == test_obs_id, 'wrong obs id'
+        assert test_storage.file_name == test_f_name, 'wrong file name'
+        assert test_storage.fname_on_disk == test_f_name, \
+            'wrong fname on disk'
+        assert test_storage.url is None, 'wrong url'
+        assert test_storage.lineage == \
+            f'{test_f_id}/ad:GEM/{test_f_name}', 'wrong lineage'
+    finally:
+        os.getcwd = getcwd_orig
 
 
-def _run_state():
-    """Uses a state file with a timestamp to control which entries will be
-    processed.
-    """
-    return rc.run_by_state(config=None, name_builder=None,
-                           command_name=APPLICATION, 
-                           bookmark_name=None, meta_visitors=META_VISITORS,
-                           data_visitors=DATA_VISITORS, end_time=None,
-                           source=None, chooser=None)
-
-
-def run_state():
-    """Wraps _run_state in exception handling."""
-    try:
-        _run_state()
-        sys.exit(0)
-    except Exception as e:
-        logging.error(e)
-        tb = traceback.format_exc()
-        logging.debug(tb)
-        sys.exit(-1)
+def _run_tap_mock(query_string, mock_tap_client):
+    return Table.read(f'observationID,lastModified\n'
+                      f'test_data_label,2020-02-25T20:36:31.230\n'.split('\n'),
+                      format='csv')

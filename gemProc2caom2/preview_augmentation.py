@@ -3,7 +3,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2019.                            (c) 2019.
+#  (c) 2020.                            (c) 2020.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -66,8 +66,99 @@
 #
 # ***********************************************************************
 #
-from blank2caom2 import BlankName
+
+import logging
+import os
+import re
+
+import matplotlib.image as image
+import matplotlib.pyplot as plt
+import numpy as np
+from astropy.io import fits
+from astropy.visualization import MinMaxInterval, ZScaleInterval
+
+from caom2 import ProductType, ReleaseType
+from caom2pipe import manage_composable as mc
+from gem2caom2 import ARCHIVE
+from gemProc2caom2 import GemProcName
 
 
-def test_is_valid():
-    assert BlankName('anything').is_valid()
+class GemProcPreview(mc.PreviewVisitor):
+
+    def __init__(self, observation, **kwargs):
+        super(GemProcPreview, self).__init__(
+            ARCHIVE, ReleaseType.DATA, **kwargs)
+        self._observation = observation
+        self._storage_name = GemProcName(file_name=self._science_file,
+                                         entry=self._science_file)
+        self._science_fqn = os.path.join(self._working_dir,
+                                         self._storage_name.file_name)
+        self._preview_fqn = os.path.join(
+            self._working_dir,  self._storage_name.prev)
+        self._thumb_fqn = os.path.join(
+            self._working_dir, self._storage_name.thumb)
+        self._logger = logging.getLogger(__name__)
+
+    def generate_plots(self, obs_id):
+        self._logger.debug(f'Begin generate_plots for {obs_id}')
+        count = 0
+        # NC - algorithm
+        # NC - review - 07-08-20
+        hdus = fits.open(self._science_fqn)
+        obs_type = hdus[0].header.get('OBSTYPE').upper()
+        interval = ZScaleInterval()
+        if (self._observation.target is not None and
+                self._observation.target.moving) and obs_type != 'DARK':
+            interval = MinMaxInterval()
+        if 'OBJECT' in obs_type:
+            white_light_data = interval(
+                np.flipud(np.median(hdus['SCI'].data, axis=0)))
+        elif ('FLAT' in obs_type or 'ARC' in obs_type or
+              'RONCHI' in obs_type or 'DARK' in obs_type):
+            # Stitch together the 29 'SCI' extensions into one array and save.
+            hdul = [x for x in hdus if x.name == 'SCI']
+            hdul.sort(key=lambda x: int(re.split(r"[\[\]\:\,']+",
+                                                 x.header['NSCUTSEC'])[3]))
+            temp = np.concatenate([x.data for x in hdul])
+            white_light_data = interval(temp)
+        elif 'SHIFT' in obs_type:
+            temp = np.flipud(hdus['SCI'].data)
+            white_light_data = interval(temp)
+        else:
+            return count
+
+        plt.figure(figsize=(10.24, 10.24), dpi=100)
+        plt.grid(False)
+        plt.axis('off')
+        plt.imshow(white_light_data, cmap='inferno')
+        plt.savefig(self._preview_fqn, format='jpg')
+        count += 1
+        self.add_preview(self._storage_name.prev_uri, self._storage_name.prev,
+                         ProductType.PREVIEW)
+        self.add_to_delete(self._preview_fqn)
+        count += self._gen_thumbnail()
+        self._logger.info(f'End generate_plots for {obs_id}.')
+        return count
+
+    def _gen_thumbnail(self):
+        self._logger.debug(f'Generating thumbnail for file '
+                           f'{self._science_fqn}.')
+        count = 0
+        if os.path.exists(self._preview_fqn):
+            thumb = image.thumbnail(self._preview_fqn, self._thumb_fqn,
+                                    scale=0.25)
+            if thumb is not None:
+                self.add_preview(self._storage_name.thumb_uri,
+                                 self._storage_name.thumb,
+                                 ProductType.THUMBNAIL)
+                self.add_to_delete(self._thumb_fqn)
+                count = 1
+        else:
+            self._logger.warning(f'Could not find {self._preview_fqn} for '
+                                 f'thumbnail generation.')
+        return count
+
+
+def visit(observation, **kwargs):
+    previewer = GemProcPreview(observation, **kwargs)
+    return previewer.visit(observation, previewer._storage_name)
