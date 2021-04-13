@@ -116,13 +116,14 @@ import traceback
 
 from urllib.parse import urlparse
 
+from cadcutils import net
 from cadctap import CadcTapClient
 from caom2 import Observation, CalibrationLevel, ProductType, TemporalWCS
 from caom2 import Axis, CoordAxis1D, SpectralWCS, CoordFunction1D, RefCoord
 from caom2 import CoordError, ObservationIntentType, SimpleObservation
 from caom2 import Algorithm, DataProductType
 from caom2utils import ObsBlueprint, get_gen_proc_arg_parser, gen_proc
-from caom2utils import WcsParser
+from caom2utils import WcsParser, fits2caom2
 from caom2pipe import astro_composable as ac
 from caom2pipe import caom_composable as cc
 from caom2pipe import manage_composable as mc
@@ -147,7 +148,7 @@ class GemProcName(mc.StorageName):
         if file_name.startswith('vos'):
             self._vos_uri = file_name
             self._file_name = os.path.basename(urlparse(self._vos_uri).path)
-            self._obs_id = None
+            self.get_obs_id_from_vos()
         else:
             self._file_name = file_name
             self._obs_id = self.get_obs_id()
@@ -202,6 +203,17 @@ class GemProcName(mc.StorageName):
     def is_valid(self):
         # over-ride self._obs_id dependency
         return True
+
+    def get_obs_id_from_vos(self):
+        logging.debug(f'Begin get_obs_id_from_vos for {self._vos_uri}.')
+        headers = fits2caom2.get_vos_headers(
+            self._vos_uri, subject=net.Subject(
+                certificate='/usr/src/app/cadcproxy.pem'))
+        self._obs_id = headers[0].get('DATALAB')
+        if self._obs_id is None:
+            raise mc.CadcException(
+                f'Could not get obs id from {self._vos_uri}')
+        logging.debug('End get_obs_id_from_vos.')
 
 
 def accumulate_bp(bp, uri):
