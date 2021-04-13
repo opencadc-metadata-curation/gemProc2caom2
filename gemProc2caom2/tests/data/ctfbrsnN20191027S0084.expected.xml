@@ -168,7 +168,7 @@
       <caom2:productID>ctfbrsnN20191027S0084</caom2:productID>
       <caom2:metaRelease>2020-04-27T00:00:00.000</caom2:metaRelease>
       <caom2:dataRelease>2020-04-27T00:00:00.000</caom2:dataRelease>
-      <caom2:dataProductType>image</caom2:dataProductType>
+      <caom2:dataProductType>cube</caom2:dataProductType>
       <caom2:calibrationLevel>2</caom2:calibrationLevel>
       <caom2:provenance>
         <caom2:name>Nifty4Gemini</caom2:name>

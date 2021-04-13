@@ -80,12 +80,12 @@ def test_run_by_state():
     pass
 
 
-@patch('caom2pipe.execute_composable.OrganizeExecutesWithDoOne.do_one')
+@patch('caom2pipe.execute_composable.OrganizeExecutes.do_one')
 @patch('caom2pipe.manage_composable.query_tap_client')
 def test_run(tap_mock, run_mock):
     tap_mock.side_effect = _run_tap_mock
 
-    test_obs_id = 'GN-2014A-Q-85-16-003-rgn-flat-FILE-ID'
+    test_obs_id = 'GN-2014A-Q-85-16-003-RGN-FLAT'
     test_f_id = 'test_file_id'
     test_f_name = f'{test_f_id}.fits'
     getcwd_orig = os.getcwd
@@ -104,7 +104,7 @@ def test_run(tap_mock, run_mock):
             'wrong fname on disk'
         assert test_storage.url is None, 'wrong url'
         assert test_storage.lineage == \
-            f'{test_f_id}/ad:GEM/{test_f_name}', 'wrong lineage'
+            f'{test_f_id}/cadc:GEMINI/{test_f_name}', 'wrong lineage'
     finally:
         os.getcwd = getcwd_orig
 
