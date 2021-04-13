@@ -80,6 +80,7 @@ import logging
 import sys
 import traceback
 
+from vos import Client
 from caom2pipe import data_source_composable as dsc
 from caom2pipe import manage_composable as mc
 from caom2pipe import name_builder_composable as nbc
@@ -106,7 +107,8 @@ def _run():
     config.get_executors()
     data_source = dsc.VaultListDirDataSource(config)
     name_builder = nbc.FileNameBuilder(GemProcName)
-    store_transfer = tc.VoTransfer()
+    vos_client = Client(vospace_certfile=config.proxy_fqn)
+    store_transfer = tc.VoFitsTransfer(vos_client)
     return rc.run_by_todo(config=config,
                           name_builder=name_builder,
                           command_name=APPLICATION,
