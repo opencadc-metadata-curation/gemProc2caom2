@@ -144,10 +144,13 @@ def _do_provenance(working_directory, science_file, observation,
     of inputs for the derived observations, where 'appropriate' means
     find the ‘appropriate’ filename that identifies the plane of the inputs.
     """
+    logging.debug(f'Begin _do_provenance for {observation.observation_id}')
     count = 0
     fqn = os.path.join(working_directory, science_file)
     hdus = fits.open(fqn)
     if 'PROVENANCE' not in hdus:
+        logging.warning(
+            f'PROVENANCE extension not found in HDUs for {science_file}.')
         return count
 
     data = hdus['PROVENANCE'].data
@@ -176,6 +179,7 @@ def _do_provenance(working_directory, science_file, observation,
                     obs_members.add(member_obs_uri)
                     count += 1
     hdus.close()
+    logging.debug('End _do_provenance.')
     return count
 
 

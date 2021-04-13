@@ -32,7 +32,7 @@
       </caom2:provenance>
       <caom2:artifacts>
         <caom2:artifact caom2:id="9ef93cdd-e2f0-4761-be13-af6dc5e9602a">
-          <caom2:uri>ad:GEM/rnN20140428S0181_ronchi.fits</caom2:uri>
+          <caom2:uri>cadc:GEMINI/rnN20140428S0181_ronchi.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>application/fits</caom2:contentType>

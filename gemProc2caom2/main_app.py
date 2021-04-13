@@ -204,6 +204,12 @@ def accumulate_bp(bp, uri):
     bp.clear('Observation.algorithm.name')
     bp.add_fits_attribute('Observation.algorithm.name', 'SOFTWARE')
 
+    # DB 12-04-21
+    # Proposal information comes from GEMPRGID and the details should be
+    # retrieved from archive.gemini.edu
+    bp.clear('Observation.proposal.id')
+    bp.add_fits_attribute('Observation.proposal.id', 'GEMPRGID')
+
     # DB 07-08-20
     # target.type for all NIFS science products, at least, could be set to
     # ‘object’.   (i.e. NIFS is never used for wider ‘field’ observations)
@@ -212,7 +218,7 @@ def accumulate_bp(bp, uri):
     bp.set('Observation.telescope.geoLocationY', '_get_telescope_y(uri)')
     bp.set('Observation.telescope.geoLocationZ', '_get_telescope_z(uri)')
 
-    bp.set('Plane.calibrationLevel', CalibrationLevel.CALIBRATED)
+    bp.set('Plane.calibrationLevel', '_get_plane_calibration_level(header)')
     bp.set('Plane.dataProductType', '_get_plane_data_product_type(header)')
     bp.clear('Plane.provenance.lastExecuted')
     bp.add_fits_attribute('Plane.provenance.lastExecuted', 'DATE')
@@ -333,6 +339,14 @@ def update(observation, **kwargs):
                     ['IMCMB', 'SKY', 'FLATIM', 'DARKIM', 'BPMIMG'],
                     COLLECTION)
 
+    if (observation.proposal is not None and
+            observation.proposal.id is not None and
+            observation.proposal.pi_name is None):
+        program = external_metadata.get_pi_metadata(observation.proposal.id)
+        if program is not None:
+            observation.proposal.pi_name = program.get('pi_name')
+            observation.proposal.title = program.get('title')
+
     if isinstance(observation, SimpleObservation):
         # undo the observation-level metadata modifications for updated
         # Gemini records
@@ -356,6 +370,16 @@ def _get_obs_intent(uri):
     result = ObservationIntentType.SCIENCE
     if 'g' in prefix:
         result = ObservationIntentType.CALIBRATION
+    return result
+
+
+def _get_plane_calibration_level(header):
+    result = CalibrationLevel.RAW_STANDARD
+    for keyword in ['IMCMB', 'SKY', 'FLATIM', 'DARKIM', 'BPMIMG']:
+        for key in header:
+            if key.startswith(keyword):
+                result = CalibrationLevel.CALIBRATED
+                break
     return result
 
 
