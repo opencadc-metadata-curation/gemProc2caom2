@@ -103,6 +103,32 @@ def _run():
     :return 0 if successful, -1 if there's any sort of failure. Return status
         is used by airflow for task instance management and reporting.
     """
+    name_builder = nbc.FileNameBuilder(GemProcName)
+    return rc.run_by_todo(name_builder=name_builder,
+                          command_name=APPLICATION,
+                          meta_visitors=META_VISITORS,
+                          data_visitors=DATA_VISITORS)
+
+
+def run():
+    """Wraps _run in exception handling, with sys.exit calls."""
+    try:
+        result = _run()
+        sys.exit(result)
+    except Exception as e:
+        logging.error(e)
+        tb = traceback.format_exc()
+        logging.debug(tb)
+        sys.exit(-1)
+
+
+def _run_remote():
+    """
+    Uses a todo file to identify the work to be done.
+
+    :return 0 if successful, -1 if there's any sort of failure. Return status
+        is used by airflow for task instance management and reporting.
+    """
     config = mc.Config()
     config.get_executors()
     data_source = dsc.VaultListDirDataSource(config)
@@ -118,10 +144,10 @@ def _run():
                           store_transfer=store_transfer)
 
 
-def run():
+def run_remote():
     """Wraps _run in exception handling, with sys.exit calls."""
     try:
-        result = _run()
+        result = _run_remote()
         sys.exit(result)
     except Exception as e:
         logging.error(e)
