@@ -297,8 +297,8 @@ def update(observation, **kwargs):
                         _update_energy(
                             chunk, headers[idx], filter_name,
                             observation.observation_id)
-                        _update_time(part, chunk, headers[0],
-                                     observation.observation_id)
+                        # _update_time(part, chunk, headers[0],
+                        #              observation.observation_id)
                         if part.product_type == ProductType.SCIENCE:
                             _update_spatial_wcs(part, chunk, headers,
                                                 observation.observation_id)
@@ -320,34 +320,34 @@ def update(observation, **kwargs):
                     while len(part.chunks) > 0:
                         del part.chunks[-1]
 
-        if isinstance(observation, DerivedObservation):
-            if plane.provenance is None:
-                plane.provenance = Provenance(name='TBD')
-            subject = net.Subject(certificate='/usr/src/app/cadcproxy.pem')
-            tap_client = CadcTapClient(
-                    subject, resource_id='ivo://cadc.nrc.ca/ams/gemini')
-
-            def _repair_provenance_value(imcmb_value, obs_id):
-                logging.debug(f'Being _repair_provenance_value for {obs_id}.')
-                prov_file_id = gem_name.GemName.remove_extensions(imcmb_value)
-                if '[SCI' in prov_file_id:
-                    prov_file_id = None
-                    prov_obs_id = None
-                else:
-                    prov_obs_id = external_metadata.get_obs_id_from_cadc(
-                        prov_file_id, tap_client)
-                logging.debug(f'End _repair_provenance_value {prov_obs_id} '
-                              f'{prov_file_id}')
-                return prov_obs_id, prov_file_id
-
-            cc.update_plane_provenance_list(
-                    plane, headers, 
-                    ['IMCMB', 'SKY', 'FLATIM', 'DARKIM', 'BPMIMG'], 
-                    COLLECTION, _repair_provenance_value, 
-                    observation.observation_id)
-            cc.build_temporal_wcs_bounds(tap_client, headers[0],
-                    ['IMCMB', 'SKY', 'FLATIM', 'DARKIM', 'BPMIMG'],
-                    COLLECTION)
+        # if isinstance(observation, DerivedObservation):
+        #     if plane.provenance is None:
+        #         plane.provenance = Provenance(name='TBD')
+        #     subject = net.Subject(certificate='/usr/src/app/cadcproxy.pem')
+        #     tap_client = CadcTapClient(
+        #             subject, resource_id='ivo://cadc.nrc.ca/ams/gemini')
+        #
+        #     def _repair_provenance_value(imcmb_value, obs_id):
+        #         logging.debug(f'Being _repair_provenance_value for {obs_id}.')
+        #         prov_file_id = gem_name.GemName.remove_extensions(imcmb_value)
+        #         if '[SCI' in prov_file_id:
+        #             prov_file_id = None
+        #             prov_obs_id = None
+        #         else:
+        #             prov_obs_id = external_metadata.get_obs_id_from_cadc(
+        #                 prov_file_id, tap_client)
+        #         logging.debug(f'End _repair_provenance_value {prov_obs_id} '
+        #                       f'{prov_file_id}')
+        #         return prov_obs_id, prov_file_id
+        #
+        #     cc.update_plane_provenance_list(
+        #             plane, headers,
+        #             ['IMCMB', 'SKY', 'FLATIM', 'DARKIM', 'BPMIMG'],
+        #             COLLECTION, _repair_provenance_value,
+        #             observation.observation_id)
+        #     cc.build_temporal_wcs_bounds(tap_client, headers[0],
+        #             ['IMCMB', 'SKY', 'FLATIM', 'DARKIM', 'BPMIMG'],
+        #             COLLECTION)
 
     if (observation.proposal is not None and
             observation.proposal.id is not None and
