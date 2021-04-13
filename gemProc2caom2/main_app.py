@@ -114,12 +114,13 @@ import os
 import sys
 import traceback
 
+from urllib.parse import urlparse
+
 from cadctap import CadcTapClient
-from cadcutils import net
 from caom2 import Observation, CalibrationLevel, ProductType, TemporalWCS
 from caom2 import Axis, CoordAxis1D, SpectralWCS, CoordFunction1D, RefCoord
 from caom2 import CoordError, ObservationIntentType, SimpleObservation
-from caom2 import Algorithm, DataProductType, DerivedObservation, Provenance
+from caom2 import Algorithm, DataProductType
 from caom2utils import ObsBlueprint, get_gen_proc_arg_parser, gen_proc
 from caom2utils import WcsParser
 from caom2pipe import astro_composable as ac
@@ -140,14 +141,21 @@ class GemProcName(mc.StorageName):
 
     def __init__(self, file_name, entry):
         super(GemProcName, self).__init__(fname_on_disk=file_name,
-                                          archive=ARCHIVE,
+                                          archive='GEMINI',
                                           compression='',
                                           entry=entry)
-        self._file_name = file_name
+        if file_name.startswith('vos'):
+            self._vos_uri = file_name
+            self._file_name = os.path.basename(urlparse(self._vos_uri).path)
+            self._obs_id = None
+        else:
+            self._file_name = file_name
+            self._obs_id = self.get_obs_id()
+
         self._file_id = gem_name.GemName.remove_extensions(file_name)
-        self._obs_id = self.get_obs_id()
         self.scheme = 'cadc'
         self.archive = 'GEMINI'
+        self.fname_on_disk = self._file_name
         self._logger = logging.getLogger(__name__)
         self._logger.debug(self)
 
@@ -170,6 +178,14 @@ class GemProcName(mc.StorageName):
     @property
     def file_name(self):
         return self._file_name
+
+    @property
+    def obs_id(self):
+        return self._obs_id
+
+    @obs_id.setter
+    def obs_id(self, value):
+        self._obs_id = value
 
     @property
     def prev(self):
