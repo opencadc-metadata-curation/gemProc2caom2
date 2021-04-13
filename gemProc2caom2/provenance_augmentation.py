@@ -73,7 +73,6 @@ from astropy.io import fits
 from cadctap import CadcTapClient
 from caom2 import Observation, DerivedObservation, ObservationURI, PlaneURI
 from caom2 import TypedSet
-from caom2pipe import caom_composable as cc
 from caom2pipe import manage_composable as mc
 from gem2caom2 import external_metadata, gem_name
 from gemProc2caom2 import GemProcName
@@ -107,7 +106,6 @@ def visit(observation, **kwargs):
 
         if plane.provenance is not None:
             plane.provenance.inputs.update(plane_inputs)
-            cc.build_temporal_wcs_bounds(tap_client, plane, 'GEMINI')
 
     if isinstance(observation, DerivedObservation):
         observation.members.update(obs_members)

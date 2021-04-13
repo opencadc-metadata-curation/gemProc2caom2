@@ -80,9 +80,9 @@ import logging
 import sys
 import traceback
 
-from caom2pipe import manage_composable as mc
 from caom2pipe import name_builder_composable as nbc
 from caom2pipe import run_composable as rc
+from caom2pipe import transfer_composable as tc
 from gemProc2caom2 import APPLICATION, GemProcName, preview_augmentation
 from gemProc2caom2 import provenance_augmentation
 
@@ -100,13 +100,13 @@ def _run():
     :return 0 if successful, -1 if there's any sort of failure. Return status
         is used by airflow for task instance management and reporting.
     """
-    config = mc.Config()
-    config.get_executors()
     name_builder = nbc.FileNameBuilder(GemProcName)
-    return rc.run_by_todo(config=None, name_builder=name_builder,
+    store_transfer = tc.VoTransfer()
+    return rc.run_by_todo(name_builder=name_builder,
                           command_name=APPLICATION,
                           meta_visitors=META_VISITORS, 
-                          data_visitors=DATA_VISITORS, chooser=None)
+                          data_visitors=DATA_VISITORS,
+                          store_transfer=store_transfer)
 
 
 def run():
@@ -114,32 +114,6 @@ def run():
     try:
         result = _run()
         sys.exit(result)
-    except Exception as e:
-        logging.error(e)
-        tb = traceback.format_exc()
-        logging.debug(tb)
-        sys.exit(-1)
-
-
-def _run_state():
-    """Uses a state file with a timestamp to control which entries will be
-    processed.
-    """
-    config = mc.Config()
-    config.get_executors()
-    name_builder = nbc.FileNameBuilder(GemProcName)
-    return rc.run_by_state(config=None, name_builder=name_builder,
-                           command_name=APPLICATION, 
-                           bookmark_name=None, meta_visitors=META_VISITORS,
-                           data_visitors=DATA_VISITORS, end_time=None,
-                           source=None, chooser=None)
-
-
-def run_state():
-    """Wraps _run_state in exception handling."""
-    try:
-        _run_state()
-        sys.exit(0)
     except Exception as e:
         logging.error(e)
         tb = traceback.format_exc()
