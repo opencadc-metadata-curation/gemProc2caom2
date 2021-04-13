@@ -80,6 +80,8 @@ import logging
 import sys
 import traceback
 
+from caom2pipe import data_source_composable as dsc
+from caom2pipe import manage_composable as mc
 from caom2pipe import name_builder_composable as nbc
 from caom2pipe import run_composable as rc
 from caom2pipe import transfer_composable as tc
@@ -100,10 +102,15 @@ def _run():
     :return 0 if successful, -1 if there's any sort of failure. Return status
         is used by airflow for task instance management and reporting.
     """
+    config = mc.Config()
+    config.get_executors()
+    data_source = dsc.VaultListDirDataSource(config)
     name_builder = nbc.FileNameBuilder(GemProcName)
     store_transfer = tc.VoTransfer()
-    return rc.run_by_todo(name_builder=name_builder,
+    return rc.run_by_todo(config=config,
+                          name_builder=name_builder,
                           command_name=APPLICATION,
+                          source=data_source,
                           meta_visitors=META_VISITORS, 
                           data_visitors=DATA_VISITORS,
                           store_transfer=store_transfer)
