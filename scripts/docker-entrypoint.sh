@@ -5,16 +5,4 @@ then
   cp /config.yml ${PWD}
 fi
 
-if [[ ! -e ${PWD}/state.yml ]]; then
-  if [[ "${@}" == "gem_proc_run_state" ]]; then
-    yesterday=$(date -d yesterday "+%d-%b-%Y %H:%M")
-    echo "bookmarks:
-    gem_proc_timestamp:
-      last_record: $yesterday
-" > ${PWD}/state.yml
-  else
-    cp /usr/local/lib/state.yml ${PWD}
-  fi
-fi
-
 exec "${@}"
