@@ -163,7 +163,8 @@ def _do_provenance(working_directory, science_file, observation,
                                    data[temp]):
         f_id = gem_name.GemName.remove_extensions(f_name)
         for coll in ['GEMINI', 'GEMINIPROC']:
-            obs_id = external_metadata.get_obs_id_from_cadc(f_id, coll, tap_client)
+            obs_id = external_metadata.get_obs_id_from_cadc(
+                    f_id, tap_client, coll)
             if obs_id is not None:
                 logging.info(f'Found observation ID {obs_id} for file {f_id}.')
                 input_obs_uri_str = mc.CaomName.make_obs_uri_from_obs_id(

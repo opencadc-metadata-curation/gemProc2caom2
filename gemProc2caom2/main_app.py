@@ -172,7 +172,7 @@ class GemProcName(mc.StorageName):
             tap_client = CadcTapClient(subject=subject,
                                        resource_id=config.tap_id)
             obs_id = external_metadata.get_obs_id_from_cadc(
-                self._file_id, COLLECTION, tap_client)
+                self._file_id, tap_client, COLLECTION)
             if obs_id is None:
                 headers = fits2caom2.get_cadc_headers(f'ad:GEMINI/{self._file_name}', subject)
                 obs_id = headers[0].get('DATALAB')
