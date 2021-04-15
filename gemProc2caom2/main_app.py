@@ -172,7 +172,7 @@ def accumulate_bp(bp, uri):
     bp.set('Observation.telescope.geoLocationY', '_get_telescope_y(uri)')
     bp.set('Observation.telescope.geoLocationZ', '_get_telescope_z(uri)')
 
-    bp.set('Plane.calibrationLevel', '_get_plane_calibration_level(header)')
+    bp.set('Plane.calibrationLevel', CalibrationLevel.CALIBRATED)
     bp.set('Plane.dataProductType', '_get_plane_data_product_type(header)')
     bp.clear('Plane.provenance.lastExecuted')
     bp.add_fits_attribute('Plane.provenance.lastExecuted', 'DATE')
@@ -331,16 +331,6 @@ def _get_obs_intent(uri):
     result = ObservationIntentType.SCIENCE
     if 'g' in prefix:
         result = ObservationIntentType.CALIBRATION
-    return result
-
-
-def _get_plane_calibration_level(header):
-    result = CalibrationLevel.RAW_STANDARD
-    for keyword in ['IMCMB', 'SKY', 'FLATIM', 'DARKIM', 'BPMIMG']:
-        for key in header:
-            if key.startswith(keyword):
-                result = CalibrationLevel.CALIBRATED
-                break
     return result
 
 
