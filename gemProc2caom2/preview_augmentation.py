@@ -87,7 +87,7 @@ class GemProcPreview(mc.PreviewVisitor):
 
     def __init__(self, observation, **kwargs):
         super(GemProcPreview, self).__init__(
-            ARCHIVE, ReleaseType.DATA, **kwargs)
+            'GEMINI', ReleaseType.DATA, **kwargs)
         self._observation = observation
         self._storage_name = GemProcName(file_name=self._science_file,
                                          entry=self._science_file)

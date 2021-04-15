@@ -70,8 +70,7 @@
 from mock import patch, Mock
 
 from astropy.table import Table
-from gem2caom2 import ARCHIVE, COLLECTION
-from gemProc2caom2 import main_app, GemProcName, APPLICATION
+from gemProc2caom2 import main_app, GemProcName, APPLICATION, COLLECTION
 from caom2pipe import manage_composable as mc
 
 import glob
@@ -177,7 +176,7 @@ def _get_file_info(archive, file_id):
 
 
 def _get_lineage(blank_name):
-    result = mc.get_lineage(ARCHIVE, blank_name.product_id,
+    result = mc.get_lineage('GEMINI', blank_name.product_id,
                             f'{blank_name.file_name}')
     return result
 

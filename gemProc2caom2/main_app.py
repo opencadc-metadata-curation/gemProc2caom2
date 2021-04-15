@@ -127,12 +127,13 @@ from caom2utils import WcsParser, fits2caom2
 from caom2pipe import astro_composable as ac
 from caom2pipe import caom_composable as cc
 from caom2pipe import manage_composable as mc
-from gem2caom2 import ARCHIVE, COLLECTION, external_metadata
+from gem2caom2 import external_metadata
 from gem2caom2 import gem_name, obs_file_relationship
 
+COLLECTION='GEMINIPROC'
 
 __all__ = ['gem_proc_main_app', 'update', 'APPLICATION', 'GemProcName',
-           'to_caom2']
+           'to_caom2', 'COLLECTION']
 
 
 APPLICATION = 'gemProc2caom2'
@@ -143,6 +144,7 @@ class GemProcName(mc.StorageName):
     def __init__(self, file_name, entry):
         super(GemProcName, self).__init__(fname_on_disk=file_name,
                                           archive='GEMINI',
+                                          collection=COLLECTION,
                                           compression='',
                                           entry=entry)
         if file_name.startswith('vos'):
@@ -152,10 +154,10 @@ class GemProcName(mc.StorageName):
             self._file_id = gem_name.GemName.remove_extensions(self._file_name)
         else:
             self._file_name = file_name
-            self._obs_id = self.get_obs_id()
             self._file_id = gem_name.GemName.remove_extensions(file_name)
+            self._obs_id = self.get_obs_id()
 
-        self.scheme = 'cadc'
+        self.scheme = 'ad'
         self.archive = 'GEMINI'
         self.fname_on_disk = self._file_name
         self._logger = logging.getLogger(__name__)
@@ -170,7 +172,12 @@ class GemProcName(mc.StorageName):
             tap_client = CadcTapClient(subject=subject,
                                        resource_id=config.tap_id)
             obs_id = external_metadata.get_obs_id_from_cadc(
-                self._file_id, tap_client)
+                self._file_id, COLLECTION, tap_client)
+            if obs_id is None:
+                headers = fits2caom2.get_cadc_headers(f'ad:GEMINI/{self._file_name}', subject)
+                obs_id = headers[0].get('DATALAB')
+                if obs_id is None:
+                    raise mc.CadcException(f'No obs id for {self._file_name}')
         return obs_id
 
     @property

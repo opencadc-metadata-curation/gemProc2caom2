@@ -70,6 +70,7 @@
 import os
 from mock import Mock, patch
 
+from astropy.io import fits
 from caom2pipe import manage_composable as mc
 from gemProc2caom2 import provenance_augmentation
 import test_main_app
@@ -83,12 +84,14 @@ def pytest_generate_tests(metafunc):
     metafunc.parametrize('test_fqn', fqn_list)
 
 
+@patch('caom2utils.fits2caom2.get_cadc_headers')
 @patch('caom2pipe.manage_composable.repo_get')
 @patch('gem2caom2.external_metadata.get_obs_id_from_cadc')
-def test_provenance_augmentation(obs_id_mock, repo_get_mock, test_fqn):
+def test_provenance_augmentation(obs_id_mock, repo_get_mock, headers_mock, test_fqn):
     test_rejected = mc.Rejected(REJECTED_FILE)
     test_config = mc.Config()
     test_observable = mc.Observable(test_rejected, mc.Metrics(test_config))
+    headers_mock.side_effect = _get_headers_mock
     repo_get_mock.side_effect = _repo_get_mock
     obs_id_mock.side_effect = _get_obs_id_mock
     getcwd_orig = os.getcwd
@@ -110,7 +113,7 @@ def test_provenance_augmentation(obs_id_mock, repo_get_mock, test_fqn):
         os.getcwd = getcwd_orig
 
 
-def _get_obs_id_mock(f_id, ignore):
+def _get_obs_id_mock(f_id, collection, ignore):
     lookup = {'N20140428S0181': 'GN-2014A-Q-85-16-013'}
     return lookup.get(f_id)
 
@@ -118,3 +121,21 @@ def _get_obs_id_mock(f_id, ignore):
 def _repo_get_mock(ignore1, ignore2, ignore3, ignore4):
     return mc.read_obs_from_file(
         f'{test_main_app.TEST_DATA_DIR}/GN-2014A-Q-85-16-013.xml')
+
+
+def _get_headers_mock(uri_ignore):
+    x = """SIMPLE  =                    T   / Written by IDL:  Fri Oct  6 01:48:35 2017
+BITPIX  =                  -32   / Bits per pixel
+NAXIS   =                    2   / Number of dimensions
+NAXIS1  =                 2048   /
+NAXIS2  =                 2048   /
+DATATYPE= 'REDUC   '             /Data type, SCIENCE/CALIB/REJECT/FOCUS/TEST
+DATALAB = 'GN-2014A-Q-85-16-013' /
+END
+"""
+    delim = '\nEND'
+    extensions = \
+        [e + delim for e in x.split(delim) if e.strip()]
+    headers = [fits.Header.fromstring(e, sep='\n') for e in extensions]
+    return headers
+

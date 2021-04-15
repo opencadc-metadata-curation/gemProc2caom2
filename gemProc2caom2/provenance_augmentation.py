@@ -162,22 +162,24 @@ def _do_provenance(working_directory, science_file, observation,
     for f_name, f_prov_type in zip(data['Filename'],
                                    data[temp]):
         f_id = gem_name.GemName.remove_extensions(f_name)
-        obs_id = external_metadata.get_obs_id_from_cadc(f_id, tap_client)
-        if obs_id is not None:
-            logging.info(f'Found observation ID {obs_id} for file {f_id}.')
-            input_obs_uri_str = mc.CaomName.make_obs_uri_from_obs_id(
-                gem_name.COLLECTION, obs_id)
-            input_obs_uri = ObservationURI(input_obs_uri_str)
-            plane_uri = PlaneURI.get_plane_uri(input_obs_uri, f_id)
-            plane_inputs.add(plane_uri)
-            count += 1
-            if f_prov_type == 'member':
-                if isinstance(observation, DerivedObservation):
-                    member_obs_uri_str = mc.CaomName.make_obs_uri_from_obs_id(
-                        gem_name.COLLECTION, obs_id)
-                    member_obs_uri = ObservationURI(member_obs_uri_str)
-                    obs_members.add(member_obs_uri)
-                    count += 1
+        for coll in ['GEMINI', 'GEMINIPROC']:
+            obs_id = external_metadata.get_obs_id_from_cadc(f_id, coll, tap_client)
+            if obs_id is not None:
+                logging.info(f'Found observation ID {obs_id} for file {f_id}.')
+                input_obs_uri_str = mc.CaomName.make_obs_uri_from_obs_id(
+                    coll, obs_id)
+                input_obs_uri = ObservationURI(input_obs_uri_str)
+                plane_uri = PlaneURI.get_plane_uri(input_obs_uri, f_id)
+                plane_inputs.add(plane_uri)
+                count += 1
+                if f_prov_type == 'member':
+                    if isinstance(observation, DerivedObservation):
+                        member_obs_uri_str = mc.CaomName.make_obs_uri_from_obs_id(
+                            coll, obs_id)
+                        member_obs_uri = ObservationURI(member_obs_uri_str)
+                        obs_members.add(member_obs_uri)
+                        count += 1
+                break
     hdus.close()
     logging.debug('End _do_provenance.')
     return count

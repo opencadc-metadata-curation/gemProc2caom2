@@ -91,7 +91,7 @@ def test_preview_augmentation(data_client_mock, tap_mock):
     data_client_mock.return_value.get_file_info.side_effect = \
         test_main_app._get_file_info
 
-    test_f_id = 'rgnN20140428S0171_flat'
+    test_f_id = 'rnN20140428S0181_ronchi'
     test_f_name = f'{test_f_id}.fits'
     test_obs = mc.read_obs_from_file(
         f'{test_main_app.TEST_DATA_DIR}/'

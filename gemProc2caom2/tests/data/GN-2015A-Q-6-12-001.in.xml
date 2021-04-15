@@ -1,5 +1,5 @@
 <caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:DerivedObservation" caom2:id="c276e468-8044-4caa-b8ee-543675012f3f" caom2:lastModified="2020-07-22T23:13:53.989" caom2:maxLastModified="2020-07-22T23:13:53.989" caom2:metaChecksum="md5:5adf2dab9c468179ab8e9050007820c4" caom2:accMetaChecksum="md5:65d3f9b23e3df975e281f8193d790ad6">
-  <caom2:collection>GEMINI</caom2:collection>
+  <caom2:collection>GEMINIPROC</caom2:collection>
   <caom2:observationID>GN-2015A-Q-6-12-001</caom2:observationID>
   <caom2:metaRelease>2020-06-03T22:51:19.000</caom2:metaRelease>
   <caom2:algorithm>
@@ -31,7 +31,7 @@
       </caom2:provenance>
       <caom2:artifacts>
         <caom2:artifact caom2:id="354dc778-a976-4c83-bfdb-4b2284a28204" caom2:lastModified="2020-07-22T23:13:53.989" caom2:maxLastModified="2020-07-22T23:13:53.989" caom2:metaChecksum="md5:d0db30867c92312f8c674d13fcde072c" caom2:accMetaChecksum="md5:8fff078351e46f68d6abadd6b41f0011">
-          <caom2:uri>ad:GEM/ctfbrsnN20150504S0093.fits</caom2:uri>
+          <caom2:uri>ad:GEMINI/ctfbrsnN20150504S0093.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>application/fits</caom2:contentType>
