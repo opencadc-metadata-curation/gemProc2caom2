@@ -32,7 +32,7 @@
       </caom2:provenance>
       <caom2:artifacts>
         <caom2:artifact caom2:id="3e94a6d1-c002-4b8f-8a17-13a4152fede2">
-          <caom2:uri>ad:GEM/ctfbrsnN20190303S0052.fits</caom2:uri>
+          <caom2:uri>ad:GEMINI/ctfbrsnN20190303S0052.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>application/fits</caom2:contentType>
