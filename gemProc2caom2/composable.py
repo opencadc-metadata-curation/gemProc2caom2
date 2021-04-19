@@ -131,10 +131,10 @@ def _run_remote():
     """
     config = mc.Config()
     config.get_executors()
-    data_source = dsc.VaultListDirDataSource(config)
     name_builder = nbc.FileNameBuilder(GemProcName)
     vos_client = Client(vospace_certfile=config.proxy_fqn)
     store_transfer = tc.VoFitsTransfer(vos_client)
+    data_source = dsc.VaultListDirDataSource(vos_client, config)
     return rc.run_by_todo(config=config,
                           name_builder=name_builder,
                           command_name=APPLICATION,

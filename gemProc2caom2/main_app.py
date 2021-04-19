@@ -516,7 +516,7 @@ def _update_time(part, chunk, header, obs_id):
             naxis=1,
             delta=mc.convert_to_days(exp_time),
             ref_coord=ref_coord)
-        chunk.time.exposure = exp_time
+        chunk.time.exposure = float(exp_time)
         chunk.time.resolution = mc.convert_to_days(exp_time)
     logging.debug(f'End _update_time.')
 
