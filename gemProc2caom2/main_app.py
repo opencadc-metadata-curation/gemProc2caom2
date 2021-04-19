@@ -131,12 +131,10 @@ from gem2caom2 import external_metadata
 from gem2caom2 import gem_name, obs_file_relationship
 
 COLLECTION='GEMINIPROC'
+APPLICATION = 'gemProc2caom2'
 
 __all__ = ['gem_proc_main_app', 'update', 'APPLICATION', 'GemProcName',
            'to_caom2', 'COLLECTION']
-
-
-APPLICATION = 'gemProc2caom2'
 
 
 class GemProcName(mc.StorageName):
@@ -174,7 +172,8 @@ class GemProcName(mc.StorageName):
             obs_id = external_metadata.get_obs_id_from_cadc(
                 self._file_id, tap_client, COLLECTION)
             if obs_id is None:
-                headers = fits2caom2.get_cadc_headers(f'ad:GEMINI/{self._file_name}', subject)
+                headers = fits2caom2.get_cadc_headers(
+                    f'ad:GEMINI/{self._file_name}', subject)
                 obs_id = headers[0].get('DATALAB')
                 if obs_id is None:
                     raise mc.CadcException(f'No obs id for {self._file_name}')

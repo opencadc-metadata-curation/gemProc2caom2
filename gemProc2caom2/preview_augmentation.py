@@ -79,7 +79,6 @@ from astropy.visualization import MinMaxInterval, ZScaleInterval
 
 from caom2 import ProductType, ReleaseType
 from caom2pipe import manage_composable as mc
-from gem2caom2 import ARCHIVE
 from gemProc2caom2 import GemProcName
 
 
