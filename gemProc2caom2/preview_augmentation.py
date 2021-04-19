@@ -79,7 +79,6 @@ from astropy.visualization import MinMaxInterval, ZScaleInterval
 
 from caom2 import ProductType, ReleaseType
 from caom2pipe import manage_composable as mc
-from gem2caom2 import ARCHIVE
 from gemProc2caom2 import GemProcName
 
 
@@ -87,7 +86,7 @@ class GemProcPreview(mc.PreviewVisitor):
 
     def __init__(self, observation, **kwargs):
         super(GemProcPreview, self).__init__(
-            ARCHIVE, ReleaseType.DATA, **kwargs)
+            'GEMINI', ReleaseType.DATA, **kwargs)
         self._observation = observation
         self._storage_name = GemProcName(file_name=self._science_file,
                                          entry=self._science_file)

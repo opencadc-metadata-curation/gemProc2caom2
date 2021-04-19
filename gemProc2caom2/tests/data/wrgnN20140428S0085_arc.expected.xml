@@ -1,588 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:DerivedObservation" caom2:id="b9a3114f-bf9c-4222-938c-3cdd3e6b6862" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:34:37.387" caom2:metaChecksum="md5:244f45b5f8ddb997972da32b9eb480b5" caom2:accMetaChecksum="md5:4b34259cac193e3423e337003331043a">
   <caom2:collection>GEMINIPROC</caom2:collection>
-  <caom2:observationID>GN-2019B-FT-101-31-001</caom2:observationID>
-  <caom2:metaRelease>2020-06-30T18:12:31.000</caom2:metaRelease>
+  <caom2:observationID>GN-2014A-Q-85-12-001-ARC</caom2:observationID>
+  <caom2:metaRelease>2020-07-30T15:23:06.000</caom2:metaRelease>
   <caom2:algorithm>
     <caom2:name>composite</caom2:name>
   </caom2:algorithm>
   <caom2:type>ARC</caom2:type>
-  <caom2:intent>science</caom2:intent>
+  <caom2:intent>calibration</caom2:intent>
+  <caom2:proposal>
+    <caom2:id>GN-2014A-Q-85</caom2:id>
+    <caom2:pi>Principle Investigator</caom2:pi>
+    <caom2:title>The Title For A NIFS Science Program</caom2:title>
+  </caom2:proposal>
   <caom2:target>
-    <caom2:name>Ar,Xe</caom2:name>
+    <caom2:name>Xe,Ar</caom2:name>
+    <caom2:type>object</caom2:type>
   </caom2:target>
   <caom2:telescope>
     <caom2:name>Gemini-North</caom2:name>
+    <caom2:geoLocationX>-5464284.386715498</caom2:geoLocationX>
+    <caom2:geoLocationY>-2493782.3091076654</caom2:geoLocationY>
+    <caom2:geoLocationZ>2150786.380689657</caom2:geoLocationZ>
   </caom2:telescope>
   <caom2:instrument>
     <caom2:name>NIFS</caom2:name>
   </caom2:instrument>
   <caom2:planes>
     <caom2:plane caom2:id="736555f4-d7b5-40a3-a046-3a28430754ed" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:34:37.387" caom2:metaChecksum="md5:ae6fda3fcb4d6ed3980dd444f9e97649" caom2:accMetaChecksum="md5:cdce63a449dc891b36692c26d9c3d887">
-      <caom2:productID>wrgnN20191027S0083_arc</caom2:productID>
-      <caom2:metaRelease>2019-10-27T00:00:00.000</caom2:metaRelease>
-      <caom2:dataRelease>2019-10-27T00:00:00.000</caom2:dataRelease>
-      <caom2:dataProductType>image</caom2:dataProductType>
+      <caom2:productID>wrgnN20140428S0085_arc</caom2:productID>
+      <caom2:metaRelease>2014-04-28T00:00:00.000</caom2:metaRelease>
+      <caom2:dataRelease>2014-04-28T00:00:00.000</caom2:dataRelease>
+      <caom2:dataProductType>spectrum</caom2:dataProductType>
       <caom2:calibrationLevel>2</caom2:calibrationLevel>
       <caom2:provenance>
         <caom2:name>Nifty4Gemini</caom2:name>
         <caom2:producer>CADC</caom2:producer>
         <caom2:reference>https://doi.org/10.5281/zenodo.897014</caom2:reference>
-        <caom2:lastExecuted>2020-06-30T18:12:31.000</caom2:lastExecuted>
-        <caom2:inputs>
-          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-34-012/N20191027S0342</caom2:planeURI>
-          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-31-001/N20191027S0083</caom2:planeURI>
-          <caom2:planeURI>caom:GEMINI/GN-2019B-FT-101-34-011/N20191027S0341</caom2:planeURI>
-        </caom2:inputs>
+        <caom2:lastExecuted>2020-07-30T15:23:06.000</caom2:lastExecuted>
       </caom2:provenance>
       <caom2:artifacts>
         <caom2:artifact caom2:id="fbc34cfc-88d4-4b6f-a0cc-dc26615ae640" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:3e648d8391d6aba96eb49fb2c9192b2a" caom2:accMetaChecksum="md5:3526940d5cfec300ea2a576c2ff016cd">
-          <caom2:uri>ad:GEMINI/wrgnN20191027S0083_arc.fits</caom2:uri>
+          <caom2:uri>ad:GEMINI/wrgnN20140428S0085_arc.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>application/fits</caom2:contentType>
-          <caom2:contentLength>16680960</caom2:contentLength>
           <caom2:contentChecksum>md5:2766b30f46d05f49f3c67285773a64d3</caom2:contentChecksum>
           <caom2:parts>
-            <caom2:part caom2:id="c4c23d81-e3cd-4486-913a-7a0cfc7a3bf3" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:d20ee4f5b2160cac28265b0fa86510af" caom2:accMetaChecksum="md5:d113b605066935a5362f921d782b7edf">
+            <caom2:part caom2:id="b907d671-eae8-4cfa-8dbf-15a585e1a8d6">
               <caom2:name>0</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
               <caom2:chunks/>
             </caom2:part>
-            <caom2:part caom2:id="aaf00181-8eb6-4bac-a570-ff28ede7cd4d" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:c180403c5a8d4c5828250509efff9f91" caom2:accMetaChecksum="md5:42262373f0537d04b99680ad33ebf8e8">
+            <caom2:part caom2:id="6a939bcd-6732-4ac2-bb8d-8871da986679">
               <caom2:name>1</caom2:name>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="747d2675-d947-4be5-be63-8158d267d457" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:20e17679263e4d26b4e602a75b435ae9" caom2:accMetaChecksum="md5:ad0ff98ad470eeba7aa7a30972686da5">
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
             </caom2:part>
-            <caom2:part caom2:id="d364fabb-6777-4949-a971-0f6b89fc6725" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:7fb03fbc9b897a80580fae54b92901c8" caom2:accMetaChecksum="md5:3b704b55a891695964cd2b0e166059c2">
-              <caom2:name>10</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="393b8c39-133d-4b06-9fb2-b5fe4381fde1" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:f905a576b4d02b056f84d51b1dae6763" caom2:accMetaChecksum="md5:f600a4dcfc35c9ce24dd16e070d46ba4">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="8f4fd9aa-380c-4c38-9d85-a31b51f59ac7" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:ebdc303c6e73f8a68e2e8e7c1e715f77" caom2:accMetaChecksum="md5:6b7f466c1a71c423df5677774fa4ba84">
-              <caom2:name>11</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="d4d3c4c6-aeca-4b4f-865a-d91f4f9c8104" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:d6e9145f73d069b0ce3883cef0646151" caom2:accMetaChecksum="md5:ca9c1b8fa5297a11776095d9ede3222d">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="3ec7dd66-e4e0-4b6a-a500-3fdcb38bfc24" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:d69d1dac9e2a336b0523cbd248f9c771" caom2:accMetaChecksum="md5:0d1bf3272a822c49c002533fc67afcfa">
-              <caom2:name>12</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="3b98fef8-aa9c-4307-8699-e60fb5951e49" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:9693c9f16895b636870ce68d9b0848c8" caom2:accMetaChecksum="md5:5aa2cbd89dc45864e7d1bc535510802a">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="d6cf25a9-6067-405a-8293-eb1a4f2d5c86" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:dfd35c7c4a2bb42292b2bf861f278cb2" caom2:accMetaChecksum="md5:edd8b80d3344c675a12ed9d93844e79b">
-              <caom2:name>13</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="ebcf726d-512f-4cfb-83b8-48bc30822660" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:8591678339b46d439d323154799af789" caom2:accMetaChecksum="md5:1bdf6bdc5585c698ceea64fdead818cb">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="b3ce5e6c-e6a1-4419-8d01-fa8e6683db01" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:c861279c19265ef7a25a3987b1c15bc7" caom2:accMetaChecksum="md5:d0e054c4c2a1232b13a6a1b5ff40fabc">
-              <caom2:name>14</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="86544e43-a305-4617-851d-127370f2a3f7" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:936437dacbf386917a7df7454f2adecf" caom2:accMetaChecksum="md5:ede35bd20c3d97ea3285590edf4d97a0">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="6e267680-307b-495a-b156-348a799fbe4f" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:6bbd351413148b3ef385a777b898373c" caom2:accMetaChecksum="md5:65e084ff6dee8fbf3ef0d911ce49ae15">
-              <caom2:name>15</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="582927c0-82f1-42af-a181-7b059e7ce96e" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:db4d02afee41ee36c4d2f80490ad9232" caom2:accMetaChecksum="md5:b122aea08db20181a0f8d3d7b9a08d1a">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="a21a30fd-26b0-4fa2-8053-637f932de711" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:d59056ce74401276b163f12920d27ae9" caom2:accMetaChecksum="md5:4365e5a37fc31737e1882e04c46ce4d7">
-              <caom2:name>16</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="1bca376a-f153-42be-b7a0-aedb9c1633b9" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:23012dd50ec18d4ac4b6542002554441" caom2:accMetaChecksum="md5:af55bb55d56e34e50f804e3b7d1c547e">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="2d9cc845-db0a-49d6-8109-547928b29c1b" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:66d249546e41873a034d92135abff4fe" caom2:accMetaChecksum="md5:21adfc14908f9113dddef4e4269ca201">
-              <caom2:name>17</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="fd8022aa-21e1-41c6-954c-a72ba4f595ca" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:57996970b3390edaf1f8ac37b6be673f" caom2:accMetaChecksum="md5:4eaa72ffef7e1dc1853eb24bfabdcea6">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="ee807ba9-9db6-443c-949b-16e27e1920f5" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:af3f4ba16922d25c94bfd8a60da8762d" caom2:accMetaChecksum="md5:9376bc6226ba748fc9879745a58ffd08">
-              <caom2:name>18</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="64923bd1-2b72-4825-a9f8-2a26d61beaf6" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:06f3f77a07289a6485399bf2917dc10c" caom2:accMetaChecksum="md5:a138f023457d4af18d097504b0a0ffc8">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="fc969828-34d4-4eb9-ad33-b37f5716df16" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:526e50bf3027d38a5aaa84d5a26de773" caom2:accMetaChecksum="md5:462d910d2471bb2c7c5874a045bea3e2">
-              <caom2:name>19</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="1e3ae116-5dc8-4023-b69c-9949abf3e0b9" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:76c000e780952acec6a5f55bc03790a1" caom2:accMetaChecksum="md5:b35b2d0ab17dc50438841a3671fd4710">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="d4df8aa1-bc19-4f9d-9c3b-7eefa41e0a73" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:733776894a498bb303fac104f1d962bf" caom2:accMetaChecksum="md5:e94220c2d61e887b23c8b8d15efdcfbb">
+            <caom2:part caom2:id="8cee6e09-db1d-4944-a8c3-1c3480befa83">
               <caom2:name>2</caom2:name>
               <caom2:productType>science</caom2:productType>
               <caom2:chunks>
-                <caom2:chunk caom2:id="71875d7d-4e7a-43c5-9d46-132669e00c6b" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:c0acf224acf62093d2d823b3a95ad4eb" caom2:accMetaChecksum="md5:6f65e6274520953676421d719de74785">
-                  <caom2:naxis>1</caom2:naxis>
+                <caom2:chunk caom2:id="06e6bda9-ca50-4cdd-9b7c-b743d31ea7d2">
                   <caom2:energyAxis>1</caom2:energyAxis>
                   <caom2:energy>
                     <caom2:axis>
@@ -600,6 +79,8 @@
                       </caom2:function>
                     </caom2:axis>
                     <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
                   </caom2:energy>
                   <caom2:time>
                     <caom2:axis>
@@ -613,526 +94,25 @@
                       </caom2:error>
                       <caom2:function>
                         <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
                         <caom2:refCoord>
                           <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
+                          <caom2:val>56775.479771</caom2:val>
                         </caom2:refCoord>
                       </caom2:function>
                     </caom2:axis>
                     <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
+                    <caom2:exposure>30.0</caom2:exposure>
                     <caom2:resolution>0.00034722222222222224</caom2:resolution>
                   </caom2:time>
                 </caom2:chunk>
               </caom2:chunks>
             </caom2:part>
-            <caom2:part caom2:id="e0adcc14-051e-43b4-88c8-e562717d3990" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:ad9d212469fa83eed3ffc3b8f2a28b87" caom2:accMetaChecksum="md5:ef507aa91a90c2bc85205cffa2eefeb5">
-              <caom2:name>20</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="fbe85350-b677-4be6-84e6-f9f664f4f2ed" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:fac9b0f316581498142086d110362a71" caom2:accMetaChecksum="md5:74c5c855407eb963bba3125b11fa0723">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="18be192d-c11f-4d9d-9425-7f23cddac6c7" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:f002fbc3ccf56ae8746ac4ffdcd3ad96" caom2:accMetaChecksum="md5:be98c0a85abe374d13648bc940152011">
-              <caom2:name>21</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="dd45cff8-7f55-40f4-8743-9bca2055f63c" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:d004912953f50f56252aa524c1102b86" caom2:accMetaChecksum="md5:fd7fafad483e6d7d26ce4f5d7e46ec8e">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="d6f183fa-b1f2-46ac-82cf-745dc3b41863" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:e16097fbbdaeeb924a99f8b5a3e89b0a" caom2:accMetaChecksum="md5:481ad3491bda25cc1fd4075cb2cf219d">
-              <caom2:name>22</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="21935368-6274-4908-8477-6d6b95294de6" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:b7377ccb8efa32eab81f18a43bbea6b0" caom2:accMetaChecksum="md5:d25e649e73d29c55ce76bcbf33fb6aaa">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="8a1bb5b6-6983-48d4-9e5a-433a7bec8353" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:52c9174a0be29946f5a26ef1ec64c6fd" caom2:accMetaChecksum="md5:538335e56ddd7451fad6961230ad6a4d">
-              <caom2:name>23</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="61ae375c-710f-4ca2-88ad-64028b93cebb" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:63ad058265e935804c447eb4c71707d9" caom2:accMetaChecksum="md5:1c8c247386dbbe29edc3d5d3867a1685">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="199c3546-fb67-4450-8982-2fdf114faa30" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:843c43edc9308c7fae3b80869873357e" caom2:accMetaChecksum="md5:a3201dbb710ef238f5e306d5244ec934">
-              <caom2:name>24</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="a1c9eb67-3384-4d68-99a3-ac91c6d9c7f5" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:53b2f172303e2e4ea1fbf7a08c926803" caom2:accMetaChecksum="md5:2925637e5dc81e207dde9116711689b1">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="37833376-d5c2-4ea7-9947-b97db1bedf3a" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:9c09b8864d8478cf91d3f8d466bdd3d0" caom2:accMetaChecksum="md5:7487441110f41ca3adc627a1a172be06">
-              <caom2:name>25</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="e6ddefc9-c047-49a5-a238-538a8d5b2b80" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:a1978a55ed4055fe504a40b5e861fa86" caom2:accMetaChecksum="md5:e8d1a5dfe67f56063625f6b2165ac360">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="9d7647bd-e168-4b5d-9017-8f45f8a2ee98" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:68d00b5800cfed9f7fcd80c9a2ce11e6" caom2:accMetaChecksum="md5:aec258ecc03e7299ba0553d6015f09e6">
-              <caom2:name>26</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="065ade34-af85-4a79-aac2-ae215b5f370f" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:67a0f674e5ab81ebd9c070a5d26153e2" caom2:accMetaChecksum="md5:af675c20e3be0335e2a73b5e9208b7cf">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="9acc2a09-3583-4c8f-9bda-ebac75635914" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:2a7881d565ab5bcb61550869487689c1" caom2:accMetaChecksum="md5:0057a5ae05bf77640bb8241171904416">
-              <caom2:name>27</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="3c4304c7-3c35-4b78-b18f-30c70578ec86" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:702a42b232cc89c03b513ef76bd2c86b" caom2:accMetaChecksum="md5:bdabdaf104baf98f78aa74141c055790">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="5aff6b35-55f4-42bf-ad74-019ea9020d73" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:0bf6ff0c48cad848ad457bf416aa23ff" caom2:accMetaChecksum="md5:3d10f6d2283fbd2c7c68c03978335254">
-              <caom2:name>28</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="5ff6b704-5af6-462b-942f-5628dd517bc4" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:9d76b73452759dd6513a0d65b1773656" caom2:accMetaChecksum="md5:3b1902759025df5a5e63c2e1af170ca3">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="1c6474d9-7993-4542-9554-e3d1e11f41a7" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:5448a868d850b7bf5ae18a76a1975e94" caom2:accMetaChecksum="md5:2295efa2fb6d0bc92405461b279493aa">
-              <caom2:name>29</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="adba6128-af30-45ac-bed8-9dd8fb42e093" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:f97da5b1c2deea12a9a4ea1e22a2f541" caom2:accMetaChecksum="md5:e8ce2b1e1dd5b08788f83b770791eb71">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="f61e91ed-8d68-48c9-9ecd-e51afc99452f" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:4faaee8af45f5d1814e1f1a84d496844" caom2:accMetaChecksum="md5:ee3ff3a8df91bd3fa5c3224dfa0ce266">
+            <caom2:part caom2:id="2e40e594-744c-472f-9191-6ad65ad93647">
               <caom2:name>3</caom2:name>
               <caom2:productType>science</caom2:productType>
               <caom2:chunks>
-                <caom2:chunk caom2:id="c4c4f550-4137-4fac-86ef-3104567baa02" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:fbee915e04efaea798be5c930339bd87" caom2:accMetaChecksum="md5:60fb451186df0c3680e73d7782e371b6">
-                  <caom2:naxis>1</caom2:naxis>
+                <caom2:chunk caom2:id="b85616bf-5008-4535-8cc6-d44f8b10b64b">
                   <caom2:energyAxis>1</caom2:energyAxis>
                   <caom2:energy>
                     <caom2:axis>
@@ -1150,6 +130,8 @@
                       </caom2:function>
                     </caom2:axis>
                     <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
                   </caom2:energy>
                   <caom2:time>
                     <caom2:axis>
@@ -1163,144 +145,25 @@
                       </caom2:error>
                       <caom2:function>
                         <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
                         <caom2:refCoord>
                           <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
+                          <caom2:val>56775.479771</caom2:val>
                         </caom2:refCoord>
                       </caom2:function>
                     </caom2:axis>
                     <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
+                    <caom2:exposure>30.0</caom2:exposure>
                     <caom2:resolution>0.00034722222222222224</caom2:resolution>
                   </caom2:time>
                 </caom2:chunk>
               </caom2:chunks>
             </caom2:part>
-            <caom2:part caom2:id="817ca8ad-b31a-4094-9699-290e93bb92b6" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:709c1fdf4ae2b7e86a734731a7c428b3" caom2:accMetaChecksum="md5:17f0a7b39e1bb7bfda946faa624b270d">
-              <caom2:name>30</caom2:name>
-              <caom2:productType>science</caom2:productType>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="b00de294-c2da-468b-b0c7-8449504847e8" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:5ac348f7dbe466a69e01fcd625cd3442" caom2:accMetaChecksum="md5:ef9b9f3b947aa52715eaf28dac52762d">
-                  <caom2:naxis>1</caom2:naxis>
-                  <caom2:energyAxis>1</caom2:energyAxis>
-                  <caom2:energy>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>WAVE</caom2:ctype>
-                        <caom2:cunit>Angstrom</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:function>
-                        <caom2:naxis>2040</caom2:naxis>
-                        <caom2:delta>-2.115</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>1020.0</caom2:pix>
-                          <caom2:val>22000.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:specsys>TOPOCENT</caom2:specsys>
-                  </caom2:energy>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="acd4becf-c4f4-467c-8757-e810fdc8ab08" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:9a292354200473dbe0598b736a440304" caom2:accMetaChecksum="md5:5b8accbbeb913c1bfa302583037aff23">
-              <caom2:name>31</caom2:name>
-              <caom2:chunks>
-                <caom2:chunk caom2:id="042e5d33-d889-462d-bf37-52a0e01e60fd" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:6b430fbd69cf5259d9580949cb8dede9" caom2:accMetaChecksum="md5:cb9bf3ae9b4cd6d2fe25136f898bfa7f">
-                  <caom2:naxis>2</caom2:naxis>
-                  <caom2:positionAxis1>1</caom2:positionAxis1>
-                  <caom2:positionAxis2>2</caom2:positionAxis2>
-                  <caom2:timeAxis>3</caom2:timeAxis>
-                  <caom2:position>
-                    <caom2:axis>
-                      <caom2:axis1>
-                        <caom2:ctype>RA---TAN</caom2:ctype>
-                        <caom2:cunit>deg</caom2:cunit>
-                      </caom2:axis1>
-                      <caom2:axis2>
-                        <caom2:ctype>DEC--TAN</caom2:ctype>
-                        <caom2:cunit>deg</caom2:cunit>
-                      </caom2:axis2>
-                      <caom2:function>
-                        <caom2:dimension>
-                          <caom2:naxis1>2040</caom2:naxis1>
-                          <caom2:naxis2>2080</caom2:naxis2>
-                        </caom2:dimension>
-                        <caom2:refCoord>
-                          <caom2:coord1>
-                            <caom2:pix>15.000042</caom2:pix>
-                            <caom2:val>130.769145</caom2:val>
-                          </caom2:coord1>
-                          <caom2:coord2>
-                            <caom2:pix>34.000093</caom2:pix>
-                            <caom2:val>19.9037</caom2:val>
-                          </caom2:coord2>
-                        </caom2:refCoord>
-                        <caom2:cd11>1.6e-05</caom2:cd11>
-                        <caom2:cd12>-1.8e-05</caom2:cd12>
-                        <caom2:cd21>4.4e-05</caom2:cd21>
-                        <caom2:cd22>6e-06</caom2:cd22>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:coordsys>FK5</caom2:coordsys>
-                    <caom2:equinox>2000.0</caom2:equinox>
-                  </caom2:position>
-                  <caom2:time>
-                    <caom2:axis>
-                      <caom2:axis>
-                        <caom2:ctype>TIME</caom2:ctype>
-                        <caom2:cunit>d</caom2:cunit>
-                      </caom2:axis>
-                      <caom2:error>
-                        <caom2:syser>1e-07</caom2:syser>
-                        <caom2:rnder>1e-07</caom2:rnder>
-                      </caom2:error>
-                      <caom2:function>
-                        <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
-                        <caom2:refCoord>
-                          <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>58783.697233</caom2:val>
-                        </caom2:refCoord>
-                      </caom2:function>
-                    </caom2:axis>
-                    <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
-                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
-                  </caom2:time>
-                </caom2:chunk>
-              </caom2:chunks>
-            </caom2:part>
-            <caom2:part caom2:id="2865d478-4674-4cc2-8f1c-15994ebcf1f3" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:22d47441f74f732fe93fff12c5b9bcf0" caom2:accMetaChecksum="md5:434c17ea547f854b57c88a8e8e7631e4">
+            <caom2:part caom2:id="7b5814cd-9339-49ea-82ea-0bce50a61a6a">
               <caom2:name>4</caom2:name>
               <caom2:productType>science</caom2:productType>
               <caom2:chunks>
-                <caom2:chunk caom2:id="ca9d8f63-e694-4d0a-bb9b-4ae52fb15347" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:2eca0bfb738668b5beb333e3363f26da" caom2:accMetaChecksum="md5:4335f660a9a11a3e4ff4187328b83b35">
-                  <caom2:naxis>1</caom2:naxis>
+                <caom2:chunk caom2:id="6c05b931-6386-4afa-9463-8e6b31bda284">
                   <caom2:energyAxis>1</caom2:energyAxis>
                   <caom2:energy>
                     <caom2:axis>
@@ -1318,6 +181,8 @@
                       </caom2:function>
                     </caom2:axis>
                     <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
                   </caom2:energy>
                   <caom2:time>
                     <caom2:axis>
@@ -1331,26 +196,25 @@
                       </caom2:error>
                       <caom2:function>
                         <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
                         <caom2:refCoord>
                           <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
+                          <caom2:val>56775.479771</caom2:val>
                         </caom2:refCoord>
                       </caom2:function>
                     </caom2:axis>
                     <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
+                    <caom2:exposure>30.0</caom2:exposure>
                     <caom2:resolution>0.00034722222222222224</caom2:resolution>
                   </caom2:time>
                 </caom2:chunk>
               </caom2:chunks>
             </caom2:part>
-            <caom2:part caom2:id="ccc8913f-7549-4153-ac54-08b387bd7216" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:1c7c89e3e23372fef1f3df4442c63010" caom2:accMetaChecksum="md5:ce68abe5a6f5429f147d3f14480519db">
+            <caom2:part caom2:id="bf0b4919-738e-4910-bff4-037388fed812">
               <caom2:name>5</caom2:name>
               <caom2:productType>science</caom2:productType>
               <caom2:chunks>
-                <caom2:chunk caom2:id="a95b4e62-1934-46df-aacd-c1b7fb865074" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:614b9d8b26b46859bf8f2d606623c20a" caom2:accMetaChecksum="md5:b8233c71a63ae7add1d3ad8112ab0795">
-                  <caom2:naxis>1</caom2:naxis>
+                <caom2:chunk caom2:id="8bead7ae-bc85-4480-b07e-15056fabbeac">
                   <caom2:energyAxis>1</caom2:energyAxis>
                   <caom2:energy>
                     <caom2:axis>
@@ -1368,6 +232,8 @@
                       </caom2:function>
                     </caom2:axis>
                     <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
                   </caom2:energy>
                   <caom2:time>
                     <caom2:axis>
@@ -1381,26 +247,25 @@
                       </caom2:error>
                       <caom2:function>
                         <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
                         <caom2:refCoord>
                           <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
+                          <caom2:val>56775.479771</caom2:val>
                         </caom2:refCoord>
                       </caom2:function>
                     </caom2:axis>
                     <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
+                    <caom2:exposure>30.0</caom2:exposure>
                     <caom2:resolution>0.00034722222222222224</caom2:resolution>
                   </caom2:time>
                 </caom2:chunk>
               </caom2:chunks>
             </caom2:part>
-            <caom2:part caom2:id="5774ec7c-1c2d-412c-93c3-d412fcd7b05e" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:20d76dfd07f21737329f50b258a4af26" caom2:accMetaChecksum="md5:e5df5212a294724f9c15044b12dfedce">
+            <caom2:part caom2:id="cf4cc435-c45d-49a2-ba51-bbb9b87d4f96">
               <caom2:name>6</caom2:name>
               <caom2:productType>science</caom2:productType>
               <caom2:chunks>
-                <caom2:chunk caom2:id="c95841cb-c1d9-4e45-b3e4-6e5f7580c9bb" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:30b02ae34dcc61a28f57446cb45c32d0" caom2:accMetaChecksum="md5:9a5f8aa8a7047aa2aac6755d28121a38">
-                  <caom2:naxis>1</caom2:naxis>
+                <caom2:chunk caom2:id="71be001a-df68-427c-803d-c2131cea2ce9">
                   <caom2:energyAxis>1</caom2:energyAxis>
                   <caom2:energy>
                     <caom2:axis>
@@ -1418,6 +283,8 @@
                       </caom2:function>
                     </caom2:axis>
                     <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
                   </caom2:energy>
                   <caom2:time>
                     <caom2:axis>
@@ -1431,26 +298,25 @@
                       </caom2:error>
                       <caom2:function>
                         <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
                         <caom2:refCoord>
                           <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
+                          <caom2:val>56775.479771</caom2:val>
                         </caom2:refCoord>
                       </caom2:function>
                     </caom2:axis>
                     <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
+                    <caom2:exposure>30.0</caom2:exposure>
                     <caom2:resolution>0.00034722222222222224</caom2:resolution>
                   </caom2:time>
                 </caom2:chunk>
               </caom2:chunks>
             </caom2:part>
-            <caom2:part caom2:id="9e7385c8-b31e-4a9f-a9b0-957a22a9b28b" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:9c513d3ca4c29d5116eafa3f9d56300d" caom2:accMetaChecksum="md5:cd17540c9721f95da3ab69bf4d753957">
+            <caom2:part caom2:id="80cb316f-091f-42bc-8700-c8023e5cfd4d">
               <caom2:name>7</caom2:name>
               <caom2:productType>science</caom2:productType>
               <caom2:chunks>
-                <caom2:chunk caom2:id="dbcf8b59-0837-4560-b498-8d593dd876ef" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:1ceb06e84a852b5b1c88b89ea3440411" caom2:accMetaChecksum="md5:e95ce1f20412dae083a1dd7d26e6b3b0">
-                  <caom2:naxis>1</caom2:naxis>
+                <caom2:chunk caom2:id="a85bd229-1582-4d8d-b523-723486615a24">
                   <caom2:energyAxis>1</caom2:energyAxis>
                   <caom2:energy>
                     <caom2:axis>
@@ -1468,6 +334,8 @@
                       </caom2:function>
                     </caom2:axis>
                     <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
                   </caom2:energy>
                   <caom2:time>
                     <caom2:axis>
@@ -1481,26 +349,25 @@
                       </caom2:error>
                       <caom2:function>
                         <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
                         <caom2:refCoord>
                           <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
+                          <caom2:val>56775.479771</caom2:val>
                         </caom2:refCoord>
                       </caom2:function>
                     </caom2:axis>
                     <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
+                    <caom2:exposure>30.0</caom2:exposure>
                     <caom2:resolution>0.00034722222222222224</caom2:resolution>
                   </caom2:time>
                 </caom2:chunk>
               </caom2:chunks>
             </caom2:part>
-            <caom2:part caom2:id="97046d37-e350-495a-92c9-f8896ca44839" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:57c1141f94b4ff457598e4aafa2899e3" caom2:accMetaChecksum="md5:bef4d2f9b76bde63b21382a649c47a81">
+            <caom2:part caom2:id="540f81be-a804-4c66-942a-6c9e61fda964">
               <caom2:name>8</caom2:name>
               <caom2:productType>science</caom2:productType>
               <caom2:chunks>
-                <caom2:chunk caom2:id="0cc6aca2-43ee-40a9-9bbd-68ccad6f5c7c" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:2a3d6fb52d371167cb05584a7d90ec52" caom2:accMetaChecksum="md5:98161459d0699371ab8dc1b8e1f0d45e">
-                  <caom2:naxis>1</caom2:naxis>
+                <caom2:chunk caom2:id="d86c946e-8a19-4226-9739-53e5fd83c53b">
                   <caom2:energyAxis>1</caom2:energyAxis>
                   <caom2:energy>
                     <caom2:axis>
@@ -1518,6 +385,8 @@
                       </caom2:function>
                     </caom2:axis>
                     <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
                   </caom2:energy>
                   <caom2:time>
                     <caom2:axis>
@@ -1531,26 +400,25 @@
                       </caom2:error>
                       <caom2:function>
                         <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
                         <caom2:refCoord>
                           <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
+                          <caom2:val>56775.479771</caom2:val>
                         </caom2:refCoord>
                       </caom2:function>
                     </caom2:axis>
                     <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
+                    <caom2:exposure>30.0</caom2:exposure>
                     <caom2:resolution>0.00034722222222222224</caom2:resolution>
                   </caom2:time>
                 </caom2:chunk>
               </caom2:chunks>
             </caom2:part>
-            <caom2:part caom2:id="1785c285-e5bc-4ca7-867a-e8d05995a4c2" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:8af99951ed7992c6f947e239c69b5563" caom2:accMetaChecksum="md5:e63213800f1603b8bebe2edfa4464777">
+            <caom2:part caom2:id="1e290a96-0908-49c2-945f-9561e9e68273">
               <caom2:name>9</caom2:name>
               <caom2:productType>science</caom2:productType>
               <caom2:chunks>
-                <caom2:chunk caom2:id="4ffe1d86-55c4-42f3-9bee-ad406a59ef12" caom2:lastModified="2020-07-02T23:31:40.134" caom2:maxLastModified="2020-07-02T23:31:40.134" caom2:metaChecksum="md5:334edc43eec05d5d69078e3890b0a925" caom2:accMetaChecksum="md5:9fee4905dbe4d95a80851ceab8b120b8">
-                  <caom2:naxis>1</caom2:naxis>
+                <caom2:chunk caom2:id="3f0d1bae-cf6c-4f02-937c-bf4bf0a49390">
                   <caom2:energyAxis>1</caom2:energyAxis>
                   <caom2:energy>
                     <caom2:axis>
@@ -1568,6 +436,8 @@
                       </caom2:function>
                     </caom2:axis>
                     <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
                   </caom2:energy>
                   <caom2:time>
                     <caom2:axis>
@@ -1581,24 +451,1100 @@
                       </caom2:error>
                       <caom2:function>
                         <caom2:naxis>1</caom2:naxis>
-                        <caom2:delta>1.0</caom2:delta>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
                         <caom2:refCoord>
                           <caom2:pix>0.5</caom2:pix>
-                          <caom2:val>0.0</caom2:val>
+                          <caom2:val>56775.479771</caom2:val>
                         </caom2:refCoord>
                       </caom2:function>
                     </caom2:axis>
                     <caom2:timesys>UTC</caom2:timesys>
-                    <caom2:exposure>0.00034722222222222224</caom2:exposure>
+                    <caom2:exposure>30.0</caom2:exposure>
                     <caom2:resolution>0.00034722222222222224</caom2:resolution>
                   </caom2:time>
                 </caom2:chunk>
               </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="95d34ae0-8d63-4125-9252-e139feaabc44">
+              <caom2:name>10</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="df0a26be-754f-4b05-9875-e8407b2e4d84">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="929a98bc-5102-4791-a691-56f322ad3ca0">
+              <caom2:name>11</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="8344e15e-734c-473c-82a6-ea4ac1ad07a6">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="66684a07-67c1-40ad-b922-9197648d587a">
+              <caom2:name>12</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="c06efe43-14ad-4cc5-8a91-5ba2d8e56625">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="ca5cd4b3-fb44-4356-9ea4-4de36e88dadf">
+              <caom2:name>13</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="227e3152-7f4e-45e4-a562-8c607bfcfa7c">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="7a5507cc-e84b-4872-908e-326d4493922b">
+              <caom2:name>14</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="bf8fad26-67d6-4c5f-bd15-6c77c511f39d">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="c743a804-2a8d-4a04-a210-91a0ea34e921">
+              <caom2:name>15</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="d2a1bafd-102f-42df-9e3c-0d8bcb7886bf">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="a974be74-9180-4b3f-b873-74c737486de4">
+              <caom2:name>16</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="52dc430d-4164-4a9a-926f-496ef203e912">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="27389896-713c-457b-89fe-fc2e544c8520">
+              <caom2:name>17</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="60aae9a8-caec-4b67-a84a-26a944203c07">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="6a4e33d1-e424-4224-be95-2ead556e65ed">
+              <caom2:name>18</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="07693258-3baa-48af-ba4e-3a6588548c4f">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="95c58ac0-1e5c-4bc1-a4d4-bbcf47696dd9">
+              <caom2:name>19</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="3b5f8556-60c2-4f14-b2b8-7d8fe63b1e4b">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="d42bec6f-1d40-4a8f-828d-0f9a9bc8a603">
+              <caom2:name>20</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="ea1f3ba3-cb12-4c3a-a4df-e04f3f9af522">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="5535fcc7-d974-4526-ba1e-054cf5ddc1d8">
+              <caom2:name>21</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="bfc3bbf9-1128-403f-8b39-0101e5984253">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="a0ba61de-502c-4352-8fdd-c2464ade5a68">
+              <caom2:name>22</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="1f75dbd0-5dd9-4281-9a33-1fd337ece5db">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="040cf200-bc17-4cd6-8790-6738ea32f605">
+              <caom2:name>23</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="8c033af1-5323-42bd-87f9-8e7254b06682">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="61008f25-47ce-4b29-b1fb-99a12ac53de3">
+              <caom2:name>24</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="18149604-9cd5-4586-af68-d9cd7498a81a">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="6e51ef56-7d8f-4136-8e1c-98915c0d2e39">
+              <caom2:name>25</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="0eced995-363b-4317-a330-ddbeb42772b2">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="43f39287-8e8d-46fb-b930-57fa9801f837">
+              <caom2:name>26</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="8586506f-7c52-42e8-9207-8cc4be54e50a">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="52ada2d8-e995-4532-9c1f-c4cbe3f0aa76">
+              <caom2:name>27</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="78610b40-4b95-422d-83a5-3522ec372a91">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="11c548e0-4f34-4a0f-8184-00cd206aa6d9">
+              <caom2:name>28</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="74e5cd99-0fd3-4f70-b99c-09c8eac758a9">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="25336b20-e353-4e71-8420-ba2034bc0c90">
+              <caom2:name>29</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="7ce8de9d-79cb-4046-a96c-1f9e5aa402d8">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="47543e24-e3f5-4532-847b-0fc67a947b38">
+              <caom2:name>30</caom2:name>
+              <caom2:productType>science</caom2:productType>
+              <caom2:chunks>
+                <caom2:chunk caom2:id="2db5c8ca-7f07-4026-a3a7-fedfcd96946a">
+                  <caom2:energyAxis>1</caom2:energyAxis>
+                  <caom2:energy>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>WAVE</caom2:ctype>
+                        <caom2:cunit>Angstrom</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:function>
+                        <caom2:naxis>2040</caom2:naxis>
+                        <caom2:delta>-2.115</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>1020.0</caom2:pix>
+                          <caom2:val>22000.0</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:specsys>TOPOCENT</caom2:specsys>
+                    <caom2:bandpassName>HK</caom2:bandpassName>
+                    <caom2:resolvingPower>5200.945626477541</caom2:resolvingPower>
+                  </caom2:energy>
+                  <caom2:time>
+                    <caom2:axis>
+                      <caom2:axis>
+                        <caom2:ctype>TIME</caom2:ctype>
+                        <caom2:cunit>d</caom2:cunit>
+                      </caom2:axis>
+                      <caom2:error>
+                        <caom2:syser>1e-07</caom2:syser>
+                        <caom2:rnder>1e-07</caom2:rnder>
+                      </caom2:error>
+                      <caom2:function>
+                        <caom2:naxis>1</caom2:naxis>
+                        <caom2:delta>0.00034722222222222224</caom2:delta>
+                        <caom2:refCoord>
+                          <caom2:pix>0.5</caom2:pix>
+                          <caom2:val>56775.479771</caom2:val>
+                        </caom2:refCoord>
+                      </caom2:function>
+                    </caom2:axis>
+                    <caom2:timesys>UTC</caom2:timesys>
+                    <caom2:exposure>30.0</caom2:exposure>
+                    <caom2:resolution>0.00034722222222222224</caom2:resolution>
+                  </caom2:time>
+                </caom2:chunk>
+              </caom2:chunks>
+            </caom2:part>
+            <caom2:part caom2:id="e74e4e53-0a17-4159-8185-d41fa72ed10f">
+              <caom2:name>31</caom2:name>
+              <caom2:productType>auxiliary</caom2:productType>
+              <caom2:chunks/>
             </caom2:part>
           </caom2:parts>
         </caom2:artifact>
         <caom2:artifact caom2:id="8b81729d-d261-40f6-9571-7e285e0e8b00" caom2:lastModified="2020-07-02T23:34:37.387" caom2:maxLastModified="2020-07-02T23:34:37.387" caom2:metaChecksum="md5:d9bd95f0f8b227b03767b5a01c17cbfb" caom2:accMetaChecksum="md5:d3d1ad3d7746cab29cf8d61ac427f858">
-          <caom2:uri>ad:GEMINI/wrgnN20191027S0083_arc.jpg</caom2:uri>
+          <caom2:uri>ad:GEMINI/wrgnN20140428S0085_arc.jpg</caom2:uri>
           <caom2:productType>preview</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>
@@ -1607,7 +1553,7 @@
           <caom2:parts/>
         </caom2:artifact>
         <caom2:artifact caom2:id="d1c5a19c-7e6f-4964-b494-ced49587e580" caom2:lastModified="2020-07-02T23:34:37.387" caom2:maxLastModified="2020-07-02T23:34:37.387" caom2:metaChecksum="md5:3cfffd71e096233625719d80fd7c7d90" caom2:accMetaChecksum="md5:60b66cee7752d306b9812d2d50756c1d">
-          <caom2:uri>ad:GEMINI/wrgnN20191027S0083_arc_th.jpg</caom2:uri>
+          <caom2:uri>ad:GEMINI/wrgnN20140428S0085_arc_th.jpg</caom2:uri>
           <caom2:productType>thumbnail</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>
@@ -1618,9 +1564,4 @@
       </caom2:artifacts>
     </caom2:plane>
   </caom2:planes>
-  <caom2:members>
-    <caom2:observationURI>caom:GEMINI/GN-2019B-FT-101-34-012</caom2:observationURI>
-    <caom2:observationURI>caom:GEMINI/GN-2019B-FT-101-34-011</caom2:observationURI>
-    <caom2:observationURI>caom:GEMINI/GN-2019B-FT-101-31-001</caom2:observationURI>
-  </caom2:members>
 </caom2:Observation>

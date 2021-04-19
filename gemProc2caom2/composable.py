@@ -80,9 +80,12 @@ import logging
 import sys
 import traceback
 
+from vos import Client
+from caom2pipe import data_source_composable as dsc
 from caom2pipe import manage_composable as mc
 from caom2pipe import name_builder_composable as nbc
 from caom2pipe import run_composable as rc
+from caom2pipe import transfer_composable as tc
 from gemProc2caom2 import APPLICATION, GemProcName, preview_augmentation
 from gemProc2caom2 import provenance_augmentation
 
@@ -100,13 +103,11 @@ def _run():
     :return 0 if successful, -1 if there's any sort of failure. Return status
         is used by airflow for task instance management and reporting.
     """
-    config = mc.Config()
-    config.get_executors()
     name_builder = nbc.FileNameBuilder(GemProcName)
-    return rc.run_by_todo(config=None, name_builder=name_builder,
+    return rc.run_by_todo(name_builder=name_builder,
                           command_name=APPLICATION,
-                          meta_visitors=META_VISITORS, 
-                          data_visitors=DATA_VISITORS, chooser=None)
+                          meta_visitors=META_VISITORS,
+                          data_visitors=DATA_VISITORS)
 
 
 def run():
@@ -121,25 +122,33 @@ def run():
         sys.exit(-1)
 
 
-def _run_state():
-    """Uses a state file with a timestamp to control which entries will be
-    processed.
+def _run_remote():
+    """
+    Uses a todo file to identify the work to be done.
+
+    :return 0 if successful, -1 if there's any sort of failure. Return status
+        is used by airflow for task instance management and reporting.
     """
     config = mc.Config()
     config.get_executors()
     name_builder = nbc.FileNameBuilder(GemProcName)
-    return rc.run_by_state(config=None, name_builder=name_builder,
-                           command_name=APPLICATION, 
-                           bookmark_name=None, meta_visitors=META_VISITORS,
-                           data_visitors=DATA_VISITORS, end_time=None,
-                           source=None, chooser=None)
+    vos_client = Client(vospace_certfile=config.proxy_fqn)
+    store_transfer = tc.VoFitsTransfer(vos_client)
+    data_source = dsc.VaultListDirDataSource(vos_client, config)
+    return rc.run_by_todo(config=config,
+                          name_builder=name_builder,
+                          command_name=APPLICATION,
+                          source=data_source,
+                          meta_visitors=META_VISITORS, 
+                          data_visitors=DATA_VISITORS,
+                          store_transfer=store_transfer)
 
 
-def run_state():
-    """Wraps _run_state in exception handling."""
+def run_remote():
+    """Wraps _run in exception handling, with sys.exit calls."""
     try:
-        _run_state()
-        sys.exit(0)
+        result = _run_remote()
+        sys.exit(result)
     except Exception as e:
         logging.error(e)
         tb = traceback.format_exc()
