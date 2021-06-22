@@ -88,23 +88,26 @@ def test_preview_augmentation(data_client_mock, tap_mock):
     getcwd_orig = os.getcwd
     os.getcwd = Mock(return_value=test_main_app.TEST_DATA_DIR)
     tap_mock.side_effect = test_main_app._tap_mock
-    data_client_mock.return_value.get_file_info.side_effect = \
+    data_client_mock.return_value.get_file_info.side_effect = (
         test_main_app._get_file_info
+    )
 
     test_f_id = 'rnN20140428S0181_ronchi'
     test_f_name = f'{test_f_id}.fits'
     test_obs = mc.read_obs_from_file(
-        f'{test_main_app.TEST_DATA_DIR}/'
-        f'{test_f_id}.expected.xml')
+        f'{test_main_app.TEST_DATA_DIR}/' f'{test_f_id}.expected.xml'
+    )
 
     test_rejected = mc.Rejected(REJECTED_FILE)
     test_config = mc.Config()
     test_observable = mc.Observable(test_rejected, mc.Metrics(test_config))
-    kwargs = {'working_directory': TEST_FILES_DIR,
-              'cadc_client': None,
-              'stream': 'stream',
-              'observable': test_observable,
-              'science_file': test_f_name}
+    kwargs = {
+        'working_directory': TEST_FILES_DIR,
+        'cadc_client': None,
+        'stream': 'stream',
+        'observable': test_observable,
+        'science_file': test_f_name,
+    }
 
     try:
         start_ts = datetime.utcnow().timestamp()

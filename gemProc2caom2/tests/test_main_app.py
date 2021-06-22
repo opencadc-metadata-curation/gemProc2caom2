@@ -112,7 +112,7 @@ OID_LOOKUP = {
     'N20140428S0178': 'GN-2014A-Q-85-16-010',
     'N20140428S0182': 'GN-2014A-Q-85-16-014',
     'N20140428S0175': 'GN-2014A-Q-85-16-007',
-    'N20140428S0176': 'GN-2014A-Q-85-16-008'
+    'N20140428S0176': 'GN-2014A-Q-85-16-008',
 }
 
 
@@ -125,8 +125,9 @@ def pytest_generate_tests(metafunc):
 @patch('caom2pipe.manage_composable.query_tap_client')
 @patch('caom2utils.fits2caom2.CadcDataClient')
 @patch('gem2caom2.external_metadata.get_obs_id_from_cadc')
-def test_main_app(obs_id_mock, data_client_mock, tap_mock, get_pi_mock,
-                  test_name):
+def test_main_app(
+    obs_id_mock, data_client_mock, tap_mock, get_pi_mock, test_name
+):
     obs_id_mock.side_effect = _obs_id_mock
     getcwd_orig = os.getcwd
     os.getcwd = Mock(return_value=TEST_DATA_DIR)
@@ -148,14 +149,16 @@ def test_main_app(obs_id_mock, data_client_mock, tap_mock, get_pi_mock,
 
         local = _get_local(basename)
 
-        data_client_mock.return_value.get_file_info.side_effect = _get_file_info
+        data_client_mock.return_value.get_file_info.side_effect = (
+            _get_file_info
+        )
 
-        sys.argv = \
-            (f'{APPLICATION} --no_validate '
-             f'--local {local} -i {input_file} -o '
-             f'{output_file} --plugin {PLUGIN} --module {PLUGIN} --lineage '
-             f'{_get_lineage(gem_name)}'
-             ).split()
+        sys.argv = (
+            f'{APPLICATION} --no_validate '
+            f'--local {local} -i {input_file} -o '
+            f'{output_file} --plugin {PLUGIN} --module {PLUGIN} --lineage '
+            f'{_get_lineage(gem_name)}'
+        ).split()
         print(sys.argv)
         try:
             main_app.to_caom2()
@@ -176,8 +179,9 @@ def _get_file_info(archive, file_id):
 
 
 def _get_lineage(blank_name):
-    result = mc.get_lineage('GEMINI', blank_name.product_id,
-                            f'{blank_name.file_name}')
+    result = mc.get_lineage(
+        'GEMINI', blank_name.product_id, f'{blank_name.file_name}'
+    )
     return result
 
 
@@ -187,15 +191,18 @@ def _get_local(obs_id):
 
 def _tap_mock(query_string, mock_tap_client):
     if 'observationID' in query_string:
-        return Table.read(f'observationID,lastModified\n'
-                          f'GN-2014A-Q-85-16-003-RGN-FLAT,'
-                          f'2020-02-25T20:36:31.230\n'.split('\n'),
-                          format='csv')
+        return Table.read(
+            f'observationID,lastModified\n'
+            f'GN-2014A-Q-85-16-003-RGN-FLAT,'
+            f'2020-02-25T20:36:31.230\n'.split('\n'),
+            format='csv',
+        )
     else:
         return Table.read(
             'val,delta,cunit,naxis\n'
             '57389.66314699074,0.000115798611111111,d,1\n'.split('\n'),
-            format='csv')
+            format='csv',
+        )
 
 
 def _obs_id_mock(for_file_name, tap_client_mock):
@@ -206,5 +213,7 @@ def _obs_id_mock(for_file_name, tap_client_mock):
 
 
 def _get_pi_mock(ignore):
-    return {'pi_name': 'Principle Investigator',
-            'title': 'The Title For A NIFS Science Program'}
+    return {
+        'pi_name': 'Principle Investigator',
+        'title': 'The Title For A NIFS Science Program',
+    }

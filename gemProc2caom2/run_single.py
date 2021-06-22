@@ -73,23 +73,27 @@ from vos import Client
 from caom2pipe import manage_composable as mc
 from caom2pipe import run_composable as rc
 from caom2pipe import transfer_composable as tc
-from gemProc2caom2 import GemProcName, preview_augmentation, provenance_augmentation
+from gemProc2caom2 import (
+    GemProcName,
+    preview_augmentation,
+    provenance_augmentation,
+)
 
 
 def rs():
     config = mc.Config()
     config.get_executors()
     vos_client = Client(vospace_certfile=config.proxy_fqn)
-    storage_name = GemProcName(file_name=sys.argv[1], 
-                               entry=sys.argv[1])
+    storage_name = GemProcName(file_name=sys.argv[1], entry=sys.argv[1])
     store_transfer = tc.VoFitsTransfer(vos_client)
-    rc.run_single(config=config,
-                  storage_name=storage_name,
-                  command_name='gemProc2caom2',
-                  meta_visitors=[],
-                  data_visitors=[provenance_augmentation, 
-                                 preview_augmentation],
-                  store_transfer=store_transfer)
+    rc.run_single(
+        config=config,
+        storage_name=storage_name,
+        command_name='gemProc2caom2',
+        meta_visitors=[],
+        data_visitors=[provenance_augmentation, preview_augmentation],
+        store_transfer=store_transfer,
+    )
 
 
 if __name__ == '__main__':

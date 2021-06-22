@@ -79,15 +79,19 @@ REJECTED_FILE = os.path.join(test_main_app.TEST_DATA_DIR, 'rejected.yml')
 
 
 def pytest_generate_tests(metafunc):
-    fqn_list = [f'{test_main_app.TEST_DATA_DIR}/'
-                f'rnN20140428S0181_ronchi.expected.xml']
+    fqn_list = [
+        f'{test_main_app.TEST_DATA_DIR}/'
+        f'rnN20140428S0181_ronchi.expected.xml'
+    ]
     metafunc.parametrize('test_fqn', fqn_list)
 
 
 @patch('caom2utils.fits2caom2.get_cadc_headers')
 @patch('caom2pipe.manage_composable.repo_get')
 @patch('gem2caom2.external_metadata.get_obs_id_from_cadc')
-def test_provenance_augmentation(obs_id_mock, repo_get_mock, headers_mock, test_fqn):
+def test_provenance_augmentation(
+    obs_id_mock, repo_get_mock, headers_mock, test_fqn
+):
     test_rejected = mc.Rejected(REJECTED_FILE)
     test_config = mc.Config()
     test_observable = mc.Observable(test_rejected, mc.Metrics(test_config))
@@ -99,11 +103,14 @@ def test_provenance_augmentation(obs_id_mock, repo_get_mock, headers_mock, test_
     try:
         test_obs = mc.read_obs_from_file(test_fqn)
         assert not test_obs.target.moving, 'initial conditions moving target'
-        kwargs = {'science_file': os.path.basename(test_fqn).replace(
-                                    '.expected.xml', '.fits'),
-                  'working_directory': test_main_app.TEST_DATA_DIR,
-                  'observable': test_observable,
-                  'caom_repo_client': Mock()}
+        kwargs = {
+            'science_file': os.path.basename(test_fqn).replace(
+                '.expected.xml', '.fits'
+            ),
+            'working_directory': test_main_app.TEST_DATA_DIR,
+            'observable': test_observable,
+            'caom_repo_client': Mock(),
+        }
         test_result = provenance_augmentation.visit(test_obs, **kwargs)
         assert test_result is not None, 'expect a result'
         assert test_result.get('provenance') == 2, 'wrong result'
@@ -120,7 +127,8 @@ def _get_obs_id_mock(f_id, collection, ignore):
 
 def _repo_get_mock(ignore1, ignore2, ignore3, ignore4):
     return mc.read_obs_from_file(
-        f'{test_main_app.TEST_DATA_DIR}/GN-2014A-Q-85-16-013.xml')
+        f'{test_main_app.TEST_DATA_DIR}/GN-2014A-Q-85-16-013.xml'
+    )
 
 
 def _get_headers_mock(uri_ignore):
@@ -134,7 +142,6 @@ DATALAB = 'GN-2014A-Q-85-16-013' /
 END
 """
     delim = '\nEND'
-    extensions = \
-        [e + delim for e in x.split(delim) if e.strip()]
+    extensions = [e + delim for e in x.split(delim) if e.strip()]
     headers = [fits.Header.fromstring(e, sep='\n') for e in extensions]
     return headers

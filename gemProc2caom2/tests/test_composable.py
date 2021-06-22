@@ -96,20 +96,21 @@ def test_run(tap_mock, run_mock):
         assert run_mock.called, 'should have been called'
         args, kwargs = run_mock.call_args
         test_storage = args[0]
-        assert isinstance(
-            test_storage, GemProcName), type(test_storage)
+        assert isinstance(test_storage, GemProcName), type(test_storage)
         assert test_storage.obs_id == test_obs_id, 'wrong obs id'
         assert test_storage.file_name == test_f_name, 'wrong file name'
-        assert test_storage.fname_on_disk == test_f_name, \
-            'wrong fname on disk'
+        assert test_storage.fname_on_disk == test_f_name, 'wrong fname on disk'
         assert test_storage.url is None, 'wrong url'
-        assert test_storage.lineage == \
-            f'{test_f_id}/ad:GEMINI/{test_f_name}', 'wrong lineage'
+        assert (
+            test_storage.lineage == f'{test_f_id}/ad:GEMINI/{test_f_name}'
+        ), 'wrong lineage'
     finally:
         os.getcwd = getcwd_orig
 
 
 def _run_tap_mock(query_string, mock_tap_client):
-    return Table.read(f'observationID,lastModified\n'
-                      f'test_data_label,2020-02-25T20:36:31.230\n'.split('\n'),
-                      format='csv')
+    return Table.read(
+        f'observationID,lastModified\n'
+        f'test_data_label,2020-02-25T20:36:31.230\n'.split('\n'),
+        format='csv',
+    )

@@ -130,23 +130,30 @@ from caom2pipe import manage_composable as mc
 from gem2caom2 import external_metadata
 from gem2caom2 import gem_name, obs_file_relationship
 
-COLLECTION='GEMINIPROC'
+COLLECTION = 'GEMINIPROC'
 
-__all__ = ['gem_proc_main_app', 'update', 'APPLICATION', 'GemProcName',
-           'to_caom2', 'COLLECTION']
+__all__ = [
+    'gem_proc_main_app',
+    'update',
+    'APPLICATION',
+    'GemProcName',
+    'to_caom2',
+    'COLLECTION',
+]
 
 
 APPLICATION = 'gemProc2caom2'
 
 
 class GemProcName(mc.StorageName):
-
     def __init__(self, file_name, entry):
-        super(GemProcName, self).__init__(fname_on_disk=file_name,
-                                          archive='GEMINI',
-                                          collection=COLLECTION,
-                                          compression='',
-                                          entry=entry)
+        super(GemProcName, self).__init__(
+            fname_on_disk=file_name,
+            archive='GEMINI',
+            collection=COLLECTION,
+            compression='',
+            entry=entry,
+        )
         if file_name.startswith('vos'):
             self._vos_uri = file_name
             self._file_name = os.path.basename(urlparse(self._vos_uri).path)
@@ -169,12 +176,16 @@ class GemProcName(mc.StorageName):
             config = mc.Config()
             config.get_executors()
             subject = mc.define_subject(config)
-            tap_client = CadcTapClient(subject=subject,
-                                       resource_id=config.tap_id)
+            tap_client = CadcTapClient(
+                subject=subject, resource_id=config.tap_id
+            )
             obs_id = external_metadata.get_obs_id_from_cadc(
-                self._file_id, tap_client, COLLECTION)
+                self._file_id, tap_client, COLLECTION
+            )
             if obs_id is None:
-                headers = fits2caom2.get_cadc_headers(f'ad:GEMINI/{self._file_name}', subject)
+                headers = fits2caom2.get_cadc_headers(
+                    f'ad:GEMINI/{self._file_name}', subject
+                )
                 obs_id = headers[0].get('DATALAB')
                 if obs_id is None:
                     raise mc.CadcException(f'No obs id for {self._file_name}')
@@ -215,17 +226,19 @@ class GemProcName(mc.StorageName):
     def get_obs_id_from_vos(self):
         logging.debug(f'Begin get_obs_id_from_vos for {self._vos_uri}.')
         headers = fits2caom2.get_vos_headers(
-            self._vos_uri, subject=net.Subject(
-                certificate='/usr/src/app/cadcproxy.pem'))
+            self._vos_uri,
+            subject=net.Subject(certificate='/usr/src/app/cadcproxy.pem'),
+        )
         self._obs_id = headers[0].get('DATALAB')
         if self._obs_id is None:
             raise mc.CadcException(
-                f'Could not get obs id from {self._vos_uri}')
+                f'Could not get obs id from {self._vos_uri}'
+            )
         logging.debug('End get_obs_id_from_vos.')
 
 
 def accumulate_bp(bp, uri):
-    """Configure the telescope-specific ObsBlueprint at the CAOM model 
+    """Configure the telescope-specific ObsBlueprint at the CAOM model
     Observation level."""
     logging.debug('Begin accumulate_bp.')
     bp.configure_position_axes((1, 2))
@@ -300,8 +313,10 @@ def update(observation, **kwargs):
         temp = os.path.basename(fqn)
         gem_proc_name = GemProcName(file_name=temp, entry=temp)
     if gem_proc_name is None:
-        raise mc.CadcException(f'Need one of fqn or uri defined for '
-                               f'{observation.observation_id}')
+        raise mc.CadcException(
+            f'Need one of fqn or uri defined for '
+            f'{observation.observation_id}'
+        )
 
     for plane in observation.planes.values():
         if plane.product_id != gem_proc_name.product_id:
@@ -330,27 +345,41 @@ def update(observation, **kwargs):
                 else:
                     part.product_type = ProductType.AUXILIARY
 
-                if (part.product_type in
-                        [ProductType.SCIENCE, ProductType.INFO]):
+                if part.product_type in [
+                    ProductType.SCIENCE,
+                    ProductType.INFO,
+                ]:
                     for chunk in part.chunks:
                         filter_name = headers[0].get('FILTER').split('_')[0]
                         _update_energy(
-                            chunk, headers[idx], filter_name,
-                            observation.observation_id)
-                        _update_time(part, chunk, headers[0],
-                                     observation.observation_id)
+                            chunk,
+                            headers[idx],
+                            filter_name,
+                            observation.observation_id,
+                        )
+                        _update_time(
+                            part, chunk, headers[0], observation.observation_id
+                        )
                         if part.product_type == ProductType.SCIENCE:
-                            _update_spatial_wcs(part, chunk, headers,
-                                                observation.observation_id)
+                            _update_spatial_wcs(
+                                part,
+                                chunk,
+                                headers,
+                                observation.observation_id,
+                            )
                             chunk.naxis = header.get('NAXIS')
-                            if (chunk.position is None and
-                                    chunk.naxis is not None):
+                            if (
+                                chunk.position is None
+                                and chunk.naxis is not None
+                            ):
                                 chunk.naxis = None
 
-                        if (chunk.time is not None and
-                                chunk.time.axis is not None and
-                                chunk.time.axis.function is not None and
-                                chunk.time.axis.function.delta == 1.0):
+                        if (
+                            chunk.time is not None
+                            and chunk.time.axis is not None
+                            and chunk.time.axis.function is not None
+                            and chunk.time.axis.function.delta == 1.0
+                        ):
                             # these are the default values, and they make
                             # the time range start in 1858
                             chunk.time = None
@@ -360,9 +389,11 @@ def update(observation, **kwargs):
                     while len(part.chunks) > 0:
                         del part.chunks[-1]
 
-    if (observation.proposal is not None and
-            observation.proposal.id is not None and
-            observation.proposal.pi_name is None):
+    if (
+        observation.proposal is not None
+        and observation.proposal.id is not None
+        and observation.proposal.pi_name is None
+    ):
         program = external_metadata.get_pi_metadata(observation.proposal.id)
         if program is not None:
             observation.proposal.pi_name = program.get('pi_name')
@@ -443,21 +474,26 @@ def _update_energy(chunk, header, filter_name, obs_id):
     if disp_axis is not None and naxis is not None and disp_axis <= naxis:
         axis = Axis(ctype='WAVE', cunit='Angstrom')
         coord_axis_1d = CoordAxis1D(axis)
-        ref_coord = RefCoord(pix=header.get(f'CRPIX{disp_axis}'),
-                             val=header.get(f'CRVAL{disp_axis}'))
-        fn = CoordFunction1D(naxis=header.get(f'NAXIS{disp_axis}'),
-                             delta=header.get(f'CD{disp_axis}_{disp_axis}'),
-                             ref_coord=ref_coord)
+        ref_coord = RefCoord(
+            pix=header.get(f'CRPIX{disp_axis}'),
+            val=header.get(f'CRVAL{disp_axis}'),
+        )
+        fn = CoordFunction1D(
+            naxis=header.get(f'NAXIS{disp_axis}'),
+            delta=header.get(f'CD{disp_axis}_{disp_axis}'),
+            ref_coord=ref_coord,
+        )
         coord_axis_1d.function = fn
-        energy = SpectralWCS(axis=coord_axis_1d,
-                             specsys='TOPOCENT')
+        energy = SpectralWCS(axis=coord_axis_1d, specsys='TOPOCENT')
         energy.bandpass_name = filter_name
         # DB 07-08-20
         # I think the best we can do is assume that a resolution element is 2
         # pixels wide. So resolving power is the absolute value of
         # approximately CRVAL3/(2 * CD3_3)
-        energy.resolving_power = abs(header.get(f'CRVAL{disp_axis}') / (
-                    2 * header.get(f'CD{disp_axis}_{disp_axis}')))
+        energy.resolving_power = abs(
+            header.get(f'CRVAL{disp_axis}')
+            / (2 * header.get(f'CD{disp_axis}_{disp_axis}'))
+        )
         chunk.energy = energy
         chunk.energy_axis = disp_axis
     logging.debug('End _update_energy.')
@@ -509,13 +545,11 @@ def _update_time(part, chunk, header, obs_id):
         if chunk.time is None:
             coord_error = CoordError(syser=1e-07, rnder=1e-07)
             time_axis = CoordAxis1D(axis=Axis('TIME', 'd'), error=coord_error)
-            chunk.time = TemporalWCS(axis=time_axis,
-                                     timesys='UTC')
+            chunk.time = TemporalWCS(axis=time_axis, timesys='UTC')
         ref_coord = RefCoord(pix=0.5, val=mjd_obs)
         chunk.time.axis.function = CoordFunction1D(
-            naxis=1,
-            delta=mc.convert_to_days(exp_time),
-            ref_coord=ref_coord)
+            naxis=1, delta=mc.convert_to_days(exp_time), ref_coord=ref_coord
+        )
         chunk.time.exposure = float(exp_time)
         chunk.time.resolution = mc.convert_to_days(exp_time)
     logging.debug(f'End _update_time.')
@@ -547,27 +581,26 @@ def _get_uris(args):
         for ii in args.local:
             file_id = mc.StorageName.remove_extensions(os.path.basename(ii))
             file_name = f'{file_id}.fits'
-            result.append(GemProcName(file_name=file_name,
-                                      entry=file_name).file_uri)
+            result.append(
+                GemProcName(file_name=file_name, entry=file_name).file_uri
+            )
     elif args.lineage:
         for ii in args.lineage:
             result.append(ii.split('/', 1)[1])
     else:
-        raise mc.CadcException(
-            f'Could not define uri from these args {args}')
+        raise mc.CadcException(f'Could not define uri from these args {args}')
     return result
 
 
 def to_caom2():
-    """This function is called by pipeline execution. It must have this name.
-    """
+    """This function is called by pipeline execution. It must have this name."""
     args = get_gen_proc_arg_parser().parse_args()
     uris = _get_uris(args)
     blueprints = _build_blueprints(uris)
     result = gen_proc(args, blueprints)
     logging.debug(f'Done {APPLICATION} processing.')
     return result
-           
+
 
 def gem_proc_main_app():
     args = get_gen_proc_arg_parser().parse_args()

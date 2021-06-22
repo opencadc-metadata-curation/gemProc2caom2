@@ -83,19 +83,23 @@ from gemProc2caom2 import GemProcName
 
 
 class GemProcPreview(mc.PreviewVisitor):
-
     def __init__(self, observation, **kwargs):
         super(GemProcPreview, self).__init__(
-            'GEMINI', ReleaseType.DATA, **kwargs)
+            'GEMINI', ReleaseType.DATA, **kwargs
+        )
         self._observation = observation
-        self._storage_name = GemProcName(file_name=self._science_file,
-                                         entry=self._science_file)
-        self._science_fqn = os.path.join(self._working_dir,
-                                         self._storage_name.file_name)
+        self._storage_name = GemProcName(
+            file_name=self._science_file, entry=self._science_file
+        )
+        self._science_fqn = os.path.join(
+            self._working_dir, self._storage_name.file_name
+        )
         self._preview_fqn = os.path.join(
-            self._working_dir,  self._storage_name.prev)
+            self._working_dir, self._storage_name.prev
+        )
         self._thumb_fqn = os.path.join(
-            self._working_dir, self._storage_name.thumb)
+            self._working_dir, self._storage_name.thumb
+        )
         self._logger = logging.getLogger(__name__)
 
     def generate_plots(self, obs_id):
@@ -106,18 +110,28 @@ class GemProcPreview(mc.PreviewVisitor):
         hdus = fits.open(self._science_fqn)
         obs_type = hdus[0].header.get('OBSTYPE').upper()
         interval = ZScaleInterval()
-        if (self._observation.target is not None and
-                self._observation.target.moving) and obs_type != 'DARK':
+        if (
+            self._observation.target is not None
+            and self._observation.target.moving
+        ) and obs_type != 'DARK':
             interval = MinMaxInterval()
         if 'OBJECT' in obs_type:
             white_light_data = interval(
-                np.flipud(np.median(hdus['SCI'].data, axis=0)))
-        elif ('FLAT' in obs_type or 'ARC' in obs_type or
-              'RONCHI' in obs_type or 'DARK' in obs_type):
+                np.flipud(np.median(hdus['SCI'].data, axis=0))
+            )
+        elif (
+            'FLAT' in obs_type
+            or 'ARC' in obs_type
+            or 'RONCHI' in obs_type
+            or 'DARK' in obs_type
+        ):
             # Stitch together the 29 'SCI' extensions into one array and save.
             hdul = [x for x in hdus if x.name == 'SCI']
-            hdul.sort(key=lambda x: int(re.split(r"[\[\]\:\,']+",
-                                                 x.header['NSCUTSEC'])[3]))
+            hdul.sort(
+                key=lambda x: int(
+                    re.split(r"[\[\]\:\,']+", x.header['NSCUTSEC'])[3]
+                )
+            )
             temp = np.concatenate([x.data for x in hdul])
             white_light_data = interval(temp)
         elif 'SHIFT' in obs_type:
@@ -132,29 +146,38 @@ class GemProcPreview(mc.PreviewVisitor):
         plt.imshow(white_light_data, cmap='inferno')
         plt.savefig(self._preview_fqn, format='jpg')
         count += 1
-        self.add_preview(self._storage_name.prev_uri, self._storage_name.prev,
-                         ProductType.PREVIEW)
+        self.add_preview(
+            self._storage_name.prev_uri,
+            self._storage_name.prev,
+            ProductType.PREVIEW,
+        )
         self.add_to_delete(self._preview_fqn)
         count += self._gen_thumbnail()
         self._logger.info(f'End generate_plots for {obs_id}.')
         return count
 
     def _gen_thumbnail(self):
-        self._logger.debug(f'Generating thumbnail for file '
-                           f'{self._science_fqn}.')
+        self._logger.debug(
+            f'Generating thumbnail for file ' f'{self._science_fqn}.'
+        )
         count = 0
         if os.path.exists(self._preview_fqn):
-            thumb = image.thumbnail(self._preview_fqn, self._thumb_fqn,
-                                    scale=0.25)
+            thumb = image.thumbnail(
+                self._preview_fqn, self._thumb_fqn, scale=0.25
+            )
             if thumb is not None:
-                self.add_preview(self._storage_name.thumb_uri,
-                                 self._storage_name.thumb,
-                                 ProductType.THUMBNAIL)
+                self.add_preview(
+                    self._storage_name.thumb_uri,
+                    self._storage_name.thumb,
+                    ProductType.THUMBNAIL,
+                )
                 self.add_to_delete(self._thumb_fqn)
                 count = 1
         else:
-            self._logger.warning(f'Could not find {self._preview_fqn} for '
-                                 f'thumbnail generation.')
+            self._logger.warning(
+                f'Could not find {self._preview_fqn} for '
+                f'thumbnail generation.'
+            )
         return count
 
 

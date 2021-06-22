@@ -104,10 +104,12 @@ def _run():
         is used by airflow for task instance management and reporting.
     """
     name_builder = nbc.FileNameBuilder(GemProcName)
-    return rc.run_by_todo(name_builder=name_builder,
-                          command_name=APPLICATION,
-                          meta_visitors=META_VISITORS,
-                          data_visitors=DATA_VISITORS)
+    return rc.run_by_todo(
+        name_builder=name_builder,
+        command_name=APPLICATION,
+        meta_visitors=META_VISITORS,
+        data_visitors=DATA_VISITORS,
+    )
 
 
 def run():
@@ -135,13 +137,15 @@ def _run_remote():
     vos_client = Client(vospace_certfile=config.proxy_fqn)
     store_transfer = tc.VoFitsTransfer(vos_client)
     data_source = dsc.VaultListDirDataSource(vos_client, config)
-    return rc.run_by_todo(config=config,
-                          name_builder=name_builder,
-                          command_name=APPLICATION,
-                          source=data_source,
-                          meta_visitors=META_VISITORS, 
-                          data_visitors=DATA_VISITORS,
-                          store_transfer=store_transfer)
+    return rc.run_by_todo(
+        config=config,
+        name_builder=name_builder,
+        command_name=APPLICATION,
+        source=data_source,
+        meta_visitors=META_VISITORS,
+        data_visitors=DATA_VISITORS,
+        store_transfer=store_transfer,
+    )
 
 
 def run_remote():
