@@ -73,6 +73,7 @@ from astropy.io import fits
 from cadctap import CadcTapClient
 from caom2 import Observation, DerivedObservation, ObservationURI, PlaneURI
 from caom2 import TypedSet
+from caom2pipe import client_composable as clc
 from caom2pipe import manage_composable as mc
 from gem2caom2 import external_metadata, gem_name
 from gemProc2caom2 import GemProcName
@@ -90,7 +91,7 @@ def visit(observation, **kwargs):
         )
     config = mc.Config()
     config.get_executors()
-    subject = mc.define_subject(config)
+    subject = clc.define_subject(config)
     tap_client = CadcTapClient(subject, config.tap_id)
 
     count = 0
@@ -238,7 +239,7 @@ def _do_members_metadata(observation, caom_repo_client, members, metrics):
         prov_obs_uri = entry
         break
     if caom_repo_client is not None:
-        prov_obs = mc.repo_get(
+        prov_obs = clc.repo_get(
             caom_repo_client,
             prov_obs_uri.collection,
             prov_obs_uri.observation_id,

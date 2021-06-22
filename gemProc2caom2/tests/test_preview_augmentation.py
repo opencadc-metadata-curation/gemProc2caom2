@@ -82,7 +82,7 @@ REJECTED_FILE = os.path.join(test_main_app.TEST_DATA_DIR, 'rejected.yml')
 TEST_FILES_DIR = '/test_files'
 
 
-@patch('caom2pipe.manage_composable.query_tap_client')
+@patch('caom2pipe.client_composable.query_tap_client')
 @patch('caom2utils.fits2caom2.CadcDataClient')
 def test_preview_augmentation(data_client_mock, tap_mock):
     getcwd_orig = os.getcwd

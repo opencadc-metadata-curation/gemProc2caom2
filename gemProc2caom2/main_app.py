@@ -126,6 +126,7 @@ from caom2utils import ObsBlueprint, get_gen_proc_arg_parser, gen_proc
 from caom2utils import WcsParser, fits2caom2
 from caom2pipe import astro_composable as ac
 from caom2pipe import caom_composable as cc
+from caom2pipe import client_composable as clc
 from caom2pipe import manage_composable as mc
 from gem2caom2 import external_metadata
 from gem2caom2 import gem_name, obs_file_relationship
@@ -157,12 +158,17 @@ class GemProcName(mc.StorageName):
         if file_name.startswith('vos'):
             self._vos_uri = file_name
             self._file_name = os.path.basename(urlparse(self._vos_uri).path)
+            self._file_id = gem_name.GemName.remove_extensions(
+                self._file_name
+            )
             self.get_obs_id_from_vos()
-            self._file_id = gem_name.GemName.remove_extensions(self._file_name)
         else:
-            self._file_name = file_name
-            self._file_id = gem_name.GemName.remove_extensions(file_name)
+            self._file_name = os.path.basename(file_name)
+            self._file_id = gem_name.GemName.remove_extensions(
+                self._file_name
+            )
             self._obs_id = self.get_obs_id()
+        self._source_names = [file_name]
 
         self.scheme = 'ad'
         self.archive = 'GEMINI'
@@ -175,7 +181,7 @@ class GemProcName(mc.StorageName):
         if obs_id is None:
             config = mc.Config()
             config.get_executors()
-            subject = mc.define_subject(config)
+            subject = clc.define_subject(config)
             tap_client = CadcTapClient(
                 subject=subject, resource_id=config.tap_id
             )

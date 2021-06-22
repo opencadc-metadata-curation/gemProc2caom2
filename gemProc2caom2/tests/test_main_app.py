@@ -122,7 +122,7 @@ def pytest_generate_tests(metafunc):
 
 
 @patch('gem2caom2.external_metadata.get_pi_metadata')
-@patch('caom2pipe.manage_composable.query_tap_client')
+@patch('caom2pipe.client_composable.query_tap_client')
 @patch('caom2utils.fits2caom2.CadcDataClient')
 @patch('gem2caom2.external_metadata.get_obs_id_from_cadc')
 def test_main_app(
