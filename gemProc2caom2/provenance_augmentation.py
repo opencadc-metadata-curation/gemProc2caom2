@@ -91,6 +91,10 @@ def visit(observation, **kwargs):
         )
     config = mc.Config()
     config.get_executors()
+    if mc.TaskType.SCRAPE in config.task_types:
+        logging.warning(f'Provenance augmentation does not work for SCRAPE.')
+        return {'provenance': 0}
+
     subject = clc.define_subject(config)
     tap_client = CadcTapClient(subject, config.tap_id)
 
