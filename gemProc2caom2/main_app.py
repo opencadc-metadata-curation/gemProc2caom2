@@ -131,7 +131,7 @@ from caom2pipe import manage_composable as mc
 from gem2caom2 import external_metadata
 from gem2caom2 import gem_name, obs_file_relationship
 
-COLLECTION = 'GEMINIPROC'
+COLLECTION = 'GEMINICADC'
 
 __all__ = [
     'gem_proc_main_app',
@@ -170,8 +170,8 @@ class GemProcName(mc.StorageName):
             self._obs_id = self.get_obs_id()
         self._source_names = [file_name]
 
-        self.scheme = 'ad'
-        self.archive = 'GEMINI'
+        self.scheme = 'cadc'
+        self.archive = COLLECTION
         self.fname_on_disk = self._file_name
         self._logger = logging.getLogger(__name__)
         self._logger.debug(self)

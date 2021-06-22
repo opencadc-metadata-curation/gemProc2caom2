@@ -85,11 +85,11 @@ def test_storage_name(obs_id_mock):
         test_id = 'ctfbrsnN20140428S0086'
         test_f_name = f'{test_id}.fits'
         test_sn = GemProcName(file_name=test_f_name, entry=test_f_name)
-        assert test_sn.file_uri == f'ad:GEMINI/{test_f_name}'
-        assert test_sn.lineage == f'{test_id}/ad:GEMINI/{test_f_name}'
+        assert test_sn.file_uri == f'cadc:GEMINICADC/{test_f_name}'
+        assert test_sn.lineage == f'{test_id}/cadc:GEMINICADC/{test_f_name}'
         assert test_sn.prev == f'{test_id}.jpg'
         assert test_sn.thumb == f'{test_id}_th.jpg'
-        assert test_sn.prev_uri == f'ad:GEMINI/{test_id}.jpg'
-        assert test_sn.thumb_uri == f'ad:GEMINI/{test_id}_th.jpg'
+        assert test_sn.prev_uri == f'cadc:GEMINICADC/{test_id}.jpg'
+        assert test_sn.thumb_uri == f'cadc:GEMINICADC/{test_id}_th.jpg'
     finally:
         os.getcwd = os_getcwd_orig

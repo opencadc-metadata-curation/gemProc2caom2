@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:SimpleObservation" caom2:id="b9a3114f-bf9c-4222-938c-3cdd3e6b6862">
-  <caom2:collection>GEMINI</caom2:collection>
+  <caom2:collection>GEMINICADC</caom2:collection>
   <caom2:observationID>GN-2019B-FT-101-31-001</caom2:observationID>
   <caom2:metaRelease>2020-06-30T18:12:31.000</caom2:metaRelease>
   <caom2:algorithm>
@@ -37,7 +37,7 @@
       </caom2:provenance>
       <caom2:artifacts>
         <caom2:artifact caom2:id="fbc34cfc-88d4-4b6f-a0cc-dc26615ae640">
-          <caom2:uri>ad:GEMINI/wrgnN20191027S0083_arc.fits</caom2:uri>
+          <caom2:uri>cadc:GEMINICADC/wrgnN20191027S0083_arc.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>application/fits</caom2:contentType>

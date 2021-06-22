@@ -180,7 +180,7 @@ def _get_file_info(archive, file_id):
 
 def _get_lineage(blank_name):
     result = mc.get_lineage(
-        'GEMINI', blank_name.product_id, f'{blank_name.file_name}'
+        COLLECTION, blank_name.product_id, f'{blank_name.file_name}', 'cadc'
     )
     return result
 

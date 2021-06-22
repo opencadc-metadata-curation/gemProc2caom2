@@ -106,7 +106,8 @@ def test_run(tap_mock, run_mock):
         ), 'wrong fname on disk'
         assert test_storage.url is None, 'wrong url'
         assert (
-            test_storage.lineage == f'{test_f_id}/ad:GEMINI/{test_f_name}'
+            test_storage.lineage ==
+            f'{test_f_id}/cadc:GEMINICADC/{test_f_name}'
         ), 'wrong lineage'
     finally:
         os.getcwd = getcwd_orig

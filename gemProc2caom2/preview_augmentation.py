@@ -85,7 +85,7 @@ from gemProc2caom2 import GemProcName
 class GemProcPreview(mc.PreviewVisitor):
     def __init__(self, observation, **kwargs):
         super(GemProcPreview, self).__init__(
-            'GEMINI', ReleaseType.DATA, **kwargs
+            'GEMINICADC', ReleaseType.DATA, **kwargs
         )
         self._observation = observation
         self._storage_name = GemProcName(

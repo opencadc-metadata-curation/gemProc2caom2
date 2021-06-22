@@ -87,7 +87,7 @@ def pytest_generate_tests(metafunc):
 
 
 @patch('caom2utils.fits2caom2.get_cadc_headers')
-@patch('caom2pipe.manage_composable.repo_get')
+@patch('caom2pipe.client_composable.repo_get')
 @patch('gem2caom2.external_metadata.get_obs_id_from_cadc')
 def test_provenance_augmentation(
     obs_id_mock, repo_get_mock, headers_mock, test_fqn

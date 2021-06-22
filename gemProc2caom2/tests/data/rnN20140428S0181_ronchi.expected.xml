@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:CompositeObservation" caom2:id="49b989c7-d639-4a4c-bd9d-a2006b0501e4" caom2:lastModified="2020-07-01T19:14:50.792" caom2:maxLastModified="2020-07-01T23:02:45.615" caom2:metaChecksum="md5:bcc6e8999a247c52f2d589672836bb47" caom2:accMetaChecksum="md5:d9d295ab13c14f3e66a7c618dd8ae3d4">
-  <caom2:collection>GEMINIPROC</caom2:collection>
+  <caom2:collection>GEMINICADC</caom2:collection>
   <caom2:observationID>GN-2014A-Q-85-16-013</caom2:observationID>
   <caom2:metaRelease>2020-07-30T14:55:53.000</caom2:metaRelease>
   <caom2:algorithm>
@@ -32,7 +32,7 @@
       </caom2:provenance>
       <caom2:artifacts>
         <caom2:artifact caom2:id="9ef93cdd-e2f0-4761-be13-af6dc5e9602a">
-          <caom2:uri>ad:GEMINI/rnN20140428S0181_ronchi.fits</caom2:uri>
+          <caom2:uri>cadc:GEMINICADC/rnN20140428S0181_ronchi.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>application/fits</caom2:contentType>

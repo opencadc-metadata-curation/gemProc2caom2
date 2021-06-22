@@ -1,5 +1,5 @@
 <caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:DerivedObservation" caom2:id="75008692-7831-410a-967c-332746b8b230" caom2:lastModified="2020-07-21T20:30:43.892" caom2:maxLastModified="2020-07-22T23:47:56.658" caom2:metaChecksum="md5:97e5ac23cabe364cd2e572d8e6119455" caom2:accMetaChecksum="md5:e8ec6ccf8820639403d23616bee275e5">
-  <caom2:collection>GEMINIPROC</caom2:collection>
+  <caom2:collection>GEMINICADC</caom2:collection>
   <caom2:observationID>GN-2014A-Q-85-12-002-CTFBRSN</caom2:observationID>
   <caom2:metaRelease>2020-06-29T18:11:17.000</caom2:metaRelease>
   <caom2:algorithm>
@@ -31,7 +31,7 @@
       </caom2:provenance>
       <caom2:artifacts>
         <caom2:artifact caom2:id="c041f3b0-8573-4beb-9069-d66f1a9b773a" caom2:lastModified="2020-07-21T20:30:43.892" caom2:maxLastModified="2020-07-22T23:47:56.658" caom2:metaChecksum="md5:f1a35a0cb2f6349a753b2138a8c40717" caom2:accMetaChecksum="md5:229a0f97a523a0106665c70537b2b7f5">
-          <caom2:uri>ad:GEMINI/ctfbrsnN20140428S0086.fits</caom2:uri>
+          <caom2:uri>cadc:GEMINICADC/ctfbrsnN20140428S0086.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>application/fits</caom2:contentType>
@@ -140,7 +140,7 @@
           </caom2:parts>
         </caom2:artifact>
         <caom2:artifact caom2:id="79560443-1709-4ea2-9225-8747b4b923fa" caom2:lastModified="2020-07-22T01:18:41.181" caom2:maxLastModified="2020-07-22T01:18:41.181" caom2:metaChecksum="md5:c327677a5d57d02c3c780e6468b6cfed" caom2:accMetaChecksum="md5:0422079330d3a31cb017042adf5c30a7">
-          <caom2:uri>ad:GEMINI/ctfbrsnN20140428S0086.jpg</caom2:uri>
+          <caom2:uri>cadc:GEMINICADC/ctfbrsnN20140428S0086.jpg</caom2:uri>
           <caom2:productType>preview</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>
@@ -149,7 +149,7 @@
           <caom2:parts/>
         </caom2:artifact>
         <caom2:artifact caom2:id="3d8d8b13-4200-4483-af0f-0d6b0b4503db" caom2:lastModified="2020-07-22T01:18:41.181" caom2:maxLastModified="2020-07-22T01:18:41.181" caom2:metaChecksum="md5:da26e1833e19187e773cd26a99159ff2" caom2:accMetaChecksum="md5:136abf748826b5c9998112a2649af4b9">
-          <caom2:uri>ad:GEMINI/ctfbrsnN20140428S0086_th.jpg</caom2:uri>
+          <caom2:uri>cadc:GEMINICADC/ctfbrsnN20140428S0086_th.jpg</caom2:uri>
           <caom2:productType>thumbnail</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
           <caom2:contentType>image/jpeg</caom2:contentType>
