@@ -86,6 +86,7 @@ from caom2pipe import manage_composable as mc
 from caom2pipe import name_builder_composable as nbc
 from caom2pipe import run_composable as rc
 from caom2pipe import transfer_composable as tc
+from gem2caom2 import external_metadata
 from gemProc2caom2 import APPLICATION, GemProcName, preview_augmentation
 from gemProc2caom2 import provenance_augmentation
 
@@ -103,8 +104,12 @@ def _run():
     :return 0 if successful, -1 if there's any sort of failure. Return status
         is used by airflow for task instance management and reporting.
     """
+    config = mc.Config()
+    config.get_executors()
+    external_metadata.init_global(config=config)
     name_builder = nbc.FileNameBuilder(GemProcName)
     return rc.run_by_todo(
+        config=config,
         name_builder=name_builder,
         command_name=APPLICATION,
         meta_visitors=META_VISITORS,
@@ -133,6 +138,7 @@ def _run_remote():
     """
     config = mc.Config()
     config.get_executors()
+    external_metadata.init_global(config=config)
     name_builder = nbc.FileNameBuilder(GemProcName)
     vos_client = Client(vospace_certfile=config.proxy_fqn)
     store_transfer = tc.VoFitsTransfer(vos_client)
