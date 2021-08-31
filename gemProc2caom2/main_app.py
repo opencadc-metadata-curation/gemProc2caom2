@@ -599,7 +599,9 @@ def _get_uris(args):
 
 
 def to_caom2():
-    """This function is called by pipeline execution. It must have this name."""
+    """
+    This function is called by pipeline execution. It must have this name.
+    """
     args = get_gen_proc_arg_parser().parse_args()
     uris = _get_uris(args)
     blueprints = _build_blueprints(uris)
