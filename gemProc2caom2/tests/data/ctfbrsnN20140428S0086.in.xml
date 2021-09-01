@@ -1,5 +1,5 @@
 <caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:SimpleObservation" caom2:id="75008692-7831-410a-967c-332746b8b230" caom2:lastModified="2020-07-21T20:30:43.892" caom2:maxLastModified="2020-07-22T23:47:56.658" caom2:metaChecksum="md5:97e5ac23cabe364cd2e572d8e6119455" caom2:accMetaChecksum="md5:e8ec6ccf8820639403d23616bee275e5">
-  <caom2:collection>GEMINIPROC</caom2:collection>
+  <caom2:collection>GEMINICADC</caom2:collection>
   <caom2:observationID>GN-2014A-Q-85-12-002</caom2:observationID>
   <caom2:metaRelease>2020-06-29T18:11:17.000</caom2:metaRelease>
   <caom2:algorithm>

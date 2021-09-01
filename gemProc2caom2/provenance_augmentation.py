@@ -73,36 +73,51 @@ from astropy.io import fits
 from cadctap import CadcTapClient
 from caom2 import Observation, DerivedObservation, ObservationURI, PlaneURI
 from caom2 import TypedSet
+from caom2pipe import client_composable as clc
 from caom2pipe import manage_composable as mc
 from gem2caom2 import external_metadata, gem_name
-from gemProc2caom2 import GemProcName
+from gemProc2caom2 import builder
 
 
 def visit(observation, **kwargs):
     mc.check_param(observation, Observation)
 
     working_directory = kwargs.get('working_directory', './')
-    science_file = kwargs.get('science_file')
-    if science_file is None:
+    storage_name = kwargs.get('storage_name')
+    if storage_name is None:
         raise mc.CadcException(
-            f'Must have a science_file parameter for provenance_augmentation '
-            f'for {observation.observation_id}')
+            f'Must have a storage_name parameter for provenance_augmentation '
+            f'for {observation.observation_id}'
+        )
     config = mc.Config()
     config.get_executors()
-    subject = mc.define_subject(config)
+    if mc.TaskType.SCRAPE in config.task_types:
+        logging.warning(f'Provenance augmentation does not work for SCRAPE.')
+        return {'provenance': 0}
+
+    subject = clc.define_subject(config)
     tap_client = CadcTapClient(subject, config.tap_id)
 
     count = 0
-    storage_name = GemProcName(science_file, entry=science_file)
-    obs_members = TypedSet(ObservationURI, )
+    obs_members = TypedSet(
+        ObservationURI,
+    )
 
     for plane in observation.planes.values():
-        plane_inputs = TypedSet(PlaneURI, )
+        plane_inputs = TypedSet(
+            PlaneURI,
+        )
         for artifact in plane.artifacts.values():
             if storage_name.file_uri == artifact.uri:
                 count = _do_provenance(
-                    working_directory, science_file, observation,
-                    tap_client, plane_inputs, obs_members)
+                    working_directory,
+                    storage_name.file_name,
+                    observation,
+                    tap_client,
+                    plane_inputs,
+                    obs_members,
+                    config,
+                )
 
         if plane.provenance is not None:
             plane.provenance.inputs.update(plane_inputs)
@@ -113,20 +128,33 @@ def visit(observation, **kwargs):
             observable = kwargs.get('observable')
             caom_repo_client = kwargs.get('caom_repo_client')
             if caom_repo_client is None:
-                logging.warning(f'Warning: Must have a caom_repo_client for '
-                                f'members metadata for '
-                                f'{observation.observation_id}.')
+                logging.warning(
+                    f'Warning: Must have a caom_repo_client for '
+                    f'members metadata for '
+                    f'{observation.observation_id}.'
+                )
             _do_members_metadata(
-                observation, caom_repo_client, observation.members,
-                observable.metrics)
+                observation,
+                caom_repo_client,
+                observation.members,
+                observable.metrics,
+            )
 
     logging.info(
-        f'Done provenance_augmentation for {observation.observation_id}')
+        f'Done provenance_augmentation for {observation.observation_id}'
+    )
     return {'provenance': count}
 
 
-def _do_provenance(working_directory, science_file, observation,
-                   tap_client, plane_inputs, obs_members):
+def _do_provenance(
+    working_directory,
+    science_file,
+    observation,
+    tap_client,
+    plane_inputs,
+    obs_members,
+    config,
+):
     """
     DB 06-08-20
     Looking at the DATALAB values for the test set, these are now set to
@@ -150,7 +178,8 @@ def _do_provenance(working_directory, science_file, observation,
     hdus = fits.open(fqn)
     if 'PROVENANCE' not in hdus:
         logging.warning(
-            f'PROVENANCE extension not found in HDUs for {science_file}.')
+            f'PROVENANCE extension not found in HDUs for {science_file}.'
+        )
         return count
 
     data = hdus['PROVENANCE'].data
@@ -159,28 +188,44 @@ def _do_provenance(working_directory, science_file, observation,
         if entry.name.startswith('Type'):
             temp = entry.name
             break
-    for f_name, f_prov_type in zip(data['Filename'],
-                                   data[temp]):
+    name_builder = builder.GemProcBuilder(config)
+    for f_name, f_prov_type in zip(data['Filename'], data[temp]):
         f_id = gem_name.GemName.remove_extensions(f_name)
-        for coll in ['GEMINI', 'GEMINIPROC']:
-            obs_id = external_metadata.get_obs_id_from_cadc(
-                    f_id, tap_client, coll)
-            if obs_id is not None:
-                logging.info(f'Found observation ID {obs_id} for file {f_id}.')
-                input_obs_uri_str = mc.CaomName.make_obs_uri_from_obs_id(
-                    coll, obs_id)
-                input_obs_uri = ObservationURI(input_obs_uri_str)
-                plane_uri = PlaneURI.get_plane_uri(input_obs_uri, f_id)
-                plane_inputs.add(plane_uri)
+
+        # GEMINICADC
+        # the order of calls here is meant to put the least amount of load
+        # on archive.gemini.edu
+        #
+        collection = builder.COLLECTION
+        metadata = name_builder._get_obs_id(None, f_name, None)
+        if metadata is None:
+            # GEMINI
+            collection = gem_name.COLLECTION
+            uri = mc.build_uri(collection, f_name, gem_name.SCHEME)
+            metadata = external_metadata.defining_metadata_finder.get(uri)
+        if metadata is not None and metadata.data_label is not None:
+            logging.info(
+                f'Found observation ID {metadata.data_label} for file {f_id}.'
+            )
+            input_obs_uri_str = mc.CaomName.make_obs_uri_from_obs_id(
+                collection, metadata.data_label
+            )
+            input_obs_uri = ObservationURI(input_obs_uri_str)
+            plane_uri = PlaneURI.get_plane_uri(input_obs_uri, f_id)
+            plane_inputs.add(plane_uri)
+            count += 1
+            if (
+                f_prov_type == 'member' and
+                isinstance(observation, DerivedObservation)
+            ):
+                member_obs_uri_str = (
+                    mc.CaomName.make_obs_uri_from_obs_id(
+                        collection, metadata.data_label
+                    )
+                )
+                member_obs_uri = ObservationURI(member_obs_uri_str)
+                obs_members.add(member_obs_uri)
                 count += 1
-                if f_prov_type == 'member':
-                    if isinstance(observation, DerivedObservation):
-                        member_obs_uri_str = mc.CaomName.make_obs_uri_from_obs_id(
-                            coll, obs_id)
-                        member_obs_uri = ObservationURI(member_obs_uri_str)
-                        obs_members.add(member_obs_uri)
-                        count += 1
-                break
     hdus.close()
     logging.debug('End _do_provenance.')
     return count
@@ -204,16 +249,21 @@ def _do_members_metadata(observation, caom_repo_client, members, metrics):
     Titan observation should be shown as being a moving target whereas the
     other object exposure is not.
     """
-    logging.debug(f'Begin _do_members_metadata for '
-                  f'{observation.observation_id}.')
+    logging.debug(
+        f'Begin _do_members_metadata for ' f'{observation.observation_id}.'
+    )
     prov_obs_uri = None
     for entry in members:
         # use the first one for querying
         prov_obs_uri = entry
         break
     if caom_repo_client is not None:
-        prov_obs = mc.repo_get(caom_repo_client, prov_obs_uri.collection,
-                               prov_obs_uri.observation_id, metrics)
+        prov_obs = clc.repo_get(
+            caom_repo_client,
+            prov_obs_uri.collection,
+            prov_obs_uri.observation_id,
+            metrics,
+        )
         if prov_obs is not None:
             observation.proposal = prov_obs.proposal
             if prov_obs.target is not None:

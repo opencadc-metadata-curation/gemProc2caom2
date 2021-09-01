@@ -62,117 +62,40 @@
 #  <http://www.gnu.org/licenses/>.      pas le cas, consultez :
 #                                       <http://www.gnu.org/licenses/>.
 #
-#  $Revision: 4 $
+#  : 4 $
 #
 # ***********************************************************************
 #
 
-import logging
-import os
-import re
+import sys
 
-import matplotlib.image as image
-import matplotlib.pyplot as plt
-import numpy as np
-from astropy.io import fits
-from astropy.visualization import MinMaxInterval, ZScaleInterval
-
-from caom2 import ProductType, ReleaseType
+from vos import Client
 from caom2pipe import manage_composable as mc
+from caom2pipe import run_composable as rc
+from caom2pipe import transfer_composable as tc
+from gemProc2caom2 import (
+    GemProcBuilder,
+    preview_augmentation,
+    provenance_augmentation,
+)
 
 
-class GemProcPreview(mc.PreviewVisitor):
-    def __init__(self, observation, **kwargs):
-        super(GemProcPreview, self).__init__(
-            'GEMINICADC', ReleaseType.DATA, **kwargs
-        )
-        self._observation = observation
-        self._preview_fqn = os.path.join(
-            self._working_dir, self._storage_name.prev
-        )
-        self._thumb_fqn = os.path.join(
-            self._working_dir, self._storage_name.thumb
-        )
-        self._logger = logging.getLogger(__name__)
-
-    def generate_plots(self, obs_id):
-        self._logger.debug(f'Begin generate_plots for {obs_id}')
-        count = 0
-        # NC - algorithm
-        # NC - review - 07-08-20
-        hdus = fits.open(self._science_fqn)
-        obs_type = hdus[0].header.get('OBSTYPE').upper()
-        interval = ZScaleInterval()
-        if (
-            self._observation.target is not None
-            and self._observation.target.moving
-        ) and obs_type != 'DARK':
-            interval = MinMaxInterval()
-        if 'OBJECT' in obs_type:
-            white_light_data = interval(
-                np.flipud(np.median(hdus['SCI'].data, axis=0))
-            )
-        elif (
-            'FLAT' in obs_type
-            or 'ARC' in obs_type
-            or 'RONCHI' in obs_type
-            or 'DARK' in obs_type
-        ):
-            # Stitch together the 29 'SCI' extensions into one array and save.
-            hdul = [x for x in hdus if x.name == 'SCI']
-            hdul.sort(
-                key=lambda x: int(
-                    re.split(r"[\[\]\:\,']+", x.header['NSCUTSEC'])[3]
-                )
-            )
-            temp = np.concatenate([x.data for x in hdul])
-            white_light_data = interval(temp)
-        elif 'SHIFT' in obs_type:
-            temp = np.flipud(hdus['SCI'].data)
-            white_light_data = interval(temp)
-        else:
-            return count
-
-        plt.figure(figsize=(10.24, 10.24), dpi=100)
-        plt.grid(False)
-        plt.axis('off')
-        plt.imshow(white_light_data, cmap='inferno')
-        plt.savefig(self._preview_fqn, format='jpg')
-        count += 1
-        self.add_preview(
-            self._storage_name.prev_uri,
-            self._storage_name.prev,
-            ProductType.PREVIEW,
-        )
-        self.add_to_delete(self._preview_fqn)
-        count += self._gen_thumbnail()
-        self._logger.info(f'End generate_plots for {obs_id}.')
-        return count
-
-    def _gen_thumbnail(self):
-        self._logger.debug(
-            f'Generating thumbnail for file ' f'{self._science_fqn}.'
-        )
-        count = 0
-        if os.path.exists(self._preview_fqn):
-            thumb = image.thumbnail(
-                self._preview_fqn, self._thumb_fqn, scale=0.25
-            )
-            if thumb is not None:
-                self.add_preview(
-                    self._storage_name.thumb_uri,
-                    self._storage_name.thumb,
-                    ProductType.THUMBNAIL,
-                )
-                self.add_to_delete(self._thumb_fqn)
-                count = 1
-        else:
-            self._logger.warning(
-                f'Could not find {self._preview_fqn} for '
-                f'thumbnail generation.'
-            )
-        return count
+def rs():
+    config = mc.Config()
+    config.get_executors()
+    vos_client = Client(vospace_certfile=config.proxy_fqn)
+    builder = GemProcBuilder(config)
+    storage_name = builder.build(sys.argv[1])
+    store_transfer = tc.VoFitsTransfer(vos_client)
+    rc.run_single(
+        config=config,
+        storage_name=storage_name,
+        command_name='gemProc2caom2',
+        meta_visitors=[],
+        data_visitors=[provenance_augmentation, preview_augmentation],
+        store_transfer=store_transfer,
+    )
 
 
-def visit(observation, **kwargs):
-    return GemProcPreview(observation, **kwargs).visit(observation)
+if __name__ == '__main__':
+    rs()
