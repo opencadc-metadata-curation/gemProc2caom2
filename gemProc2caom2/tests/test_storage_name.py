@@ -67,29 +67,61 @@
 # ***********************************************************************
 #
 
-import os
 from mock import patch, Mock
 
-from gemProc2caom2 import GemProcName
+from caom2utils import data_util
+from caom2pipe import manage_composable as mc
+from gem2caom2 import external_metadata as em
+from gemProc2caom2 import builder
 
 import test_main_app
 
 
-@patch('gem2caom2.external_metadata.get_obs_id_from_cadc')
-def test_storage_name(obs_id_mock):
-    os_getcwd_orig = os.getcwd
-    os.getcwd = Mock(return_value=test_main_app.TEST_DATA_DIR)
-    test_obs_id = 'test_obs_id'
-    obs_id_mock.return_value = test_obs_id
-    try:
-        test_id = 'ctfbrsnN20140428S0086'
-        test_f_name = f'{test_id}.fits'
-        test_sn = GemProcName(file_name=test_f_name, entry=test_f_name)
+@patch('caom2utils.fits2caom2.get_vos_headers')
+@patch('gem2caom2.external_metadata.defining_metadata_finder')
+def test_builder(dmf_mock, vos_mock):
+
+    test_config = mc.Config()
+    test_config.proxy_fqn = (
+        f'{test_main_app.TEST_DATA_DIR}/test_proxy.pem'
+    )
+    test_config.task_types = [mc.TaskType.VISIT]
+    test_id = 'ctfbrsnN20140428S0086'
+    test_f_name = f'{test_id}.fits'
+
+    dmf_mock._check_caom2.side_effect = [
+        em.DefiningMetadata('GNIRS', 'TEST_DATA_LABEL'),
+        em.DefiningMetadata('GNIRS', 'TEST_DATA_LABEL'),
+    ]
+    x = """SIMPLE  =                    T / Written by IDL:  Fri Oct  6 01:48:35 2017
+BITPIX  =                  -32 / Bits per pixel
+NAXIS   =                    2 / Number of dimensions
+NAXIS1  =                 2048 /
+NAXIS2  =                 2048 /
+DATALAB = 'TEST_DATA_LABEL'
+INSTRUME= 'GNIRS'
+DATATYPE= 'REDUC   '           /Data type, SCIENCE/CALIB/REJECT/FOCUS/TEST
+END
+"""
+    y = data_util.make_headers_from_string(x)
+    vos_mock.return_value = y
+
+    test_subject = builder.GemProcBuilder(test_config)
+    for entry in [
+        test_f_name,
+        f'vos:goliaths/tests/{test_f_name}',
+        f'/tmp/{test_f_name}',
+    ]:
+        test_sn = test_subject.build(entry)
         assert test_sn.file_uri == f'cadc:GEMINICADC/{test_f_name}'
         assert test_sn.lineage == f'{test_id}/cadc:GEMINICADC/{test_f_name}'
         assert test_sn.prev == f'{test_id}.jpg'
         assert test_sn.thumb == f'{test_id}_th.jpg'
         assert test_sn.prev_uri == f'cadc:GEMINICADC/{test_id}.jpg'
         assert test_sn.thumb_uri == f'cadc:GEMINICADC/{test_id}_th.jpg'
-    finally:
-        os.getcwd = os_getcwd_orig
+        assert (
+            test_sn.destination_uris ==
+            ['cadc:GEMINICADC/ctfbrsnN20140428S0086.fits']
+        ), f'wrong destination uris for {entry}'
+        assert test_sn.obs_id == 'TEST_DATA_LABEL', f'wrong obs_id for {entry}'
+        assert test_sn._source_names[0] == entry, 'wrong source name'

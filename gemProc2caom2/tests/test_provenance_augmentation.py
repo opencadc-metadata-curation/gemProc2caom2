@@ -70,9 +70,10 @@
 import os
 from mock import Mock, patch
 
-from astropy.io import fits
+from caom2utils import data_util
 from caom2pipe import manage_composable as mc
-from gemProc2caom2 import provenance_augmentation
+from gem2caom2 import external_metadata
+from gemProc2caom2 import provenance_augmentation, GemProcName
 import test_main_app
 
 REJECTED_FILE = os.path.join(test_main_app.TEST_DATA_DIR, 'rejected.yml')
@@ -86,27 +87,32 @@ def pytest_generate_tests(metafunc):
     metafunc.parametrize('test_fqn', fqn_list)
 
 
-@patch('caom2utils.fits2caom2.get_cadc_headers')
 @patch('caom2pipe.client_composable.repo_get')
-@patch('gem2caom2.external_metadata.get_obs_id_from_cadc')
+@patch('gemProc2caom2.builder.GemProcBuilder')
+@patch('cadcutils.net.ws.WsCapabilities.get_access_url')
+@patch('caom2utils.data_util.StorageClientWrapper')
+@patch('gem2caom2.external_metadata.defining_metadata_finder')
 def test_provenance_augmentation(
-    obs_id_mock, repo_get_mock, headers_mock, test_fqn
+    dmf_mock, headers_mock, access_mock, builder_mock, repo_get_mock, test_fqn
 ):
+    builder_mock.return_value._get_obs_id.return_value = None
+    access_mock.return_value = 'https://localhost'
     test_rejected = mc.Rejected(REJECTED_FILE)
     test_config = mc.Config()
+    test_config.task_types = [mc.TaskType.VISIT]
     test_observable = mc.Observable(test_rejected, mc.Metrics(test_config))
-    headers_mock.side_effect = _get_headers_mock
+    headers_mock.return_value.get_head.side_effect = _get_headers_mock
+    dmf_mock.get.side_effect = _get_obs_id_mock
     repo_get_mock.side_effect = _repo_get_mock
-    obs_id_mock.side_effect = _get_obs_id_mock
     getcwd_orig = os.getcwd
     os.getcwd = Mock(return_value=test_main_app.TEST_DATA_DIR)
+    temp = os.path.basename(test_fqn).replace('.expected.xml', '.fits')
+    test_storage_name = GemProcName(entry=temp)
     try:
         test_obs = mc.read_obs_from_file(test_fqn)
         assert not test_obs.target.moving, 'initial conditions moving target'
         kwargs = {
-            'science_file': os.path.basename(test_fqn).replace(
-                '.expected.xml', '.fits'
-            ),
+            'storage_name': test_storage_name,
             'working_directory': test_main_app.TEST_DATA_DIR,
             'observable': test_observable,
             'caom_repo_client': Mock(),
@@ -120,15 +126,9 @@ def test_provenance_augmentation(
         os.getcwd = getcwd_orig
 
 
-def _get_obs_id_mock(f_id, collection, ignore):
-    lookup = {'N20140428S0181': 'GN-2014A-Q-85-16-013'}
-    return lookup.get(f_id)
-
-
-def _repo_get_mock(ignore1, ignore2, ignore3, ignore4):
-    return mc.read_obs_from_file(
-        f'{test_main_app.TEST_DATA_DIR}/GN-2014A-Q-85-16-013.xml'
-    )
+def _get_obs_id_mock(uri):
+    lookup = {'gemini:GEMINI/N20140428S0181.fits': 'GN-2014A-Q-85-16-013'}
+    return external_metadata.DefiningMetadata('GNIRS', lookup.get(uri))
 
 
 def _get_headers_mock(uri_ignore):
@@ -141,7 +141,11 @@ DATATYPE= 'REDUC   '             /Data type, SCIENCE/CALIB/REJECT/FOCUS/TEST
 DATALAB = 'GN-2014A-Q-85-16-013' /
 END
 """
-    delim = '\nEND'
-    extensions = [e + delim for e in x.split(delim) if e.strip()]
-    headers = [fits.Header.fromstring(e, sep='\n') for e in extensions]
-    return headers
+    y = data_util.make_headers_from_string(x)
+    return y
+
+
+def _repo_get_mock(ignore1, ignore2, ignore3, ignore4):
+    return mc.read_obs_from_file(
+        f'{test_main_app.TEST_DATA_DIR}/GN-2014A-Q-85-16-013.xml'
+    )

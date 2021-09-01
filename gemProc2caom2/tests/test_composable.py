@@ -72,7 +72,6 @@ import test_main_app
 
 from mock import Mock, patch
 
-from astropy.table import Table
 from gemProc2caom2 import composable, GemProcName
 
 TEST_OBS_ID = 'GN-2014A-Q-85-16-003-RGN-FLAT'
@@ -83,11 +82,8 @@ def test_run_by_state():
 
 
 @patch('caom2pipe.execute_composable.OrganizeExecutes.do_one')
-@patch('caom2pipe.client_composable.query_tap_client')
-def test_run(tap_mock, run_mock):
-    tap_mock.side_effect = _run_tap_mock
-
-    test_f_id = 'test_file_id'
+def test_run(run_mock):
+    test_f_id = 'test_rgn_flat'
     test_f_name = f'{test_f_id}.fits'
     getcwd_orig = os.getcwd
     test_fqn = os.path.join(test_main_app.TEST_DATA_DIR, 'run_test')
@@ -99,11 +95,13 @@ def test_run(tap_mock, run_mock):
         args, kwargs = run_mock.call_args
         test_storage = args[0]
         assert isinstance(test_storage, GemProcName), type(test_storage)
-        assert test_storage.obs_id == TEST_OBS_ID, 'wrong obs id'
+        assert (
+            test_storage.obs_id == TEST_OBS_ID
+        ), f'wrong obs id {test_storage.obs_id}'
         assert test_storage.file_name == test_f_name, 'wrong file name'
         assert test_storage.source_names[0] == os.path.join(
             test_fqn, test_f_name
-        ), 'wrong fname on disk'
+        ), 'wrong source name'
         assert test_storage.url is None, 'wrong url'
         assert (
             test_storage.lineage ==
@@ -111,11 +109,3 @@ def test_run(tap_mock, run_mock):
         ), 'wrong lineage'
     finally:
         os.getcwd = getcwd_orig
-
-
-def _run_tap_mock(query_string, mock_tap_client):
-    return Table.read(
-        f'observationID,lastModified\n'
-        f'{TEST_OBS_ID},2020-02-25T20:36:31.230\n'.split('\n'),
-        format='csv',
-    )

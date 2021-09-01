@@ -70,6 +70,8 @@
 from mock import patch, Mock
 
 from astropy.table import Table
+from cadcdata import FileInfo
+from gem2caom2 import external_metadata as em
 from gemProc2caom2 import main_app, GemProcName, APPLICATION, COLLECTION
 from caom2pipe import manage_composable as mc
 
@@ -121,14 +123,14 @@ def pytest_generate_tests(metafunc):
     metafunc.parametrize('test_name', obs_id_list)
 
 
-@patch('gem2caom2.external_metadata.get_pi_metadata')
+@patch('gem2caom2.program_metadata.get_pi_metadata')
 @patch('caom2pipe.client_composable.query_tap_client')
-@patch('caom2utils.fits2caom2.CadcDataClient')
-@patch('gem2caom2.external_metadata.get_obs_id_from_cadc')
+@patch('caom2utils.data_util.StorageClientWrapper')
+@patch('gem2caom2.external_metadata.defining_metadata_finder')
 def test_main_app(
     obs_id_mock, data_client_mock, tap_mock, get_pi_mock, test_name
 ):
-    obs_id_mock.side_effect = _obs_id_mock
+    obs_id_mock.return_value.get.side_effect = _obs_id_mock
     getcwd_orig = os.getcwd
     os.getcwd = Mock(return_value=TEST_DATA_DIR)
     tap_mock.side_effect = _tap_mock
@@ -139,7 +141,7 @@ def test_main_app(
         test_config.use_local_files = True
         basename = os.path.basename(test_name)
         file_name = basename.replace('.header', '')
-        gem_name = GemProcName(file_name=file_name, entry=file_name)
+        gem_name = GemProcName(entry=file_name)
         obs_path = f'{TEST_DATA_DIR}/{gem_name.file_id}.expected.xml'
         input_file = f'{TEST_DATA_DIR}/{gem_name.file_id}.in.xml'
         output_file = f'{TEST_DATA_DIR}/{basename}.actual.xml'
@@ -149,9 +151,7 @@ def test_main_app(
 
         local = _get_local(basename)
 
-        data_client_mock.return_value.get_file_info.side_effect = (
-            _get_file_info
-        )
+        data_client_mock.return_value.info.side_effect = _get_file_info
 
         sys.argv = (
             f'{APPLICATION} --no_validate '
@@ -174,8 +174,8 @@ def test_main_app(
         os.getcwd = getcwd_orig
 
 
-def _get_file_info(archive, file_id):
-    return {'type': 'application/fits'}
+def _get_file_info(uri):
+    return FileInfo(id=uri, file_type='application/fits')
 
 
 def _get_lineage(blank_name):
@@ -205,10 +205,11 @@ def _tap_mock(query_string, mock_tap_client):
         )
 
 
-def _obs_id_mock(for_file_name, tap_client_mock):
+def _obs_id_mock(uri):
+    ign1, ign2, f_name = mc.decompose_uri(uri)
     result = None
-    if for_file_name in OID_LOOKUP:
-        result = OID_LOOKUP.get(for_file_name)
+    if f_name in OID_LOOKUP:
+        result = em.DefiningMetadata('GNIRS', OID_LOOKUP.get(f_name))
     return result
 
 

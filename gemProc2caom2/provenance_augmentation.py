@@ -76,17 +76,17 @@ from caom2 import TypedSet
 from caom2pipe import client_composable as clc
 from caom2pipe import manage_composable as mc
 from gem2caom2 import external_metadata, gem_name
-from gemProc2caom2 import GemProcName
+from gemProc2caom2 import builder
 
 
 def visit(observation, **kwargs):
     mc.check_param(observation, Observation)
 
     working_directory = kwargs.get('working_directory', './')
-    science_file = kwargs.get('science_file')
-    if science_file is None:
+    storage_name = kwargs.get('storage_name')
+    if storage_name is None:
         raise mc.CadcException(
-            f'Must have a science_file parameter for provenance_augmentation '
+            f'Must have a storage_name parameter for provenance_augmentation '
             f'for {observation.observation_id}'
         )
     config = mc.Config()
@@ -99,7 +99,6 @@ def visit(observation, **kwargs):
     tap_client = CadcTapClient(subject, config.tap_id)
 
     count = 0
-    storage_name = GemProcName(science_file, entry=science_file)
     obs_members = TypedSet(
         ObservationURI,
     )
@@ -112,11 +111,12 @@ def visit(observation, **kwargs):
             if storage_name.file_uri == artifact.uri:
                 count = _do_provenance(
                     working_directory,
-                    science_file,
+                    storage_name.file_name,
                     observation,
                     tap_client,
                     plane_inputs,
                     obs_members,
+                    config,
                 )
 
         if plane.provenance is not None:
@@ -153,6 +153,7 @@ def _do_provenance(
     tap_client,
     plane_inputs,
     obs_members,
+    config,
 ):
     """
     DB 06-08-20
@@ -187,30 +188,44 @@ def _do_provenance(
         if entry.name.startswith('Type'):
             temp = entry.name
             break
+    name_builder = builder.GemProcBuilder(config)
     for f_name, f_prov_type in zip(data['Filename'], data[temp]):
         f_id = gem_name.GemName.remove_extensions(f_name)
-        for coll in ['GEMINI', 'GEMINIPROC']:
-            obs_id = external_metadata.get_obs_id_from_cadc(
-                f_id, tap_client, coll
+
+        # GEMINICADC
+        # the order of calls here is meant to put the least amount of load
+        # on archive.gemini.edu
+        #
+        collection = builder.COLLECTION
+        metadata = name_builder._get_obs_id(None, f_name, None)
+        if metadata is None:
+            # GEMINI
+            collection = gem_name.COLLECTION
+            uri = mc.build_uri(collection, f_name, gem_name.SCHEME)
+            metadata = external_metadata.defining_metadata_finder.get(uri)
+        if metadata is not None and metadata.data_label is not None:
+            logging.info(
+                f'Found observation ID {metadata.data_label} for file {f_id}.'
             )
-            if obs_id is not None:
-                logging.info(f'Found observation ID {obs_id} for file {f_id}.')
-                input_obs_uri_str = mc.CaomName.make_obs_uri_from_obs_id(
-                    coll, obs_id
+            input_obs_uri_str = mc.CaomName.make_obs_uri_from_obs_id(
+                collection, metadata.data_label
+            )
+            input_obs_uri = ObservationURI(input_obs_uri_str)
+            plane_uri = PlaneURI.get_plane_uri(input_obs_uri, f_id)
+            plane_inputs.add(plane_uri)
+            count += 1
+            if (
+                f_prov_type == 'member' and
+                isinstance(observation, DerivedObservation)
+            ):
+                member_obs_uri_str = (
+                    mc.CaomName.make_obs_uri_from_obs_id(
+                        collection, metadata.data_label
+                    )
                 )
-                input_obs_uri = ObservationURI(input_obs_uri_str)
-                plane_uri = PlaneURI.get_plane_uri(input_obs_uri, f_id)
-                plane_inputs.add(plane_uri)
+                member_obs_uri = ObservationURI(member_obs_uri_str)
+                obs_members.add(member_obs_uri)
                 count += 1
-                if f_prov_type == 'member':
-                    if isinstance(observation, DerivedObservation):
-                        member_obs_uri_str = (
-                            mc.CaomName.make_obs_uri_from_obs_id(coll, obs_id)
-                        )
-                        member_obs_uri = ObservationURI(member_obs_uri_str)
-                        obs_members.add(member_obs_uri)
-                        count += 1
-                break
     hdus.close()
     logging.debug('End _do_provenance.')
     return count

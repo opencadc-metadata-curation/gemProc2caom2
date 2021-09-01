@@ -74,7 +74,7 @@ from caom2pipe import manage_composable as mc
 from caom2pipe import run_composable as rc
 from caom2pipe import transfer_composable as tc
 from gemProc2caom2 import (
-    GemProcName,
+    GemProcBuilder,
     preview_augmentation,
     provenance_augmentation,
 )
@@ -84,7 +84,8 @@ def rs():
     config = mc.Config()
     config.get_executors()
     vos_client = Client(vospace_certfile=config.proxy_fqn)
-    storage_name = GemProcName(file_name=sys.argv[1], entry=sys.argv[1])
+    builder = GemProcBuilder(config)
+    storage_name = builder.build(sys.argv[1])
     store_transfer = tc.VoFitsTransfer(vos_client)
     rc.run_single(
         config=config,

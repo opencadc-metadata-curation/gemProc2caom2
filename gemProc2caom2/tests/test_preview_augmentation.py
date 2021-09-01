@@ -71,11 +71,13 @@ import logging
 import os
 import traceback
 
+from astropy.table import Table
 from datetime import datetime
 from mock import Mock, patch
 
 from caom2pipe import manage_composable as mc
-from gemProc2caom2 import preview_augmentation
+from gem2caom2 import external_metadata
+from gemProc2caom2 import preview_augmentation, builder
 import test_main_app
 
 REJECTED_FILE = os.path.join(test_main_app.TEST_DATA_DIR, 'rejected.yml')
@@ -83,30 +85,34 @@ TEST_FILES_DIR = '/test_files'
 
 
 @patch('caom2pipe.client_composable.query_tap_client')
-@patch('caom2utils.fits2caom2.CadcDataClient')
+@patch('caom2utils.data_util.StorageClientWrapper')
 def test_preview_augmentation(data_client_mock, tap_mock):
     getcwd_orig = os.getcwd
     os.getcwd = Mock(return_value=test_main_app.TEST_DATA_DIR)
-    tap_mock.side_effect = test_main_app._tap_mock
-    data_client_mock.return_value.get_file_info.side_effect = (
+    tap_mock.side_effect = _tap_mock
+    data_client_mock.return_value.info.side_effect = (
         test_main_app._get_file_info
     )
 
     test_f_id = 'rnN20140428S0181_ronchi'
     test_f_name = f'{test_f_id}.fits'
     test_obs = mc.read_obs_from_file(
-        f'{test_main_app.TEST_DATA_DIR}/' f'{test_f_id}.expected.xml'
+        f'{test_main_app.TEST_DATA_DIR}/{test_f_id}.expected.xml'
     )
-
     test_rejected = mc.Rejected(REJECTED_FILE)
     test_config = mc.Config()
+    test_config.get_executors()
     test_observable = mc.Observable(test_rejected, mc.Metrics(test_config))
+    external_metadata.init_global(test_config)
+    test_builder = builder.GemProcBuilder(test_config)
+    test_fqn = os.path.join(test_main_app.TEST_DATA_DIR, test_f_name)
+    test_storage_name = test_builder.build(test_fqn)
     kwargs = {
         'working_directory': TEST_FILES_DIR,
         'cadc_client': None,
         'stream': 'stream',
         'observable': test_observable,
-        'science_file': test_f_name,
+        'storage_name': test_storage_name,
     }
 
     try:
@@ -123,3 +129,13 @@ def test_preview_augmentation(data_client_mock, tap_mock):
 
     assert test_result is not None, 'expect a result'
     assert test_result.get('artifacts') == 2, 'wrong result'
+
+
+def _tap_mock(query_string, mock_tap_client):
+    if 'observationID' in query_string:
+        return Table.read(
+            f'observationID,instrument_name\n'
+            f'GN-2014A-Q-85-16-003-RGN-FLAT,'
+            f'GNIRS\n'.split('\n'),
+            format='csv',
+        )

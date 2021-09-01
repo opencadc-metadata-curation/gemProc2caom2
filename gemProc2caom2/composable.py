@@ -83,11 +83,10 @@ import traceback
 from vos import Client
 from caom2pipe import data_source_composable as dsc
 from caom2pipe import manage_composable as mc
-from caom2pipe import name_builder_composable as nbc
 from caom2pipe import run_composable as rc
 from caom2pipe import transfer_composable as tc
 from gem2caom2 import external_metadata
-from gemProc2caom2 import APPLICATION, GemProcName, preview_augmentation
+from gemProc2caom2 import main_app, builder, preview_augmentation
 from gemProc2caom2 import provenance_augmentation
 
 
@@ -107,11 +106,11 @@ def _run():
     config = mc.Config()
     config.get_executors()
     external_metadata.init_global(config=config)
-    name_builder = nbc.FileNameBuilder(GemProcName)
+    name_builder = builder.GemProcBuilder(config)
     return rc.run_by_todo(
         config=config,
         name_builder=name_builder,
-        command_name=APPLICATION,
+        command_name=main_app.APPLICATION,
         meta_visitors=META_VISITORS,
         data_visitors=DATA_VISITORS,
     )
@@ -139,14 +138,14 @@ def _run_remote():
     config = mc.Config()
     config.get_executors()
     external_metadata.init_global(config=config)
-    name_builder = nbc.FileNameBuilder(GemProcName)
+    name_builder = builder.GemProcBuilder(config)
     vos_client = Client(vospace_certfile=config.proxy_fqn)
     store_transfer = tc.VoFitsTransfer(vos_client)
     data_source = dsc.VaultListDirDataSource(vos_client, config)
     return rc.run_by_todo(
         config=config,
         name_builder=name_builder,
-        command_name=APPLICATION,
+        command_name=main_app.APPLICATION,
         source=data_source,
         meta_visitors=META_VISITORS,
         data_visitors=DATA_VISITORS,

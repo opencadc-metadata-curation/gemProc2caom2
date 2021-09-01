@@ -79,7 +79,6 @@ from astropy.visualization import MinMaxInterval, ZScaleInterval
 
 from caom2 import ProductType, ReleaseType
 from caom2pipe import manage_composable as mc
-from gemProc2caom2 import GemProcName
 
 
 class GemProcPreview(mc.PreviewVisitor):
@@ -88,10 +87,6 @@ class GemProcPreview(mc.PreviewVisitor):
             'GEMINICADC', ReleaseType.DATA, **kwargs
         )
         self._observation = observation
-        self._storage_name = GemProcName(
-            file_name=self._science_file, entry=self._science_file
-        )
-        self._science_fqn = self._science_file
         self._preview_fqn = os.path.join(
             self._working_dir, self._storage_name.prev
         )
@@ -180,5 +175,4 @@ class GemProcPreview(mc.PreviewVisitor):
 
 
 def visit(observation, **kwargs):
-    previewer = GemProcPreview(observation, **kwargs)
-    return previewer.visit(observation, previewer._storage_name)
+    return GemProcPreview(observation, **kwargs).visit(observation)

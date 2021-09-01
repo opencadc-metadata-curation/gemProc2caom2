@@ -114,133 +114,28 @@ import os
 import sys
 import traceback
 
-from urllib.parse import urlparse
-
-from cadcutils import net
-from cadctap import CadcTapClient
 from caom2 import Observation, CalibrationLevel, ProductType, TemporalWCS
 from caom2 import Axis, CoordAxis1D, SpectralWCS, CoordFunction1D, RefCoord
 from caom2 import CoordError, ObservationIntentType, SimpleObservation
 from caom2 import Algorithm, DataProductType
 from caom2utils import ObsBlueprint, get_gen_proc_arg_parser, gen_proc
-from caom2utils import WcsParser, fits2caom2
+from caom2utils import WcsParser
 from caom2pipe import astro_composable as ac
 from caom2pipe import caom_composable as cc
-from caom2pipe import client_composable as clc
 from caom2pipe import manage_composable as mc
-from gem2caom2 import external_metadata
-from gem2caom2 import gem_name, obs_file_relationship
+from gem2caom2 import gem_name, obs_file_relationship, program_metadata
+from gemProc2caom2 import builder
 
-COLLECTION = 'GEMINICADC'
 
 __all__ = [
-    'gem_proc_main_app',
-    'update',
     'APPLICATION',
-    'GemProcName',
+    'gem_proc_main_app',
     'to_caom2',
-    'COLLECTION',
+    'update',
 ]
 
 
 APPLICATION = 'gemProc2caom2'
-
-
-class GemProcName(mc.StorageName):
-    def __init__(self, file_name, entry):
-        super(GemProcName, self).__init__(
-            fname_on_disk=file_name,
-            archive='GEMINI',
-            collection=COLLECTION,
-            compression='',
-            entry=entry,
-        )
-        if file_name.startswith('vos'):
-            self._vos_uri = file_name
-            self._file_name = os.path.basename(urlparse(self._vos_uri).path)
-            self._file_id = gem_name.GemName.remove_extensions(
-                self._file_name
-            )
-            self.get_obs_id_from_vos()
-        else:
-            self._file_name = os.path.basename(file_name)
-            self._file_id = gem_name.GemName.remove_extensions(
-                self._file_name
-            )
-            self._obs_id = self.get_obs_id()
-        self._source_names = [file_name]
-
-        self.scheme = 'cadc'
-        self.archive = COLLECTION
-        self.fname_on_disk = self._file_name
-        self._logger = logging.getLogger(__name__)
-        self._logger.debug(self)
-
-    def get_obs_id(self):
-        obs_id = external_metadata.get_obs_id_from_headers(self._file_id)
-        if obs_id is None:
-            config = mc.Config()
-            config.get_executors()
-            subject = clc.define_subject(config)
-            tap_client = CadcTapClient(
-                subject=subject, resource_id=config.tap_id
-            )
-            obs_id = external_metadata.get_obs_id_from_cadc(
-                self._file_id, tap_client, COLLECTION
-            )
-            if obs_id is None:
-                headers = fits2caom2.get_cadc_headers(
-                    f'ad:GEMINI/{self._file_name}', subject
-                )
-                obs_id = headers[0].get('DATALAB')
-                if obs_id is None:
-                    raise mc.CadcException(f'No obs id for {self._file_name}')
-        return obs_id
-
-    @property
-    def file_id(self):
-        return self._file_id
-
-    @property
-    def file_name(self):
-        return self._file_name
-
-    @property
-    def obs_id(self):
-        return self._obs_id
-
-    @obs_id.setter
-    def obs_id(self, value):
-        self._obs_id = value
-
-    @property
-    def prev(self):
-        return '{}.jpg'.format(self._file_id)
-
-    @property
-    def product_id(self):
-        return self._file_id
-
-    @property
-    def thumb(self):
-        return '{}_th.jpg'.format(self._file_id)
-
-    def is_valid(self):
-        # over-ride self._obs_id dependency
-        return True
-
-    def get_obs_id_from_vos(self):
-        logging.debug(f'Begin get_obs_id_from_vos for {self._vos_uri}.')
-        headers = fits2caom2.get_vos_headers(
-            self._vos_uri,
-            subject=net.Subject(certificate='/usr/src/app/cadcproxy.pem'),
-        )
-        self._obs_id = headers[0].get('DATALAB')
-        if self._obs_id is None:
-            raise mc.CadcException(
-                f'Could not get obs id from {self._vos_uri}'
-            )
-        logging.debug('End get_obs_id_from_vos.')
 
 
 def accumulate_bp(bp, uri):
@@ -312,12 +207,12 @@ def update(observation, **kwargs):
     fqn = kwargs.get('fqn')
     uri = kwargs.get('uri')
     gem_proc_name = None
+    # ok not to use builder here, since the obs_id value is never used later
     if uri is not None:
         temp = mc.CaomName(uri).file_name
-        gem_proc_name = GemProcName(file_name=temp, entry=temp)
+        gem_proc_name = builder.GemProcName(entry=temp)
     if fqn is not None:
-        temp = os.path.basename(fqn)
-        gem_proc_name = GemProcName(file_name=temp, entry=temp)
+        gem_proc_name = builder.GemProcName(entry=fqn)
     if gem_proc_name is None:
         raise mc.CadcException(
             f'Need one of fqn or uri defined for '
@@ -400,7 +295,7 @@ def update(observation, **kwargs):
         and observation.proposal.id is not None
         and observation.proposal.pi_name is None
     ):
-        program = external_metadata.get_pi_metadata(observation.proposal.id)
+        program = program_metadata.get_pi_metadata(observation.proposal.id)
         if program is not None:
             observation.proposal.pi_name = program.get('pi_name')
             observation.proposal.title = program.get('title')
@@ -587,9 +482,7 @@ def _get_uris(args):
         for ii in args.local:
             file_id = mc.StorageName.remove_extensions(os.path.basename(ii))
             file_name = f'{file_id}.fits'
-            result.append(
-                GemProcName(file_name=file_name, entry=file_name).file_uri
-            )
+            result.append(builder.GemProcName(entry=file_name).file_uri)
     elif args.lineage:
         for ii in args.lineage:
             result.append(ii.split('/', 1)[1])
