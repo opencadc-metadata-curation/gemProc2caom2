@@ -300,14 +300,6 @@ def update(observation, **kwargs):
             observation.proposal.pi_name = program.get('pi_name')
             observation.proposal.title = program.get('title')
 
-    if (observation.proposal is not None and
-            observation.proposal.id is not None and
-            observation.proposal.pi_name is None):
-        program = external_metadata.get_pi_metadata(observation.proposal.id)
-        if program is not None:
-            observation.proposal.pi_name = program.get('pi_name')
-            observation.proposal.title = program.get('title')
-
     if isinstance(observation, SimpleObservation):
         # undo the observation-level metadata modifications for updated
         # Gemini records
