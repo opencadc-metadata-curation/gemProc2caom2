@@ -172,9 +172,20 @@ class GemProcBuilder(nbc.StorageNameBuilder):
                 self._logger.debug('Check vos')
                 metadata = self._get_obs_id_from_vos(entry)
             if metadata is None:
-                self._logger.debug('Check caom2')
+                # why the old collection name? Because it's way easier to
+                # retrieve the metadata from the old sc2 collection than
+                # by retrieving a header
+                self._logger.debug(f'Check caom2 collection {COLLECTION}')
                 uri = mc.build_uri(COLLECTION, file_name, CADC_SCHEME)
-                metadata = em.defining_metadata_finder._check_caom2(uri)
+                metadata = em.defining_metadata_finder._check_caom2(
+                    uri, COLLECTION
+                )
+                if metadata is None:
+                    self._logger.debug(f'Check caom2 collection GEMINIPROC')
+                    uri = mc.build_uri('GEMINIPROC', file_name)
+                    metadata = em.defining_metadata_finder._check_caom2(
+                        uri, 'GEMINIPROC'
+                    )
         else:
             self._logger.debug('Check unconnected local')
             metadata = em.defining_metadata_finder._check_local(file_name)
