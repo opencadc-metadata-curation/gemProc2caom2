@@ -182,7 +182,7 @@ class GemProcBuilder(nbc.StorageNameBuilder):
                 )
                 if metadata is None:
                     self._logger.debug(f'Check caom2 collection GEMINIPROC')
-                    uri = mc.build_uri('GEMINIPROC', file_name)
+                    uri = mc.build_uri('GEMINI', file_name)
                     metadata = em.defining_metadata_finder._check_caom2(
                         uri, 'GEMINIPROC'
                     )

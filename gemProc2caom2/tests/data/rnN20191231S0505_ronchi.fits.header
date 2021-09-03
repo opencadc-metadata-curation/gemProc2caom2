@@ -1,0 +1,1467 @@
+SIMPLE  =                    T / Fits standard                                  
+BITPIX  =                   16 / Bits per pixel                                 
+NAXIS   =                    0 / Number of axes                                 
+EXTEND  =                    T / File may contain extensions                    
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+DATE    = '2021-04-12T23:09:52' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:40' / Time of last modification                     
+COMMENT   FITS (Flexible Image Transport System) format is defined in 'Astronomy
+COMMENT   and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H 
+INSTRUME= 'NIFS    '           / Instrument used to acquire data.               
+OBJECT  = 'GCALflat'           / Object Name                                    
+OBSTYPE = 'RONCHI  '           / Observation type                               
+OBSCLASS= 'dayCal  '           / Observe class                                  
+GEMPRGID= 'GN-2019B-Q-303'     / Gemini Science Program ID                      
+OBSID   = 'GN-2019B-Q-303-138' / Observation ID / Data label                    
+DATALAB = 'GN-2019B-Q-303-138-014' / Datalabel                                  
+OBSERVER= 'observer'           / Observer                                       
+OBSERVAT= 'Gemini-North'       / Observatory                                    
+TELESCOP= 'Gemini-North'       / Telescope                                      
+PARALLAX=                   0. / Parallax of Target                             
+RADVEL  =                   0. / Heliocentric Radial Velocity                   
+EPOCH   =                2000. / Epoch for Target coordinates                   
+EQUINOX =                   0. / Equinox for Target coordinates                 
+TRKEQUIN=                2000. / Tracking equinox                               
+SSA     = 'ssa     '           / SSA                                            
+RA      =                  75. / RA of Target                                   
+DEC     =                89.97 / Declination of Target                          
+ELEVATIO=     90.0002319444445 / Current Elevation                              
+AZIMUTH =     74.9997986111111 / Current Azimuth                                
+CRPA    =    -90.0008674963616 / Current Cass Rotator Position Angle            
+HA      = '-00:00:08.38'       / Telescope hour angle                           
+LT      = '09:07:35.9'         / Local time at start of observation             
+TRKFRAME= 'FK5     '           / Tracking co-ordinate                           
+DECTRACK=     -0.0069980793431 / Differential tracking rate Dec                 
+TRKEPOCH=         58848.693763 / Differential tracking reference epoch          
+RATRACK =        1.00351789127 / Differential tracking rate RA                  
+FRAME   = 'AZEL_TOPO'          / Target coordinate system                       
+PMDEC   =                   0. / Proper Motion in Declination                   
+PMRA    =                   0. / Proper Motion in RA                            
+WAVELENG=               16500. / Effective Target Wavelength                    
+RAWIQ   = 'UNKNOWN '           / Raw Image Quality                              
+RAWCC   = 'UNKNOWN '           / Raw Cloud Cover                                
+RAWWV   = 'UNKNOWN '           / Raw Water Vapour/Transparency                  
+RAWBG   = 'UNKNOWN '           / Raw Background                                 
+RAWPIREQ= 'UNKNOWN '           / PI Requirements Met                            
+RAWGEMQA= 'UNKNOWN '           / Gemini Quality Assessment                      
+CGUIDMOD= 'Basic   '           / Driving mode for carousel                      
+UT      = '19:07:36.9'         / Beginning of Observation (UT)                  
+M2BAFFLE= 'VISIBLE '           / Position of M2 baffle                          
+M2CENBAF= 'CLOSED  '           / Position of M2 central hole baffle             
+ST      = '15:25:24.4'         / Sidereal time at the start of the exposure     
+XOFFSET =                   0. / Telescope offset in x in arcsec                
+YOFFSET =                   0. / Telescope offset in y in arcsec                
+POFFSET =                   0. / Telescope offset in p in arcsec                
+QOFFSET =                   0. / Telescope offset in q in arcsec                
+RAOFFSET=                   0. / Telescope offset in RA in arcsec               
+DECOFFSE=                   0. / Telescope offset in DEC in arcsec              
+RATRGOFF=                   0. / Target offset in RA in arcsec                  
+DECTRGOF=                   0. / Target offset in DEC in arcsec                 
+PA      =                   0. / Sky Position Angle at start of exposure        
+IAA     =                 270. / Instrument Alignment Angle                     
+SFRT2   =               88.583 / Science fold rotation angle (degrees)          
+SFTILT  =               -44.89 / Science fold tilt angle (degrees)              
+SFLINEAR=                   8. / Science fold linear position (mm)              
+AOFOLD  = 'park-pos.'          / AO Pick-Off Mirror Position                    
+PWFS1_ST= 'parked  '           / PWFS1 probe state (frozen,guiding,parked)      
+PWFS2_ST= 'parked  '           / PWFS2 probe state (frozen,guiding,parked)      
+OIWFS_ST= 'parked  '           / OIWFS probe state (frozen,guiding,parked)      
+AOWFS_ST= 'parked  '           / AOWFS probe state (frozen,guiding,parked)      
+SCIBAND =                    3 / Science Ranking Band                           
+REQIQ   = 'Any     '           / Requested Image Quality                        
+REQCC   = 'Any     '           / Requested Cloud Cover                          
+REQBG   = 'Any     '           / Requested Background                           
+REQWV   = 'Any     '           / Requested Water Vapour                         
+NUMREQTW=                    0 / Number of Requested Timing Window REQTW entries
+GCALLAMP= 'QH      '           / GCAL Lamp name                                 
+GCALFILT= 'ND4.0   '           / GCAL Filter name                               
+GCALDIFF= 'IR      '           / GCAL Diffuser name                             
+GCALSHUT= 'CLOSED  '           / GCAL Shutter (OPEN or CLOSED)                  
+HUMIDITY=                   9. / The relative humidity (fraction, 0..101).      
+TAMBIENT=                  0.5 / The ambient temp (C).                          
+TAMBIEN2=                 32.9 / The ambient temp (F).                          
+PRESSURE=            464.42332 / The atmospheric pressure (mm Hg).              
+PRESSUR2=               61900. / The atmospheric pressure (Pa).                 
+DEWPOINT=                -29.4 / The dew point (C).                             
+DEWPOIN2=               -20.92 / The dew point (F).                             
+WINDSPEE=                 22.1 / The wind speed (m/s).                          
+WINDSPE2=              49.4377 / The wind speed (mph).                          
+WINDDIRE=                  65. / The wind direction (degrees).                  
+WINDCOVR= 'Opened  '           / Window cover position name (open|closed)       
+FILTER  = 'JH_G0602'           / Filter name                                    
+APOFFSET=                   0. / Fopl offseti (arcseconds)                      
+GRATING = 'H_G5604 '           / Grating name                                   
+GRATWAVE=                1.649 / Grating cetntral wavelength                    
+APERTURE= 'Ronchi_Screen_G5615' / Focal plane mask                              
+FLIP    = 'Out     '           / Imaging (flip) mirror                          
+EXPRQ   =                   8. / Requested Exposure time                        
+DCNAME  = 'NIFS DC '           / Nifs dc name                                   
+PERIOD  =                   8. / Period                                         
+NPERIODS=                    1 / Number of periods                              
+EXPMODE = 'NONDESTRUCTIVE'     / Exposure mode                                  
+RDTIME  =                   5. / Read time                                      
+COADDS  =                    1 / Number of coadds summed                        
+BIASPWR =                   3. / Source voltage of bias P-FET                   
+OBSMODE = 'IFU     '           / Observing mode configuration                   
+LNRS    =                    1 / Number of non-destructive read pairs           
+DATE-OBS= '2019-12-31'         / Observation date (UT)                          
+INPORT  =                    1 / Number of ISS port where NIFS was located      
+CTYPE1  = 'RA---TAN'           / R.A. in tangent plane projection               
+CRPIX1  =            15.000022 / Ref pix of axis 1                              
+CRVAL1  =            231.17138 / RA at Ref pix in decimal degrees               
+CTYPE2  = 'DEC--TAN'           / DEC. in tangent plane projection               
+CRPIX2  =            34.000125 / Ref pix of axis 2                              
+CRVAL2  =            19.922696 / DEC at Ref pix in decimal degrees              
+CD1_1   =              4.4E-05 / WCS matrix element 1 1                         
+CD1_2   =             -7.0E-06 / WCS matrix element 1 2                         
+CD2_1   =              1.7E-05 / WCS matrix element 2 1                         
+CD2_2   =              1.8E-05 / WCS matrix element 2 2                         
+RADECSYS= 'FK5     '           / R.A./DEC. coordinate system reference          
+MJD_OBS =         58848.797704 / Mean Julian day of observation                 
+DETSIZE = '[1:2048,1:2048]'    / Dimensions of detector                         
+DETECTOR= 'NIFS    '           / Name of detector                               
+NCCDS   =                    1 / Number of detector CCDS                        
+NAMPS   =                    4 / Number of CCD amps                             
+CCDNAME = 'NIFS    '           / CCD/ARRAY name                                 
+CCDSIZE = '[1:2048,1:2048]'    / Dimensions of CCD                              
+CCDSUM  = '1 1     '           / CCD binning                                    
+CCDSEC  = '[1:512,1:2048]'     / CCD section                                    
+AMPNAME = '1       '           / Amplifier name                                 
+AMPSEC  = '[1:512,1:2048]'     / Amplifier section                              
+DETSEC  = '[1:2048,1:2048]'    / Full detector size                             
+AMPNAME2= '2       '           / Amplifier 2 name                               
+AMPSEC2 = '[1024:513,1:2048]'  / Amplifier 2 section                            
+AMPNAME3= '3       '           / Amplifier 3 name                               
+AMPSEC3 = '[1025:1536,1:2048]' / Amplifier 3 section                            
+AMPNAME4= '4       '           / Amplifier 4 name                               
+AMPSEC4 = '[2048:1537,1:2048]' / Amplifier 4 section                            
+EXPTIME =                   8. / Exposure time (s)                              
+AIRMASS =                   1. / Mean airmass for the observation               
+AMSTART =                   1. / Airmass at start of exposure                   
+AMEND   =                   1. / Airmass at end of exposure                     
+PROP_MD =                    F / Proprietary Metadata                           
+RELEASE = '2019-12-31'         / End of proprietary period YYY-MM-DD            
+MDF_YSHF=                   9. / MDF Y shift (subtracted from y_ccd)            
+MDF_FILE= 'nifs$data/nifs-mdf[1]' / MDF source                                  
+NEXTEND =                    1 / number of extensions in file                   
+MODE    = 'IFU               ' / Reduction mode                                 
+BIASVOLT=                3.000 / Array bias voltage (V)                         
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+NSCIEXT =                   29 / Number of science extensions                   
+DISPAXIS=                    1 / Dispersion axis (along columns)                
+PREPARE = '2021-04-12T23:09:12' / UT Time stamp for NFPREPARE                   
+GEM-TLM = '2021-04-12T23:10:10' / UT Last modification with GEMINI              
+BPMFILE = 'rnN20191231S0495_sflat_bpm.pl' / Input bad pixel mask file           
+ORIGXSIZ=                 2040 / Original size in X                             
+ORIGYSIZ=                 2080 / Original size in Y                             
+NSCUT   = '2021-04-12T23:09:13' / UT Time stamp for NSCUT                       
+NSAPPWAV= '2021-04-12T23:09:19' / UT Time stamp for NSAPPWAVE                   
+NSREDUCE= '2021-04-12T23:09:56' / UT Time stamp for NSREDUCE                    
+DARKIMAG= 'rnN20191231S0501_dark' / Dark current image subtracted from raw data 
+FLATIMAG= 'rnN20191231S0495_flat' / Flat field image used                       
+NFSDIST = '2021-04-12T23:10:10' / UT Time stamp for NFSDIST                     
+SOFTWARE= 'Nifty4Gemini'       / Data reduction software name                   
+SOFT_VER= '2.0     '           / Data reduction software version                
+SOFT_DOI= '10.5281/zenodo.1000413' / Data reduction software DOI                
+END                                                                             
+XTENSION= 'BINTABLE'           / binary table extension                         
+BITPIX  =                    8 / 8-bit bytes                                    
+NAXIS   =                    2 / 2-dimensional binary table                     
+NAXIS1  =                   32 / width of table in bytes                        
+NAXIS2  =                   29                                                  
+PCOUNT  =                    0 / size of special data area                      
+GCOUNT  =                    1 / one data group (required keyword)              
+TFIELDS =                    8                                                  
+TTYPE1  = 'x_ccd   '           / label for field   1                            
+TFORM1  = '1E      '           / data format of field: 4-byte REAL              
+TTYPE2  = 'y_ccd   '           / label for field   2                            
+TFORM2  = '1E      '           / data format of field: 4-byte REAL              
+TTYPE3  = 'slitsize_x'         / label for field   3                            
+TFORM3  = '1E      '           / data format of field: 4-byte REAL              
+TTYPE4  = 'slitsize_y'         / label for field   4                            
+TFORM4  = '1E      '           / data format of field: 4-byte REAL              
+TTYPE5  = 'specorder'          / label for field   5                            
+TFORM5  = '1J      '           / data format of field: 4-byte INTEGER           
+TTYPE6  = 'corner  '           / label for field   6                            
+TFORM6  = '1J      '           / data format of field: 4-byte INTEGER           
+TTYPE7  = 'RA      '           / label for field   7                            
+TFORM7  = '1E      '           / data format of field: 4-byte REAL              
+TTYPE8  = 'DEC     '           / label for field   8                            
+TFORM8  = '1E      '           / data format of field: 4-byte REAL              
+EXTNAME = 'MDF     '           / name of this binary table extension            
+TDISP1  = 'F8.2    '           / display format                                 
+TDISP2  = 'F8.2    '           / display format                                 
+TDISP3  = 'F8.3    '           / display format                                 
+TDISP4  = 'F8.3    '           / display format                                 
+TDISP5  = 'I3      '           / display format                                 
+TNULL5  =          -2147483647 / undefined value for column                     
+TDISP6  = 'I4      '           / display format                                 
+TNULL6  =          -2147483647 / undefined value for column                     
+TDISP7  = 'G10.4   '           / display format                                 
+TDISP8  = 'G10.4   '           / display format                                 
+HISTORY Created Mon 10:23:16 19-Sep-2005                                        
+HISTORY Created Mon 15:21:41 26-Sep-2005                                        
+HISTORY Created Fri 19:27:43 30-Sep-2005                                        
+HISTORY Created Tue 03:31:04 14-Feb-2006                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                    1 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:53' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:21' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1991:2059]' / Region extracted by NSCUT                      
+NSCUTSPC=                    1 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,1]'                                      
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                    2 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:53' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:21' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1920:1988]' / Region extracted by NSCUT                      
+NSCUTSPC=                    2 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,2]'                                      
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                    3 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:53' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:21' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1849:1917]' / Region extracted by NSCUT                      
+NSCUTSPC=                    3 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,3]'                                      
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                    4 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:53' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:21' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1778:1846]' / Region extracted by NSCUT                      
+NSCUTSPC=                    4 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,4]'                                      
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                    5 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:53' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:21' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1708:1776]' / Region extracted by NSCUT                      
+NSCUTSPC=                    5 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,5]'                                      
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                    6 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:53' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:21' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1637:1705]' / Region extracted by NSCUT                      
+NSCUTSPC=                    6 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,6]'                                      
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                    7 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:53' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:21' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1566:1634]' / Region extracted by NSCUT                      
+NSCUTSPC=                    7 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,7]'                                      
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                    8 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:54' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:22' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1495:1563]' / Region extracted by NSCUT                      
+NSCUTSPC=                    8 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,8]'                                      
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                    9 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:54' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:22' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1424:1492]' / Region extracted by NSCUT                      
+NSCUTSPC=                    9 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,9]'                                      
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   10 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:54' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:22' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1353:1421]' / Region extracted by NSCUT                      
+NSCUTSPC=                   10 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,10]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   11 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:54' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:22' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1282:1350]' / Region extracted by NSCUT                      
+NSCUTSPC=                   11 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,11]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   12 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:54' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:22' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1212:1280]' / Region extracted by NSCUT                      
+NSCUTSPC=                   12 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,12]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   13 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:54' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:22' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1141:1209]' / Region extracted by NSCUT                      
+NSCUTSPC=                   13 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,13]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   14 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:54' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:22' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,1070:1138]' / Region extracted by NSCUT                      
+NSCUTSPC=                   14 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,14]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   15 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:54' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:22' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,999:1067]'  / Region extracted by NSCUT                      
+NSCUTSPC=                   15 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,15]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   16 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:55' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:23' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,928:996]'   / Region extracted by NSCUT                      
+NSCUTSPC=                   16 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,16]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   17 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:55' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:23' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,857:925]'   / Region extracted by NSCUT                      
+NSCUTSPC=                   17 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,17]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   18 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:55' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:23' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,786:854]'   / Region extracted by NSCUT                      
+NSCUTSPC=                   18 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,18]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   19 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:55' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:23' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,715:783]'   / Region extracted by NSCUT                      
+NSCUTSPC=                   19 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,19]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   20 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:55' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:23' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,644:712]'   / Region extracted by NSCUT                      
+NSCUTSPC=                   20 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,20]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   21 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:55' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:23' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,573:641]'   / Region extracted by NSCUT                      
+NSCUTSPC=                   21 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,21]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   22 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:55' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:23' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,503:571]'   / Region extracted by NSCUT                      
+NSCUTSPC=                   22 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,22]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   23 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:55' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:23' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,432:500]'   / Region extracted by NSCUT                      
+NSCUTSPC=                   23 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,23]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   24 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:56' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:24' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,361:429]'   / Region extracted by NSCUT                      
+NSCUTSPC=                   24 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,24]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   25 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:56' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:24' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,290:358]'   / Region extracted by NSCUT                      
+NSCUTSPC=                   25 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,25]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   26 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:56' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:24' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,219:287]'   / Region extracted by NSCUT                      
+NSCUTSPC=                   26 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,26]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   27 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:56' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:24' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,148:216]'   / Region extracted by NSCUT                      
+NSCUTSPC=                   27 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,27]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   28 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:56' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:24' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,77:145]'    / Region extracted by NSCUT                      
+NSCUTSPC=                   28 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+REFSPEC1= 'rnN20191231S0505_ronchi[SCI,28]'                                     
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'IMAGE   '           / Image extension                                
+BITPIX  =                  -32 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                 2040 / Axis length                                    
+NAXIS2  =                   69 / Axis length                                    
+PCOUNT  =                    0 / No 'random' parameters                         
+GCOUNT  =                    1 / Only one group                                 
+EXTNAME = 'SCI     '           / Extension name                                 
+EXTVER  =                   29 / Extension version                              
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+INHERIT =                    F / Inherits global header                         
+OBJECT  = 'GCALflat'           / Name of the object observed                    
+DATE    = '2021-04-12T23:09:56' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:28' / Time of last modification                     
+NFPAD   = '2021-04-12T23:09:08' / UT Time stamp for NFPAD                       
+GEM-TLM = '2021-04-12T23:09:08' / UT Last modification with GEMINI              
+DISPAXIS=                    1 / Dispersion axis                                
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+WAT1_001= 'system=world'                                                        
+WAT2_001= 'system=physical'                                                     
+NSCUTSEC= '[1:2040,6:74]'      / Region extracted by NSCUT                      
+NSCUTSPC=                   29 / Spectral order                                 
+WAT1_002= 'wtype=linear'                                                        
+CTYPE1  = 'LINEAR  '           / coordinate type for the dispersion axis        
+CRPIX1  =                1020. / coordinate of spectral reference pixel         
+CRVAL1  =               16500. / wavelength at spectral reference pixel         
+CD1_1   =               -1.514 / dispersion (Angstrom/pix)                      
+CTYPE2  = 'LINEAR  '           / coordinate type for the spatial axis           
+CRPIX2  =                   1. / coordinate of the spatial reference pixel      
+CRVAL2  =                   1. / spatial axis value at spatial reference pixel  
+CD2_2   =                   1. / partial of spatial axis wrt spatial dim        
+DC-FLAG =                    0 /                                                
+WAT1_003= 'units=Angstroms label=Wavelength'                                    
+WAT2_002= 'wtype=linear'                                                        
+END                                                                             
+XTENSION= 'BINTABLE'           / binary table extension                         
+BITPIX  =                    8 / array data type                                
+NAXIS   =                    2 / number of array dimensions                     
+NAXIS1  =                  192 / length of dimension 1                          
+NAXIS2  =                    3 / length of dimension 2                          
+PCOUNT  =                    0 / number of group parameters                     
+GCOUNT  =                    1 / number of groups                               
+TFIELDS =                    3 / number of table fields                         
+TTYPE1  = 'Filename'                                                            
+TFORM1  = '64A     '                                                            
+TTYPE2  = 'Description'                                                         
+TFORM2  = '64A     '                                                            
+TTYPE3  = 'Type    '                                                            
+TFORM3  = '64A     '                                                            
+EXTNAME = 'PROVENANCE'         / extension name                                 
+END                                                                             
+XTENSION= 'BINTABLE'           / Mask extension                                 
+BITPIX  =                    8 / Bits per pixel                                 
+NAXIS   =                    2 / Number of axes                                 
+NAXIS1  =                    8 / Number of bytes per line                       
+NAXIS2  =                 2080 / axis length                                    
+PCOUNT  =               107548 / Heap size in bytes                             
+GCOUNT  =                    1 / Only one group                                 
+TFIELDS =                    1 / 1 Column field                                 
+TTYPE1  = 'COMPRESSED_DATA '   / Type of PLIO_1 data                            
+TFORM1  = 'PI(77)  '           / Variable word array                            
+ORIGIN  = 'NOAO-IRAF FITS Image Kernel July 2003' / FITS file originator        
+EXTNAME = 'BPM     '           / Extension name                                 
+EXTVER  =                    1 / Extension version                              
+INHERIT =                    F / Inherits global header                         
+DATE    = '2021-04-12T23:10:20' / Date FITS file was generated                  
+IRAF-TLM= '2021-04-12T23:10:20' / Time of last modification                     
+OBJECT  = 'BAD PIXEL MASK from gemini.gnirs.nsflat' / Name of the object observe
+ZIMAGE  =                    T / Is a compressed image                          
+ZCMPTYPE= 'PLIO_1  '           / IRAF image masks                               
+ZBITPIX =                   32 / BITPIX for uncompressed image                  
+ZNAXIS  =                    2 / NAXIS for uncompressed image                   
+ZNAXIS1 =                 2040 / Axis length                                    
+ZNAXIS2 =                 2080 / Axis length                                    
+ZTILE1  =                 2040 / Axis length                                    
+ZTILE2  =                    1 / Axis length                                    
+ZNAME1  = 'depth   '           / PLIO mask depth                                
+ZVAL1   =                   27 / Parameter value                                
+INSTRUME= 'NIFS    '           / Instrument used to acquire data.               
+OBSTYPE = 'FLAT    '           / Observation type                               
+OBSCLASS= 'dayCal  '           / Observe class                                  
+GEMPRGID= 'GN-2019B-Q-303'     / Gemini Science Program ID                      
+OBSID   = 'GN-2019B-Q-303-138' / Observation ID / Data label                    
+OBSERVER= 'observer'           / Observer                                       
+OBSERVAT= 'Gemini-North'       / Observatory                                    
+TELESCOP= 'Gemini-North'       / Telescope                                      
+PARALLAX=                   0. / Parallax of Target                             
+RADVEL  =                   0. / Heliocentric Radial Velocity                   
+EPOCH   =                2000. / Epoch for Target coordinates                   
+EQUINOX =                   0. / Equinox for Target coordinates                 
+TRKEQUIN=                2000. / Tracking equinox                               
+SSA     = 'ssa     '           / SSA                                            
+RA      =                  75. / RA of Target                                   
+DEC     =                89.97 / Declination of Target                          
+ELEVATIO=     90.0002277777778 / Current Elevation                              
+AZIMUTH =     74.9997305555556 / Current Azimuth                                
+CRPA    =     180.000870419115 / Current Cass Rotator Position Angle            
+HA      = '-00:00:08.26'       / Telescope hour angle                           
+LT      = '08:59:49.9'         / Local time at start of observation             
+TRKFRAME= 'FK5     '           / Tracking co-ordinate                           
+DECTRACK=     -0.0069980793431 / Differential tracking rate Dec                 
+TRKEPOCH=         58848.693763 / Differential tracking reference epoch          
+RATRACK =        1.00351789127 / Differential tracking rate RA                  
+FRAME   = 'AZEL_TOPO'          / Target coordinate system                       
+PMDEC   =                   0. / Proper Motion in Declination                   
+PMRA    =                   0. / Proper Motion in RA                            
+WAVELENG=               16500. / Effective Target Wavelength                    
+RAWIQ   = 'UNKNOWN '           / Raw Image Quality                              
+RAWCC   = 'UNKNOWN '           / Raw Cloud Cover                                
+RAWWV   = 'UNKNOWN '           / Raw Water Vapour/Transparency                  
+RAWBG   = 'UNKNOWN '           / Raw Background                                 
+RAWPIREQ= 'UNKNOWN '           / PI Requirements Met                            
+RAWGEMQA= 'UNKNOWN '           / Gemini Quality Assessment                      
+CGUIDMOD= 'Basic   '           / Driving mode for carousel                      
+UT      = '18:59:50.4'         / Beginning of Observation (UT)                  
+M2BAFFLE= 'VISIBLE '           / Position of M2 baffle                          
+M2CENBAF= 'CLOSED  '           / Position of M2 central hole baffle             
+ST      = '15:17:36.6'         / Sidereal time at the start of the exposure     
+XOFFSET =                   0. / Telescope offset in x in arcsec                
+YOFFSET =                   0. / Telescope offset in y in arcsec                
+POFFSET =                   0. / Telescope offset in p in arcsec                
+QOFFSET =                   0. / Telescope offset in q in arcsec                
+RAOFFSET=                   0. / Telescope offset in RA in arcsec               
+DECOFFSE=                   0. / Telescope offset in DEC in arcsec              
+RATRGOFF=                   0. / Target offset in RA in arcsec                  
+DECTRGOF=                   0. / Target offset in DEC in arcsec                 
+PA      =                   0. / Sky Position Angle at start of exposure        
+IAA     =                 270. / Instrument Alignment Angle                     
+SFRT2   =               88.583 / Science fold rotation angle (degrees)          
+SFTILT  =               -44.89 / Science fold tilt angle (degrees)              
+SFLINEAR=                   8. / Science fold linear position (mm)              
+AOFOLD  = 'park-pos.'          / AO Pick-Off Mirror Position                    
+PWFS1_ST= 'parked  '           / PWFS1 probe state (frozen,guiding,parked)      
+PWFS2_ST= 'parked  '           / PWFS2 probe state (frozen,guiding,parked)      
+OIWFS_ST= 'parked  '           / OIWFS probe state (frozen,guiding,parked)      
+AOWFS_ST= 'parked  '           / AOWFS probe state (frozen,guiding,parked)      
+SCIBAND =                    3 / Science Ranking Band                           
+REQIQ   = 'Any     '           / Requested Image Quality                        
+REQCC   = 'Any     '           / Requested Cloud Cover                          
+REQBG   = 'Any     '           / Requested Background                           
+REQWV   = 'Any     '           / Requested Water Vapour                         
+NUMREQTW=                    0 / Number of Requested Timing Window REQTW entries
+GCALLAMP= 'QH      '           / GCAL Lamp name                                 
+GCALFILT= 'ND4.0   '           / GCAL Filter name                               
+GCALDIFF= 'IR      '           / GCAL Diffuser name                             
+GCALSHUT= 'CLOSED  '           / GCAL Shutter (OPEN or CLOSED)                  
+HUMIDITY=                   9. / The relative humidity (fraction, 0..101).      
+TAMBIENT=                  0.3 / The ambient temp (C).                          
+TAMBIEN2=                32.54 / The ambient temp (F).                          
+PRESSURE=            463.67304 / The atmospheric pressure (mm Hg).              
+PRESSUR2=               61800. / The atmospheric pressure (Pa).                 
+DEWPOINT=                -29.3 / The dew point (C).                             
+DEWPOIN2=               -20.74 / The dew point (F).                             
+WINDSPEE=                 21.6 / The wind speed (m/s).                          
+WINDSPE2=              48.3192 / The wind speed (mph).                          
+WINDDIRE=                  14. / The wind direction (degrees).                  
+WINDCOVR= 'Opened  '           / Window cover position name (open|closed)       
+FILTER  = 'JH_G0602'           / Filter name                                    
+APOFFSET=                   0. / Fopl offseti (arcseconds)                      
+GRATING = 'H_G5604 '           / Grating name                                   
+GRATWAVE=                1.649 / Grating cetntral wavelength                    
+APERTURE= '3.0_Mask_G5610'     / Focal plane mask                               
+FLIP    = 'Out     '           / Imaging (flip) mirror                          
+EXPRQ   =                   8. / Requested Exposure time                        
+DCNAME  = 'NIFS DC '           / Nifs dc name                                   
+PERIOD  =                   8. / Period                                         
+NPERIODS=                    1 / Number of periods                              
+EXPMODE = 'NONDESTRUCTIVE'     / Exposure mode                                  
+RDTIME  =                   5. / Read time                                      
+COADDS  =                    1 / Number of coadds summed                        
+BIASPWR =                   3. / Source voltage of bias P-FET                   
+OBSMODE = 'IFU     '           / Observing mode configuration                   
+LNRS    =                    1 / Number of non-destructive read pairs           
+DATE-OBS= '2019-12-31'         / Observation date (UT)                          
+INPORT  =                    1 / Number of ISS port where NIFS was located      
+CTYPE1  = 'RA---TAN'           / R.A. in tangent plane projection               
+CRPIX1  =            15.000052 / Ref pix of axis 1                              
+CRVAL1  =           229.221213 / RA at Ref pix in decimal degrees               
+CTYPE2  = 'DEC--TAN'           / DEC. in tangent plane projection               
+CRPIX2  =            33.999947 / Ref pix of axis 2                              
+CRVAL2  =            19.923602 / DEC at Ref pix in decimal degrees              
+CD1_1   =             -1.5E-05 / WCS matrix element 1 1                         
+CD1_2   =             -1.8E-05 / WCS matrix element 1 2                         
+CD2_1   =              4.5E-05 / WCS matrix element 2 1                         
+CD2_2   =             -6.0E-06 / WCS matrix element 2 2                         
+RADECSYS= 'FK5     '           / R.A./DEC. coordinate system reference          
+MJD_OBS =         58848.792307 / Mean Julian day of observation                 
+DETSIZE = '[1:2048,1:2048]'    / Dimensions of detector                         
+DETECTOR= 'NIFS    '           / Name of detector                               
+NCCDS   =                    1 / Number of detector CCDS                        
+NAMPS   =                    4 / Number of CCD amps                             
+CCDNAME = 'NIFS    '           / CCD/ARRAY name                                 
+CCDSIZE = '[1:2048,1:2048]'    / Dimensions of CCD                              
+CCDSUM  = '1 1     '           / CCD binning                                    
+CCDSEC  = '[1:512,1:2048]'     / CCD section                                    
+AMPNAME = '1       '           / Amplifier name                                 
+AMPSEC  = '[1:512,1:2048]'     / Amplifier section                              
+DETSEC  = '[1:2048,1:2048]'    / Full detector size                             
+AMPNAME2= '2       '           / Amplifier 2 name                               
+AMPSEC2 = '[1024:513,1:2048]'  / Amplifier 2 section                            
+AMPNAME3= '3       '           / Amplifier 3 name                               
+AMPSEC3 = '[1025:1536,1:2048]' / Amplifier 3 section                            
+AMPNAME4= '4       '           / Amplifier 4 name                               
+AMPSEC4 = '[2048:1537,1:2048]' / Amplifier 4 section                            
+EXPTIME =                   8. / Exposure time (s)                              
+AIRMASS =                   1. / Mean airmass for the observation               
+AMSTART =                   1. / Airmass at start of exposure                   
+AMEND   =                   1. / Airmass at end of exposure                     
+PROP_MD =                    F / Proprietary Metadata                           
+RELEASE = '2019-12-31'         / End of proprietary period YYY-MM-DD            
+MDF_YSHF=                   9. / MDF Y shift (subtracted from y_ccd)            
+MDF_FILE= 'nifs$data/nifs-mdf[1]' / MDF source                                  
+NEXTEND =                    1 / number of extensions in file                   
+MODE    = 'IFU               ' / Reduction mode                                 
+BIASVOLT=                3.000 / Array bias voltage (V)                         
+PIXSCALE=              0.04300 / Pixel scale in arcsec/pixel                    
+NSCIEXT =                   29 / Number of science extensions                   
+DISPAXIS=                    1 / Dispersion axis (along columns)                
+PREPARE = '2021-04-12T23:05:53' / UT Time stamp for NFPREPARE                   
+GEM-TLM = '2021-04-12T23:07:31' / UT Last modification with GEMINI              
+BPMFILE = 'none              ' / Input bad pixel mask file                      
+ORIGXSIZ=                 2040 / Original size in X                             
+ORIGYSIZ=                 2080 / Original size in Y                             
+NSCUT   = '2021-04-12T23:06:01' / UT Time stamp for NSCUT                       
+NSAPPWAV= '2021-04-12T23:06:06' / UT Time stamp for NSAPPWAVE                   
+NSREDUCE= '2021-04-12T23:06:46' / UT Time stamp for NSREDUCE                    
+NSFLAT  = '2021-04-12T23:07:31' / UT Time stamp for NSFLAT                      
+NSFLTNRM=              1.03270 / Normalization constant for NSFLAT              
+NSFLTNST= 'midpt             ' / Normalization statistic for NSFLAT             
+NSFLTFUN= 'spline3           ' / Function fit to illumination by NSFLAT         
+NSFLTORD= '20                ' / Order of function fit by NSFLAT                
+NSFLTFLO=              0.05192 / Lower limit for good pixels (fraction)         
+NSFLTFUP=              1.60958 / Upper limit for good pixels (fraction)         
+NSFLTSTA= '                  ' / Statistics section used by NSFLAT              
+NSFLTFIT= '                  ' / Fit area                                       
+NSFLTDLO=            -20.00000 / Lower limit for good pixels in dark (ADU)      
+NSFLTDUP=            100.00000 / Upper limit for good pixels in dark (ADU)      
+NSFLTFIX=              1.00000 / Bad pixels replaced with this value            
+NSFLTCOM= 'default           ' / Combine method used by NSFLAT                  
+NSFLTREJ= 'ccdclip           ' / Rejection algorithm used by NSFLAT             
+NSFLTLTH= 'INDEF             ' / Lower threshold before combining               
+NSFLTHTH= 'INDEF             ' / Upper threshold before combining               
+NSFLTGRW=              0.00000 / Radius for additional pixel rejection          
+NSFLTLSI=              3.00000 / Lower sigma for rejection                      
+NSFLTHSI=              3.00000 / Upper sigma for rejection                      
+NSFLTNKE=                    0 / Min(max) number of pixels to keep(reject)      
+NSFLTMCL= 'YES               ' / Use median in clipping algorithms              
+NSFLTSSC=              0.10000 / Tolerance for sigma clip scaling correction    
+NSFLTSNO= '0.0               ' / Sensitivity noise (e) used by ccdclip          
+BSCALE  =           1.000000E0 / REAL = TAPE*BSCALE + BZERO                     
+BZERO   =           3.276800E4 /                                                
+PIXTYPE =                   11                                                  
+END                                                                             
