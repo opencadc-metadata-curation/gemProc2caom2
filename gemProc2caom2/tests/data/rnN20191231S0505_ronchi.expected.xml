@@ -39,8 +39,8 @@
         <caom2:reference>10.5281/zenodo.1000413</caom2:reference>
         <caom2:lastExecuted>2021-04-12T23:09:52.000</caom2:lastExecuted>
         <caom2:inputs>
-          <caom2:planeURI>caom:GEMINIPROC/GN-2019B-Q-303-138-004/rnN20191231S0495_flat</caom2:planeURI>
-          <caom2:planeURI>caom:GEMINIPROC/GN-2019B-Q-303-138-010/rnN20191231S0501_dark</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINICADC/GN-2019B-Q-303-138-004/rnN20191231S0495_flat</caom2:planeURI>
+          <caom2:planeURI>caom:GEMINICADC/GN-2019B-Q-303-138-010/rnN20191231S0501_dark</caom2:planeURI>
           <caom2:planeURI>caom:GEMINI/GN-2019B-Q-303-138-014/N20191231S0505</caom2:planeURI>
         </caom2:inputs>
       </caom2:provenance>
