@@ -203,7 +203,7 @@ class GemProcBuilder(nbc.StorageNameBuilder):
                             f'Check caom2 collection GEMINIPROC'
                         )
                         # uri = mc.build_uri('GEMINI', file_name)
-                        uri = f'ad:GEM/{file_name}'
+                        uri = f'ad:GEMINI/{file_name}'
                         em.defining_metadata_finder._tap_client = (
                             self._sc2_client
                         )
