@@ -195,7 +195,7 @@ class GemProcBuilder(nbc.StorageNameBuilder):
                         f'gemini:GEMINI/{file_name}',
                     ]:
                         metadata = em.defining_metadata_finder._check_caom2(
-                            uri, COLLECTION
+                            uri, 'GEMINI'
                         )
                         if metadata is not None:
                             break
