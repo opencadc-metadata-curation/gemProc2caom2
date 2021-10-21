@@ -71,6 +71,7 @@ import logging
 from os.path import basename
 from urllib.parse import urlparse
 
+from cadctap import CadcTapClient
 from caom2utils import fits2caom2
 from caom2pipe import client_composable as clc
 from caom2pipe import manage_composable as mc
@@ -145,6 +146,12 @@ class GemProcBuilder(nbc.StorageNameBuilder):
         super().__init__()
         self._config = config
         self._subject = clc.define_subject(self._config)
+        self._sc2_client = CadcTapClient(
+            subject=self._subject, resource_id='ivo://cadc.nrc.ca/sc2tap'
+        )
+        self._prod_client = CadcTapClient(
+            subject=self._subject, resource_id='ivo://cadc.nrc.ca/ams/gemini'
+        )
         self._connected = mc.TaskType.SCRAPE not in config.task_types
         self._logger = logging.getLogger(self.__class__.__name__)
 
@@ -172,20 +179,33 @@ class GemProcBuilder(nbc.StorageNameBuilder):
                 self._logger.debug('Check vos')
                 metadata = self._get_obs_id_from_vos(entry)
             if metadata is None:
-                # why the old collection name? Because it's way easier to
+                # why the old collection name? Because it's better to
                 # retrieve the metadata from the old sc2 collection than
-                # by retrieving a header
-                self._logger.debug(f'Check caom2 collection {COLLECTION}')
-                uri = mc.build_uri(COLLECTION, file_name, CADC_SCHEME)
-                metadata = em.defining_metadata_finder._check_caom2(
-                    uri, COLLECTION
-                )
-                if metadata is None:
-                    self._logger.debug(f'Check caom2 collection GEMINIPROC')
-                    uri = mc.build_uri('GEMINI', file_name)
-                    metadata = em.defining_metadata_finder._check_caom2(
-                        uri, 'GEMINIPROC'
+                # by retrieving a header, and beat up CADC instead of
+                # archive.gemini.edu
+                original_client = em.defining_metadata_finder._tap_client
+                try:
+                    self._logger.debug(f'Check caom2 collection {COLLECTION}')
+                    uri = mc.build_uri(COLLECTION, file_name, CADC_SCHEME)
+                    em.defining_metadata_finder._tap_client = (
+                        self._prod_client
                     )
+                    metadata = em.defining_metadata_finder._check_caom2(
+                        uri, COLLECTION
+                    )
+                    if metadata is None:
+                        self._logger.debug(
+                            f'Check caom2 collection GEMINIPROC'
+                        )
+                        uri = mc.build_uri('GEMINI', file_name)
+                        em.defining_metadata_finder._tap_client = (
+                            self._sc2_client
+                        )
+                        metadata = em.defining_metadata_finder._check_caom2(
+                            uri, 'GEMINIPROC'
+                        )
+                finally:
+                    em.defining_metadata_finder._tap_client = original_client
         else:
             self._logger.debug('Check unconnected local')
             metadata = em.defining_metadata_finder._check_local(file_name)
