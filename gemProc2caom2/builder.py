@@ -186,18 +186,24 @@ class GemProcBuilder(nbc.StorageNameBuilder):
                 original_client = em.defining_metadata_finder._tap_client
                 try:
                     self._logger.debug(f'Check caom2 collection {COLLECTION}')
-                    uri = mc.build_uri(COLLECTION, file_name, CADC_SCHEME)
+                    # uri = mc.build_uri(COLLECTION, file_name, CADC_SCHEME)
                     em.defining_metadata_finder._tap_client = (
                         self._prod_client
                     )
-                    metadata = em.defining_metadata_finder._check_caom2(
-                        uri, COLLECTION
-                    )
+                    for uri in [
+                        f'ad:GEM/{file_name}', f'cadc:GEMINI/{file_name}',
+                    ]:
+                        metadata = em.defining_metadata_finder._check_caom2(
+                            uri, COLLECTION
+                        )
+                        if metadata is not None:
+                            break
                     if metadata is None:
                         self._logger.debug(
                             f'Check caom2 collection GEMINIPROC'
                         )
-                        uri = mc.build_uri('GEMINI', file_name)
+                        # uri = mc.build_uri('GEMINI', file_name)
+                        uri = f'ad:GEM/{file_name}'
                         em.defining_metadata_finder._tap_client = (
                             self._sc2_client
                         )
