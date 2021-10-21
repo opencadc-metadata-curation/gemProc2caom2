@@ -191,7 +191,8 @@ class GemProcBuilder(nbc.StorageNameBuilder):
                         self._prod_client
                     )
                     for uri in [
-                        f'ad:GEM/{file_name}', f'cadc:GEMINI/{file_name}',
+                        f'gemini:GEM/{file_name}',
+                        f'gemini:GEMINI/{file_name}',
                     ]:
                         metadata = em.defining_metadata_finder._check_caom2(
                             uri, COLLECTION
