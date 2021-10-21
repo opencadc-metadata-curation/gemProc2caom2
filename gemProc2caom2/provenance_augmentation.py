@@ -197,18 +197,20 @@ def _do_provenance(
         # on archive.gemini.edu
         #
         collection = builder.COLLECTION
-        metadata = name_builder._get_obs_id(None, f_name, None)
-        if metadata is None:
+        obs_id = name_builder._get_obs_id(None, f_name, None)
+        if obs_id is None:
             # GEMINI
             collection = gem_name.COLLECTION
             uri = mc.build_uri(collection, f_name, gem_name.SCHEME)
             metadata = external_metadata.defining_metadata_finder.get(uri)
-        if metadata is not None and metadata.data_label is not None:
+            if metadata is not None and metadata.data_label is not None:
+                obs_id = metadata.data_label
+        if obs_id is not None:
             logging.info(
-                f'Found observation ID {metadata.data_label} for file {f_id}.'
+                f'Found observation ID {obs_id} for file {f_id}.'
             )
             input_obs_uri_str = mc.CaomName.make_obs_uri_from_obs_id(
-                collection, metadata.data_label
+                collection, obs_id
             )
             input_obs_uri = ObservationURI(input_obs_uri_str)
             plane_uri = PlaneURI.get_plane_uri(input_obs_uri, f_id)
@@ -220,7 +222,7 @@ def _do_provenance(
             ):
                 member_obs_uri_str = (
                     mc.CaomName.make_obs_uri_from_obs_id(
-                        collection, metadata.data_label
+                        collection, obs_id
                     )
                 )
                 member_obs_uri = ObservationURI(member_obs_uri_str)
