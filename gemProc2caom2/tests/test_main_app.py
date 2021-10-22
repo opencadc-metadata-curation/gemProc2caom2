@@ -131,16 +131,13 @@ def pytest_generate_tests(metafunc):
 @patch('gem2caom2.program_metadata.get_pi_metadata')
 @patch('caom2pipe.client_composable.query_tap_client')
 @patch('caom2utils.data_util.StorageClientWrapper')
-@patch('gem2caom2.external_metadata.defining_metadata_finder')
 def test_main_app(
-    obs_id_mock,
     data_client_mock,
     tap_mock,
     get_pi_mock,
     local_headers_mock,
     test_name,
 ):
-    obs_id_mock.return_value.get.side_effect = _obs_id_mock
     getcwd_orig = os.getcwd
     os.getcwd = Mock(return_value=TEST_DATA_DIR)
     tap_mock.side_effect = _tap_mock
@@ -217,14 +214,6 @@ def _tap_mock(query_string, mock_tap_client):
             '57389.66314699074,0.000115798611111111,d,1\n'.split('\n'),
             format='csv',
         )
-
-
-def _obs_id_mock(uri):
-    ign1, ign2, f_name = mc.decompose_uri(uri)
-    result = None
-    if f_name in OID_LOOKUP:
-        result = em.DefiningMetadata('GNIRS', OID_LOOKUP.get(f_name))
-    return result
 
 
 def _get_pi_mock(ignore):
