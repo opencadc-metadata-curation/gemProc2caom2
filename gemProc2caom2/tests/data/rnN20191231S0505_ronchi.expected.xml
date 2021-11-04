@@ -38,11 +38,11 @@
         <caom2:producer>CADC</caom2:producer>
         <caom2:reference>10.5281/zenodo.1000413</caom2:reference>
         <caom2:lastExecuted>2021-04-12T23:09:52.000</caom2:lastExecuted>
-        <caom2:inputs>
-          <caom2:planeURI>caom:GEMINICADC/GN-2019B-Q-303-138-004/rnN20191231S0495_flat</caom2:planeURI>
-          <caom2:planeURI>caom:GEMINICADC/GN-2019B-Q-303-138-010/rnN20191231S0501_dark</caom2:planeURI>
-          <caom2:planeURI>caom:GEMINI/GN-2019B-Q-303-138-014/N20191231S0505</caom2:planeURI>
-        </caom2:inputs>
+<!--        <caom2:inputs>-->
+<!--          <caom2:planeURI>caom:GEMINICADC/GN-2019B-Q-303-138-004/rnN20191231S0495_flat</caom2:planeURI>-->
+<!--          <caom2:planeURI>caom:GEMINICADC/GN-2019B-Q-303-138-010/rnN20191231S0501_dark</caom2:planeURI>-->
+<!--          <caom2:planeURI>caom:GEMINI/GN-2019B-Q-303-138-014/N20191231S0505</caom2:planeURI>-->
+<!--        </caom2:inputs>-->
       </caom2:provenance>
       <caom2:artifacts>
         <caom2:artifact caom2:id="508e69a6-bb0c-4d7c-9ee8-9ea1a14fd389" caom2:lastModified="2021-05-03T03:50:40.728" caom2:maxLastModified="2021-05-03T05:25:54.973" caom2:metaChecksum="md5:6a309d5db1e96a22bec9e8b1560a0628" caom2:accMetaChecksum="md5:8f6c6275812e72fae1a49f721a5f3025" caom2:metaProducer="gemProc2caom2/0.3">
@@ -1555,7 +1555,7 @@
       </caom2:artifacts>
     </caom2:plane>
   </caom2:planes>
-  <caom2:members>
-    <caom2:observationURI>caom:GEMINI/GN-2019B-Q-303-138-014</caom2:observationURI>
-  </caom2:members>
+<!--  <caom2:members>-->
+<!--    <caom2:observationURI>caom:GEMINI/GN-2019B-Q-303-138-014</caom2:observationURI>-->
+<!--  </caom2:members>-->
 </caom2:Observation>

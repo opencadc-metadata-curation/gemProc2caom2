@@ -109,3 +109,13 @@ def test_run(run_mock):
         ), 'wrong lineage'
     finally:
         os.getcwd = getcwd_orig
+        for entry in [
+            'failure_log.txt',
+            'rejected.yml',
+            'retries.txt',
+            'run_test_report.txt',
+            'success_log.txt',
+        ]:
+            entry_fqn = f'{test_fqn}/{entry}'
+            if os.path.exists(entry_fqn):
+                os.unlink(entry_fqn)
