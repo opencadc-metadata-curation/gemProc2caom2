@@ -9,13 +9,12 @@
   <caom2:intent>science</caom2:intent>
   <caom2:proposal>
     <caom2:id>GN-2014A-Q-85</caom2:id>
-    <caom2:pi>Laurence Trafton</caom2:pi>
-    <caom2:title>Hemispherical Constraint of Titan's Methane Cycle</caom2:title>
+    <caom2:pi>Principle Investigator</caom2:pi>
+    <caom2:title>The Title For A NIFS Science Program</caom2:title>
   </caom2:proposal>
   <caom2:target>
     <caom2:name>Titan</caom2:name>
     <caom2:type>object</caom2:type>
-    <caom2:moving>true</caom2:moving>
   </caom2:target>
   <caom2:telescope>
     <caom2:name>Gemini-North</caom2:name>

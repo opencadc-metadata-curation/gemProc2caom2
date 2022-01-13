@@ -1,6 +1,6 @@
 <caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:DerivedObservation" caom2:id="b898d1f5-1dcd-4fb7-9243-aeb46654d373" caom2:lastModified="2021-05-03T03:51:49.833" caom2:maxLastModified="2021-05-03T05:26:39.788" caom2:metaChecksum="md5:ee056fe3db7bca0531f9d0ca89939417" caom2:accMetaChecksum="md5:f0d52332afbf318bb1df112f113267bc" caom2:metaProducer="gemProc2caom2/0.3">
-  <caom2:collection>GEMINIPROC</caom2:collection>
-  <caom2:observationID>GN-2019B-Q-303-138-014</caom2:observationID>
+  <caom2:collection>GEMINICADC</caom2:collection>
+  <caom2:observationID>GN-2019B-Q-303-138-014-RN-RONCHI</caom2:observationID>
   <caom2:metaRelease>2021-04-12T23:09:52.000</caom2:metaRelease>
   <caom2:algorithm>
     <caom2:name>Nifty4Gemini</caom2:name>
@@ -9,8 +9,8 @@
   <caom2:intent>science</caom2:intent>
   <caom2:proposal>
     <caom2:id>GN-2019B-Q-303</caom2:id>
-    <caom2:pi>Tracy Beck</caom2:pi>
-    <caom2:title>Investigating the Nature of Very Young Brown Dwarfs</caom2:title>
+    <caom2:pi>Principle Investigator</caom2:pi>
+    <caom2:title>The Title For A NIFS Science Program</caom2:title>
   </caom2:proposal>
   <caom2:target>
     <caom2:name>GCALflat</caom2:name>

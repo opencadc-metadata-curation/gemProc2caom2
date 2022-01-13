@@ -67,20 +67,21 @@
 # ***********************************************************************
 #
 
+from tempfile import TemporaryDirectory
 from mock import patch, Mock
 
 from astropy.table import Table
 from cadcdata import FileInfo
-from gem2caom2 import external_metadata as em
-from gemProc2caom2 import main_app, GemProcName, APPLICATION, COLLECTION
+from gemProc2caom2 import fits2caom2_augmentation, GemProcBuilder, COLLECTION
+from gem2caom2 import external_metadata
+from caom2.diff import get_differences
 from caom2pipe import astro_composable as ac
 from caom2pipe import manage_composable as mc
+from caom2pipe import reader_composable as rdc
 
 import glob
 import logging
 import os
-import sys
-import traceback
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 TEST_DATA_DIR = os.path.join(THIS_DIR, 'data')
@@ -127,93 +128,64 @@ def pytest_generate_tests(metafunc):
     metafunc.parametrize('test_name', obs_id_list)
 
 
-@patch('caom2utils.data_util.get_local_headers_from_fits')
 @patch('gem2caom2.program_metadata.get_pi_metadata')
-@patch('caom2pipe.client_composable.query_tap_client')
-@patch('caom2utils.data_util.StorageClientWrapper')
-def test_main_app(
-    data_client_mock,
-    tap_mock,
+@patch('cadcutils.net.ws.WsCapabilities.get_access_url')
+@patch('gemProc2caom2.builder.CadcTapClient')
+@patch('gem2caom2.external_metadata.CadcTapClient')
+def test_visitor(
+    em_tap_client_mock,
+    builder_tap_client_mock,
+    access_url,
     get_pi_mock,
-    local_headers_mock,
     test_name,
 ):
-    getcwd_orig = os.getcwd
-    os.getcwd = Mock(return_value=TEST_DATA_DIR)
-    tap_mock.side_effect = _tap_mock
+
+    access_url.return_value = 'https://localhost:8080'
     get_pi_mock.side_effect = _get_pi_mock
-    # during operation, want to use astropy on FITS files
-    # but during testing want to use headers and built-in Python file
-    # operations
-    local_headers_mock.side_effect = ac.make_headers_from_file
-    try:
+
+    with TemporaryDirectory() as tmp_dir_name:
         test_config = mc.Config()
         test_config.task_types = [mc.TaskType.SCRAPE]
         test_config.use_local_files = True
-        basename = os.path.basename(test_name)
-        file_name = basename.replace('.header', '')
-        gem_name = GemProcName(entry=file_name)
-        obs_path = f'{TEST_DATA_DIR}/{gem_name.file_id}.expected.xml'
-        input_file = f'{TEST_DATA_DIR}/{gem_name.file_id}.in.xml'
-        output_file = f'{TEST_DATA_DIR}/{basename}.actual.xml'
+        test_config.data_sources = [TEST_DATA_DIR]
+        test_config.working_directory = tmp_dir_name
+        test_config.proxy_fqn = f'{tmp_dir_name}/test_proxy.pem'
 
-        if os.path.exists(output_file):
-            os.unlink(output_file)
+        with open(test_config.proxy_fqn, 'w') as f:
+            f.write('test content')
 
-        local = _get_local(basename)
+        external_metadata.get_gofr(test_config)
+        builder = GemProcBuilder(test_config)
+        storage_name = builder.build(test_name)
+        file_info = FileInfo(
+            id=storage_name.file_uri, file_type='application/fits'
+        )
+        headers = ac.make_headers_from_file(test_name)
+        metadata_reader = rdc.FileMetadataReader()
+        metadata_reader._headers = {storage_name.file_uri: headers}
+        metadata_reader._file_info = {storage_name.file_uri: file_info}
+        kwargs = {
+            'storage_name': storage_name,
+            'metadata_reader': metadata_reader,
+        }
+        logging.getLogger('caom2utils.fits2caom2').setLevel(logging.INFO)
+        observation = None
+        observation = fits2caom2_augmentation.visit(observation, **kwargs)
 
-        data_client_mock.return_value.info.side_effect = _get_file_info
-
-        sys.argv = (
-            f'{APPLICATION} --no_validate '
-            f'--local {local} -i {input_file} -o '
-            f'{output_file} --plugin {PLUGIN} --module {PLUGIN} --lineage '
-            f'{_get_lineage(gem_name)}'
-        ).split()
-        print(sys.argv)
-        try:
-            main_app.to_caom2()
-        except Exception as e:
-            logging.error(traceback.format_exc())
-            raise e
-
-        compare_result = mc.compare_observations(output_file, obs_path)
+        expected_fqn = (
+            f'{TEST_DATA_DIR}/{storage_name.file_id}.expected.xml'
+        )
+        expected = mc.read_obs_from_file(expected_fqn)
+        compare_result = get_differences(expected, observation)
         if compare_result is not None:
-            raise AssertionError(compare_result)
-        # assert False  # cause I want to see logging messages
-    finally:
-        os.getcwd = getcwd_orig
-
-
-def _get_file_info(uri):
-    return FileInfo(id=uri, file_type='application/fits')
-
-
-def _get_lineage(blank_name):
-    result = mc.get_lineage(
-        COLLECTION, blank_name.product_id, f'{blank_name.file_name}', 'cadc'
-    )
-    return result
-
-
-def _get_local(obs_id):
-    return f'{TEST_DATA_DIR}/{obs_id}'
-
-
-def _tap_mock(query_string, mock_tap_client):
-    if 'observationID' in query_string:
-        return Table.read(
-            f'observationID,lastModified\n'
-            f'GN-2014A-Q-85-16-003-RGN-FLAT,'
-            f'2020-02-25T20:36:31.230\n'.split('\n'),
-            format='csv',
-        )
-    else:
-        return Table.read(
-            'val,delta,cunit,naxis\n'
-            '57389.66314699074,0.000115798611111111,d,1\n'.split('\n'),
-            format='csv',
-        )
+            actual_fqn = expected_fqn.replace('expected', 'actual')
+            mc.write_obs_to_file(observation, actual_fqn)
+            compare_text = '\n'.join([r for r in compare_result])
+            msg = (
+                f'Differences found in observation {expected.observation_id}\n'
+                f'{compare_text}'
+            )
+            raise AssertionError(msg)
 
 
 def _get_pi_mock(ignore):

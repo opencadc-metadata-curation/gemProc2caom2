@@ -103,10 +103,6 @@ def test_run(run_mock):
             test_fqn, test_f_name
         ), 'wrong source name'
         assert test_storage.url is None, 'wrong url'
-        assert (
-            test_storage.lineage ==
-            f'{test_f_id}/cadc:GEMINICADC/{test_f_name}'
-        ), 'wrong lineage'
     finally:
         os.getcwd = getcwd_orig
         for entry in [

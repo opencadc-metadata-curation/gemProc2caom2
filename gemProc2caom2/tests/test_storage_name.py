@@ -114,7 +114,6 @@ END
     ]:
         test_sn = test_subject.build(entry)
         assert test_sn.file_uri == f'cadc:GEMINICADC/{test_f_name}'
-        assert test_sn.lineage == f'{test_id}/cadc:GEMINICADC/{test_f_name}'
         assert test_sn.prev == f'{test_id}.jpg'
         assert test_sn.thumb == f'{test_id}_th.jpg'
         assert test_sn.prev_uri == f'cadc:GEMINICADC/{test_id}.jpg'

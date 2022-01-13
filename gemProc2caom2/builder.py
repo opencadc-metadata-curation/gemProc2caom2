@@ -92,12 +92,14 @@ class GemProcName(mc.StorageName):
     def __init__(self, entry):
         if entry.startswith('vos'):
             self._vos_uri = entry
-            self._file_name = basename(urlparse(self._vos_uri).path)
+            self._file_name = basename(urlparse(self._vos_uri).path).replace(
+                '.header', ''
+            )
             self._file_id = gem_name.GemName.remove_extensions(
                 self._file_name
             )
         else:
-            self._file_name = basename(entry)
+            self._file_name = basename(entry).replace('.header', '')
             self._file_id = gem_name.GemName.remove_extensions(
                 self._file_name
             )

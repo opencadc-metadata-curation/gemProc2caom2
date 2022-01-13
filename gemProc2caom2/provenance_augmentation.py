@@ -70,7 +70,6 @@
 import logging
 import os
 from astropy.io import fits
-from cadctap import CadcTapClient
 from caom2 import Observation, DerivedObservation, ObservationURI, PlaneURI
 from caom2 import TypedSet
 from caom2pipe import client_composable as clc
@@ -95,9 +94,6 @@ def visit(observation, **kwargs):
         logging.warning(f'Provenance augmentation does not work for SCRAPE.')
         return {'provenance': 0}
 
-    subject = clc.define_subject(config)
-    tap_client = CadcTapClient(subject, config.tap_id)
-
     count = 0
     obs_members = TypedSet(
         ObservationURI,
@@ -113,7 +109,6 @@ def visit(observation, **kwargs):
                     working_directory,
                     storage_name.file_name,
                     observation,
-                    tap_client,
                     plane_inputs,
                     obs_members,
                     config,
@@ -150,7 +145,6 @@ def _do_provenance(
     working_directory,
     science_file,
     observation,
-    tap_client,
     plane_inputs,
     obs_members,
     config,

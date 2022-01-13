@@ -87,10 +87,10 @@ from caom2pipe import run_composable as rc
 from caom2pipe import transfer_composable as tc
 from gem2caom2 import external_metadata
 from gemProc2caom2 import main_app, builder, preview_augmentation
-from gemProc2caom2 import provenance_augmentation
+from gemProc2caom2 import provenance_augmentation, fits2caom2_augmentation
 
 
-META_VISITORS = []
+META_VISITORS = [fits2caom2_augmentation]
 # preview augmentation relies on metadata set in provenance_augmentation, so
 # order is important here
 DATA_VISITORS = [provenance_augmentation, preview_augmentation]
@@ -110,7 +110,6 @@ def _run():
     return rc.run_by_todo(
         config=config,
         name_builder=name_builder,
-        command_name=main_app.APPLICATION,
         meta_visitors=META_VISITORS,
         data_visitors=DATA_VISITORS,
     )
@@ -145,7 +144,6 @@ def _run_remote():
     return rc.run_by_todo(
         config=config,
         name_builder=name_builder,
-        command_name=main_app.APPLICATION,
         source=data_source,
         meta_visitors=META_VISITORS,
         data_visitors=DATA_VISITORS,

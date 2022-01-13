@@ -117,7 +117,7 @@ def test_preview_augmentation(data_client_mock, tap_mock):
 
     try:
         start_ts = datetime.utcnow().timestamp()
-        test_result = preview_augmentation.visit(test_obs, **kwargs)
+        test_obs = preview_augmentation.visit(test_obs, **kwargs)
         end_ts = datetime.utcnow().timestamp()
         logging.error(f'{test_f_name} execution time {end_ts - start_ts}')
     except Exception as e:
@@ -127,8 +127,7 @@ def test_preview_augmentation(data_client_mock, tap_mock):
     finally:
         os.getcwd = getcwd_orig
 
-    assert test_result is not None, 'expect a result'
-    assert test_result.get('artifacts') == 2, 'wrong result'
+    assert test_obs is not None, 'expect a result'
 
 
 def _tap_mock(query_string, mock_tap_client):
