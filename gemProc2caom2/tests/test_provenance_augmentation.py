@@ -70,6 +70,7 @@
 import os
 from mock import Mock, patch
 
+from caom2 import ObservationURI, PlaneURI
 from caom2utils import data_util
 from caom2pipe import manage_composable as mc
 from gem2caom2 import external_metadata
@@ -117,10 +118,16 @@ def test_provenance_augmentation(
             'observable': test_observable,
             'caom_repo_client': Mock(),
         }
-        test_result = provenance_augmentation.visit(test_obs, **kwargs)
-        assert test_result is not None, 'expect a result'
-        assert test_result.get('provenance') == 2, 'wrong result'
-        assert len(test_obs.members) == 1, 'wrong membership'
+        test_obs = provenance_augmentation.visit(test_obs, **kwargs)
+        assert test_obs is not None, 'expect a result'
+        test_member = ObservationURI('caom:GEMINI/GN-2014A-Q-85-16-013')
+        assert (
+            test_member in test_obs.members
+        ), f'wrong members {test_obs.members}'
+        test_prov = PlaneURI('caom:GEMINI/GN-2014A-Q-85-16-013/N20140428S0181')
+        test_plane = test_obs.planes['rnN20140428S0181_ronchi']
+        assert len(test_plane.provenance.inputs) == 1, 'wrong # of inputs'
+        assert test_prov in test_plane.provenance.inputs, 'prov'
         assert test_obs.target.moving, 'should be changed'
     finally:
         os.getcwd = getcwd_orig

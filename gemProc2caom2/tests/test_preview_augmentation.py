@@ -75,6 +75,7 @@ from astropy.table import Table
 from datetime import datetime
 from mock import Mock, patch
 
+from cadcdata import FileInfo
 from caom2pipe import manage_composable as mc
 from gem2caom2 import external_metadata
 from gemProc2caom2 import preview_augmentation, builder
@@ -91,7 +92,11 @@ def test_preview_augmentation(data_client_mock, tap_mock):
     os.getcwd = Mock(return_value=test_main_app.TEST_DATA_DIR)
     tap_mock.side_effect = _tap_mock
     data_client_mock.return_value.info.side_effect = (
-        test_main_app._get_file_info
+        FileInfo(
+            id='abc.fits',
+            file_type='application/fits',
+            md5sum='def',
+        )
     )
 
     test_f_id = 'rnN20140428S0181_ronchi'

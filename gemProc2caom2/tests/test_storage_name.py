@@ -72,14 +72,17 @@ from mock import patch, Mock
 from caom2utils import data_util
 from caom2pipe import manage_composable as mc
 from gem2caom2 import external_metadata as em
+from gem2caom2.obs_file_relationship import repair_data_label
 from gemProc2caom2 import builder
 
 import test_main_app
 
 
+@patch('cadcutils.net.ws.WsCapabilities.get_access_url')
 @patch('caom2utils.fits2caom2.get_vos_headers')
 @patch('gem2caom2.external_metadata.defining_metadata_finder')
-def test_builder(dmf_mock, vos_mock):
+def test_builder(dmf_mock, vos_mock, access_mock):
+    access_mock.return_value = 'https://localhost:8080'
 
     test_config = mc.Config()
     test_config.proxy_fqn = (
@@ -124,3 +127,18 @@ END
         ), f'wrong destination uris for {entry}'
         assert test_sn.obs_id == 'TEST_DATA_LABEL', f'wrong obs_id for {entry}'
         assert test_sn._source_names[0] == entry, 'wrong source name'
+
+
+def test_repair():
+    candidates = {
+        'wrgnN20140428S0085_arc': 'GN-2014A-Q-85-12-001-ARC',
+        'wrgnN20070116S0165_arc': 'GN-2006B-C-4-29-015-ARC',
+    }
+    for entry in candidates.keys():
+        fqn = f'{test_main_app.TEST_DATA_DIR}/{entry}.fits'
+        headers = data_util.get_local_file_headers(fqn)
+        data_label = headers[0].get('DATALAB')
+        test_result = repair_data_label(entry, data_label)
+        assert (
+            test_result == candidates.get(entry)
+        ), f'expected {candidates.get(entry)}'

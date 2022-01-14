@@ -92,9 +92,8 @@ def visit(observation, **kwargs):
     config.get_executors()
     if mc.TaskType.SCRAPE in config.task_types:
         logging.warning(f'Provenance augmentation does not work for SCRAPE.')
-        return {'provenance': 0}
+        return observation
 
-    count = 0
     obs_members = TypedSet(
         ObservationURI,
     )
@@ -105,7 +104,7 @@ def visit(observation, **kwargs):
         )
         for artifact in plane.artifacts.values():
             if storage_name.file_uri == artifact.uri:
-                count = _do_provenance(
+                _do_provenance(
                     working_directory,
                     storage_name.file_name,
                     observation,
@@ -138,7 +137,7 @@ def visit(observation, **kwargs):
     logging.info(
         f'Done provenance_augmentation for {observation.observation_id}'
     )
-    return {'provenance': count}
+    return observation
 
 
 def _do_provenance(
