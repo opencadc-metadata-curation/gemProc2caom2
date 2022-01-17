@@ -189,7 +189,6 @@ def _do_provenance(
         # the order of calls here is meant to put the least amount of load
         # on archive.gemini.edu
         #
-        collection = builder.COLLECTION
         obs_id = name_builder._get_obs_id(None, f_name, None)
         if obs_id is None:
             # GEMINI
@@ -202,6 +201,7 @@ def _do_provenance(
             logging.info(
                 f'Found observation ID {obs_id} for file {f_id}.'
             )
+            collection = 'GEMINI' if f_id.startswith('N') else 'GEMINICADC'
             input_obs_uri_str = mc.CaomName.make_obs_uri_from_obs_id(
                 collection, obs_id
             )
