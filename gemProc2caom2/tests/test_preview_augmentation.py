@@ -77,7 +77,7 @@ from mock import Mock, patch
 
 from cadcdata import FileInfo
 from caom2pipe import manage_composable as mc
-from gem2caom2 import external_metadata
+from caom2pipe.reader_composable import FileMetadataReader
 from gemProc2caom2 import preview_augmentation, builder
 import test_main_app
 
@@ -91,12 +91,10 @@ def test_preview_augmentation(data_client_mock, tap_mock):
     getcwd_orig = os.getcwd
     os.getcwd = Mock(return_value=test_main_app.TEST_DATA_DIR)
     tap_mock.side_effect = _tap_mock
-    data_client_mock.return_value.info.side_effect = (
-        FileInfo(
-            id='abc.fits',
-            file_type='application/fits',
-            md5sum='def',
-        )
+    data_client_mock.return_value.info.side_effect = FileInfo(
+        id='abc.fits',
+        file_type='application/fits',
+        md5sum='def',
     )
 
     test_f_id = 'rnN20140428S0181_ronchi'
@@ -108,16 +106,16 @@ def test_preview_augmentation(data_client_mock, tap_mock):
     test_config = mc.Config()
     test_config.get_executors()
     test_observable = mc.Observable(test_rejected, mc.Metrics(test_config))
-    external_metadata.init_global(test_config)
-    test_builder = builder.GemProcBuilder(test_config)
+    test_metadata_reader = FileMetadataReader()
+    test_builder = builder.GemProcBuilder(test_metadata_reader)
     test_fqn = os.path.join(test_main_app.TEST_DATA_DIR, test_f_name)
     test_storage_name = test_builder.build(test_fqn)
     kwargs = {
         'working_directory': TEST_FILES_DIR,
-        'cadc_client': None,
-        'stream': 'stream',
+        'clients': None,
         'observable': test_observable,
         'storage_name': test_storage_name,
+        'metadata_reader': test_metadata_reader,
     }
 
     try:

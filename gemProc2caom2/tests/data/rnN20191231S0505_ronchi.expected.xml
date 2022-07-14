@@ -49,7 +49,8 @@
           <caom2:uri>cadc:GEMINICADC/rnN20191231S0505_ronchi.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
-          <caom2:contentType>application/fits</caom2:contentType>
+          <caom2:contentLength>118826</caom2:contentLength>
+          <caom2:contentType>text/plain</caom2:contentType>
           <caom2:parts>
             <caom2:part caom2:id="6b7afeb7-10c3-4791-816b-d8203e559e3c" caom2:lastModified="2021-05-03T05:25:54.973" caom2:maxLastModified="2021-05-03T05:25:54.973" caom2:metaChecksum="md5:c9def05da843ae427bdef5775b989a63" caom2:accMetaChecksum="md5:b352894849b7f85dfecbbc5b4b941ef0">
               <caom2:name>0</caom2:name>

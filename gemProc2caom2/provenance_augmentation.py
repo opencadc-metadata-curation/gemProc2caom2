@@ -68,29 +68,38 @@
 #
 
 import logging
-import os
 from astropy.io import fits
-from caom2 import Observation, DerivedObservation, ObservationURI, PlaneURI
-from caom2 import TypedSet
-from caom2pipe import client_composable as clc
-from caom2pipe import manage_composable as mc
-from gem2caom2 import external_metadata, gem_name
-from gemProc2caom2 import builder
+from caom2 import (
+    Observation,
+    DerivedObservation,
+    ObservationURI,
+    PlaneURI,
+    TypedSet,
+)
+from caom2pipe.client_composable import query_tap_client, repo_get
+from caom2pipe.manage_composable import (
+    build_uri,
+    CadcException,
+    CaomName,
+    check_param,
+    Config,
+    get_keyword,
+    TaskType,
+)
+from gem2caom2.gem_name import COLLECTION, GemName, SCHEME
+from gem2caom2.obs_file_relationship import repair_data_label
 
 
 def visit(observation, **kwargs):
-    mc.check_param(observation, Observation)
-
-    working_directory = kwargs.get('working_directory', './')
+    check_param(observation, Observation)
     storage_name = kwargs.get('storage_name')
     if storage_name is None:
-        raise mc.CadcException(
+        raise CadcException(
             f'Must have a storage_name parameter for provenance_augmentation '
             f'for {observation.observation_id}'
         )
-    config = mc.Config()
-    config.get_executors()
-    if mc.TaskType.SCRAPE in config.task_types:
+    clients = kwargs.get('clients')
+    if clients is None:
         logging.warning(f'Provenance augmentation does not work for SCRAPE.')
         return observation
 
@@ -105,12 +114,11 @@ def visit(observation, **kwargs):
         for artifact in plane.artifacts.values():
             if storage_name.file_uri == artifact.uri:
                 _do_provenance(
-                    working_directory,
-                    storage_name.file_name,
+                    storage_name,
                     observation,
                     plane_inputs,
                     obs_members,
-                    config,
+                    clients,
                 )
 
         if plane.provenance is not None:
@@ -120,16 +128,9 @@ def visit(observation, **kwargs):
         observation.members.update(obs_members)
         if len(observation.members) > 0:
             observable = kwargs.get('observable')
-            caom_repo_client = kwargs.get('caom_repo_client')
-            if caom_repo_client is None:
-                logging.warning(
-                    f'Warning: Must have a caom_repo_client for '
-                    f'members metadata for '
-                    f'{observation.observation_id}.'
-                )
             _do_members_metadata(
                 observation,
-                caom_repo_client,
+                clients,
                 observation.members,
                 observable.metrics,
             )
@@ -141,12 +142,11 @@ def visit(observation, **kwargs):
 
 
 def _do_provenance(
-    working_directory,
-    science_file,
+    storage_name,
     observation,
     plane_inputs,
     obs_members,
-    config,
+    clients,
 ):
     """
     DB 06-08-20
@@ -167,11 +167,11 @@ def _do_provenance(
     """
     logging.debug(f'Begin _do_provenance for {observation.observation_id}')
     count = 0
-    fqn = os.path.join(working_directory, science_file)
-    hdus = fits.open(fqn)
+    hdus = fits.open(storage_name.source_names[0])
     if 'PROVENANCE' not in hdus:
         logging.warning(
-            f'PROVENANCE extension not found in HDUs for {science_file}.'
+            f'PROVENANCE extension not found in HDUs for '
+            f'{storage_name.source_names[0]}.'
         )
         return count
 
@@ -181,42 +181,76 @@ def _do_provenance(
         if entry.name.startswith('Type'):
             temp = entry.name
             break
-    name_builder = builder.GemProcBuilder(config)
     for f_name, f_prov_type in zip(data['Filename'], data[temp]):
-        f_id = gem_name.GemName.remove_extensions(f_name)
+        f_id = GemName.remove_extensions(f_name)
 
-        # GEMINICADC
-        # the order of calls here is meant to put the least amount of load
-        # on archive.gemini.edu
-        #
-        obs_id = name_builder._get_obs_id(None, f_name, None)
-        if obs_id is None:
-            # GEMINI
-            collection = gem_name.COLLECTION
-            uri = mc.build_uri(collection, f_name, gem_name.SCHEME)
-            metadata = external_metadata.defining_metadata_finder.get(uri)
-            if metadata is not None and metadata.data_label is not None:
-                obs_id = metadata.data_label
-        if obs_id is not None:
+        # there are file names in the data
+        # some are GEMINICADC
+        # some are GEMINI
+        # need the observation IDs (DATALAB values) for the file names
+        # start with CAOM2 records, and then do a get_head if necessary
+
+        # query caom2 - have access to a tap client
+        # write a query where it doesn't matter what the collection is
+        # where A.uri LIKE %{f_name}
+
+        qs = f"""
+        SELECT O.observationID, A.uri
+        FROM caom2.Observation AS O
+        JOIN caom2.Plane AS P ON P.obsID = O.obsID
+        JOIN caom2.Artifact AS A ON A.planeID = P.planeID
+        WHERE A.uri LIKE '%{f_name}'
+        """
+        result = query_tap_client(qs, clients.query_client)
+        prov_obs_id = None
+        # preserve the prov_uri because it identifies the collection of
+        # the provenance
+        prov_uri = None
+        if len(result) > 0:
+            for entry in result:
+                prov_obs_id = entry['observationID']
+                prov_uri = entry['uri']
+                logging.info(
+                    f'Found observationID {prov_obs_id}, uri {prov_uri} for '
+                    f'{f_name}'
+                )
+        if len(result) > 1:
+            raise CadcException(f'Too many rows:\n{result}')
+
+        if prov_obs_id is None:
+            # query SI with get_head
+            # try both collections
+            # start with GEMINICADC because that's quicker, then GEMINI
+            for uri_prefix in ['cadc:GEMINICADC', 'gemini:GEMINI']:
+                prov_uri = f'{uri_prefix}/{f_name}'
+                headers = clients.data_client.get_head(prov_uri)
+                if headers is not None:
+                    temp = get_keyword(headers, 'DATALAB')
+                    if temp is not None:
+                        prov_obs_id = repair_data_label(f_name, temp)
+                        logging.info(
+                            f'Found observationID {prov_obs_id}, uri '
+                            f'{prov_uri} for {f_name} in storage.'
+                        )
+                        break
+
+        if prov_obs_id is not None and prov_uri is not None:
             logging.info(
-                f'Found observation ID {obs_id} for file {f_id}.'
+                f'Found observation ID {prov_obs_id} for file {f_id}.'
             )
-            collection = 'GEMINI' if f_id.startswith('N') else 'GEMINICADC'
-            input_obs_uri_str = mc.CaomName.make_obs_uri_from_obs_id(
-                collection, obs_id
+            collection = prov_uri.split(':')[1].split('/')[0]
+            input_obs_uri_str = CaomName.make_obs_uri_from_obs_id(
+                collection, prov_obs_id
             )
             input_obs_uri = ObservationURI(input_obs_uri_str)
             plane_uri = PlaneURI.get_plane_uri(input_obs_uri, f_id)
             plane_inputs.add(plane_uri)
             count += 1
-            if (
-                f_prov_type == 'member' and
-                isinstance(observation, DerivedObservation)
+            if f_prov_type == 'member' and isinstance(
+                observation, DerivedObservation
             ):
-                member_obs_uri_str = (
-                    mc.CaomName.make_obs_uri_from_obs_id(
-                        collection, obs_id
-                    )
+                member_obs_uri_str = CaomName.make_obs_uri_from_obs_id(
+                    collection, prov_obs_id
                 )
                 member_obs_uri = ObservationURI(member_obs_uri_str)
                 obs_members.add(member_obs_uri)
@@ -226,7 +260,7 @@ def _do_provenance(
     return count
 
 
-def _do_members_metadata(observation, caom_repo_client, members, metrics):
+def _do_members_metadata(observation, clients, members, metrics):
     """
     Look up the metadata for the provenance member, and use that Proposal
     and Moving Target information for the co-added products as well.
@@ -252,9 +286,9 @@ def _do_members_metadata(observation, caom_repo_client, members, metrics):
         # use the first one for querying
         prov_obs_uri = entry
         break
-    if caom_repo_client is not None:
-        prov_obs = clc.repo_get(
-            caom_repo_client,
+    if clients.meta_client is not None:
+        prov_obs = repo_get(
+            clients.meta_client,
             prov_obs_uri.collection,
             prov_obs_uri.observation_id,
             metrics,

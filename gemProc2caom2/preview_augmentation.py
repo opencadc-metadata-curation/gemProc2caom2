@@ -67,7 +67,6 @@
 # ***********************************************************************
 #
 
-import logging
 import os
 import re
 
@@ -93,7 +92,6 @@ class GemProcPreview(mc.PreviewVisitor):
         self._thumb_fqn = os.path.join(
             self._working_dir, self._storage_name.thumb
         )
-        self._logger = logging.getLogger(__name__)
 
     def generate_plots(self, obs_id):
         self._logger.debug(f'Begin generate_plots for {obs_id}')

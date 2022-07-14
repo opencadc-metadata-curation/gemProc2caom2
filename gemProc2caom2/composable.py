@@ -81,12 +81,13 @@ import sys
 import traceback
 
 from vos import Client
+from caom2pipe.client_composable import ClientCollection
 from caom2pipe import data_source_composable as dsc
-from caom2pipe import manage_composable as mc
+from caom2pipe.manage_composable import Config, StorageName
+from caom2pipe.reader_composable import StorageClientReader, VaultReader
 from caom2pipe import run_composable as rc
 from caom2pipe import transfer_composable as tc
-from gem2caom2 import external_metadata
-from gemProc2caom2 import main_app, builder, preview_augmentation
+from gemProc2caom2 import builder, preview_augmentation
 from gemProc2caom2 import provenance_augmentation, fits2caom2_augmentation
 
 
@@ -103,15 +104,19 @@ def _run():
     :return 0 if successful, -1 if there's any sort of failure. Return status
         is used by airflow for task instance management and reporting.
     """
-    config = mc.Config()
+    config = Config()
     config.get_executors()
-    external_metadata.init_global(config=config)
-    name_builder = builder.GemProcBuilder(config)
+    StorageName.collection = config.collection
+    StorageName.scheme = 'cadc'
+    clients = ClientCollection(config)
+    metadata_reader = StorageClientReader(clients.data_client)
+    name_builder = builder.GemProcBuilder(metadata_reader)
     return rc.run_by_todo(
         config=config,
         name_builder=name_builder,
         meta_visitors=META_VISITORS,
         data_visitors=DATA_VISITORS,
+        metadata_reader=metadata_reader,
     )
 
 
@@ -134,13 +139,15 @@ def _run_remote():
     :return 0 if successful, -1 if there's any sort of failure. Return status
         is used by airflow for task instance management and reporting.
     """
-    config = mc.Config()
+    config = Config()
     config.get_executors()
-    external_metadata.init_global(config=config)
+    StorageName.collection = config.collection
+    StorageName.scheme = 'cadc'
     name_builder = builder.GemProcBuilder(config)
     vos_client = Client(vospace_certfile=config.proxy_fqn)
     store_transfer = tc.VoFitsTransfer(vos_client)
     data_source = dsc.VaultListDirDataSource(vos_client, config)
+    metadata_reader = VaultReader(vos_client)
     return rc.run_by_todo(
         config=config,
         name_builder=name_builder,
@@ -148,6 +155,7 @@ def _run_remote():
         meta_visitors=META_VISITORS,
         data_visitors=DATA_VISITORS,
         store_transfer=store_transfer,
+        metadata_reader=metadata_reader,
     )
 
 

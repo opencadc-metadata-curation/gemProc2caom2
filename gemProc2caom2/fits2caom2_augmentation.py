@@ -76,7 +76,9 @@ class GeminiCadcFits2caom2Visitor(cc.Fits2caom2Visitor):
         super().__init__(observation, **kwargs)
 
     def _get_mapping(self, headers):
-        return main_app.GeminiCadcTelescopeMapping(self._storage_name, headers)
+        return main_app.GeminiCadcTelescopeMapping(
+            self._storage_name, headers
+        )
 
 
 def visit(observation, **kwargs):

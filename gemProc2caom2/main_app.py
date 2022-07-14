@@ -112,7 +112,7 @@ from caom2 import Observation, CalibrationLevel, ProductType, TemporalWCS
 from caom2 import Axis, CoordAxis1D, SpectralWCS, CoordFunction1D, RefCoord
 from caom2 import CoordError, ObservationIntentType, SimpleObservation
 from caom2 import Algorithm, DataProductType
-from caom2utils import WcsParser, update_artifact_meta
+from caom2utils import FitsWcsParser, update_artifact_meta
 from caom2pipe import astro_composable as ac
 from caom2pipe import caom_composable as cc
 from caom2pipe import manage_composable as mc
@@ -148,13 +148,13 @@ class GeminiCadcTelescopeMapping(cc.TelescopeMapping):
         bp.set('Observation.intent', '_get_obs_intent()')
 
         bp.clear('Observation.algorithm.name')
-        bp.add_fits_attribute('Observation.algorithm.name', 'SOFTWARE')
+        bp.add_attribute('Observation.algorithm.name', 'SOFTWARE')
 
         # DB 12-04-21
         # Proposal information comes from GEMPRGID and the details should be
         # retrieved from archive.gemini.edu
         bp.clear('Observation.proposal.id')
-        bp.add_fits_attribute('Observation.proposal.id', 'GEMPRGID')
+        bp.add_attribute('Observation.proposal.id', 'GEMPRGID')
 
         # DB 07-08-20
         # target.type for all NIFS science products, at least, could be set to
@@ -167,20 +167,20 @@ class GeminiCadcTelescopeMapping(cc.TelescopeMapping):
         bp.set('Plane.calibrationLevel', CalibrationLevel.CALIBRATED)
         bp.set('Plane.dataProductType', '_get_plane_data_product_type()')
         bp.clear('Plane.provenance.lastExecuted')
-        bp.add_fits_attribute('Plane.provenance.lastExecuted', 'DATE')
+        bp.add_attribute('Plane.provenance.lastExecuted', 'DATE')
         bp.clear('Plane.provenance.name')
-        bp.add_fits_attribute('Plane.provenance.name', 'SOFTWARE')
+        bp.add_attribute('Plane.provenance.name', 'SOFTWARE')
         bp.set('Plane.provenance.producer', 'CADC')
         bp.clear('Plane.provenance.reference')
-        bp.add_fits_attribute('Plane.provenance.reference', 'SOFT_DOI')
+        bp.add_attribute('Plane.provenance.reference', 'SOFT_DOI')
         bp.clear('Plane.provenance.version')
-        bp.add_fits_attribute('Plane.provenance.version', 'SOFT_VER')
+        bp.add_attribute('Plane.provenance.version', 'SOFT_VER')
 
         bp.set('Artifact.productType', 'science')
         bp.set('Artifact.releaseType', 'data')
         self._logger.debug('Done accumulate_blueprint.')
 
-    def update(self, observation, file_info, caom_repo_client=None):
+    def update(self, observation, file_info, clients=None):
         """Called to fill multiple CAOM model elements and/or attributes
         (an n:n relationship between TDM attributes and CAOM attributes).
         """
@@ -223,9 +223,9 @@ class GeminiCadcTelescopeMapping(cc.TelescopeMapping):
                         ProductType.INFO,
                     ]:
                         for chunk in part.chunks:
-                            filter_name = self._headers[0].get(
-                                'FILTER'
-                            ).split('_')[0]
+                            filter_name = (
+                                self._headers[0].get('FILTER').split('_')[0]
+                            )
                             self._update_energy(
                                 part.name,
                                 chunk,
@@ -268,7 +268,9 @@ class GeminiCadcTelescopeMapping(cc.TelescopeMapping):
             and observation.proposal.id is not None
             and observation.proposal.pi_name is None
         ):
-            program = program_metadata.get_pi_metadata(observation.proposal.id)
+            program = program_metadata.get_pi_metadata(
+                observation.proposal.id
+            )
             if program is not None:
                 observation.proposal.pi_name = program.get('pi_name')
                 observation.proposal.title = program.get('title')
@@ -394,7 +396,7 @@ class GeminiCadcTelescopeMapping(cc.TelescopeMapping):
             header['CD2_1'] = 0.0
             header['CRPIX1'] = header.get('NAXIS1') / 2.0
             header['CRPIX2'] = header.get('NAXIS2') / 2.0
-            wcs_parser = WcsParser(header, obs_id, 0)
+            wcs_parser = FitsWcsParser(header, obs_id, 0)
             wcs_parser.augment_position(chunk)
             chunk.position_axis_1 = 1
             chunk.position_axis_2 = 2

@@ -1,6 +1,4 @@
-FROM bucket.canfar.net/gem2caom2
-
-RUN pip install matplotlib
+FROM opencadc/gem2caom2
 
 ARG PIPE_BRANCH=master
 ARG PIPE_REPO=opencadc

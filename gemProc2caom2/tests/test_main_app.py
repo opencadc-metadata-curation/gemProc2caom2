@@ -70,14 +70,13 @@
 from tempfile import TemporaryDirectory
 from mock import patch, Mock
 
-from astropy.table import Table
-from cadcdata import FileInfo
-from gemProc2caom2 import fits2caom2_augmentation, GemProcBuilder, COLLECTION
-from gem2caom2 import external_metadata
+from caom2pipe.manage_composable import StorageName
+from gemProc2caom2 import fits2caom2_augmentation, GemProcBuilder
 from caom2.diff import get_differences
 from caom2pipe import astro_composable as ac
 from caom2pipe import manage_composable as mc
 from caom2pipe import reader_composable as rdc
+from gemProc2caom2.builder import CADC_SCHEME, COLLECTION
 
 import glob
 import logging
@@ -130,11 +129,7 @@ def pytest_generate_tests(metafunc):
 
 @patch('gem2caom2.program_metadata.get_pi_metadata')
 @patch('cadcutils.net.ws.WsCapabilities.get_access_url')
-@patch('gemProc2caom2.builder.CadcTapClient')
-@patch('gem2caom2.external_metadata.CadcTapClient')
 def test_visitor(
-    em_tap_client_mock,
-    builder_tap_client_mock,
     access_url,
     get_pi_mock,
     test_name,
@@ -143,49 +138,55 @@ def test_visitor(
     access_url.return_value = 'https://localhost:8080'
     get_pi_mock.side_effect = _get_pi_mock
 
-    with TemporaryDirectory() as tmp_dir_name:
-        test_config = mc.Config()
-        test_config.task_types = [mc.TaskType.SCRAPE]
-        test_config.use_local_files = True
-        test_config.data_sources = [TEST_DATA_DIR]
-        test_config.working_directory = tmp_dir_name
-        test_config.proxy_fqn = f'{tmp_dir_name}/test_proxy.pem'
+    original_collection = StorageName.collection
+    original_scheme = StorageName.scheme
+    try:
+        StorageName.collection = COLLECTION
+        StorageName.scheme = CADC_SCHEME
+        with TemporaryDirectory() as tmp_dir_name:
+            test_config = mc.Config()
+            test_config.task_types = [mc.TaskType.SCRAPE]
+            test_config.use_local_files = True
+            test_config.data_sources = [TEST_DATA_DIR]
+            test_config.working_directory = tmp_dir_name
+            test_config.proxy_fqn = f'{tmp_dir_name}/test_proxy.pem'
 
-        with open(test_config.proxy_fqn, 'w') as f:
-            f.write('test content')
+            with open(test_config.proxy_fqn, 'w') as f:
+                f.write('test content')
 
-        external_metadata.get_gofr(test_config)
-        builder = GemProcBuilder(test_config)
-        storage_name = builder.build(test_name)
-        file_info = FileInfo(
-            id=storage_name.file_uri, file_type='application/fits'
-        )
-        headers = ac.make_headers_from_file(test_name)
-        metadata_reader = rdc.FileMetadataReader()
-        metadata_reader._headers = {storage_name.file_uri: headers}
-        metadata_reader._file_info = {storage_name.file_uri: file_info}
-        kwargs = {
-            'storage_name': storage_name,
-            'metadata_reader': metadata_reader,
-        }
-        logging.getLogger('caom2utils.fits2caom2').setLevel(logging.INFO)
-        observation = None
-        observation = fits2caom2_augmentation.visit(observation, **kwargs)
+            metadata_reader = rdc.FileMetadataReader()
+            metadata_reader._retrieve_headers = ac.make_headers_from_file
+            builder = GemProcBuilder(metadata_reader)
+            storage_name = builder.build(test_name)
 
-        expected_fqn = (
-            f'{TEST_DATA_DIR}/{storage_name.file_id}.expected.xml'
-        )
-        expected = mc.read_obs_from_file(expected_fqn)
-        compare_result = get_differences(expected, observation)
-        if compare_result is not None:
+            kwargs = {
+                'storage_name': storage_name,
+                'metadata_reader': metadata_reader,
+            }
+            # logging.getLogger('').setLevel(logging.DEBUG)
+            logging.getLogger('FileMetadataReader').setLevel(logging.DEBUG)
+            observation = None
+            observation = fits2caom2_augmentation.visit(observation, **kwargs)
+
+            expected_fqn = (
+                f'{TEST_DATA_DIR}/{storage_name.file_id}.expected.xml'
+            )
             actual_fqn = expected_fqn.replace('expected', 'actual')
             mc.write_obs_to_file(observation, actual_fqn)
-            compare_text = '\n'.join([r for r in compare_result])
-            msg = (
-                f'Differences found in observation {expected.observation_id}\n'
-                f'{compare_text}'
-            )
-            raise AssertionError(msg)
+            expected = mc.read_obs_from_file(expected_fqn)
+            compare_result = get_differences(expected, observation)
+            if compare_result is not None:
+                actual_fqn = expected_fqn.replace('expected', 'actual')
+                mc.write_obs_to_file(observation, actual_fqn)
+                compare_text = '\n'.join([r for r in compare_result])
+                msg = (
+                    f'Differences found in observation {expected.observation_id}\n'
+                    f'{compare_text}'
+                )
+                raise AssertionError(msg)
+    finally:
+        StorageName.scheme = original_scheme
+        StorageName.collection = original_collection
 
 
 def _get_pi_mock(ignore):
