@@ -67,6 +67,8 @@
 # ***********************************************************************
 #
 
+from os import path
+
 import logging
 from astropy.io import fits
 from caom2 import (
@@ -103,6 +105,10 @@ def visit(observation, **kwargs):
         logging.warning(f'Provenance augmentation does not work for SCRAPE.')
         return observation
 
+    working_directory = kwargs.get('working_directory')
+    if working_directory is None:
+        raise CadcException(f'Must have a working_directory parameter for provenance_augmentation.')
+
     obs_members = TypedSet(
         ObservationURI,
     )
@@ -114,6 +120,7 @@ def visit(observation, **kwargs):
         for artifact in plane.artifacts.values():
             if storage_name.file_uri == artifact.uri:
                 _do_provenance(
+                    working_directory,
                     storage_name,
                     observation,
                     plane_inputs,
@@ -142,6 +149,7 @@ def visit(observation, **kwargs):
 
 
 def _do_provenance(
+    working_directory,
     storage_name,
     observation,
     plane_inputs,
@@ -165,14 +173,12 @@ def _do_provenance(
     of inputs for the derived observations, where 'appropriate' means
     find the ‘appropriate’ filename that identifies the plane of the inputs.
     """
-    logging.debug(f'Begin _do_provenance for {observation.observation_id}')
+    science_fqn = storage_name.get_file_fqn(working_directory)
+    logging.debug(f'Begin _do_provenance for {observation.observation_id} from {science_fqn}')
     count = 0
-    hdus = fits.open(storage_name.source_names[0])
+    hdus = fits.open(science_fqn)
     if 'PROVENANCE' not in hdus:
-        logging.warning(
-            f'PROVENANCE extension not found in HDUs for '
-            f'{storage_name.source_names[0]}.'
-        )
+        logging.warning(f'PROVENANCE extension not found in HDUs for {science_fqn}.')
         return count
 
     data = hdus['PROVENANCE'].data

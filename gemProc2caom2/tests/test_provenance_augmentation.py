@@ -137,7 +137,9 @@ def test_provenance_augmentation(
         test_storage_name = GemProcName(entry=temp)
         test_obs = read_obs_from_file(test_fqn)
         assert not test_obs.target.moving, 'initial conditions moving target'
+        test_working_directory = os.path.dirname(temp)
         kwargs = {
+            'working_directory': test_working_directory,
             'storage_name': test_storage_name,
             'observable': test_observable,
             'clients': clients_mock,
