@@ -238,9 +238,7 @@ def _do_provenance(
                         break
 
         if prov_obs_id is not None and prov_uri is not None:
-            logging.info(
-                f'Found observation ID {prov_obs_id} for file {f_id}.'
-            )
+            logging.info(f'Found observation ID {prov_obs_id} for file {f_id} with provenance type {f_prov_type}.')
             collection = prov_uri.split(':')[1].split('/')[0]
             input_obs_uri_str = CaomName.make_obs_uri_from_obs_id(
                 collection, prov_obs_id
