@@ -216,10 +216,7 @@ def _do_provenance(
             for entry in result:
                 prov_obs_id = entry['observationID']
                 prov_uri = entry['uri']
-                logging.info(
-                    f'Found observationID {prov_obs_id}, uri {prov_uri} for '
-                    f'{f_name}'
-                )
+                logging.info(f'Found observationID {prov_obs_id}, uri {prov_uri} for {f_name}')
         if len(result) > 1:
             raise CadcException(f'Too many rows:\n{result}')
 
@@ -292,9 +289,9 @@ def _do_members_metadata(observation, clients, members, metrics):
         # use the first one for querying
         prov_obs_uri = entry
         break
-    if clients.meta_client is not None:
+    if clients.metadata_client is not None:
         prov_obs = repo_get(
-            clients.meta_client,
+            clients.metadata_client,
             prov_obs_uri.collection,
             prov_obs_uri.observation_id,
             metrics,

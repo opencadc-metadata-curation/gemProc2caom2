@@ -89,7 +89,6 @@ import test_main_app
 REJECTED_FILE = os.path.join(test_main_app.TEST_DATA_DIR, 'rejected.yml')
 
 
-@patch('gemProc2caom2.provenance_augmentation.query_tap_client')
 @patch('caom2pipe.client_composable.ClientCollection')
 @patch('gemProc2caom2.builder.GemProcBuilder')
 @patch('cadcutils.net.ws.WsCapabilities.get_access_url')
@@ -97,7 +96,6 @@ def test_provenance_augmentation(
     access_mock,
     builder_mock,
     clients_mock,
-    tap_mock,
     test_fqn,
 ):
     builder_mock.return_value._get_obs_id.return_value = None
@@ -107,23 +105,7 @@ def test_provenance_augmentation(
     test_config.task_types = [TaskType.VISIT]
     test_observable = Observable(test_rejected, Metrics(test_config))
     clients_mock.data_client.get_head.side_effect = _get_headers_mock
-    clients_mock.meta_client.read.side_effect = _repo_get_mock
-
-    def _tap_query_mock(ignore1, ignore2):
-        if 'N20140428S0181' in ignore1:
-            return Table.read(
-                'observationID,uri\n'
-                'GN-2014A-Q-85-16-013,gemini:GEMINI/N20140428S0181.fits\n'.split(
-                    '\n'
-                ),
-                format='csv',
-            )
-        else:
-            # make the test executes both possible methods of finding
-            # the observation ID for a file
-            return Table.read('observationID,uri\n'.split('\n'), format='csv')
-
-    tap_mock.side_effect = _tap_query_mock
+    clients_mock.metadata_client.read.side_effect = _repo_get_mock
 
     getcwd_orig = os.getcwd
     os.getcwd = Mock(return_value=test_main_app.TEST_DATA_DIR)
@@ -145,24 +127,20 @@ def test_provenance_augmentation(
             'clients': clients_mock,
         }
 
-        import logging
-
-        logging.getLogger('root').setLevel(logging.DEBUG)
-
         test_obs = provenance_augmentation.visit(test_obs, **kwargs)
         assert test_obs is not None, 'expect a result'
         test_member = ObservationURI('caom:GEMINI/GN-2014A-Q-85-16-013')
         assert (
             test_member in test_obs.members
         ), f'wrong members {test_obs.members}'
-        test_prov = PlaneURI(
-            'caom:GEMINI/GN-2014A-Q-85-16-013/N20140428S0181'
-        )
-        assert len(test_obs.members) == 1, 'wrong # of members'
+        test_prov = PlaneURI('caom:GEMINICADC/DEF/N20140428S0181')
+        msg = '\n'.join(ii.uri for ii in test_obs.members)
+        assert len(test_obs.members) == 2, f'wrong # of members\n{msg}'
         test_plane = test_obs.planes['rnN20140428S0181_ronchi']
         # not all provenance inputs are members
         assert len(test_plane.provenance.inputs) == 3, 'wrong # of inputs'
-        assert test_prov in test_plane.provenance.inputs, 'prov'
+        msg = '\n'.join(ii.uri for ii in test_plane.provenance.inputs)
+        assert test_prov in test_plane.provenance.inputs, f'prov\n{msg}'
         assert test_obs.target.moving, 'should be changed'
     finally:
         os.getcwd = getcwd_orig
