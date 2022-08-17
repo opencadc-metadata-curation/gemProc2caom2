@@ -205,7 +205,7 @@ def _do_provenance(
         FROM caom2.Observation AS O
         JOIN caom2.Plane AS P ON P.obsID = O.obsID
         JOIN caom2.Artifact AS A ON A.planeID = P.planeID
-        WHERE A.uri LIKE '%{f_name}'
+        WHERE A.uri LIKE '%/{f_name}'
         """
         result = query_tap_client(qs, clients.query_client)
         prov_obs_id = None
