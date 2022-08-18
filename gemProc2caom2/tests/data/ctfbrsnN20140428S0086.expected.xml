@@ -1,21 +1,20 @@
-<caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:SimpleObservation" caom2:id="00000000-0000-0000-a166-76069dc232e6" caom2:lastModified="2017-06-21T17:50:25.050" caom2:maxLastModified="2019-07-31T22:15:33.378" caom2:metaChecksum="md5:7d8d1d3fbe0754fdb2fb56ffa225a0b8" caom2:accMetaChecksum="md5:7e47aeda6b8615b5d03a7a9d73e174c6">
+<caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:DerivedObservation" caom2:id="00000000-0000-0000-a166-76069dc232e6" caom2:lastModified="2017-06-21T17:50:25.050" caom2:maxLastModified="2019-07-31T22:15:33.378" caom2:metaChecksum="md5:7d8d1d3fbe0754fdb2fb56ffa225a0b8" caom2:accMetaChecksum="md5:7e47aeda6b8615b5d03a7a9d73e174c6">
   <caom2:collection>GEMINICADC</caom2:collection>
   <caom2:observationID>GN-2014A-Q-85-12-002</caom2:observationID>
   <caom2:metaRelease>2020-07-31T22:35:10.000</caom2:metaRelease>
   <caom2:algorithm>
-    <caom2:name>exposure</caom2:name>
+    <caom2:name>Nifty4Gemini</caom2:name>
   </caom2:algorithm>
   <caom2:type>OBJECT</caom2:type>
   <caom2:intent>science</caom2:intent>
   <caom2:proposal>
     <caom2:id>GN-2014A-Q-85</caom2:id>
-    <caom2:pi>Laurence Trafton</caom2:pi>
-    <caom2:title>Hemispherical Constraint of Titan's Methane Cycle</caom2:title>
+    <caom2:pi>Principle Investigator</caom2:pi>
+    <caom2:title>The Title For A NIFS Science Program</caom2:title>
   </caom2:proposal>
   <caom2:target>
     <caom2:name>Titan</caom2:name>
     <caom2:type>object</caom2:type>
-    <caom2:moving>true</caom2:moving>
   </caom2:target>
   <caom2:telescope>
     <caom2:name>Gemini-North</caom2:name>
@@ -45,7 +44,8 @@
           <caom2:uri>cadc:GEMINICADC/ctfbrsnN20140428S0086.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
-          <caom2:contentType>application/fits</caom2:contentType>
+          <caom2:contentType>text/plain</caom2:contentType>
+          <caom2:contentLength>43575</caom2:contentLength>
           <caom2:parts>
             <caom2:part caom2:id="366a12e5-927e-4727-a4f4-dfeeea292649">
               <caom2:name>0</caom2:name>

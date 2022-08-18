@@ -5,6 +5,6 @@ data_source_extensions:
  - .fits
 use_local_files: True
 task_types:
- - scrape
+ - ingest
 features:
   supports_latest_client: True

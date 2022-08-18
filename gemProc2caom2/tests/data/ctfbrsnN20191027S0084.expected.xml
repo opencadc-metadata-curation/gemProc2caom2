@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:SimpleObservation" caom2:id="38306d2e-7383-4ef5-9395-b29373b567d6">
+<caom2:Observation xmlns:caom2="http://www.opencadc.org/caom2/xml/v2.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="caom2:DerivedObservation" caom2:id="38306d2e-7383-4ef5-9395-b29373b567d6">
   <caom2:collection>GEMINICADC</caom2:collection>
   <caom2:observationID>GN-2019B-FT-101-31-002</caom2:observationID>
   <caom2:metaRelease>2020-08-06T17:34:56.000</caom2:metaRelease>
   <caom2:algorithm>
-    <caom2:name>exposure</caom2:name>
+    <caom2:name>Nifty4Gemini</caom2:name>
   </caom2:algorithm>
   <caom2:type>OBJECT</caom2:type>
   <caom2:intent>science</caom2:intent>
   <caom2:proposal>
     <caom2:id>GN-2019B-FT-101</caom2:id>
-    <caom2:pi>Rogemar A. Riffel</caom2:pi>
-    <caom2:title>Molecular outflows in nearby AGN</caom2:title>
+    <caom2:pi>Principle Investigator</caom2:pi>
+    <caom2:title>The Title For A NIFS Science Program</caom2:title>
   </caom2:proposal>
   <caom2:target>
     <caom2:name>Mrk955</caom2:name>
@@ -45,7 +45,8 @@
           <caom2:uri>cadc:GEMINICADC/ctfbrsnN20191027S0084.fits</caom2:uri>
           <caom2:productType>science</caom2:productType>
           <caom2:releaseType>data</caom2:releaseType>
-          <caom2:contentType>application/fits</caom2:contentType>
+          <caom2:contentType>text/plain</caom2:contentType>
+          <caom2:contentLength>43760</caom2:contentLength>
           <caom2:contentChecksum>md5:a54c1b3c60dc57b0ebed89ba183b598d</caom2:contentChecksum>
           <caom2:parts>
             <caom2:part caom2:id="3c4afd1a-bb46-42db-954e-ebcc4fd2dac4">

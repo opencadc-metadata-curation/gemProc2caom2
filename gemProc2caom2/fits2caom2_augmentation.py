@@ -3,7 +3,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2020.                            (c) 2020.
+#  (c) 2022.                            (c) 2022.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -62,98 +62,24 @@
 #  <http://www.gnu.org/licenses/>.      pas le cas, consultez :
 #                                       <http://www.gnu.org/licenses/>.
 #
-#  $Revision: 4 $
+#  : 4 $
 #
 # ***********************************************************************
 #
 
-import logging
-import os
-import traceback
-
-from astropy.table import Table
-from datetime import datetime
-from mock import Mock, patch
-
-from cadcdata import FileInfo
-from caom2pipe import manage_composable as mc
-from caom2pipe.reader_composable import FileMetadataReader
-from gemProc2caom2 import preview_augmentation, builder
-import test_main_app
-
-REJECTED_FILE = os.path.join(test_main_app.TEST_DATA_DIR, 'rejected.yml')
-TEST_FILES_DIR = '/test_files'
+from caom2pipe import caom_composable as cc
+from gemProc2caom2 import main_app
 
 
-@patch('caom2pipe.client_composable.query_tap_client')
-@patch('caom2utils.data_util.StorageClientWrapper')
-def test_preview_augmentation(data_client_mock, tap_mock):
-    orig_collection = mc.StorageName.collection
-    try:
-        mc.StorageName.collection = 'GEMINICADC'
-        getcwd_orig = os.getcwd
-        os.getcwd = Mock(return_value=test_main_app.TEST_DATA_DIR)
-        tap_mock.side_effect = _tap_mock
-        data_client_mock.return_value.info.side_effect = FileInfo(
-            id='abc.fits',
-            file_type='application/fits',
-            md5sum='def',
+class GeminiCadcFits2caom2Visitor(cc.Fits2caom2Visitor):
+    def __init__(self, observation, **kwargs):
+        super().__init__(observation, **kwargs)
+
+    def _get_mapping(self, headers):
+        return main_app.GeminiCadcTelescopeMapping(
+            self._storage_name, headers
         )
 
-        test_f_id = 'rnN20140428S0181_ronchi'
-        test_f_name = f'{test_f_id}.fits'
-        test_obs = mc.read_obs_from_file(f'{test_main_app.TEST_DATA_DIR}/{test_f_id}.expected.xml')
-        # precondition check
-        found = False
-        for plane in test_obs.planes.values():
-            if plane.product_id == test_f_id:
-                assert len(plane.artifacts.values()) == 1, 'wrong starting count'
-                found = True
-        assert found, 'wrong precondition'
 
-        test_rejected = mc.Rejected(REJECTED_FILE)
-        test_config = mc.Config()
-        test_config.get_executors()
-        test_observable = mc.Observable(test_rejected, mc.Metrics(test_config))
-        test_metadata_reader = FileMetadataReader()
-        test_builder = builder.GemProcBuilder(test_metadata_reader)
-        test_fqn = os.path.join(test_main_app.TEST_DATA_DIR, test_f_name)
-        test_storage_name = test_builder.build(test_fqn)
-        kwargs = {
-            'working_directory': TEST_FILES_DIR,
-            'clients': None,
-            'observable': test_observable,
-            'storage_name': test_storage_name,
-            'metadata_reader': test_metadata_reader,
-        }
-
-        try:
-            start_ts = datetime.utcnow().timestamp()
-            test_obs = preview_augmentation.visit(test_obs, **kwargs)
-            end_ts = datetime.utcnow().timestamp()
-            logging.error(f'{test_f_name} execution time {end_ts - start_ts}')
-        except Exception as e:
-            logging.error(e)
-            logging.error(traceback.format_exc())
-            assert False
-        finally:
-            os.getcwd = getcwd_orig
-
-        assert test_obs is not None, 'expect a result'
-        # post-condition check
-        found = False
-        for plane in test_obs.planes.values():
-            if plane.product_id == test_f_id:
-                assert len(plane.artifacts.values()) == 3, 'wrong end count'
-                found = True
-        assert found, 'wrong post-condition'
-    finally:
-        mc.StorageName.collection = orig_collection
-
-
-def _tap_mock(query_string, mock_tap_client):
-    if 'observationID' in query_string:
-        return Table.read(
-            f'observationID,instrument_name\nGN-2014A-Q-85-16-003-RGN-FLAT,GNIRS\n'.split('\n'),
-            format='csv',
-        )
+def visit(observation, **kwargs):
+    return GeminiCadcFits2caom2Visitor(observation, **kwargs).visit()

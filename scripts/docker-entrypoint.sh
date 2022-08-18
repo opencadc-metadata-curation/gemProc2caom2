@@ -2,7 +2,7 @@
 
 if [[ ! -e ${PWD}/config.yml ]]
 then
-  cp /usr/local/bin/config.yml ${PWD}
+  cp /usr/local/.config/config.yml ${PWD}
 fi
 
 exec "${@}"

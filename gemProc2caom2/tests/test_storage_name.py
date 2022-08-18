@@ -69,59 +69,89 @@
 
 from mock import patch, Mock
 
-from caom2utils import data_util
-from caom2pipe import manage_composable as mc
-from gem2caom2 import external_metadata as em
+from cadcdata import FileInfo
+from caom2utils.data_util import (
+    get_local_file_headers,
+    make_headers_from_string,
+)
+from caom2pipe.manage_composable import StorageName
+from caom2pipe.reader_composable import VaultReader
+from gem2caom2.obs_file_relationship import (
+    get_prefix,
+    get_suffix,
+    repair_data_label,
+)
 from gemProc2caom2 import builder
 
-import test_main_app
+from test_main_app import TEST_DATA_DIR
 
 
-@patch('caom2utils.fits2caom2.get_vos_headers')
-@patch('gem2caom2.external_metadata.defining_metadata_finder')
-def test_builder(dmf_mock, vos_mock):
+def test_builder():
 
-    test_config = mc.Config()
-    test_config.proxy_fqn = (
-        f'{test_main_app.TEST_DATA_DIR}/test_proxy.pem'
-    )
-    test_config.task_types = [mc.TaskType.VISIT]
-    test_id = 'ctfbrsnN20140428S0086'
-    test_f_name = f'{test_id}.fits'
+    original_scheme = StorageName.scheme
+    original_collection = StorageName.collection
 
-    dmf_mock._check_caom2.side_effect = [
-        em.DefiningMetadata('GNIRS', 'TEST_DATA_LABEL'),
-        em.DefiningMetadata('GNIRS', 'TEST_DATA_LABEL'),
-    ]
-    x = """SIMPLE  =                    T / Written by IDL:  Fri Oct  6 01:48:35 2017
-BITPIX  =                  -32 / Bits per pixel
-NAXIS   =                    2 / Number of dimensions
-NAXIS1  =                 2048 /
-NAXIS2  =                 2048 /
-DATALAB = 'TEST_DATA_LABEL'
-INSTRUME= 'GNIRS'
-DATATYPE= 'REDUC   '           /Data type, SCIENCE/CALIB/REJECT/FOCUS/TEST
-END
-"""
-    y = data_util.make_headers_from_string(x)
-    vos_mock.return_value = y
+    try:
+        StorageName.scheme = builder.CADC_SCHEME
+        StorageName.collection = builder.COLLECTION
+        test_id = 'ctfbrsnN20140428S0086'
+        test_f_name = f'{test_id}.fits'
+        mock_client = Mock()
+        test_metadata_reader = VaultReader(mock_client)
+        from caom2pipe.astro_composable import make_headers_from_file
 
-    test_subject = builder.GemProcBuilder(test_config)
-    for entry in [
-        test_f_name,
-        f'vos:goliaths/tests/{test_f_name}',
-        f'/tmp/{test_f_name}',
-    ]:
-        test_sn = test_subject.build(entry)
-        assert test_sn.file_uri == f'cadc:GEMINICADC/{test_f_name}'
-        assert test_sn.lineage == f'{test_id}/cadc:GEMINICADC/{test_f_name}'
-        assert test_sn.prev == f'{test_id}.jpg'
-        assert test_sn.thumb == f'{test_id}_th.jpg'
-        assert test_sn.prev_uri == f'cadc:GEMINICADC/{test_id}.jpg'
-        assert test_sn.thumb_uri == f'cadc:GEMINICADC/{test_id}_th.jpg'
-        assert (
-            test_sn.destination_uris ==
-            ['cadc:GEMINICADC/ctfbrsnN20140428S0086.fits']
-        ), f'wrong destination uris for {entry}'
-        assert test_sn.obs_id == 'TEST_DATA_LABEL', f'wrong obs_id for {entry}'
-        assert test_sn._source_names[0] == entry, 'wrong source name'
+        test_fqn = f'{TEST_DATA_DIR}/{test_f_name}.header'
+        test_headers = make_headers_from_file(test_fqn)
+        test_metadata_reader._retrieve_headers = Mock()
+        test_metadata_reader._retrieve_headers.return_value = test_headers
+        test_metadata_reader._retrieve_file_info = Mock(
+            return_value=FileInfo(
+                id=test_f_name,
+                size=123,
+                md5sum='123',
+                file_type='application/fits',
+                encoding=None,
+            )
+        )
+
+        test_subject = builder.GemProcBuilder(test_metadata_reader)
+        for entry in [
+            test_f_name,
+            f'vos:goliaths/tests/{test_f_name}',
+            f'/tmp/{test_f_name}',
+        ]:
+            test_sn = test_subject.build(entry)
+            assert test_sn.file_uri == f'cadc:GEMINICADC/{test_f_name}'
+            assert test_sn.prev == f'{test_id}.jpg'
+            assert test_sn.thumb == f'{test_id}_th.jpg'
+            assert test_sn.prev_uri == f'cadc:GEMINICADC/{test_id}.jpg'
+            assert test_sn.thumb_uri == f'cadc:GEMINICADC/{test_id}_th.jpg'
+            assert test_sn.destination_uris == [
+                'cadc:GEMINICADC/ctfbrsnN20140428S0086.fits'
+            ], f'wrong destination uris for {entry}'
+            assert (
+                test_sn.obs_id == 'GN-2014A-Q-85-12-002'
+            ), f'wrong obs_id for {entry}'
+            assert test_sn._source_names[0] == entry, 'wrong source name'
+    finally:
+        StorageName.scheme = original_scheme
+        StorageName.collection = original_collection
+
+
+def test_repair():
+    candidates = {
+        'wrgnN20140428S0085_arc': 'GN-2014A-Q-85-12-001-ARC',
+        'wrgnN20070116S0165_arc': 'GN-2006B-C-4-29-015-ARC',
+    }
+    for entry in candidates.keys():
+        fqn = f'{TEST_DATA_DIR}/{entry}.fits'
+        headers = get_local_file_headers(fqn)
+        data_label = headers[0].get('DATALAB')
+        assert get_prefix(entry) == 'wrgn', f'{get_prefix(entry)}'
+        test_result = get_suffix(entry, data_label)
+        assert test_result == ['arc'], f'{test_result}'
+
+        test_result = repair_data_label(entry, data_label)
+        assert test_result == candidates.get(
+            entry
+        ), f'expected {candidates.get(entry)}'

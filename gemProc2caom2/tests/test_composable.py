@@ -68,45 +68,59 @@
 #
 
 import os
-import test_main_app
+from test_main_app import TEST_DATA_DIR
 
 from mock import Mock, patch
 
+from caom2pipe.astro_composable import make_headers_from_file
 from gemProc2caom2 import composable, GemProcName
 
 TEST_OBS_ID = 'GN-2014A-Q-85-16-003-RGN-FLAT'
 
 
-def test_run_by_state():
-    pass
-
-
+@patch('gemProc2caom2.composable.ClientCollection')
+@patch('cadcutils.net.ws.WsCapabilities.get_access_url')
 @patch('caom2pipe.execute_composable.OrganizeExecutes.do_one')
-def test_run(run_mock):
+def test_run(run_mock, access_mock, clients_mock):
+    run_mock.return_value = 0
+    access_mock.return_value = 'https://localhost:8080'
     test_f_id = 'test_rgn_flat'
     test_f_name = f'{test_f_id}.fits'
+
+    clients_mock.return_value.data_client.get_head.return_value = (
+        make_headers_from_file(
+            f'{TEST_DATA_DIR}/wrgnN20070626S0205_arc.fits.header'
+        )
+    )
+
     getcwd_orig = os.getcwd
-    test_fqn = os.path.join(test_main_app.TEST_DATA_DIR, 'run_test')
+    test_fqn = os.path.join(TEST_DATA_DIR, 'run_test')
     os.getcwd = Mock(return_value=test_fqn)
     try:
         # execution
-        composable._run()
+        test_result = composable._run()
+        assert test_result == 0, 'successful execution'
         assert run_mock.called, 'should have been called'
         args, kwargs = run_mock.call_args
         test_storage = args[0]
         assert isinstance(test_storage, GemProcName), type(test_storage)
+        # this is a nonsense observation ID, but it's what the code
+        # returns with the file name of test_rgn_flat.fits, and a
+        # starting DATALAB value of GN-2006A-SV-131-11-001-ARC
         assert (
-            test_storage.obs_id == TEST_OBS_ID
+            test_storage.obs_id == 'GN-2006A-SV-131-11-001-ARC-RGN-FLAT'
         ), f'wrong obs id {test_storage.obs_id}'
         assert test_storage.file_name == test_f_name, 'wrong file name'
         assert test_storage.source_names[0] == os.path.join(
             test_fqn, test_f_name
         ), 'wrong source name'
-        assert test_storage.url is None, 'wrong url'
-        assert (
-            test_storage.lineage ==
-            f'{test_f_id}/cadc:GEMINICADC/{test_f_name}'
-        ), 'wrong lineage'
+        clients_mock.return_value.data_client.get_head.assert_called_with(
+            'cadc:TEST/test_rgn_flat.fits'
+        ), 'get_head'
+        clients_mock.return_value.data_client.info.assert_called_with(
+            'cadc:TEST/test_rgn_flat.fits'
+        ), 'info'
+        # no repo client calls because they're all masked by the do_one mock
     finally:
         os.getcwd = getcwd_orig
         for entry in [
