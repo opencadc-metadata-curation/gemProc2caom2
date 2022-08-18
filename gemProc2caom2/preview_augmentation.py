@@ -67,16 +67,14 @@
 # ***********************************************************************
 #
 
-import os
 import re
 
-import matplotlib.image as image
 import matplotlib.pyplot as plt
 import numpy as np
 from astropy.io import fits
 from astropy.visualization import MinMaxInterval, ZScaleInterval
 
-from caom2 import ProductType, ReleaseType
+from caom2 import ReleaseType
 from caom2pipe import manage_composable as mc
 
 
@@ -86,12 +84,6 @@ class GemProcPreview(mc.PreviewVisitor):
             'GEMINICADC', ReleaseType.DATA, **kwargs
         )
         self._observation = observation
-        self._preview_fqn = os.path.join(
-            self._working_dir, self._storage_name.prev
-        )
-        self._thumb_fqn = os.path.join(
-            self._working_dir, self._storage_name.thumb
-        )
 
     def generate_plots(self, obs_id):
         self._logger.debug(f'Begin generate_plots for {obs_id}')
@@ -136,39 +128,8 @@ class GemProcPreview(mc.PreviewVisitor):
         plt.axis('off')
         plt.imshow(white_light_data, cmap='inferno')
         plt.savefig(self._preview_fqn, format='jpg')
-        count += 1
-        self.add_preview(
-            self._storage_name.prev_uri,
-            self._storage_name.prev,
-            ProductType.PREVIEW,
-        )
-        self.add_to_delete(self._preview_fqn)
-        count += self._gen_thumbnail()
+        count = self._save_figure()
         self._logger.info(f'End generate_plots for {obs_id}.')
-        return count
-
-    def _gen_thumbnail(self):
-        self._logger.debug(
-            f'Generating thumbnail for file ' f'{self._science_fqn}.'
-        )
-        count = 0
-        if os.path.exists(self._preview_fqn):
-            thumb = image.thumbnail(
-                self._preview_fqn, self._thumb_fqn, scale=0.25
-            )
-            if thumb is not None:
-                self.add_preview(
-                    self._storage_name.thumb_uri,
-                    self._storage_name.thumb,
-                    ProductType.THUMBNAIL,
-                )
-                self.add_to_delete(self._thumb_fqn)
-                count = 1
-        else:
-            self._logger.warning(
-                f'Could not find {self._preview_fqn} for '
-                f'thumbnail generation.'
-            )
         return count
 
 
