@@ -1,4 +1,4 @@
-FROM opencadc/pandas:3.10-slim as builder
+FROM opencadc-metadata-curation/pandas:3.10-slim as builder
 
 RUN apt-get update --no-install-recommends && \
     apt-get dist-upgrade -y && \
@@ -8,9 +8,9 @@ RUN apt-get update --no-install-recommends && \
 ARG CAOM2_BRANCH=master
 ARG CAOM2_REPO=opencadc
 ARG GEM_BRANCH=master
-ARG GEM_REPO=opencadc
+ARG GEM_REPO=opencadc-metadata-curation
 ARG PIPE_BRANCH=master
-ARG PIPE_REPO=opencadc
+ARG PIPE_REPO=opencadc-metadata-curation
 
 RUN git clone https://github.com/${CAOM2_REPO}/caom2tools.git && \
     cd caom2tools && \
